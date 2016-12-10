@@ -1,0 +1,6 @@
+what is data type?
+
+php data type list :
+           1. int 2 double 3.boolean 4. string 5. string 6. array
+           7. object 
+           8. null 9. resource (special data type means is not pure data type)  
