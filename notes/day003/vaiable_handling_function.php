@@ -101,11 +101,11 @@ $b= '$a';
 $c= $b;
 echo $c;
 
-echo "so single quate is always string means $ varible will not render";
+echo "so single quate is always string means $ varaible will not render";
 
 $d= "$a";
 
 $e = $d;
 
 echo "</br>".$e;
-echo "so double quate is not always string means $ varible will  render";
+echo "so double quate is not always string means $ varaible will  render";

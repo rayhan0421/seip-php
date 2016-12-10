@@ -13,3 +13,5 @@ unselialize
 
 unset
 var_dump
+
+get_resource_type

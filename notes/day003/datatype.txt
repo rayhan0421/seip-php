@@ -3,4 +3,40 @@ what is data type?
 php data type list :
            1. int 2 double 3.boolean 4. string 5. string 6. array
            7. object 
-           8. null 9. resource (special data type means is not pure data type)  
+           8. null 9. resource (special data type means is not pure data type) 
+
+ 
+
+sinle quat '' vs double quat "" vs nowdoc vs heredoc vs <<<eod eod
+
+all 
+
+nowdoc: 
+
+<?php
+
+echo "nowdoc way";
+echo "<br/>";
+$foo = 'bar';
+
+$eod = <<<'EOD'
+    I'm now, $foo!
+EOD;
+
+echo $eod;
+echo "<br/>";
+
+$now = <<<'NOD'
+    I'm now, $foo!
+NOD;
+
+echo $now;
+
+$tow = <<<'TOD'
+    I'm now, $foo!
+TOD;
+
+echo $tow;
+
+ 
+
