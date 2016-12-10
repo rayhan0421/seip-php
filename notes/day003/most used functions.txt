@@ -1,0 +1,15 @@
+boolval 
+mt
+gettype
+is_array
+is_int
+is_null
+isset
+print_r
+
+serialize
+
+unselialize
+
+unset
+var_dump
