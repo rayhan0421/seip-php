@@ -1,0 +1,13 @@
+It’s all very simple. the functions check a string value to see if the characters are within a given range or that every character is of the appropriate type
+
+ctype_alnum — Check for alphanumeric character(s)
+ctype_alpha — Check for alphabetic character(s)
+ctype_cntrl — Check for control character(s)
+ctype_digit — Check for numeric character(s)
+ctype_graph — Check for any printable character(s) except space
+ctype_lower — Check for lowercase character(s)
+ctype_print — Check for printable character(s)
+ctype_punct — Check for any printable character which is not whitespace or an alphanumeric character
+ctype_space — Check for whitespace character(s)
+ctype_upper — Check for uppercase character(s)
+ctype_xdigit — Check for character(s) representing a hexadecimal digit
