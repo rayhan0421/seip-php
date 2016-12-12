@@ -36,3 +36,11 @@ print_r($arr);
 var_dump($arr);
 
 // show detail variable info
+
+if(is_array($arr)){
+
+    print_r($arr);
+}else{
+
+    echo $arr;
+}
