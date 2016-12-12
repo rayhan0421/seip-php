@@ -32,3 +32,7 @@ echo $arr;
 print_r($arr);
 
 // we use print_r instead of echo for array type varibale
+
+var_dump($arr);
+
+// show detail variable info
