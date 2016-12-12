@@ -56,6 +56,26 @@ echo ' after decreament of $y-- is : '.$y."<br/>";
 
 echo  $y ."<br/>";
 
+echo "<h1> logical oparator</h1>" ."<br/>";
+
+
+var_dump(!$x==10);
+
+echo '<br/>';
+if ($x !== 2017) {
+    echo "Hello world!";
+}
+
+if($x==3 xor $y==10){
+
+    echo " <br/> True if either $x or $y is true, but not both";
+}elseif($x==3 xor $y==11){
+
+echo "<br/> true here cause : only one or y var is true ";
+}else{
+
+echo " default";
+}
 
 
 
