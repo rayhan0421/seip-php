@@ -28,3 +28,7 @@ $arr = array();
 
 echo $arr;
 // we cannot print array like that
+
+print_r($arr);
+
+// we use print_r instead of echo for array type varibale
