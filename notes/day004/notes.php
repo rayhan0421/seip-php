@@ -44,3 +44,19 @@ if(is_array($arr)){
 
     echo $arr;
 }
+//
+
+
+$arr2 = array("a","g", "s");
+
+
+// serialise convert array to string . we can store data in database
+// unserialize convert string to array
+
+serialize($arr2);
+echo  gettype($arr2);
+
+echo $arr2;
+unserialize($arr2);
+
+echo gettype($arr2);
