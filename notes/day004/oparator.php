@@ -63,7 +63,10 @@ echo "<h1> logical oparator</h1>" ."<br/>";
 var_dump(!$x==10);
 
 echo '<br/>';
+
+
 if ($x !== 2017) {
+// with type check;
     echo "Hello world!";
 }
 
