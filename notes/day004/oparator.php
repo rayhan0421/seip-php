@@ -20,6 +20,7 @@ echo $x%$y."</br>";
 echo $x/$y;
 
 // compare operator
+echo "<h1> compare decreament oparator</h1>";
 echo "<br/>";
 var_dump($x<>$y);
 echo "<br/>";
@@ -31,3 +32,30 @@ var_dump($x!==$y);
 echo "<br/>";
 var_dump($x===$y);
 // return bool with variable type
+
+
+echo "<h1> increament decreament oparator</h1>";
+
+echo 'before increament of  $x '.$x . "<br/>";
+$x++;
+
+echo 'after increament of $x '.$x . "<br/>";
+echo $x;
+echo "<br/>";
+
+echo 'before decreament of $y '.$y . "<br/>";
+--$y;
+echo 'after decreament of $x '.$y . "<br/>";
+echo $y ."<br/>";
+
+$y=12;
+
+echo ' before decreament of $y : '. $y."<br/>";
+$y--;
+echo ' after decreament of $y-- is : '.$y."<br/>";
+
+echo  $y ."<br/>";
+
+
+
+
