@@ -16,7 +16,7 @@ echo $var;
 //unset use most of the time in session and temporary data handling area
 unset($var);
 
-echo $var;
+//echo $var;
 
 
 
@@ -25,10 +25,13 @@ echo "varible has been removed";
 // print_r vs echo
 
 $arr = array();
-
-echo $arr;
+if(is_array($arr)) {
+  print_r($arr);
 // we cannot print array like that
+}else{
 
+    echo $arr;
+}
 print_r($arr);
 
 // we use print_r instead of echo for array type varibale
