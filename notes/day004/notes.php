@@ -64,7 +64,17 @@ $un= unserialize($s);
 
 echo gettype($un);
 
-
+echo "<br/>";
 define("varibale","value here");
 
+define("year","2017",true);
+// constatnt variable
 echo varibale;
+echo "<br/>";
+echo year;
+
+//define(name, value, case-insensitive)
+
+//name: Specifies the name of the constant
+//value: Specifies the value of the constant
+//case-insensitive: Specifies whether the constant name should be case-insensitive. Default is false
