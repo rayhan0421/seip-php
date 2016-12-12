@@ -21,3 +21,9 @@ echo $var;
 
 
 echo "varible has been removed";
+
+// print_r vs echo
+
+$arr = array();
+
+echo $arr;
