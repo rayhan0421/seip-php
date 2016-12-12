@@ -1,0 +1,15 @@
+Main advantage of serialize : it's specific to PHP, which means it can represent PHP types, including instances of your own classes -- and you'll get your objects back, still instances of your classes, when unserializing your data.
+
+
+Main advantage of json_encode : JSON is not specific to PHP : there are libraries to read/write it in several languages -- which means it's better if you want something that can be manipulated with another language than PHP.
+
+A JSON string is also easier to read/write/modify by hand than a serialized one.
+
+On the other hand, as JSON is not specific to PHP, it's not aware of the stuff that's specific to PHP -- like data-types.
+
+
+As a couple of sidenotes :
+
+Even if there is a small difference in speed between those two, it shouldn't matter much : you will probably not serialize/unserialize a lot of data
+Are you sure this is the best way to store data in a database ?
+You won't be able to do much queries on serialized strins, in a DB : you will not be able to use your data in where clauses, nor update it without the intervention of PHP...
