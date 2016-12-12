@@ -18,3 +18,16 @@ echo $x."<br/>";
 echo $x%$y."</br>";
 // it (/) return fraction
 echo $x/$y;
+
+// compare operator
+echo "<br/>";
+var_dump($x<>$y);
+echo "<br/>";
+//<> return bool true or false
+echo "!== : "."<br/>";
+var_dump($x!==$y);
+
+// !== return bool $x is equal to $y or not
+echo "<br/>";
+var_dump($x===$y);
+// return bool with variable type
