@@ -11,9 +11,11 @@ if(isset($price)){
 $var =10;
 
 echo $var;
-
+// to remove variable we use unset();
 unset($var);
 
 echo $var;
+
+
 
 echo "varible has been removed";
