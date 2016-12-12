@@ -9,6 +9,7 @@ $z=2;
 echo $x**$y."<br/>";
 // $x power of $y
 
+echo '$x<sup>$y</sup> '."<br/>";
 echo ' $x : '. $x." <br/>";
 $x = $y;
 echo 'now $x :';
