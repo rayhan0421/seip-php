@@ -91,3 +91,8 @@ $txt1 = "Hello";
 $txt2 = " world!";
 $txt1 .= $txt2;
 echo $txt1;
+echo "<br/> <h1> ternary oparator</h1>" ."<br/>";
+
+// like if else
+
+empty($x)? "output": "else";
