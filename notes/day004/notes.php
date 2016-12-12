@@ -8,3 +8,12 @@ if(isset($price)){
 }
 
 
+$var =10;
+
+echo $var;
+
+unset($var);
+
+echo $var;
+
+echo "varible has been removed";
