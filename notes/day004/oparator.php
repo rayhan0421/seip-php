@@ -78,4 +78,12 @@ echo " default";
 }
 
 
+echo "<br/> <h1>string oparator : </h1>";
 
+// .  for concatanet
+echo "<br/>".'$x'.'$y';
+
+$txt1 = "Hello";
+$txt2 = " world!";
+$txt1 .= $txt2;
+echo $txt1;
