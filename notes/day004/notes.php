@@ -27,3 +27,4 @@ echo "varible has been removed";
 $arr = array();
 
 echo $arr;
+// we cannot print array like that
