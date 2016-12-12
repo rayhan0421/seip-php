@@ -63,3 +63,8 @@ echo $s;
 $un= unserialize($s);
 
 echo gettype($un);
+
+
+define("varibale","value here");
+
+echo varibale;
