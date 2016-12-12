@@ -1,0 +1,25 @@
+1. Serialization is used when you want to pass data outside PHP, for example to Javascript.
+
+2.A PHP array or object or other complex data structure cannot be transported or stored or otherwise used outside of a running PHP script. If you want to persist such a complex data structure beyond a single run of a script, you need to serialize it. That just means to put the structure into a "lower common denominator" that can be handled by things other than PHP, like databases, text files, sockets. The standard PHP function serialize is just a format to express such a thing, it serializes a data structure into a string representation that's unique to PHP and can be reversed into a PHP object using unserialize. There are many other formats though, like JSON or XML.
+How do I pass a PHP array to Javascript?
+
+PHP and Javascript can only communicate via strings. You can pass the string "foo" very easily to Javascript. You can pass the number 1 very easily to Javascript. You can pass the boolean values true and false easily to Javascript. But how do you pass this array to Javascript?
+
+Array ( [1] => elem 1 [2] => elem 2 [3] => elem 3 ) 
+The answer is serialization. In case of PHP/Javascript, JSON is actually the better serialization format:
+
+{ 1 : 'elem 1', 2 : 'elem 2', 3 : 'elem 3' }
+Javascript can easily reverse this into an actual Javascript array.
+
+This is just as valid a representation of the same data structure though:
+
+a:3:{i:1;s:6:"elem 1";i:2;s:6:"elem 2";i:3;s:7:" elem 3";}
+But pretty much only PHP uses it, there's little support for this format anywhere else.
+This is very common and well supported as well though:
+
+<array>
+    <element key='1'>elem 1</element>
+    <element key='2'>elem 2</element>
+    <element key='3'>elem 3</element>
+</array>
+There are many situations where you need to pass complex data structures around as strings. Serialization, representing arbitrary data structures as strings, solves how to do this.

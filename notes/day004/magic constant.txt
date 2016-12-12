@@ -1,0 +1,8 @@
+
+
+__line__
+__function__
+__trait__
+__method__
+
+__namespace__
