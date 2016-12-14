@@ -12,7 +12,7 @@ function getName()
 
 getName();
 
-function getResult($num,$num2)
+function getResult($num="",$num2="")
 {
 	$a=10;
 	$b=20;
