@@ -10,4 +10,8 @@ for($i=0;$i<strlen($str);$i++){
 
 }
 
-var_dump($arr);
+//var_dump($arr);
+echo "<pre>";
+print_r(str_split($str));
+
+echo "</pre>";
