@@ -58,12 +58,28 @@ echo '<center><h1>php chr()</h1></center>';
 echo '<h1>ASCII to<span style="color:orangered"> char  </span> convert:</h1>';
 //he chr() function returns a character from the specified ASCII value.
 echo "<br/>";
-echo chr(60);
-
+echo chr(35);
+echo "<br/>";
 for($i=0;$i<10; $i++)
 {
 
     echo "char is : ".chr($i+60)."<br/>";
 }
+
+echo "<a href='http://www.asciitable.com'> ASCII link is here</a>";
+echo "<br/>";
+$i=0;
+
+echo "<table><tr><td>";
+
+for($i==0;$i<=127;$i++){
+
+    echo " chr($i) = ".chr($i)."<br>";
+
+    if($i%20 == 0 and $i>19){echo "</td><td valign=top>";}
+
+}
+
+echo "</td></table>";
 
 echo '<hr/>';
