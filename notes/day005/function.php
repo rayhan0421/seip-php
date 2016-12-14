@@ -17,6 +17,7 @@ function getResult($num="",$num2=null)
 {
 	
 	global $performance ;
+	// global should add into function
 	$a=10;
 	$b=20;
 	
@@ -24,7 +25,7 @@ function getResult($num="",$num2=null)
 	
 	return $a+$b;
 }
-echo "<br/>";
+echo "get result is :". "<br/>";
 //getResult();
 
 echo getResult(10,21);
@@ -59,5 +60,14 @@ echo "<br/>";
 echo $add[1];
 echo "<br/>";
 print_r($add);
+
+$functionname = "getName";
+echo "function as variable"."<br/>";
+
+echo $functionname();
+
+
+
+
 
 
