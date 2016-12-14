@@ -97,6 +97,10 @@ echo chunk_split($str,2,"#");
 //The chunk_split() function splits a string into a series of smaller parts.
 
 echo '<hr/>';
+$string_name1='w3resource.com';
+echo chunk_split($string_name1,1,".");
+echo '<br>'; echo chunk_split($string_name1,2,"/");
+echo '<br>'; echo chunk_split($string_name1,1,"--");
 echo '<hr/>';
 
 echo '<hr/>';
