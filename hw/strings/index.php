@@ -104,8 +104,8 @@ echo '<br>'; echo chunk_split($string_name1,1,"--");
 echo '<hr/>';
 
 echo '<hr/>';
-
 echo "<h1> The implode() </h1>";
+
 
 //The implode() function returns a string from the elements of an array.
 
@@ -115,3 +115,14 @@ $arr = array('Hello','World!','Beautiful','Day!');
 echo $st= implode(",",$arr)."<br>";// implode(" __ ",$arr)
 
 echo "after implode return type is : ". gettype($st)."<br>";
+
+echo '<hr/>';
+echo "<h1> The explode() </h1>";
+
+//Break a string into an array:
+
+$ex= explode(',',$st);
+
+echo "<pre>";
+print_r($ex);
+echo "</pre>";
