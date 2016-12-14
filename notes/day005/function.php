@@ -1,6 +1,6 @@
 <?php 
 
-
+$performance = 20;
 echo "function define";
 
 echo "<br/>";
