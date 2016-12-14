@@ -36,7 +36,7 @@ echo $myresult +10;
 
 // we can return two result using array
 
-fuunction add($num = "")
+function add($num = "")
 {
 	
 $internalnum = 10;	
@@ -44,5 +44,15 @@ return array($num,$internalnum );
 }
 
 
+$add = add(20);
+echo "<br/>";
+
+echo gettype($add);
+
+echo "<br/>";
+
+echo $add[0];
+echo "<br/>";
+echo $add[1];
 
 
