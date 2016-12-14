@@ -108,3 +108,10 @@ echo '<hr/>';
 echo "<h1> The implode() </h1>";
 
 //The implode() function returns a string from the elements of an array.
+
+//implode(separator,array)
+
+$arr = array('Hello','World!','Beautiful','Day!');
+echo $st= implode(",",$arr)."<br>";// implode(" __ ",$arr)
+
+echo "after implode return type is : ". gettype($st)."<br>";
