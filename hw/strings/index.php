@@ -57,6 +57,9 @@ echo '<hr/>';
 echo '<center><h1>php chr()</h1></center>';
 echo '<h1>ASCII to<span style="color:orangered"> char  </span> convert:</h1>';
 //he chr() function returns a character from the specified ASCII value.
+
+//ord — Return ASCII value of character
+//ord($str);
 echo "<br/>";
 echo chr(35);
 echo "<br/>";
@@ -134,3 +137,14 @@ echo "<br/>";
 $class_list='V;VI;VII;VIII;IX;X';
 $classes=explode(";",$class_list);
 print_r($classes);
+
+echo '<hr/>';
+echo "<h1> str_repeat() </h1>";
+
+//str_repeat(string,repeat)
+
+echo "The str_repeat() function repeats a string a specified number of times.
+
+"."<br/>";
+
+echo "5 times print : ".str_repeat("rayhan ", 5);
