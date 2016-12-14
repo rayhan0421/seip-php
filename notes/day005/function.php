@@ -12,7 +12,7 @@ function getName()
 
 getName();
 
-function getResult( )
+function getResult($num,$num2)
 {
 	$a=10;
 	$b=20;
@@ -24,7 +24,7 @@ function getResult( )
 echo "<br/>";
 //getResult();
 
-echo getResult();
+echo getResult(10,21);
 
 $myresult = getResult();
 echo "<br/>";
@@ -33,4 +33,6 @@ echo $myresult +10;
 //without argument function works if we don't pass argument 
 
 //function argument maintain serial 
+
+
 
