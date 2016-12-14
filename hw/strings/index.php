@@ -111,6 +111,8 @@ echo "<h1> The implode() </h1>";
 
 //implode(separator,array)
 
+// join() alies of implode
+
 $arr = array('Hello','World!','Beautiful','Day!');
 echo $st= implode(",",$arr)."<br>";// implode(" __ ",$arr)
 
