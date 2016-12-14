@@ -25,3 +25,7 @@ echo "<br/>";
 //getResult();
 
 echo getResult();
+
+$myresult = getResult();
+echo "<br/>";
+echo $myresult +10;
