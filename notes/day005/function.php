@@ -1,6 +1,7 @@
 <?php 
 
 $performance = 20;
+// we can use this variable everywhere in script;
 echo "function define";
 
 echo "<br/>";
@@ -14,6 +15,8 @@ getName();
 
 function getResult($num="",$num2=null)
 {
+	
+	global $performance ;
 	$a=10;
 	$b=20;
 	
