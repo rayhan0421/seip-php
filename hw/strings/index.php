@@ -120,9 +120,15 @@ echo '<hr/>';
 echo "<h1> The explode() </h1>";
 
 //Break a string into an array:
+//explode(separator,string)
 
+//explode(separator,string,limit)
 $ex= explode(',',$st);
 
 echo "<pre>";
 print_r($ex);
 echo "</pre>";
+echo "<br/>";
+$class_list='V;VI;VII;VIII;IX;X';
+$classes=explode(";",$class_list);
+print_r($classes);
