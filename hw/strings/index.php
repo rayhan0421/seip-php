@@ -104,3 +104,7 @@ echo '<br>'; echo chunk_split($string_name1,1,"--");
 echo '<hr/>';
 
 echo '<hr/>';
+
+echo "<h1> The implode() </h1>";
+
+//The implode() function returns a string from the elements of an array.
