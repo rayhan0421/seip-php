@@ -83,3 +83,18 @@ for($i==0;$i<=127;$i++){
 echo "</td></table>";
 
 echo '<hr/>';
+echo '<center><h1>php chunk_split()</h1></center>';
+echo '<br/>';
+
+$str = "Hello world! rayhan udin";
+echo chunk_split($str,6,"...");
+echo '<br/>';
+echo chunk_split($str,2,"#");
+
+// replace ... for every 6 char
+//The chunk_split() function splits a string into a series of smaller parts.
+
+echo '<hr/>';
+echo '<hr/>';
+
+echo '<hr/>';
