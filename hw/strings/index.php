@@ -85,7 +85,9 @@ echo "</td></table>";
 echo '<hr/>';
 echo '<center><h1>php chunk_split()</h1></center>';
 echo '<br/>';
+//chunk_split(string,length,end)
 
+//chunk_split ( string $body [, int $chunklen = 76 [, string $end = "\r\n" ]] )
 $str = "Hello world! rayhan udin";
 echo chunk_split($str,6,"...");
 echo '<br/>';
