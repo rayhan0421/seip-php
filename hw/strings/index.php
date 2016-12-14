@@ -36,6 +36,8 @@ echo '<br/>';
 echo chop("   Ramki   ");//right spaces are eliminated
 echo '<br/>';
 echo chop("Ramkrishnuvwxyz", "u..z");// remove u to z from right of string end
+echo '<br/>';
+echo chop("Ramkrishnuvwxyzabcdt", "a..t");// remove a to t from right of string end, which range match
 
 
 echo '<br/>';
