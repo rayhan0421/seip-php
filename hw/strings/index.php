@@ -54,3 +54,16 @@ $string = 'abcdefghijklmnopqrstuvwxyz';
 echo String2Stars($string,5,-5,'*');   // abcde****************vwxyz
 echo '<hr/>';
 
+echo '<center><h1>php chr()</h1></center>';
+echo '<h1>ASCII to<span style="color:orangered"> char  </span> convert:</h1>';
+//he chr() function returns a character from the specified ASCII value.
+echo "<br/>";
+echo chr(60);
+
+for($i=0;$i<10; $i++)
+{
+
+    echo "char is : ".chr($i+60)."<br/>";
+}
+
+echo '<hr/>';
