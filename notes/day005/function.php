@@ -34,5 +34,15 @@ echo $myresult +10;
 
 //function argument maintain serial 
 
+// we can return two result using array
+
+fuunction add($num = "")
+{
+	
+$internalnum = 10;	
+return array($num,$internalnum );	
+}
+
+
 
 
