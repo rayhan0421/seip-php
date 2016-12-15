@@ -163,4 +163,13 @@ $var_2 = 'WITH MYSQL';
 echo "<br/>";
 echo "match with : ".$percent."%";
 echo "<br/>";
+
+$var_1 = 'PHP MYsql';
+$var_2 = 'WITH MYSQL';
+
+
+echo "four char match : ".similar_text($var_1, $var_2, $percent);
+echo "<br/>";
+echo "match with : ".$percent."%";
+echo "<br/>";
 //we can get float number;
