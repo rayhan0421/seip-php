@@ -148,3 +148,19 @@ echo "The str_repeat() function repeats a string a specified number of times.
 "."<br/>";
 
 echo "5 times print : ".str_repeat("rayhan ", 5);
+echo '<hr/>';
+
+echo "<h1> similar text of two string </h1>";
+
+
+//similar_text ( string $first , string $second [, float &$percent ] )
+// match every char
+$var_1 = 'PHP';
+$var_2 = 'WITH MYSQL';
+
+
+ echo "one char match : ".similar_text($var_1, $var_2, $percent);
+echo "<br/>";
+echo "match with : ".$percent."%";
+echo "<br/>";
+//we can get float number;
