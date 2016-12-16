@@ -1,12 +1,18 @@
 <?php
 
-$string = "This is\tan example\nstring";
+$string = "Rayhan ,uddin ,i, love bangladesh";
 /* Use tab and newline as tokenizing characters as well  */
-$tok = strtok($string, " \n\t");
+$tok = strtok($string, ",");
 
+print_r($tok);
+echo "<br/> type : ".gettype($tok);
+// for single
+echo "<hr/>";
+
+// for all
 while ($tok !== false) {
     echo "Word=$tok<br />";
-    $tok = strtok(" \n\t");
+    $tok = strtok(",");
 }
 
 
@@ -15,6 +21,7 @@ echo ""."<br/>";
 // remove token or specific char string
 
 $first_token  = strtok('/somethin/g', '/');
+// we can use space as token
 $second_token = strtok('/');
 var_dump($first_token, $second_token);
 
