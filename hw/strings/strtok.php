@@ -19,4 +19,28 @@ $unique_words = array_unique($words);
 print "<pre>";
 print_r($unique_words);
 print "</pre>";
+
+echo "<hr/>";
+
+$input = "tutorials point@ and simple@ easy learning.";
+$token = strtok($input, "@");
+
+while ($token !== false){
+    echo "$token<br>";
+    $token = strtok("@");
+}
+// very good work with token like / \n \t @ # $ ^ *  () etc
+
+
+echo "<hr/>";
+
+$input = "tutorials point and simple easy and learning.";
+$token = strtok($input, "and");
+
+while ($token !== false){
+    echo "$token<br>";
+    $token = strtok("and");
+}
+
+echo "<hr/>";
 ?>
