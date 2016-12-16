@@ -12,9 +12,9 @@ while ($tok !== false) {
 
 echo ""."<br/>";
 
+// remove token or specific char string
 
-
-$first_token  = strtok('/something', '/');
+$first_token  = strtok('/somethin/g', '/');
 $second_token = strtok('/');
 var_dump($first_token, $second_token);
 
