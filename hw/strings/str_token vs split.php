@@ -20,6 +20,7 @@ var_dump($first_token, $second_token);
 
 echo "<hr/>";
 echo "<pre>";
+//string to an array.
 print_r(str_split($string,3));
 echo "</pre>";
 
