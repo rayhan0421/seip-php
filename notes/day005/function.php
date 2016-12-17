@@ -17,7 +17,7 @@ function getResult($num="",$num2=null)
 {
 	
 	global $performance ;
-	// global should add into function
+	// global variable should add/define into function
 	$a=10;
 	$b=20;
 	
