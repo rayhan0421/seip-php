@@ -15,7 +15,7 @@ echo "</pre>";
 
 echo "<br/>";
 
-
+// strpos all match
 $str_test = "Hello World! welcome to php";
 
 $count = 0;
@@ -32,3 +32,5 @@ for($i = 0; $i<strlen($str_test); $i++)
 foreach ($positions as $value) {
     echo '<br/>' .  $value . "<br />";
 }
+
+//string all match 
