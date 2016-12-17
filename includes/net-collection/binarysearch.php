@@ -1,5 +1,7 @@
 <?php
-
+//binarysearch
+//binary
+//search
 function binarySearch($needle, array $haystack, $compare, $high, $low = 0, $containsDuplicates = false)
 {
     $key = false;
