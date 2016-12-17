@@ -15,12 +15,13 @@ str_getcsv
 str_pad
 str_repeat
 str_replace
-
+strpos
 str_shuffle
 str_split
 str_word_count
 
 strlen
+
 strtoupper
 strtolower
 ucfirst

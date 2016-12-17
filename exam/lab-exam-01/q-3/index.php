@@ -7,6 +7,7 @@ $arr =array();
 
 for($i=0;$i<strlen($str);$i++){
    $arr[$i] = $str[$i];
+   //echo $str[$i];
 
 }
 
