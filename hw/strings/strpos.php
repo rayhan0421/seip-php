@@ -33,4 +33,4 @@ foreach ($positions as $value) {
     echo '<br/>' .  $value . "<br />";
 }
 
-//string all match 
+//string all match

@@ -4,12 +4,16 @@
 </head>
 <body>
 
-<form action="" method="">
+<form action="calc.php" method="get">
 
-   <label>Text 1 : </label> <input type="text"  placeholder="text 1" />
-    <label>Text 2 : </label> <input type="text"  placeholder="text 1" />
+   <label> </label> <input type="text"  name="num1" placeholder=" num " />
+    <label>+ </label> <input type="text" name="num2" placeholder="num" />
 
-    <input type="submit" value="submit">
+    <input type="submit" name="type" value="add">
+    <input type="submit" name="type" value="minus">
+    <input type="submit" name="type" value="division">
+    <input type="submit" name="type" value="mult">
+
 
 </form>
 
