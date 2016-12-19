@@ -1,0 +1,5 @@
+3 types of array:
+
+1. index array
+2. associative array
+3. multi dimensional array
