@@ -1,0 +1,22 @@
+$cash = 5500.257612345;
+
+$savings = number_format($cash, 2);
+
+echo "The company has $savings in reserve.";
+
+// we take 2 decimal after dot
+$output = The company has 5,500.26 in reserve.
+
+
+//////////////
+.............
+
+
+$cash = 5500.257612345;
+
+$savings = number_format($cash, 4);
+
+echo "The company has $savings in reserve.";
+
+// we take 4 decimal after dot
+$output = The company has 5,500.2576 in reserve.

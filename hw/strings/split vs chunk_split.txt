@@ -1,0 +1,12 @@
+The chunk_split() function splits a string into a series of smaller parts.
+
+
+<?php
+$sentence = "Eat the Leafy Greens for good health.";
+
+$chunked = chunk_split($sentence, 3, ':-)');
+
+echo $chunked;
+// 3 for substring :-) for join with substring
+$output = Eat:-) th:-)e L:-)eaf:-)y G:-)ree:-)ns :-)for:-) go:-)od :-)hea:-)lth:-).:-)
+?>
