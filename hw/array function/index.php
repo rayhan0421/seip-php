@@ -7,5 +7,3 @@
 // array built in function
 
 
-
-
