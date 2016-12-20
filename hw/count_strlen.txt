@@ -1,0 +1,5 @@
+count == array length
+// count for array  like sizeof()
+strlen == string length
+
+strlen for string lenght
