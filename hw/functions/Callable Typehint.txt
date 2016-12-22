@@ -1,0 +1,17 @@
+In PHP 5.4 (the newest version, and it has lots of shiny features), we have the Callable typehint. This allows us to check whether a thing is callable, either because it's a closure, an invokable object, or some other valid callback. Another trivial example to continue the butterflies and kittens theme:
+
+
+function sparkles(Callable $func) {
+  $func();
+  return "fairy dust";
+}
+
+class Butterfly {
+  public function __invoke() {
+    echo "flutter";
+  }
+}
+
+$bob = new Butterfly();
+echo sparkles($bob); // flutterfairy dust
+So there it is, one invokable object being passed into a function and successfully passing a Callable typehint.

@@ -1,0 +1,29 @@
+Interaction with OOP
+
+
+
+If a closure is defined inside an object, the closure has full access to the current object through $this (without the need to import it explicitly) and all private and protected methods of that class. This also applies to nested closures. Example:
+
+     class Example {
+       private $search;
+ 
+       public function __construct ($search) {
+         $this->search = $search;
+       }
+ 
+       public function setSearch ($search) {
+         $this->search = $search;
+       }
+ 
+       public function getReplacer ($replacement) {
+         return function ($text) use ($replacement) {
+           return str_replace ($this->search, $replacement, $text);
+         };
+       }
+     }
+ 
+     $example = new Example ('hello');
+     $replacer = $example->getReplacer ('goodbye');
+     echo $replacer ('hello world'); // goodbye world
+     $example->setSearch ('world');
+     echo $replacer ('hello world'); // hello goodbye

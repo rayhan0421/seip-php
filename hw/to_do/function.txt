@@ -1,0 +1,15 @@
+Making a general processing function with create_function()
+
+Using anonymous functions as callback functions
+
+...................
+
+
+
+
+
+
+
+$av = array("the ", "a ", "that ", "this ");
+array_walk($av, create_function('&$v,$k', '$v = $v . "mango";'));
+print_r($av)

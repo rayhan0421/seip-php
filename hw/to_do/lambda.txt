@@ -1,0 +1,20 @@
+Why do we need closures and lambda functions?
+
+Closures and lambda functions can make programming much easier in several ways:
+
+Why do we need closures and lambda functions?
+
+Closures and lambda functions can make programming much easier in several ways:
+
+ If you don't want to hard-code 'hello' and 'goodbye' into your sourcecode, you have only four choices:
+
+1.Use create_function(). But then you may only pass literal values (strings, integers, floats) into the function, objects at best as clones (if var_export() allows for it) and resources not at all. And you have to worry about escaping everything correctly. Especially when handling user input this can lead to all sorts of security issues.
+
+
+2. Write a function that uses global variables. This is ugly, non-reentrant and bad style.
+
+
+3. Create an entire class, instantiate it and pass the member function as a callback. This is perhaps the cleanest solution for this problem with current PHP but just think about it: Creating an entire class for this extremely simple purpose and nothing else seems overkill.
+
+
+4. Don't use array_map() but simply do it manually (foreach). In this simple case it may not be that much of an issue (because one simply wants to iterate over an array) but there are cases where doing something manually that a function with a callback as parameter does for you is quite tedious.

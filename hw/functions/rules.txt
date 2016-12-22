@@ -1,0 +1,35 @@
+step 1:
+if ( ! function_exists('array_group_by') ) :
+
+
+
+
+endif;
+
+step 2 :
+
+argument type check
+
+is_string / is object / is_array....etc
+
+step 3 :
+
+trigger_error and
+return null
+
+ex:  if ( ! is_string( $key ) && ! is_int( $key ) && ! is_float( $key ) && ! is_callable( $key ) ) {
+                trigger_error( 'array_group_by(): The key should be a string, an integer, or a callback', E_USER_ERROR );
+                return null;
+            }
+
+step 4:
+
+to avoid error use
+ call_user_func_array()
+ is_callable()
+ argument number check
+
+ use php built in array intelligently it speed up app
+
+
+

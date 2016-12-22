@@ -1,0 +1,36 @@
+Lambda function syntax
+
+The patch adds the following syntax as a valid expression:
+
+   function & (parameters) use (lexical vars) { body }
+
+note : : The & is optional and indicates that the function should return a reference. The use followed by the parentheses is optional and indicates that several variables from the current scope should be imported into the closure.
+
+
+
+...........
+Example usage:
+
+   $lambda = function () { echo "Hello World!\n"; };
+
+
+can be do this: 
+
+ $lambda ();
+   call_user_func ($lambda);
+   call_user_func_array ($lambda, array ());
+
+
+can be: 
+
+
+Closure lifetime
+
+Closures may live longer as the methods that declared them. It is perfectly possible to have something like this:
+
+   function getAdder($x) {
+     return function ($y) use ($x) {
+       // or: lexical $x;
+       return $x + $y;
+     };
+   }
