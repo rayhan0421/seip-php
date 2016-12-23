@@ -1,0 +1,46 @@
+sort() - sort arrays in ascending order
+rsort() - sort arrays in descending order
+asort() - sort associative arrays in ascending order, according to the value
+ksort() - sort associative arrays in ascending order, according to the key
+arsort() - sort associative arrays in descending order, according to the value
+krsort() - sort associative arrays in descending order, according to the key
+
+
+/// back dated
+
+dbx_sort
+dbx_compare
+
+////
+................
+
+
+sort() and rsort() — For sorting indexed arrays
+asort() and arsort() — For sorting associative arrays by value
+ksort() and krsort() — For sorting associative arrays by key
+
+.............
+Some of the functions you can use are:
+
+array_multisort()
+asort()
+arsort()
+krsort()
+ksort()
+natcasesort()
+natsort()
+rsort()
+shuffle()
+sort()
+
+uasort()
+
+uksort()
+usort()
+
+advantage :
+
+The difference between these functions is that some will sort by value, sort by keys,
+maintain the keys, replace the keys, user defined ordering, alphabetically order,
+there are lots of different ways you would want to sort an array
+so you need to make sure you are going to use the correct one.

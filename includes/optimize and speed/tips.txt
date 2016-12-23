@@ -1,0 +1,22 @@
+opcache.enable=1 To enable OPcache, make sure this is set in your php.ini file
+ it is better to calculate the array size outside of the loop as it will always be about twice as fast
+Cache array data
+Cache your data with memcache
+Avoid mod_access if you can (apache)
+Caching PHP
+
+....................
+sql:
+
+Choose your data types carefully in sql quary
+Make sure your indexes are being used
+Increase your buffers 
+     set-variable = key_buffer_size=128M
+     set-variable = sort_buffer_size=8M
+Declare fields NOT NULL
+      CREATE TABLE MyNotNull (ID INT NOT NULL, Name CHAR(20) NOT NULL);
+Use shorter queries where possible
+Prioritise your data
+
+
+      

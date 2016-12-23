@@ -1,0 +1,10 @@
+
+1.Use language features to reduce operations (variable caching, chaining, etc).
+
+2.Reduce iterative loop nesting as much as possible.
+
+3.Define variables outside of loops when possible.
+
+4.Use automatic loop indexing (if available) instead of manual indexing.
+
+5.Use clever reduction techniques, such as recursive divide and conquer and query optimization, to minimize the size of recursive processes
