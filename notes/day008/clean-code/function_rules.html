@@ -12,4 +12,83 @@
     <li>should good format</li>
     <li>use exception rether than return code : try catch , throw new exception , trigger_error log file</li>
     <li>Returning null from methods is bad, but passing null into methods is worse</li>
+<li>
+avoid unwanted condition checked
+<pre>
+
+Avoid unwanted usage of conditional statements: This not only increases the execution time but also makes the coding long and complex. 
+For example,
+
+If (condition1==true){
+    code which satisfies the above condition
+} else {
+    perform   die(); or exit();
+}
+
+The same set of codes can be written as:
+
+
+if(!condition){ 
+// display warning message.
+die("Invalid statement");
+  }
+can also be written: 
+
+
+$response_text = ( $action == "edit" ) ?  "the action equals edit" : "the action does not equal edit";
+echo $response_text;
+
+This reduces the execution time and also makes the codes easily maintainable.
+
+</pre>
+</li>
+
+<li>
+Code indentation, in order to highlight statement beginnings and endings.
+</li>
+
+<li>
+Code indentation, in order to highlight statement beginnings and endings.
+
+<pre>
+
+echo "<\table>";
+echo “<\tr>”;
+echo “<\td>”;
+echo “Hai welcome to php”;
+echo “<\/td>”;
+echo <\/tr>”;
+echo “<\/table>”; 
+
+
+Instead of the above we can simply say,
+<\html>
+<\body>
+<\table>
+<\tr>
+<\td> echo "Hai welcome to php"; <\/td>
+<\/tr>
+<\/body>
+<\/html>
+
+<br/>
+<p>Here the PHP compiler would execute the particular server code only,</p>
+</pre>
+</li>
+<li>
+<pre>
+Clear Code with in assigning values to Mysql Arguments:For example
+$sql="select first_name,last_name,email_address from tbl_user where user_id=".$user_id." and member_type='".$member_type."'";
+ 
+mysql_query($sql);
+ 
+In the above example, you can see that the PHP values are included in the query condition. Also there are lots of concatenations done to the variables within the query.Instead,
+$sql="select first_name,last_name,email_address from tbl_user where user_id="%d" and member_type='"%s"'";
+
+mysql_query(sprintf($sql,$user_id,$member_type));
+
+By using this query, the values are automatically assigned to the appropriate positions, thereby saving the execution time and as well as the programmers can easily find the related values to the arguments passed
+</pre>
+</li>
+<li>It is always better to use arrays in PHP</li>
 </ul>
