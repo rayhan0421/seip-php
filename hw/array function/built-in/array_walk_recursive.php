@@ -19,8 +19,28 @@
  * Time: 11:36 AM
  */
 
-$sweet = array('a' => 'apple', 'b' => 'banana');
-$fruits = array('sweet' => $sweet, 'sour' => 'lemon');
+$a1=array("a"=>"red","bbb"=>"green","3"=>"blue","pink");
+$user= array(
+
+        array(
+        "id"=>"1",
+        "name"=>"rayhan",
+        ),
+
+       array(
+
+        "id"=>2,
+         "name"=>"abul ",
+
+       ),
+
+       array(
+        "id"=>"5",
+         "email"=>"rayhan0421@gmail.com",
+       ),
+);
+$sweet = array('a' => 'apple', 'users' => $user);
+$fruits = array('sweet' => $sweet, 'sour' => $a1);
 
 $result = array();
 function test_print($item, $key)
