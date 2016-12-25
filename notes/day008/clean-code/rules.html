@@ -6,6 +6,7 @@
     <li>  Naming Convention
 
         <ul>
+            <li>Don’t pick names that communicate implementation; choose names the reﬂect the level of abstraction of the class or function </li>
             <li> function name should verb type for example:  get_name(), get_age()   </li>
             <li>class name should noun type , customer, student etc</li>
             <li> camal case forexample : getName() </li>
@@ -24,10 +25,13 @@
       </ul>
     </li>
     <li> get set is good way   </li>
-    <li>  error handling
-    <ul>
-      <li>try catch finally</li>
-    </ul>
+    <li>
+        error handling
+            <ul>
+              <li>try catch finally</li>
+                <li>exception</li>
+                <li>trigger_error</li>
+            </ul>
     </li>
 
     <li> folder structure
@@ -40,13 +44,18 @@
     dave thomas says:
         <ul>
 
-            <li>Clean code can be read, and enhanced by a developer other than its original author. It has unit and acceptance tests. It has meaningful names. It provides one way rather than many ways for doing one thing. It has minimal dependencies, which are explicitly deﬁned, and provides a clear and minimal API. Code should be literate since depending on the language, not all necessary information can be expressed clearly in code alone.
+            <li><pre>
+                    Clean code can be read, and enhanced by a developer other than its original author.
+                It has unit and acceptance tests. It has meaningful names. It provides one way rather than many ways for doing one thing.
+                It has minimal dependencies, which are explicitly deﬁned, and provides a clear and minimal API.
+                Code should be literate since depending on the language, not all necessary information can be expressed clearly in code alone.
+                </pre>
             </li>
             <li>
                 code that is easy to read and code that is easy to change.
             </li>
             <li> Code, without tests, is not clean , no metter big or small code</li>
-            <li>e should be literate</li>
+            <li>code should be literate</li>
         </ul>
     </li>
 
@@ -87,6 +96,8 @@ class Customer
 
 </pre>
   <b>So Intelligent conversation is now possible</b>
+    <hr/>
+    <hr/>
   <br/>
 </li>
 
@@ -120,8 +131,25 @@ for(int j=0; j < NUMBER_OF_TASKS; j++)
 
 <li>Pick one word for one abstract concept and stick with it. For instance, it’s confusing to have fetch, retrieve, and get as equivalent methods of different classes</li>
 <li>Avoid using the same word for two purposes</li>
+<li>Good software developers learn to limit what they expose at the interfaces of their classes and modules. The fewer methods a class has, the better.</li>
+<li>Don’t create classes with lots of methods or lots of instance variables.
+    Don’t create lots of protected variables and functions for your subclasses</li>
 
-<?php
+<pre>
+
+    <li>
+        functions name should say what thay do
+
+         Date newDate = date.add(5);
+        Would you expect this to add ﬁve days to the date? Or is it weeks, or hours?
+        Is the date instance changed or does the function just return a new Date without changing the old one?
+        You can’t tell from the call what the function does
+    </li>
+
+
+
+
+
 
 //wrong way function
 
@@ -149,3 +177,5 @@ function getList(){
 
        return array("name1 ","name2");
     }
+
+</pre>

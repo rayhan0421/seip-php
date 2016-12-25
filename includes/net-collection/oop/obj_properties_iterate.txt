@@ -1,0 +1,29 @@
+
+class abc{
+public $a =  "";
+
+private $b = ""
+}
+
+$class = new abc();
+
+//to private protected also call getallprop();
+
+
+// print properties
+
+
+foreach ($class as $key => $value) {
+    if (empty($value)) {
+        $value = 'something';
+        $class->$key = $value;
+    }
+
+// it will pravate protected also
+   public fucntion getallprop(){
+       
+       foreach($this as $key => $value){
+         echo $key." ".$value;
+      }
+  }
+}
