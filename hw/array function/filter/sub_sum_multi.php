@@ -31,19 +31,26 @@ foreach ( $data as $value ) {
 
 
 sort($data);
-
+$subtotal = 0;
 
 
 $mul = array();
 foreach ($data_summ as $key=> $val):
    // echo "cost type : ".$key ."<br/>";
+
+
     foreach ($data as $attribute):
 
            if($key==$attribute["type"]){
            $mul[$key][] = $attribute['cost'] ;
+           $subtotal +=$attribute['cost'];
+
+
        }
 
     endforeach;
+    //echo
+     $mul[$key]["total"]["subtotal"]=$subtotal;
 endforeach;
 
 
