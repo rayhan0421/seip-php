@@ -1,0 +1,31 @@
+<?php
+// Start the session
+session_start();
+?>
+
+
+<?php
+// Set session variables
+$_SESSION["favcolor"] = "green";
+
+
+//other page
+
+<?php
+session_start();
+?>
+
+
+<?php
+// Echo session variables that were set on previous page
+echo "Favorite color is " . $_SESSION["favcolor"] . ".<br>";
+
+
+print_r($_SESSION);
+
+// remove all session variables
+session_unset(); 
+
+// destroy the session 
+session_destroy(); 
+?>

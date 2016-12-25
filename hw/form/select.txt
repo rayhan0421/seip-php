@@ -1,0 +1,2 @@
+ <select name="flower[ ]" multiple>
+<option value="flower">FLOWER</option>

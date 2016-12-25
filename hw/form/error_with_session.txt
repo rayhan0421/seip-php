@@ -1,0 +1,49 @@
+can be use cookie
+
+ $_SESSION['message'][$name] = $value;
+//or
+ $_SESSION['message']["name"] = $error_value;
+
+// numeric array
+
+ $_SESSION['message']["name"][] = $error_value;
+//then store
+$error = $_SESSION['message']["name"];
+// then  foreach
+if($empty())
+$error as $error
+//or
+array_push($_SESSION["error"],$value_msg);
+
+-------------
+
+ unset($_SESSION['message'][$name]);
+
+
+
+
+
+
+
+class FlashMessage
+{
+
+    static function create($name, $value)
+    {
+        if(!isset($_SESSION['message'][$name])) {
+            $_SESSION['message'][$name] = $value;
+        }
+
+    }
+
+    static function read($name)
+    {
+        if(isset($_SESSION['message'][$name])) {
+            $message = $_SESSION['message'][$name];
+            unset($_SESSION['message'][$name]);
+            return $message;
+        }
+        //return null, false or throw exception
+
+    }
+}
