@@ -37,7 +37,7 @@ $subtotal = 0;
 $mul = array();
 foreach ($data_summ as $key=> $val):
    // echo "cost type : ".$key ."<br/>";
-
+    $subtotal = 0;
 
     foreach ($data as $attribute):
 
