@@ -1,0 +1,15 @@
+usage:
+
+Data Center/Server Farm
+
+Scheduling applications, including job-shop scheduling. The objective being to schedule jobs 
+in a sequence-dependent or non-sequence-dependent setup environment in order
+to maximize the volume of production while minimizing penalties such as tardiness.
+
+Marketing mix analysis
+
+Multidimensional systems
+
+Quality control
+
+raining artificial neural networks when pre-classified training examples are not readily obtainable (neuroevolution).
