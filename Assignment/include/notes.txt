@@ -1,0 +1,11 @@
+﻿1.include function যদি একি ফাইল ২বার যুক্ত করা হয় content ২বার যুক্ত হয় | include_once একবার যুক্ত করে একি ফাইল
+
+2. যদি ফাইল এর নাম অথবা ফাইল missing থাকে include warning দেখায় এবং  ফাইল execute করে | অন্যদিকে require fatal error দেখায় এবং execution অফ করে দেয় কোনো ডাটা দেখায় না |
+
+3. require function যদি একি ফাইল ২বার যুক্ত করা হয় content ২বার যুক্ত হয় | require_once একবার যুক্ত করে একি ফাইল  
+
+4.যদি class/function file  যুক্ত করা হয় main ফাইল এর সাথে .... আর যদি একি ফাইল ২ বার include / require করা হয় fatal error দেখায় যা function /class redeclare problem . |(blank).... include_once / require_once এটার সমাধান
+
+5.file যদি মাঝে যুক্ত করা হয় এবং ফাইল missing  থাকে ফাইল যদি class/function type হয় 
+
+উপরের গুলা কাজ করে পরের গুলা execute করে না | fatal error and warning ২ টাই দেখায় |

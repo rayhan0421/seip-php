@@ -15,6 +15,7 @@ echo "<input type='checkbox' >"."anonymous function  Clojure"."<br/>";
 
 echo "<input type='checkbox' >"."what is domain model"."<br/>";
 
+echo "<input type='checkbox' >"."agile kanban vs scrum"."<br/>";
 
 
 
