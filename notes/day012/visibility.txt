@@ -1,1 +1,20 @@
 public private protected
+
+
+we cannot protected method from own obj and sub/inherited obj . but we can call from public method if we call into public method... the protected
+we can call protected method from any sub class any method
+public function show(){
+//protected
+
+$this->protected_method();
+
+
+}
+
+protected function action(){
+//protected
+
+$this->protected_method();
+
+
+}
