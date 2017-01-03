@@ -1,16 +1,15 @@
 <?php
 
 
-$arr[] = "love bangladesh";
-$arr[] =  "like bnagladesh";
+$arr[] = " i love bangladesh";
+$arr[] =  " i like bnagladesh";
 
 
-$file = fopen("store.csv",'w');
+$file = fopen("store.csv",'a+');
 
 
 
-
-    fputcsv($file,$arr);
+fputcsv($file,$arr);
 
 
 fclose($file);

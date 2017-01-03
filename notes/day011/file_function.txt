@@ -3,27 +3,34 @@ copy
 dirname
 disk_free_space
 fclose
+fgetc******
 
-fgetc
-
-fgetcsv
+fgetcsv******
 
 file_exists
 
-file_get_contents
-file_put_contents
+file_get_contents******
+file_put_contents*****
 filesize
 
 filetype
 
 fopen
 
-fputscsv
+fputscsv******
 
-fputs
+fputs******
 
-fwrite
+fwrite*****
+{
+//added by rayhan
+feof******
+fgetss*****
+fread******
+readfile**
+splfileobject**
 
+}
 is_file
 
 move_uploaded_file
