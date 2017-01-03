@@ -1,6 +1,6 @@
 <?php
 
-
+// see str_getcsv()
 $file = fopen("store.csv","r");
 
 while(!feof($file))

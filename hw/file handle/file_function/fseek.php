@@ -38,5 +38,3 @@ while ( ! $file->eof()) {
 
 }
 
-
-//echo $file->fread($file->getSize());
