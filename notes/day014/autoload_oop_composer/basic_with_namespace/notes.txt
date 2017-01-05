@@ -1,0 +1,86 @@
+1. namespace name must be start with App (because App define in composer.json and src folder has been define)
+
+2. then give folder name not file name
+
+example:
+
+       src
+          module1
+                 module_sub
+                           car
+                              car.php
+
+so
+  
+<?php
+ namespace App\module1\module_sub\car; //right
+ namespace App\module1\module_sub\car\car.php; \\wrong
+ namespace App\module1\module_sub\car\car; \\wrong
+
+
+ 3. in contrast of num 2 above,   in index or   when call lib/class class name will be added without extension
+
+ use App\module1\module_sub\car\car; //right
+ use App\module1\module_sub\car; //wrong
+ use App\module1\module_sub\car\car.php ; //wrong
+
+ 4. in composer.json
+
+   {
+     "autoload":{
+     "psr-4":{
+     "App\\":"Src"
+     }
+     }
+     }
+
+   }
+
+ note: a. here App is like syntex/prefix . we use it when we make namespace
+       b. Src is root directory for all App library. all class are here.
+5. composer update  (cmd)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+projectnamne
+             -index.php
+             -composer.json
+              src
+                  -moduule1_dir
+                          -sub_module
+                                     -classname_dir          
+                                                   -classname.php
+
+
+                  - module2_dir
+                               -classname_dir 
+                                            -classname.php
+              
+             veiws
+                   module1_dir
+                              -sub_module
+                                        -classname_dir   
+                                                      -frontend_file_name.php (html,css, minimum php ) ex:index.php    
+
+
+
+note: src and views folder structure will be same.                       
