@@ -1,0 +1,14 @@
+{
+    "autoload":{
+
+      "psr-4":{
+        "App\\":"src",
+        "Admin\\":"src/admin",
+        "Admin\\safe\\":"secure"
+      },
+
+      "files":[
+       "secure/functions.php"
+      ]
+    }
+}

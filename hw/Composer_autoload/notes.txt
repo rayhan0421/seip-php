@@ -1,0 +1,25 @@
+step 1: in composer.json
+
+write this blank bracker
+{
+
+}
+
+run composer update
+
+step 2 : after download vendor
+
+{
+  "autoload":{
+
+  "psr-4":{
+    "App\\":"src"
+    }
+  }
+}
+
+note: after App must give \\ other it will show  ((....A non-empty PSR-4 prefix must end with a namespace separator....))
+
+be careful when creating composer.json file and it content it strict in syntex .
+
+
