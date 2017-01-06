@@ -1,0 +1,12 @@
+note : for app/controllers and app/models prefix is MyVendor\\MyApplication\\ . it is for code redundency reduce
+
+{
+"autoload": {
+"psr-4": {
+            "MyVendor\\MyApplication\\" : [
+                "app/controllers/",
+                "app/models/"
+            ]
+        }
+ }
+}

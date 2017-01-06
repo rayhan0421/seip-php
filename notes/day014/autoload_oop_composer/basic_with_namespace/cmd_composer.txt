@@ -1,0 +1,28 @@
+Composer solves the following problems:
+
+      dependency resolution for PHP packages
+      autoloading solution for PHP packages 
+      keeping all packages updated
+
+
+
+...................
+
+
+
+composer.phar most needed command line
+------------
+$ php composer.phar require vendor-name/package-name
+$ php composer.phar install
+$ php composer.phar update
+$ php composer.phar update --lock
+$ php composer.phar dump-autoload --optimize
+
+
+----------
+less use
+
+.......
+$ php composer.phar self-update
+
+php composer.phar status

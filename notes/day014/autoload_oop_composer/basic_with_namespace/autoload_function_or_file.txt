@@ -1,0 +1,13 @@
+notes: don't need namespace. call anywhere into application
+
+{
+    "autoload": {
+        "psr-4": {"": "src/"
+        },
+        "files":[
+            "Src/folder_name/config.php",  
+            "App/folder_name/functions.php", 
+            "folder_name/sub_folder_name/translate.php" 
+           ]
+    }
+}

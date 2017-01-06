@@ -1,0 +1,91 @@
+
+\<NamespaceName>(\<SubNamespaceNames>)*\<ClassName>
+
+------------
+-------------
+.............
+-------------
+-------------
+
+
+{
+    "autoload": {
+        "psr-4": {"": "src/"}
+    }
+}
+
+................
+src
+   controllers
+              sub-controller
+                            class.php
+
+{
+    "autoload": {
+        "psr-4": {"App\\": "src\controllers"}
+    }
+}
+
+namespace App\sub-controller; right way
+
+note: we don't need (src\controllers) cause it is already define in autoload (composer.json)
+     here App is not directory name is vendor name for prefix and avoid confict class name filename in big project 
+
+
+namespace src\controllers\sub-controller; wrong way
+
+
+
+
+.........
+
+{
+    "autoload": {
+        "psr-4": {"Src\\": "src"}
+    }
+}
+best way , we should use vendor/developername for prefix in Src\\
+......................
+
+{
+    "autoload": {
+        "psr-4": {"": "myresource/"}
+    }
+}
+
+---------------------------
+{
+    "autoload": {
+        "psr-4": {"App\\": "src/"}
+    }
+}
+
+namespace App\sub-folder_into-src;
+
+
+Don’t forget to “composer update”
+
+after make class or file :
+composer dump-autoload
+
+..........
+for production:
+   composer dump-autoload --optimize
+.......
+
+ Add a library without editing your composer.json
+                   composer require "foo/bar:1.0.0"
+
+
+----------------------
+
+other way
+
+..........
+ "autoload": {
+        "psr-4": {
+            "Monolog\\": "src/",
+            "Vendor\\Namespace\\": ""
+        },
+
+
