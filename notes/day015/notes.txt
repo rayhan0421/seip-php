@@ -1,0 +1,7 @@
+if we want abstract method ,,,class must be abstract
+
+abstract class method must implement in sub class (otherwise error)
+
+
+interface like abstract not same
+
