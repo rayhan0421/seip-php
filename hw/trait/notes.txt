@@ -1,0 +1,5 @@
+trait works like class loading in psr-4
+single file for single trait like class
+ 
+trait need (namespace) like class
+trait need (use) like class
