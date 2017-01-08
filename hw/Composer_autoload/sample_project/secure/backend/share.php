@@ -7,7 +7,9 @@ namespace Admin\safe\backend;
  * Time: 03:09 PM
  */
 
-
+// trait psr-4
+//trait composer
+// trait autoload
 trait share{
 
     public function helo(){

@@ -27,7 +27,12 @@ $d->display();
 
 new conf();
 $d= new filter();
+
+// trait psr-4
+// trait autoload
+// trait composer
 $d->comment();
+// multiple trait
 $d->helo();
 helo();
 
