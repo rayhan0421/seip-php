@@ -26,8 +26,9 @@ $d= new logger();
 $d->display();
 
 new conf();
-new filter();
-
+$d= new filter();
+$d->comment();
+$d->helo();
 helo();
 
 $json = serialize($d);

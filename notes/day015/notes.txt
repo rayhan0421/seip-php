@@ -1,7 +1,41 @@
+An Abstract Class is basically a blueprint that should only ever be extended by child classes
+------------------------------
+
+
 if we want abstract method ,,,class must be abstract
 
 abstract class method must implement in sub class (otherwise error)
 
 
 interface like abstract not same
+---------
 
+Abstract class can have abstract and non-abstract methods, but it must contain at least one abstract method.
+Note that:  abstract method should not be private.
+An abstract method can not contain body: But a non-abstract method can define the implementation.
+Abstract class doesn't support multiple inheritance
+Abstract class can extends another abstract class,Abstract class can provide the implementation of interface
+
+.......
+Can Class Properties be Abstract?
+ ......The simple answer is no
+
+
+
+
+
+------------conclusion
+Class abstraction is useful whenever you want 
+to provide common implementation across similar objects.
+ It is the road map to how these similar objects are created so they can make use 
+of any common methods while providing a flexibility to implement an abstract method 
+that best suits the needs of the object.
+
+.....
+An Abstract Class should be used whenever you have multiple implementations of a certain bit of functionality. By using an Abstract Class, you can reduce duplication and ensure that each child class is interchangeable with one another by always having a consistent public API.
+
+A common way to think about the use of Abstract Classes is to think about 
+them as interchangeable types of the same thing. For example an Audi, a BMW or a Land Rover are 
+all different types of cars and so inheriting from a AbstractCar class would make a lot of sense.
+ If you can say to yourself, “an Audi is a type of Car, 
+it usually make sense to structure your code around the use of an Abstract class.
