@@ -1,0 +1,15 @@
+Abstraction is the process. Encapsulation is the mechanism by which Abstraction is implemented.
+
+: Abstraction is the concept/technique used to identify what should be the external view of an object. Making only the required interface available.
+
+.......
+Abstraction is When we know 
+a little about something and which can help 
+us to manipulate something for which we don't know how it works internally.
+
+With remote we know that pressing the number keys will change the channels. 
+We are not aware as to what actually happens internally.
+ We can manipulate the hidden thing but we don't know how it is being done internally.
+
+Programmatically, when we can acess the hidden data somehow and know something.. is Abstraction ..
+ And when we know nothing about the internals its Encapsulation.

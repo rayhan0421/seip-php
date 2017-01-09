@@ -1,0 +1,7 @@
+we cannnot define variable in interface like abstract class
+
+only public method allowed in interface
+
+
+multiple inheritence
+ 
