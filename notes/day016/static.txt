@@ -1,0 +1,2 @@
+static property access with class_name::static_property
+static method access with class_name::static_method()
