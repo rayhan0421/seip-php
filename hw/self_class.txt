@@ -1,0 +1,16 @@
+class MyParentClass {
+
+}
+class MyChildClass extends MyParentClass {
+    public static function getInstance() {
+        return new self();
+    }
+}
+
+$a = MyChildClass::getInstance();
+
+var_dump($a);
+
+Here, you'll get :
+
+object(MyChildClass)#1 (0) { } 

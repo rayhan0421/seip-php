@@ -1,0 +1,3 @@
+The main advantage of splObjectStorage is the fact that you gain lots of methods for dealing and interacting 
+with different sets (contains(), removeAll(), removeAllExcept() etc). 
+Its speed is marginally better, but the memory usage is worse than normal PHP arrays.

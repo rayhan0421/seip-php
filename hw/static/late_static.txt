@@ -1,0 +1,4 @@
+static:: vs self::
+-------------------
+make two class and inherit parant class 
+ 

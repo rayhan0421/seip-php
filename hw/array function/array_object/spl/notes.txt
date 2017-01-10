@@ -1,0 +1,22 @@
+ArrayObject::append — Appends the value
+ArrayObject::asort — Sort the entries by value
+ArrayObject::__construct — Construct a new array object
+ArrayObject::count — Get the number of public properties in the ArrayObject
+ArrayObject::exchangeArray — Exchange the array for another one.
+ArrayObject::getArrayCopy — Creates a copy of the ArrayObject.
+ArrayObject::getFlags — Gets the behavior flags.
+ArrayObject::getIterator — Create a new iterator from an ArrayObject instance
+ArrayObject::getIteratorClass — Gets the iterator classname for the ArrayObject.
+ArrayObject::ksort — Sort the entries by key
+ArrayObject::natcasesort — Sort an array using a case insensitive "natural order" algorithm
+ArrayObject::natsort — Sort entries using a "natural order" algorithm
+ArrayObject::offsetExists — Returns whether the requested index exists
+ArrayObject::offsetGet — Returns the value at the specified index
+ArrayObject::offsetSet — Sets the value at the specified index to newval
+ArrayObject::offsetUnset — Unsets the value at the specified index
+ArrayObject::serialize — Serialize an ArrayObject
+ArrayObject::setFlags — Sets the behavior flags.
+ArrayObject::setIteratorClass — Sets the iterator classname for the ArrayObject.
+ArrayObject::uasort — Sort the entries with a user-defined comparison function and maintain key association
+ArrayObject::uksort — Sort the entries by keys using a user-defined comparison function
+ArrayObject::unserialize — Unserialize an ArrayObject

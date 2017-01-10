@@ -3,3 +3,7 @@ Declaring class properties or methods as static makes them accessible without ne
 ...........
 Static properties cannot be accessed through the object using the arrow operator ->.
 
+.........
+
+A constant is constant and can NOT change its value once assigned. A static variable, on the other hand, can have varying values
+

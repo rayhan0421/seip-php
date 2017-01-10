@@ -1,0 +1,10 @@
+(INNER) JOIN retains only those rows for which there was a match in both tables
+
+
+LEFT (OUTER) JOIN will retain those rows for which there was a match in both tables, plus it will retain those rows that appeared only in the LEFT table
+
+
+RIGHT (OUTER) JOIN will retain those rows for which there was a match in both tables, plus it will retain those rows that appeared only in the RIGHT table
+
+
+FULL OUTER JOIN will retain those rows for which there was a match in both tables, plus it will retain those rows that appeared only in either the LEFT or the RIGHT table
