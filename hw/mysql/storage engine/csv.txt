@@ -1,0 +1,3 @@
+Stores data in Comma Separated Value format in a text file.
+
+CSV table does not support NULL data type. In addition, the read operation requires a full table scan.

@@ -1,0 +1,1 @@
+InnoDB is mostly used general-purpose storage engine and as of MySQL 5.5 and later it is the default engine

@@ -1,0 +1,4 @@
+This storage engine, manages non transactional tables, provides high-speed storage and retrieval, supports full text searching.
+
+..........
+use when you need text or xml file as storage
