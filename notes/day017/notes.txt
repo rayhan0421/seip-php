@@ -1,0 +1,9 @@
+crud - create read update delete
+
+environment
+
+php language
+pdo lib
+mysql db
+composer dependency manager
+oop
