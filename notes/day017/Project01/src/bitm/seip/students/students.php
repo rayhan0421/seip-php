@@ -6,10 +6,21 @@ Class students{
 
 
     public $title = '';
+    public $id='';
 
-    public function setData($data=''){
+    public function setData($data='')
+    {
 
-        $this->title= $data['title'];
+        if (array_key_exists('title',$data)) {
+
+        $this->title = $data['title'];
+    }
+    if (array_key_exists('id',$data)){
+        $this->id = $data['id'];
+    }
+
+
+
     }
 
     public function index(){
@@ -64,6 +75,31 @@ Class students{
             echo "Error: ". $e->getTrace();
         }
 
+    }
+
+    public function show(){
+
+        try{
+
+            $pdo =  new PDO("mysql:host=localhost;dbname=php38",'root','');
+
+            $queary = "select * from student where id=$this->id";
+
+            $st = $pdo->prepare($queary);
+
+            $st->execute();
+
+            $stu= $st->fetch();
+
+            return $stu;
+
+
+
+
+        }catch (\PDOException $e){
+
+            echo "Error: ". $e->getTrace();
+        }
     }
 
 

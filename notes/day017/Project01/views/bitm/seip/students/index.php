@@ -20,7 +20,7 @@ $student = new students();
 <?php
 
 $student = $student->index();
-
+$sel = 0;
 
 
 ?>
@@ -34,16 +34,16 @@ $student = $student->index();
     </tr>
 
     <?php   foreach ($student as $value){
-
+  $sel++;
 
      ?>
 
 
 
     <tr>
-        <td><?php echo $value['id'] ?></td>
-         <td><?php echo $value['title'] ?></td>
-        <td><?php echo "view,delete" ?></td>
+        <td><?php echo $sel; ?></td>
+         <td><?php echo $value['title']; ?></td>
+        <td><a href="show.php?id=<?php echo $value['id']; ?>">views details</a> </td>
     </tr>
 
     <?php } ?>
