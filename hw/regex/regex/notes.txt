@@ -1,0 +1,9 @@
+() for group of atom
+
+//
+delimeter
+---------
+A delimiter can be any non-alphanumeric, non-backslash, non-whitespace character.
+
+Often used delimiters are forward slashes (/), hash signs (#) and tildes (~). The following are all examples of valid delimited patterns.
+
