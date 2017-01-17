@@ -1,0 +1,19 @@
+nb: << >> is delimeter
+-----------------
+
+
+Round Brackets Create a Backreference 
+---------------------------------------------
+
+you can optimize this regular expression into «Set(?:Value)?». 
+The question mark and the colon after the opening round bracket are the special syntax that
+ you can use to tell the regex engine that this pair of brackets should not create a backreferenc
+
+
+How to Use Backreferences 
+..............................
+If you searched for «EditPad (Lite|Pro)» and use “\1 version” as the replacement, 
+the actual replacement will be “Lite version” in case „EditPad Lite” was matched, and “Pro version” in case „EditPad Pro” was matched. 
+
+------
+you can use the magic variables $1, $2, etc. to access the part of the string matched by the backreference

@@ -1,0 +1,2 @@
+i (PCRE_CASELESS)
+If this modifier is set, letters in the pattern match both upper and lower case letters.
