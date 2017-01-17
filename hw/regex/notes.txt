@@ -1,0 +1,9 @@
+http://www.engrenage.com/joel/nephp2013/#/
+
+The Regex-Directed Engine Always Returns the Leftmost Match 
+
+
+regeular expression same for every language
+
+delimeter is not fact we can use delimeter as / /, # # and non word char 
+

@@ -1,0 +1,26 @@
+regular expression works with char not word , we can use word directly .but specialy work with char
+all are special charecter  if want to escape them we can use backslash(\):
+The power of regular expressions comes from the ability to include alternatives and repetitions in the pattern. 
+
+
+\	general escape character with several uses
+^	assert start of subject (or line, in multiline mode)
+$	assert end of subject or before a terminating newline (or end of line, in multiline mode)
+.	match any character except newline (by default)
+[	start character class definition
+]	end character class definition
+|	start of alternative branch
+(	start subpattern
+)	end subpattern
+?	extends the meaning of (, also 0 or 1 quantifier, also makes greedy quantifiers lazy (see repetition)
+*	0 or more quantifier
++	1 or more quantifier
+{	start min/max quantifier
+}	end min/max quantifier
+
+......
+into []
+
+\	general escape character
+^	negate the class, but only if the first character
+-	indicates character range

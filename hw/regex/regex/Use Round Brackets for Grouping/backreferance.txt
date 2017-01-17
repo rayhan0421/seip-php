@@ -1,0 +1,21 @@
+nb: << >> is a delimeter  
+
+Round Brackets Create a Backreference 
+..........
+Besides grouping part of a regular expression together, round brackets also create a “backreference”. 
+A backreference stores the part of the string matched by the part of the regular expression inside the parentheses
+...................
+The regex «Set(Value)?» matches "Set" or "SetValue". In the first case, the first backreference will be empty, 
+because it did not match anything. In the second case, the first backreference will contain "Value". 
+
+How to Use Backreferences:
+-------------------------------
+
+Backreferences allow you to reuse part of the regex match. You can reuse it inside the regular expression (see below), or afterwards. 
+What you can do with it afterwards, depends on the tool you are using. In EditPad Pro or PowerGREP, you can use the backreference 
+
+in the replacement text during a search-and-replace operation by typing \1 (backslash one) into the replacement text. 
+If you searched for «EditPad (Lite|Pro)» and use “\1 version” as the replacement,
+
+ the actual replacement will be “Lite version” in case „EditPad Lite” was matched,
+ and “Pro version” in case „EditPad Pro” was matched.  

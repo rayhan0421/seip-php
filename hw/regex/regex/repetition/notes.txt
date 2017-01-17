@@ -1,0 +1,4 @@
+Single-character quantifiers
+*	equivalent to {0,}
++	equivalent to {1,}
+?	equivalent to {0,1}

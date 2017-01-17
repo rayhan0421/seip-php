@@ -1,3 +1,5 @@
+http://shiffman.net/a2z/regex/
+
 () for group of atom
 
 //
@@ -6,4 +8,21 @@ delimeter
 A delimiter can be any non-alphanumeric, non-backslash, non-whitespace character.
 
 Often used delimiters are forward slashes (/), hash signs (#) and tildes (~). The following are all examples of valid delimited patterns.
+
+
+dot means - any character
+
+* means o or more charecter
++ 1 or more
+? o or 1 (optional)
+ { } for charecter range 
+
+\d match single number 1 ,123,12334 
+\d\d two character 12
+\d\d\d three characrter 123
+
+\b - word boundary  \bblue\b            : match with blue and bludeberry
+
+^ starting posion    match from starting char
+$ ending position    match from end char
 

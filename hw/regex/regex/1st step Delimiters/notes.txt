@@ -1,0 +1,5 @@
+When using the PCRE functions, it is required that the pattern is enclosed by delimiters. A delimiter can be any non-alphanumeric, non-backslash, non-whitespace character.
+
+.......
+special use these :
+/ /, # # 

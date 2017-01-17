@@ -1,0 +1,4 @@
+dot (.) means anything without \n newline so to use for specific . means .com .org .net  escape with \ (\.) 
+
+
+(\.) will match only . not anything 

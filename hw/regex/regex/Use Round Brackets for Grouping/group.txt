@@ -1,0 +1,5 @@
+Note that 
+only round brackets can be used for grouping.
+Square brackets define a character class, 
+and curly braces are used by a special repetition operator. 
+

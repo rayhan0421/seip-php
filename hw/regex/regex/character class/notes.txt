@@ -1,0 +1,22 @@
+With a "character class", also called “character set”, 
+
+1.you could use this in /gr[ae]y/ to match either "gray" or "grey"
+2.Negated Character Classes 
+    /q[^u]/ does not mean: “a q not followed by a u”. It means: “a q followed by a character that is not a u”. 
+    It will not match the q in the string "Iraq". cause it finding char after q without u
+    It will match the q and the space after the q in “Iraq is a country”. cause it found spece after q not u
+
+3.Metacharacters Inside Character Classes 
+ [\+*] it will match + 0 or more . it we don't use \ it will not work
+
+
+4.Shorthand Character Classes 
+
+  [a-z]
+ [A-Z]
+ [0-9] 
+[.]  anything without \n
+[\da-fA-F] any number,a to f , A to F
+
+5.Negated Shorthand Character Classes
+ /\D/ is the same as /[^\d]/, /\W/ is short for /[^\w]/ and /\S/ is the equivalent of /[^\s]/. 

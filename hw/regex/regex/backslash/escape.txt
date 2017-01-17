@@ -1,0 +1,27 @@
+The backslash character has several uses
+
+if you want to match a "*" character, you write "\*" in the patter . * is special char in regular expresion(metacharecter). so escape
+
+
+The third use of backslash is for specifying generic character types:
+
+\d
+any decimal digit
+\D
+any character that is not a decimal digit
+\h
+any horizontal whitespace character (since PHP 5.2.4)
+\H
+any character that is not a horizontal whitespace character (since PHP 5.2.4)
+\s
+any whitespace character
+\S
+any character that is not a whitespace character
+\v
+any vertical whitespace character (since PHP 5.2.4)
+\V
+any character that is not a vertical whitespace character (since PHP 5.2.4)
+\w
+any "word" character
+\W
+any "non-word" character

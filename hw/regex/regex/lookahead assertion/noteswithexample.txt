@@ -1,0 +1,14 @@
+positive Lookahead:
+The following example matches 'lorum' first then checks that if 'ipsum' is next, If the checking is successful then function returns a successful match.
+
+preg_match('/lorum(?=ipsum)/','lorumipsum', $match);
+var_dump($match); 
+
+
+---------------------
+ 
+Negative Lookahead: The following example matches 'lorum' first then checks that if 'test' is not next, If the checking is successful then function returns a successful match.
+
+preg_match('/lorum(?!test)/','lorumipsum', $match);
+var_dump($match); 
+ 

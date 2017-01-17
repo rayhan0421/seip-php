@@ -1,0 +1,8 @@
+nb: ****here << >> are delimeter.
+----------------------------------
+{n} 
+{,n}
+{n,n}
+{n,}
+
+You could use «\b[1-9][0-9]{3}\b» to match a number between 1000 and 9999. «\b[1-9][09]{2,4}\b» matches a number between 100 and 99999. Notice the use of the word boundaries. 
