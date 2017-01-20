@@ -1,0 +1,42 @@
+# https://www.eduonix.com/blog/web-programming-tutorials/traversable-interface-in-php/
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+
+Traversable interface is an abstract interface and it cannot be used alone.
+It is used to check whether a class is traversable using foreach.
+The traversable interface has no methods defined in it.
+This traversable interface is a base interface for classes that implements it viz. IteratorAggregate and Iterator.
+
+But if you want to implement it in your own class, 
+    ........you need to implement either IteratorAggregate or Iterator which actually extends 
+  traversable interface to make your class traversable.
+
+You can apply your own logic to return values when an object is iterated over.
+
+
+When do we face the need to make 
+our class traversable? 
+Generally we use simple foreach loop to access and traverse values 
+in our class, but a foreach loop can only traverse through public
+ values and objects. If you encapsulate an object with private and
+ protected values and write getter and setter methods to access it, it will be
+ problematic for foreach loop to access it. So here to access these values you can make your class to implement 
+...IteratorAggregate or Iterator to make your class traversable and write the logic to access these values on your own.
+
+## nb: From the above discussion we understood that to use traversable interface we will have to use IteratorAggregate or 
+Iterator in the implements clause of our class.
+
+
+-----
+Implementing IteratorAggregate:
+---=-
+
+  1. When your class implements IteratorAggregate it needs to implement one method called getIterator().
+  2. This method is defined to return a data structure that can be iterated over and the 
+      PHP engine automatically calls this method when the object is iterated in the foreach loop. 
+  3. You can use IteratorAggregate when you just have to traverse through an array or an object, but if 
+     there is any complicated task, you have to use Iterator in the implements clause in the class.
+
+
+
+

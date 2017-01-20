@@ -1,0 +1,9 @@
+Implementing Iterator:
+If you want to do some complex task like changing values or examining values before returning them, you need to implement Iterator.
+Iterator is bit more complicated than IteratorAggregate.
+It implements 5 functions are current(), key(), next(), rewind() and valid().
+The current() function should return the current value in the iteration.
+The key() function should return the key value of the current element.
+The function next() should advance the iterator forward by one step.
+The rewind() function should reset the iterator and valid() function should return a Boolean value to indicate if the value exists for the current iteration.
+The PHP engine automatically calls these functions while traversing the values using foreach loop.
