@@ -1,0 +1,228 @@
+# http://stackoverflow.com/questions/12077177/how-does-recursiveiteratoriterator-work-in-php
+
+RecursiveIteratorIterator is a concrete Iterator implementing tree traversal. It enables a programmer to traverse a container object that implements the RecursiveIterator interface, see Iterator in Wikipedia for the general principles, types, semantics and patterns of iterators.
+
+In difference to IteratorIterator which is a concrete Iterator implementing object traversal in linear order (and by default accepting any kind of Traversable in its constructor), the RecursiveIteratorIterator allows looping over all nodes in an ordered tree of objects and its constructor takes a RecursiveIterator.
+
+In short: RecursiveIteratorIterator allows you to loop over a tree, IteratorIterator allows you to loop over a list. I show that with some code examples below soon.
+
+Technically this works by breaking out of linearity by traversing all of a nodes' children (if any). This is possible because by definition all children of a node are again a RecursiveIterator. The toplevel Iterator then internally stacks the different RecursiveIterators by their depth and keeps a pointer to the current active sub Iterator for traversal.
+
+This allows to visit all nodes of a tree.
+
+The underlying principles are the same as with IteratorIterator: An interface specifies the type of iteration and the base iterator class is the implementation of these semantics. Compare with the examples below, for linear looping with foreach you normally do not think about the implementation details much unless you need to define a new Iterator (e.g. when some concrete type itself does not implement Traversable).
+
+For recursive traversal - unless you do not use a pre-defined Traversal that already has recursive traversal iteration - you normally need to instantiate the existing RecursiveIteratorIterator iteration or even write a recursive traversal iteration that is a Traversable your own to have this type of traversal iteration with foreach.
+
+Tip: You probably didn't implement the one nor the other your own, so this might be something worth to do for your practical experience of the differences they have. You find a DIY suggestion at the end of the answer.
+Technical differences in short:
+
+While IteratorIterator takes any Traversable for linear traversal, RecursiveIteratorIterator needs a more specific RecursiveIterator to loop over a tree.
+Where IteratorIterator exposes its main Iterator via getInnerIerator(), RecursiveIteratorIterator provides the current active sub-Iterator only via that method.
+While IteratorIterator is totally not aware of anything like parent or children, RecursiveIteratorIterator knows how to get and traverse children as well.
+IteratorIterator does not need a stack of iterators, RecursiveIteratorIterator has such a stack and knows the active sub-iterator.
+Where IteratorIterator has its order due to linearity and no choice, RecursiveIteratorIterator has a choice for further traversal and needs to decide per each node (decided via mode per RecursiveIteratorIterator).
+RecursiveIteratorIterator has more methods than IteratorIterator.
+To summarize: RecursiveIterator is a concrete type of iteration (looping over a tree) that works on its own iterators, namely RecursiveIterator. That is the same underlying principle as with IteratorIerator, but the type of iteration is different (linear order).
+
+Ideally you can create your own set, too. The only thing necessary is that your iterator implements Traversable which is possible via Iterator or IteratorAggregate. Then you can use it with foreach. For example some kind of ternary tree traversal recursive iteration object together with the according iteration interface for the container object(s).
+
+Let's review with some real-life examples that are not that abstract. Between interfaces, concrete iterators, container objects and iteration semantics this maybe is not a that bad idea.
+
+Take a directory listing as an example. Consider you have got the following file and directory tree on disk:
+
+Directory Tree
+While a iterator with linear order just traverse over the toplevel folder and files (a single directory listing), the recursive iterator traverses through subfolders as well and list all folders and files (a directory listing with listings of its subdirectories):
+
+Non-Recursive        Recursive
+=============        =========
+
+   [tree]            [tree]
+    + dirA            + dirA
+    + fileA           ¦ + dirB
+                      ¦ ¦ + fileD
+                      ¦ + fileB
+                      ¦ + fileC
+                      + fileA
+You can easily compare this with IteratorIterator which does no recursion for traversing the directory tree. And the RecursiveIteratorIterator which can traverse into the tree as the Recursive listing shows.
+
+At first a very basic example with a DirectoryIterator that implements Traversable which allows foreach to iterate over it:
+
+$path = 'tree';
+$dir  = new DirectoryIterator($path);
+
+echo "[$path]\n";
+foreach ($dir as $file) {
+    echo " + $file\n";
+}
+The exemplary output for the directory structure above then is:
+
+[tree]
+ + .
+ + ..
+ + dirA
+ + fileA
+As you see this is not yet using IteratorIterator or RecursiveIteratorIterator. Instead it just just using foreach that operates on the Traversable interface.
+
+As foreach by default only knows the type of iteration named linear order, we might want to specify the type of iteration explicitly. At first glance it might seem too verbose, but for demonstration purposes (and to make the difference with RecursiveIteratorIterator more visible later), lets specify the linear type of iteration explicitly specifying the IteratorIterator type of iteration for the directory listing:
+
+$files = new IteratorIterator($dir);
+
+echo "[$path]\n";
+foreach ($files as $file) {
+    echo " + $file\n";
+}
+This example is nearly identical with the first one, the difference is that $files is now an IteratorIterator type of iteration for Traversable $dir:
+
+$files = new IteratorIterator($dir);
+As usual the act of iteration is performed by the foreach:
+
+foreach ($files as $file) {
+The output is exactly the same. So what is different? Different is the object used within the foreach. In the first example it is a DirectoryIterator in the second example it is the IteratorIterator. This shows the flexibility iterators have: You can replace them with each other, the code inside foreach just continue to work as expected.
+
+Lets start to get the whole listing, including subdirectories.
+
+As we now have specified the type of iteration, let's consider to change it to another type of iteration.
+
+We know we need to traverse the whole tree now, not only the first level. To have that work with a simple foreach we need a different type of iterator: RecursiveIteratorIterator. And that one can only iterate over container objects that have the RecursiveIterator interface.
+
+The interface is a contract. Any class implementing it can be used together with the RecursiveIteratorIterator. An example of such a class is the RecursiveDirectoryIterator, which is something like the recursive variant of DirectoryIterator.
+
+Lets see a first code example before writing any other sentence with the I-word:
+
+$dir  = new RecursiveDirectoryIterator($path);
+
+echo "[$path]\n";
+foreach ($dir as $file) {
+    echo " + $file\n";
+}
+This third example is nearly identical with the first one, however it creates some different output:
+
+[tree]
+ + tree\.
+ + tree\..
+ + tree\dirA
+ + tree\fileA
+Okay, not that different, the filename now contains the pathname in front, but the rest looks similar as well.
+
+As the example shows, even the directory object already imlements the RecursiveIterator interface, this is not yet enough to make foreach traverse the whole directory tree. This is where the RecursiveIteratorIterator comes into action. Example 4 shows how:
+
+$files = new RecursiveIteratorIterator($dir);
+
+echo "[$path]\n";
+foreach ($files as $file) {
+    echo " + $file\n";
+}
+Using the RecursiveIteratorIterator instead of just the previous $dir object will make foreach to traverse over all files and directories in a recursive manner. This then lists all files, as the type of object iteration has been specified now:
+
+[tree]
+ + tree\.
+ + tree\..
+ + tree\dirA\.
+ + tree\dirA\..
+ + tree\dirA\dirB\.
+ + tree\dirA\dirB\..
+ + tree\dirA\dirB\fileD
+ + tree\dirA\fileB
+ + tree\dirA\fileC
+ + tree\fileA
+This should already demonstrate the difference between flat and tree traversal. The RecursiveIteratorIterator is able to traverse any tree-like structure as a list of elements. Because there is more information (like the level the iteration takes currently place), it is possible to access the iterator object while iterating over it and for example indent the output:
+
+echo "[$path]\n";
+foreach ($files as $file) {
+    $indent = str_repeat('   ', $files->getDepth());
+    echo $indent, " + $file\n";
+}
+And output of Example 5:
+
+[tree]
+ + tree\.
+ + tree\..
+    + tree\dirA\.
+    + tree\dirA\..
+       + tree\dirA\dirB\.
+       + tree\dirA\dirB\..
+       + tree\dirA\dirB\fileD
+    + tree\dirA\fileB
+    + tree\dirA\fileC
+ + tree\fileA
+Sure this does not win a beauty contest, but it shows that with the recursive iterator there is more information available than just the linear order of key and value. Even foreach can only express this kind of linearity, accessing the iterator itself allows to obtain more information.
+
+Similar to the meta-information there are also different ways possible how to traverse the tree and therefore order the output. This is the Mode of the RecursiveIteratorIterator and it can be set with the constructor.
+
+The next example will tell the RecursiveDirectoryIterator to remove the dot entries (. and ..) as we do not need them. But also the recursion mode will be changed to take the parent element (the subdirectory) first (SELF_FIRST) before the children (the files and sub-subdirs in the subdirectory):
+
+$dir  = new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS);
+$files = new RecursiveIteratorIterator($dir, RecursiveIteratorIterator::SELF_FIRST);
+
+echo "[$path]\n";
+foreach ($files as $file) {
+    $indent = str_repeat('   ', $files->getDepth());
+    echo $indent, " + $file\n";
+}
+The output now shows the subdirectory entries properly listed, if you compare with the previous output those were not there:
+
+[tree]
+ + tree\dirA
+    + tree\dirA\dirB
+       + tree\dirA\dirB\fileD
+    + tree\dirA\fileB
+    + tree\dirA\fileC
+ + tree\fileA
+The recursion mode therefore controls what and when a brach or leaf in the tree is returned, for the directory example:
+
+LEAVES_ONLY (default): Only list files, no directories.
+SELF_FIRST (above): List directory and then the files in there.
+CHILD_FIRST (w/o example): List files in subdirectory first, then the directory.
+Output of Example 5 with the two other modes:
+
+  LEAVES_ONLY                           CHILD_FIRST
+
+  [tree]                                [tree]
+         + tree\dirA\dirB\fileD                + tree\dirA\dirB\fileD
+      + tree\dirA\fileB                     + tree\dirA\dirB
+      + tree\dirA\fileC                     + tree\dirA\fileB
+   + tree\fileA                             + tree\dirA\fileC
+                                        + tree\dirA
+                                        + tree\fileA
+When you compare that with standard traversal, all these things are not available. Recursive iteration therefore is a little bit more complex when you need to wrap your head around it, however it is easy to use because it behaves just like an iterator, you put it into a foreach and done.
+
+I think these are enough examples for one answer. You can find the full source-code as well as an example to display nice-looking ascii-trees in this gist: https://gist.github.com/3599532
+
+Do It Yourself: Make the RecursiveTreeIterator Work Line by Line.
+Example 5 demonstrated that there is meta-information about the iterator's state available. However, this was purposefully demonstrated within the foreach iteration. In real life this naturally belongs inside the RecursiveIterator.
+
+A better example is the RecursiveTreeIterator, it takes care of indenting, prefixing and so on. See the following code fragment:
+
+$dir   = new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS);
+$lines = new RecursiveTreeIterator($dir);
+$unicodeTreePrefix($lines);
+echo "[$path]\n", implode("\n", iterator_to_array($lines));
+The RecursiveTreeIterator is intended to work line by line, the output is pretty straight forward with one little problem:
+
+[tree]
+ + tree\dirA
+ ¦ + tree\dirA\dirB
+ ¦ ¦ + tree\dirA\dirB\fileD
+ ¦ + tree\dirA\fileB
+ ¦ + tree\dirA\fileC
+ + tree\fileA
+When used in combination with a RecursiveDirectoryIterator it displays the whole pathname and not just the filename. The rest looks good. This is because the file-names are generated by SplFileInfo. Those should be displayed as the basename instead. The desired output is the following:
+
+/// Solved ///
+
+[tree]
+ + dirA
+ ¦ + dirB
+ ¦ ¦ + fileD
+ ¦ + fileB
+ ¦ + fileC
+ + fileA
+Create a decorator class that can be used with RecursiveTreeIterator instead of the RecursiveDirectoryIterator. It should provide the basename of the current SplFileInfo instead of the pathname. The final code fragment could then look like:
+
+$lines = new RecursiveTreeIterator(
+    new DiyRecursiveDecorator($dir)
+);
+$unicodeTreePrefix($lines);
+echo "[$path]\n", implode("\n", iterator_to_array($lines));
+These fragments including $unicodeTreePrefix are part of the gist in Appendix: Do It Yourself: Make the RecursiveTreeIterator Work Line by Line..
