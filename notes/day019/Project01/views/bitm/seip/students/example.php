@@ -1,14 +1,5 @@
-
 <?php
-
 include ("../../../../vendor/autoload.php");
-
-use App\bitm\seip\students\students;
-$student = new students();
-$student = $student->index();
-$excel = new PHPExcel();
-$sl=0;
-$counter = 5;
 
 /**
  * PHPExcel
@@ -62,15 +53,13 @@ $objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
     ->setCategory("Test result file");
 
 
-foreach ($student as $value):
 // Add some data
- $a='A'.$counter++;
-$b= 'B'.$counter;
 $objPHPExcel->setActiveSheetIndex(0)
-    ->setCellValue($a, $sl++)
-    ->setCellValue($b, $value['title']);
+    ->setCellValue('A1', 'Hello')
+    ->setCellValue('B2', 'world!')
+    ->setCellValue('C1', 'Hello')
+    ->setCellValue('D2', 'world!');
 
-endforeach;
 
 
 // Rename worksheet
@@ -97,5 +86,3 @@ header ('Pragma: public'); // HTTP/1.0
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
 $objWriter->save('php://output');
 exit;
-
-

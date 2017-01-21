@@ -1,0 +1,11 @@
+If you want to give your object the ability to act like an array,
+ all you need to do is implement the built-in ArrayAccess interface. Give the following simple program a try
+ <?php
+ class Foo implements ArrayAccess
+ {
+ }
+
+ $object = new Foo;
+ $object['foo'] = 'bar';
+
+ echo $object['foo'],"\n
