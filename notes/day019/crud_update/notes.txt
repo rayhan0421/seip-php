@@ -1,0 +1,21 @@
+uniqid(); for security purpose
+--
+string uniqid ([ string $prefix = "" [, bool $more_entropy = false ]] )
+date('Y-m-d h:m:s') //must be looks like table field format
+
+update quary:
+-------------
+update students SET deleted_at=:time where id=:uniqid;
+
+
+
+execute(
+array(
+':uniqid'=>'4dsdsd',
+  ':time'=> date('Y-m-d h:m:s')
+)
+);
+
+
+
+

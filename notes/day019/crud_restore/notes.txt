@@ -1,0 +1,14 @@
+
+
+select * from student where delete_at !='0000-00-00 00:00:00'
+
+
+
+select * from student where delete_at ='0000-00-00 00:00:00'
+
+
+update quary for restore:
+
+execute(
+':time'=>'0000-00-00 00:00:00'
+)
