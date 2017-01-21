@@ -92,8 +92,7 @@ Class students{
                array(
                    ':id'=>$this->id,
                    ':tle'=>$this->title,
-                   ':tmt'=>
-               )
+                  )
            );
 
            if($st){

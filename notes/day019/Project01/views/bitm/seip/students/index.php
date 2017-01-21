@@ -24,7 +24,7 @@ $sel = 0;
 
 
 ?>
-
+<a href="pdf.php">download as pdf</a> /<a href="xl.php">dowmload as excel</a>
 <table width="50%">
     <tr style="background-color: grey">
         <td>ID</td>
