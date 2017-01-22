@@ -1,0 +1,8 @@
+traversable can not be implemented
+
+traversable can be detected (instance of) // varify 
+
+foreach detect traversable 
+
+// is object traversable
+

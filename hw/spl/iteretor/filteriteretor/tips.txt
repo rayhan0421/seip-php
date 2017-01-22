@@ -1,0 +1,13 @@
+ ($it instance of \iteretoraggregate){
+ $it->getiteretor()
+}
+
+// 
+
+other way 
+
+
+$it= iteretoriteretor($it)
+
+
+$it = new limititeretor($it,0 ,6);
