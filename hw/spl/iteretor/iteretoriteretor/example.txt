@@ -1,0 +1,22 @@
+class TrimIterator extends IteratorIterator
+{
+    public function current() {
+        return trim(parent::current());
+    }
+}
+
+$innerIterator = new ArrayIterator(array('normal', ' trimmable '));
+
+//$trim = new TrimIterator($innerIterator);
+or
+// $trim = new books(); //see this link/ (dir) seip-php\hw\spl\iteretor\iteretoraggregate
+
+// new books non't need ArrayIterator() cause it already contain ArrayIterator in class see example  #seip-php\hw\spl\iteretor\iteretoraggregate
+foreach ($trim as $key => $value) {
+    echo "Key:\n";
+    var_dump($key);
+    echo "Value:\n";
+    var_dump($value);
+    echo "---next---";
+}
+?>

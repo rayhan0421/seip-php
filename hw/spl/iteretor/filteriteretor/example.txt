@@ -1,0 +1,27 @@
+simpley we can do it 
+$available = array();
+
+foreach ($items as $item) {
+    if (($item['available'] - $item['sold']) > 0) {
+        $available[] = $item;
+    }
+}
+
+...................... 
+
+I can re-use this function and easily test it. We can use SPL FilterIterator in a very similar way to the functional example:  
+class SellableItems extends FilterIterator
+{
+    public function accept()
+    {
+        $current = $this->current();
+
+        if (($current['available'] - $current['soldout']) > 0) {
+            return true;
+        }
+
+        return false;
+    }
+}
+
+$available = new SellableItems(new ArrayIterator($items));

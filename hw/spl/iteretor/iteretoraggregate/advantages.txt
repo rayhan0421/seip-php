@@ -1,0 +1,3 @@
+The advantage with IteratorAggregate is the speed, it is much more faster than its alternatives. 
+The problem with it it's that...
+ despite the name it's not an iterator but a traversable (so again, no next, key, current, valid, rewind methods).

@@ -1,0 +1,16 @@
+It is important to understand that most classes that do not implement 
+Iterators have reasons as most likely they do not allow the full Iterator feature (see below) set.
+ If so, techniques should be provided to prevent misuse, 
+\otherwise expect exceptions or fatal errors.
+
+public __construct ( Traversable $iterator )
+public mixed current ( void )
+public Traversable getInnerIterator ( void )
+public scalar key ( void )
+public void next ( void )
+public void rewind ( void )
+public bool valid ( void )
+
+notes: This class permits access to methods of the inner iterator via the __call magic method.
+       see below:
+IteratorIterator::getInnerIterator — Get the inner iterator

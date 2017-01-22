@@ -1,0 +1,7 @@
+ when what you need to iterate over…is another Iterator that is itself iterating over something. For this very instance,
+ the SPL has defined an interface for us the OuterIterator.
+
+The OuterIterator interface extends the Iterator interface but adds a single method, getInnerIterator().
+
+...............
+OuterIterators are used anytime you need to manipulate an Iterator

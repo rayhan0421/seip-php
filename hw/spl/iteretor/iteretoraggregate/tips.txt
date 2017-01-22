@@ -1,0 +1,1 @@
+If you need to implement custom methods, you need to implement an OuterIterator or (easier) to extend an IteratorIterator.

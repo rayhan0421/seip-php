@@ -1,0 +1,24 @@
+class Widget { }
+
+class Widgets implements Iterator, Countable
+{
+    protected $_count;
+
+    //... Code for current(), key(), rewind(), next(), valid() required by Iterator interface
+
+    public function add(Widget $widget)
+    {
+        //... Code to process Widget object
+        $this->_count++;
+    }
+
+    public function count()
+    {
+        return $this->_count;
+    }
+}
+
+$widgets = new Widgets();
+$widgets->add(new Widget());
+$widgets->add(new Widget());
+echo $widgets->count();

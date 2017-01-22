@@ -1,0 +1,53 @@
+class MyIterator_Filter_InActive extends FilterIterator
+{
+    public function accept()
+    {
+        $value = $this->current();
+        if (array_key_exists('active', $value) &&
+            !empty($value['active'])) {
+            return $value['active'];
+        }
+        return false;
+    }
+}
+
+
+$dataIterator = new MyIterator_Filter_InActive(
+    new ArrayIterator($dataList)
+);
+
+
+
+$dataList = array(
+    array(
+        'name' => 'John Citizen',
+        'email' => 'johnc@citizen.org',
+        'dob' => 1350910989,
+        'location' => 'Brisbane, Qld, Australia',
+        'active' => true
+    ),
+    array(
+        'name' => 'Jane Citizen',
+        'email' => 'janec@citizen.org',
+        'dob' => 1350910989,
+        'location' => 'Townsville, Qld, Australia',
+        'active' => false
+    ),
+    array(
+        'name' => 'Peter Walker',
+        'email' => 'peterw@citizen.org',
+        'dob' => 1350910989,
+        'location' => 'Sydney, Nsw, Australia',
+        'active' => false
+    ),
+    array(
+        'name' => 'Wendy Hardworker',
+        'email' => 'wendyh@citizen.org',
+        'dob' => 1350910989,
+        'location' => 'Melbourne, Vic, Australia',
+        'active' => true
+    ),
+    array(
+        // ...
+    ),
+);
