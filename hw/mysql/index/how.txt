@@ -1,0 +1,27 @@
+There are four types of statements for adding indexes to a table:
+
+
+
+the CREATE INDEX statement is used to create indexes in tables.
+
+Indexes allow the database application to find data fast; without reading the whole table.
+
+
+----------------------
+CREATE INDEX index_name
+ON table_name (column_name)
+
+Creates a unique index on a table. Duplicate values are not allowed:
+CREATE UNIQUE INDEX index_name
+ON table_name (column_name)
+
+The SQL statement below creates an index named "PIndex" on the "LastName" column in the "Persons" table:
+CREATE INDEX PIndex
+ON Persons (LastName)
+-------------------------------------
+
+
+Displaying INDEX Information:
+
+mysql> SHOW INDEX FROM table_name\G
+

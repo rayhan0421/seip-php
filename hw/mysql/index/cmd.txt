@@ -1,0 +1,6 @@
+ALTER TABLE tbl_name ADD PRIMARY KEY (column_list)
+ALTER TABLE tbl_name ADD UNIQUE index_name (columnlist)
+ALTER TABLE tbl_name ADD INDEX index_name (column_list)
+ALTER TABLE tbl_name ADD FULLTEXT index_name (column_list)
+Drop:
+ALTER TABLE table_name DROP PRIMARY KEY;
