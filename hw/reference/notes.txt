@@ -1,0 +1,12 @@
+References in PHP are a means to access the same variable content by different names. 
+*** They are not like C pointers.
+**** you cannot perform pointer arithmetic using them ,
+***** they are not actual memory addresses.
+
+A reference in PHP is simply a variable corresponding to the same value as another variable. References can be explicitly created using a special form of the assignment operator with an ampersand after the equals sign. For example:
+
+
+// create two variables referencing the same value
+$example1 =  'something';
+$example2 =& $example1;
+n this case, $example1 and $example2 refer to the same value
