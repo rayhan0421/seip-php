@@ -19,7 +19,7 @@ if(isset($_GET['page'])){
 
 </head>
 <body>
-<form action="search.php">
+<form action="">
     <input type="text" name="keyword">
     <input type="submit" value="search">
 </form>
@@ -27,8 +27,12 @@ if(isset($_GET['page'])){
 <hr/>
 
 <?php
+if(isset($_GET['keyword'])){
+    $keyword = $_GET['keyword'];
+}
 
-$student = $student->index($tolalrows,$perpage,$currentpage,$offset);
+
+$student = $student->search($tolalrows,$perpage,$currentpage,$offset,$keyword);
 
 
 $totalpage =  ceil($tolalrows/$perpage);
@@ -45,17 +49,17 @@ $sel = $offset;
     </tr>
 
     <?php   foreach ($student as $value){
-  $sel++;
+        $sel++;
 
-     ?>
+        ?>
 
 
 
-    <tr>
-        <td><?php echo $sel ?></td>
-         <td><?php echo $value['title']; ?></td>
-        <td><a href="show.php?id=<?php echo $value['id']; ?>">views details</a> / <a href="edit.php?id=<?php echo $value['id']; ?>">edit</a> </td>
-    </tr>
+        <tr>
+            <td><?php echo $sel ?></td>
+            <td><?php echo $value['title']; ?></td>
+            <td><a href="show.php?id=<?php echo $value['id']; ?>">views details</a> / <a href="edit.php?id=<?php echo $value['id']; ?>">edit</a> </td>
+        </tr>
 
     <?php } ?>
 
@@ -67,7 +71,7 @@ $sel = $offset;
 <?php
 for($i=1;$i<=$totalpage;$i++){
     ?>
-    <a href="index.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+    <a href="search.php?keyword=<?php echo $keyword; ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a>
     <?php
 }
 

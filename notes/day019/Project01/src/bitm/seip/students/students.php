@@ -7,6 +7,7 @@ Class students{
 
     public $title = '';
     public $id='';
+    public $perpage = 5;
 
     public function setData($data='')
     {
@@ -25,20 +26,52 @@ Class students{
 
     }
 
-    public function index(){
+    public function index(&$rows,&$perpage,$currentpage,&$offset){
         try{
+            $perpage = $this->perpage;
 
+            $offset = ceil($this->perpage*$currentpage);
             $pdo =  new PDO("mysql:host=localhost;dbname=php38",'root','');
 
-            $queary = "select * from student";
+            $queary = "select SQL_CALC_FOUND_ROWS * from student limit $this->perpage OFFSET $offset";
 
             $st = $pdo->prepare($queary);
 
             $st->execute();
 
             $stu= $st->fetchAll();
+            $rows = $pdo->query("SELECT FOUND_ROWS()")->fetch(PDO::FETCH_COLUMN);
+            return $stu;
+
+
+
+
+        }catch (\PDOException $e){
+
+            echo "Error: ". $e->getTrace();
+        }
+    }
+
+    public function search(&$rows,&$perpage,$currentpage,&$offset,$keyword){
+        try{
+
+            $perpage = $this->perpage;
+
+            $offset = ceil($this->perpage*$currentpage);
+            $pdo =  new PDO("mysql:host=localhost;dbname=php38",'root','');
+
+            $queary = "select SQL_CALC_FOUND_ROWS * from student WHERE `title` LIKE '%$keyword%' limit $this->perpage OFFSET $offset";
+
+            $st = $pdo->prepare($queary);
+
+            $st->execute();
+
+            $stu= $st->fetchAll();
+            $rows = $pdo->query("SELECT FOUND_ROWS()")->fetch(PDO::FETCH_COLUMN);
+
 
             return $stu;
+
 
 
 

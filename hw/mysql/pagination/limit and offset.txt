@@ -1,0 +1,9 @@
+limit : retrieve number of rows from table
+offset: skip number of  rows from table
+
+
+select * from table_name limit 10; ( it will return 10 rows from table )
+
+select  * from table_name limit 5 offset 3 ;( it will 5 rows and skip 3 rows from begining)
+
+select  * from table_name  offset 3 ; (wrong quary, will work must add limit keyword)
