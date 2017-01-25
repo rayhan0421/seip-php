@@ -8,6 +8,7 @@ Class students{
     public $title = '';
     public $id='';
     public $search = '';
+    public $hobby = '';
 
     public function setData($data='')
     {
@@ -20,6 +21,9 @@ Class students{
 
             $this->search = $data['search'];
         }
+
+
+
 
 
 
