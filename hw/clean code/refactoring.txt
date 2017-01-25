@@ -1,0 +1,6 @@
+don't do everything in a function or method , refactor and make more function for readability and reusability
+
+Splitting up Complex Functions
+
+A common refactoring strategy is to take big multipurpose methods/functions and create two or more smaller fined-grained functions out of them.
+Code that could be used in multiple functions, is a good candidate for refactoring.
