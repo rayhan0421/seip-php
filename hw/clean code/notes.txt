@@ -1,0 +1,18 @@
+You should try to avoid using else statements when writing code. At first I was confused when I heard this, but after some time I started to realize he was right. In 80% of cases where I used else before I just realized I no longer needed it if i turned the condition of my if-statement around. Looking at the above example it would look something like this.
+
+<?php
+function writeFile($fullpath, $content)
+{
+    if (!is_writable($fullpath)) {
+        return false;
+    }
+    
+    if (!$fp = fopen($fullpath,'w')) {
+        return false;
+    }
+    if (!fwrite($fp,$content)) {
+        return false;
+    }
+    
+    return true;
+}
