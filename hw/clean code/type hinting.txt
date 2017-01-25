@@ -1,0 +1,23 @@
+type hinting is your friend 
+
+function add(bool $var){
+
+
+
+}
+
+
+public function myFunction(SomeClass $instance)
+
+// better than "myFunction(SomeClass $instance)"
+public function myfunction(SomeInterface $instance)
+
+// specify class name in perameter for well class design
+// cat is class name
+function test(Cat $c){
+
+} 
+
+function callFunc2(Callable $callback) {
+    $callback();
+}

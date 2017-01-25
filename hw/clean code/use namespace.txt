@@ -1,0 +1,5 @@
+avoid class colapsing
+
+error like that: cannot redeclare class classname;
+................
+use namespace for modularize ,  package and more tastable

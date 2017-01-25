@@ -1,0 +1,13 @@
+do not do this :
+function validate_email($e){
+    return (bool)preg_match("`^[a-z0-9!#$%&'*+\/=?^_\`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_\`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$`i", trim($e));
+}
+
+.............
+we have already nice built in function:
+// do it
+if (!filter_var($address, FILTER_VALIDATE_EMAIL)) {
+    // invalid e-mail address
+}
+
+use also senitize 

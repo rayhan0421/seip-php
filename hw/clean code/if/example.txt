@@ -1,0 +1,34 @@
+// for data return null not true/false
+
+
+do it :
+
+function varify(){
+
+if(isset($var))
+// return $data;
+return true;
+}
+
+if(in_array($var , $ar)){
+
+// return null
+return false;
+}
+
+
+
+............................
+do not do it :
+
+function varify(){
+if(isset($var)){
+  if(in_array($var,$arr)){
+   return true
+  }
+}else{
+ //return null
+return false;
+}
+
+}
