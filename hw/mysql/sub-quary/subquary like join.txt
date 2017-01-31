@@ -1,0 +1,17 @@
+Sub-Queries  should only be used as a fallback solution when you cannot use a JOIN operation to achieve the above
+----------------------------------------
+Subqueries are embedded queries inside another query. The embedded query is known as the inner query and the container query is known as the outer query.
+
+Sub queries are easy to use, offer great flexibility and can be easily broken down into single logical components making up the query which is very useful when testing and debugging the queries.
+
+MySQL supports three types of subqueries, scalar, row and table subqueries.
+
+Scalar sub queries only return a single row and single column.
+
+Row sub queries only return a single row but can have more than one column.
+
+Table subqueries can return multiple rows as well as columns.
+
+Subqueries can also be used in INSERT, UPDATE and DELETE queries.
+
+For performance issues, when it comes to getting data from multiple tables, it is strongly recommended to use JOINs instead of subqueries. Sub queries should only be used with good reason.

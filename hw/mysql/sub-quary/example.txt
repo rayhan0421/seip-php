@@ -1,0 +1,9 @@
+http://www.guru99.com/sub-queries.html
+----------------------------------------------------------
+
+step1: first inner quary execute
+ 
+
+SELECT category_name FROM categories WHERE category_id =( SELECT MIN(category_id) from movies);
+
+SELECT full_names,contact_number FROM   members  WHERE  membership_number IN (SELECT membership_number FROM movierentals WHERE return_date IS NULL );
