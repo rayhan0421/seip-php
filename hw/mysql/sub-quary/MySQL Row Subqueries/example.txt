@@ -1,0 +1,9 @@
+A row subquery is a subquery that returns a single row and more than one column value. You can use = , >, <, >=, <=, <>, !=, <=> comparison operators. See the following examples :
+
+SELECT * FROM table1 WHERE (col1,col2) = (SELECT col3, col4 FROM table2 WHERE id = 10);
+SELECT * FROM table1 WHERE ROW(col1,col2) = (SELECT col3, col4 FROM table2 WHERE id = 10);
+
+------------------
+SELECT first_name 
+FROM employees
+WHERE ROW(department_id, manager_id) = (SELECT department_id, manager_id FROM departments WHERE location_id = 2800)

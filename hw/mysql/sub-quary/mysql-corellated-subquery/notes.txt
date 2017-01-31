@@ -1,0 +1,29 @@
+----------------
+
+Using correlated subqueries
+The name of correlated subqueries means that a subquery is correlated with the outer query. The correlation comes from the fact that the subquery uses information from the outer query and the subquery executes once for every row in the outer query.
+
+A correlated subquery can usually be rewritten as a join query. Using joins enables the database engine to use the most efficient execution plan. The query optimizer is more mature for joins than for subqueries, so in many cases a statement that uses a subquery should normally be rephrased as a join to gain the extra speed in performance.
+
+Note that alias must be used to distinguish table names in the SQL query that contains correlated subqueries.
+
+---------------
+
+exampe: 
+------------
+
+select distinct a.ProductID, 
+       p.ProductName, 
+       a.UnitPrice as Max_unit_price_sold
+from order_details as a
+inner join products as p on a.ProductID = p.ProductID
+where a.UnitPrice = 
+(
+    select max(UnitPrice)
+    from order_details as b
+    where a.ProductID = b.ProductID
+)
+order by a.ProductID;
+-------------------
+-----------------
+A correlated subquery is a subquery that contains a reference to a table (in the parent query) that also appears in the outer query. MySQL evaluates from inside to outside

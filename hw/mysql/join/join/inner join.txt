@@ -1,0 +1,7 @@
+inner join only return match record
+
+select name, dept ,location form tb1,tb2 where tb1.dept= tb2.location;
+
+or
+
+select name ,dept, location form tb1 inner join tb2 on tb1.dept = tb2.location 

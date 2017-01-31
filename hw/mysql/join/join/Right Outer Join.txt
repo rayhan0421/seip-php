@@ -1,0 +1,9 @@
+SELECT *
+FROM `t1`
+RIGHT OUTER JOIN `t2` ON `t1`.`id` = `t2`.`id`;
+
+
+would get us all the records 
+from the right table regardless of 
+whether or not
+ they have a match in the left table, like this:

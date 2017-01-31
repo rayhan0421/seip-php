@@ -1,0 +1,2 @@
+Outer joins, on the other hand, are for finding records that may not have a match in the other table
+LEFT JOIN and RIGHT JOIN are shorthand for LEFT OUTER JOIN and RIGHT OUTER JOIN; I will use their full names below to reinforce the concept of outer joins vs inner joins.
