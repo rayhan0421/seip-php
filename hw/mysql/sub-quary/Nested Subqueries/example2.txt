@@ -1,0 +1,20 @@
+-- Create a fresh table
+DROP TABLE IF EXISTS ace_goldfinger_actors;
+CREATE TABLE ace_goldfinger_actors
+(first_name VARCHAR(45), last_name VARCHAR(45));
+
+-- Insert Data (from the following subqueries)
+INSERT INTO ace_goldfinger_actors (first_name, last_name)
+	
+    -- Subquery comment
+    SELECT first_name, last_name FROM actor a
+		INNER JOIN film_actor fa ON
+			a.actor_id = fa.actor_id
+		WHERE fa.film_id = 
+			
+            -- Nested Subquery comment
+			(SELECT film_id FROM film 
+			WHERE title = 'Ace Goldfinger');
+    
+-- Check the data that we just inserted comment
+SELECT * FROM ace_goldfinger_actors;

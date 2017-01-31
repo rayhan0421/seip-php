@@ -1,0 +1,15 @@
+Subqueries are not necessarily limited to the WHERE clause, or to the SELECT statement for that matter.
+
+You can use a subquery anywhere an expression is allowed. You can use a subquery within any of the following statements: SELECT, INSERT, UPDATE, DELETE, SET, or DO.
+
+For example, you could use a subquery inside an INSERT statement to insert data based on the results of a subquery.
+
+For example, here's an INSERT statement containing a subquery and a nested subquery:
+
+INSERT INTO ace_goldfinger_actors (first_name, last_name)
+    SELECT first_name, last_name FROM actor a
+		INNER JOIN film_actor fa ON
+			a.actor_id = fa.actor_id
+		WHERE fa.film_id = 
+			(SELECT film_id FROM film 
+			WHERE title = 'Ace Goldfinger');
