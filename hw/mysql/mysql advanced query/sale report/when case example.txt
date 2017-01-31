@@ -1,0 +1,30 @@
+
+
+step1. 
+CREATE TABLE supportContacts 
+	(
+     id int auto_increment primary key, 
+     type varchar(20), 
+     end_date DATE
+    );
+
+INSERT INTO supportContacts
+(type, end_date)
+VALUES
+('free', '2013-06-20'),
+('cpm',  '2013-08-29'),
+('cpm',  '2013-06-20');
+-----------------
+select 
+  id, 
+  case 
+    when (type = 'cpm' and end_date < now()) then 'before' 
+    when (type = 'cpm' and end_date > now()) then 'after' 
+    else type
+  end as type,
+date_format(end_date,'%Y-%m-%d') as end_date
+from supportContacts;
+
+
+
+---------------------------

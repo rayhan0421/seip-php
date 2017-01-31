@@ -1,0 +1,5 @@
+here database file for sql query check . we will use these query in graph
+
+------------------------------------------
+elt use for monthname return from array.
+see sale report\pos with monthname important

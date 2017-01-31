@@ -1,0 +1,1 @@
+SELECT item_unit_price ,IF(item_unit_price%2=0,'EVEN','ODD') as "plevel" FROM `ospos_sales_items` ORDER BY item_unit_price

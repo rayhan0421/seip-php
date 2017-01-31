@@ -1,0 +1,1 @@
+SELECT * FROM `ospos_sales_items` where serialnumber IS NOT NULL ORDER BY `serialnumber` ASC 

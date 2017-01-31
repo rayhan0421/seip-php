@@ -1,0 +1,1 @@
+SELECT item_unit_price ,IF(item_unit_price>100,'HIGH','LOW') as "plevel" FROM `ospos_sales_items` ORDER BY item_unit_price

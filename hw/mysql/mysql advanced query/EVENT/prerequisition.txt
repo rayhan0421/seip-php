@@ -1,0 +1,24 @@
+By default, the event scheduler thread is not enabled. To enable and start the event scheduler thread, you need to execute the following command:
+
+SET GLOBAL event_scheduler = ON;
+To disable and stop the event the event scheduler thread, you execute the SET GLOBAL command with value of the event_scheduler is OFF:
+SET GLOBAL event_scheduler = OFF;
+
+1.First, you specify the event name after the  CREATE EVENT clause. The event name must be unique within a database schema.
+CREATE EVENT [IF NOT EXIST]  event_name
+ON SCHEDULE schedule
+DO
+event_body
+
+2.Second, you put a schedule after the  ON SCHEDULE clause. If the event is a one-time event, you use the syntax: AT timestamp [+ INTERVAL]. If the event is a recurring event, you use the EVERY clause: EVERY interval STARTS timestamp [+INTERVAL] ENDS timestamp [+INTERVAL].
+
+CREATE EVENT IF NOT EXISTS test_event_01
+ON SCHEDULE AT CURRENT_TIMESTAMP
+DO
+----------------------------------------------------
+3.Third, you place the SQL statements after the DO keyword. It is important to notice that you can call a stored procedure inside the body of the event. In case you have compound SQL statements, you can wrap them in a  BEGIN END block.
+CREATE EVENT IF NOT EXISTS test_event_01
+ON SCHEDULE AT CURRENT_TIMESTAMP
+DO
+  INSERT INTO messages(message,created_at)
+  VALUES('Test MySQL Event 1',NOW());
