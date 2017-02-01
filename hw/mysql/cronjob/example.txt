@@ -1,0 +1,15 @@
+CREATE EVENT 
+ON SCHEDULE EVERY 1 DAY
+STARTS '2014-01-18 00:00:00'
+DO
+DELETE FROM tbl_message WHERE DATEDIFF( NOW( ) ,  timestamp ) >=7;
+
+===============
+
+CREATE EVENT PurgeLogTable
+ON SCHEDULE EVERY 1 WEEK
+DO
+BEGIN
+DELETE FROM `logs` WHERE `LogTime` <= DATE_SUB(CURRENT_TIMESTAMP,INTERVAL 1 WEEK);
+INSERT INTO `audit` (`AuditDate`, `Message`) VALUES(NOW(), "Log table purged succesfully!");
+END
