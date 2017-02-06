@@ -2,6 +2,7 @@
 include ("../../../../vendor/autoload.php");
 use App\bitm\seip\students\students;
 $student = new students();
+$student->setdata($_GET);
 
 if(isset($_GET['page'])){
     $currentpage = $_GET['page']-1;
@@ -28,7 +29,7 @@ if(isset($_GET['page'])){
 
 <?php
 if(isset($_GET['keyword'])){
-    $keyword = $_GET['keyword'];
+$keyword = $_GET['keyword'];
 }
 
 

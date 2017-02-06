@@ -216,7 +216,7 @@ Class Users{
 
             $pdo =  new PDO("mysql:host=localhost;dbname=exam5",'root','');
 
-            $queary = "SELECT a.id ,a.name, b.hobbies  FROM `users` as a JOIN hobby as b on a.id = b.user_id where ";
+            $queary = "SELECT a.id ,a.name, b.hobbies  FROM `users` as a JOIN hobby as b on a.id = b.user_id  ";
 
             $us = $pdo->prepare($queary);
 
