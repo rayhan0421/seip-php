@@ -1,0 +1,7 @@
+1. set database name username password in .env file of root folder
+
+2. create database name in phpmyadmin
+3. run php artisan migrate
+4. see database table 
+
+note: if you ran php artisan down command local server does not work it will show right back page.  

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" itemscope="" itemtype="http://schema.org/Product" lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><script src="Laravel%204%20%20Where%20to%20put%20bindings_files/widgets.js" async="" type="text/javascript"></script><script src="Laravel%204%20%20Where%20to%20put%20bindings_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=u(e),f=c.length,s=i(a,o,r),p=0;f>p;p++)c[p].apply(s,n);return s}function a(t,e){f[t]=u(t).concat(e)}function u(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:u,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=c.createElement("script");e.src=l.proto+t.agent,c.body.appendChild(e)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),u=window,c=u.document,f="addEventListener",s="attachEvent",p=(""+location).split("?")[0],l=e.exports={offset:i(),origin:p,features:{}};c[f]?(c[f]("DOMContentLoaded",o,!1),u[f]("load",n,!1)):(c[s]("onreadystatechange",r),u[s]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}]},{},["G9z0Bl"]);</script>
+
+    <title>Laravel 4: Where to put bindings</title>
+<meta name="description" content="If you make judicious use of IoC containers (and Dependency Injection), you'll likely end up with lots of Bindings, some of which may look like:">
+<meta name="keywords" content="laravel,IoC">
+<meta name="author" content="humans.txt">
+
+<!--Facebook Metadata /-->
+<meta property="fb:page_id" content="">
+<meta property="og:image" content="http://fideloper.com/fideloper.jpg">
+<meta property="og:description" content="If you make judicious use of IoC containers (and Dependency Injection), you'll likely end up with lots of Bindings, some of which may look like:">
+<meta property="og:title" content="Laravel 4: Where to put bindings">
+
+<!--Google+ Metadata /-->
+<meta itemprop="name" content="Laravel 4: Where to put bindings">
+<meta itemprop="description" content="If you make judicious use of IoC containers (and Dependency Injection), you'll likely end up with lots of Bindings, some of which may look like:">
+<meta itemprop="image" content="http://fideloper.com/fideloper.jpg">
+
+<!-- Twitter Metadata /-->
+<meta property="twitter:account_id" content="196841165">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@fideloper">
+<meta name="twitter:title" content="Laravel 4: Where to put bindings">
+<meta name="twitter:description" content="If you make judicious use of IoC containers (and Dependency Injection), you'll likely end up with lots of Bindings, some of which may look like:">
+<meta name="twitter:image" content="http://fideloper.com/fideloper.jpg">
+<meta name="twitter:domain" content="fideloper.com">
+
+    <link rel="shortcut icon" href="http://fideloper.com/favicon.png" type="image/x-icon">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="apple-touch-icon" href="http://fideloper.com/apple-touch-icon.png">
+
+    <link type="text/plain" rel="author" href="http://fideloper.com/humans.txt">
+
+    <link rel="stylesheet" href="Laravel%204%20%20Where%20to%20put%20bindings_files/styles.css">
+    <!--[if lte IE 8]>
+    <script src="/static/jsmodernizr-2.6.2.min.js"></script>
+    <![endif]-->
+<script src="Laravel%204%20%20Where%20to%20put%20bindings_files/embed.js" async="" type="text/javascript"></script><script charset="UTF-8" async="" src="Laravel%204%20%20Where%20to%20put%20bindings_files/alfie.js"></script></head>
+
+<body data-twttr-rendered="true">
+
+    <div class="container">
+        
+                <header id="brand">
+            <article class="wide">
+                <h1><a href="http://fideloper.com/">Fideloper</a></h1>
+            </article>
+        </header>
+        
+        <section>
+            <div class="col-main single">
+    <article class="post">
+        <h1>Laravel 4: Where to put bindings</h1>
+        <ul class="tags meta clearfix">
+            <li class="time"><time>2 years ago</time></li>
+                        <li class="primary badge"><i class="entypo tag"></i><a href="http://fideloper.com/tag/laravel">laravel</a></li>
+                        <li class="primary badge"><i class="entypo tag"></i><a href="http://fideloper.com/tag/ioc">IoC</a></li>
+                    </ul>
+
+        <p>If you make judicious use of IoC containers (and Dependency 
+Injection), you'll likely end up with lots of Bindings, some of which 
+may look like:</p>
+
+<pre style="" class="prettyprint prettyprinted"><code><span class="typ">App</span><span class="pun">::</span><span class="pln">bind</span><span class="pun">(</span><span class="str">'Anvil'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Acme</span><span class="pln">\Product\AnvilHeavy</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">});</span></code></pre>
+
+<p>or</p>
+
+<pre style="" class="prettyprint prettyprinted"><code><span class="typ">App</span><span class="pun">::</span><span class="pln">bind</span><span class="pun">(</span><span class="str">'Acme\Product\Anvil\AnvilInterface'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'Acme\Product\Anvil\AnvilHeavy'</span><span class="pun">);</span></code></pre>
+
+<h3>Yes, I have lots of bindings!</h3>
+
+<p>Me too. Let's figure out what to do with them.</p>
+
+<p>Let's say Acme is an accomplished business, and has quite a few 
+products. Amongst them: Anvils and TNT. You likely have classes for all 
+of these. Since I usually create an <a href="http://fideloper.com/post/41543586521/laravel-4-application-setup-app-library-autoloading">application library for business logic</a>, my code structure might look like this:</p>
+
+<pre style="" class="prettyprint prettyprinted"><code><span class="typ">Acme</span><span class="pln">
+    app
+        lib
+            </span><span class="typ">Acme</span><span class="pln">
+                </span><span class="typ">Product</span><span class="pln">
+                    </span><span class="typ">Anvil</span><span class="pln">
+                        </span><span class="typ">AnvilInterface</span><span class="pun">.</span><span class="pln">php
+                        </span><span class="typ">AnvilHeavy</span><span class="pun">.</span><span class="pln">php
+                        </span><span class="typ">AnvilLight</span><span class="pun">.</span><span class="pln">php
+                    </span><span class="typ">Tnt</span><span class="pln">
+                        </span><span class="typ">TntInterface</span><span class="pun">.</span><span class="pln">php
+                        </span><span class="typ">TntHighyield</span><span class="pun">.</span><span class="pln">php
+                        </span><span class="typ">TntLowyield</span><span class="pun">.</span><span class="pln">php
+    commands
+    config
+    </span><span class="pun">…</span><span class="pln">etc</span><span class="pun">…</span><span class="pln">
+    filters</span><span class="pun">.</span><span class="pln">php
+    routes</span><span class="pun">.</span><span class="pln">php</span></code></pre>
+
+<p>This means you may have these bindings in your code <em>somewhere</em>. And that's the key - At this stage, very few articles explain where to put that code.</p>
+
+<pre style="" class="prettyprint prettyprinted"><code><span class="com">//Somewhere in your code</span><span class="pln">
+</span><span class="typ">App</span><span class="pun">::</span><span class="pln">bind</span><span class="pun">(</span><span class="str">'Acme\Product\Anvil\AnvilInterface'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'Acme\Product\Anvil\AnvilHeavy'</span><span class="pun">);</span><span class="pln">
+
+</span><span class="typ">App</span><span class="pun">::</span><span class="pln">bind</span><span class="pun">(</span><span class="str">'Tnt'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Acme</span><span class="pln">\Product\TntHighyield</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">});</span></code></pre>
+
+<p>These will work merrily. We can type-hint AnvilInterface in a 
+controller and know it will get AnvilHeavy. Addtionally, we can resolve 
+our Tnt using <code>App::make('Tnt')</code> anywhere in our application.</p>
+
+<p>As we add products in our contrived example here, we will end up with
+ more and more bindings. These can add up. How can we organize our code 
+to make these less obstrusive? Where is the "home" for these bindings?</p>
+
+<h3>A home for your bindings</h3>
+
+<p>The answer is to use <a href="https://github.com/laravel/framework/blob/master/src/Illuminate/Support/ServiceProvider.php">Service Providers</a>. These nifty classes provide a way to add bindings and use Laravel containers for your libraries.</p>
+
+<p>To use these, I'll create a ServiceProvider for each Acme product:</p>
+
+<pre style="" class="prettyprint prettyprinted"><code><span class="typ">Acme</span><span class="pln">
+    app
+        lib
+            </span><span class="typ">Acme</span><span class="pln">
+                </span><span class="typ">Product</span><span class="pln">
+                    </span><span class="typ">Anvil</span><span class="pln">
+                        </span><span class="typ">AnvilInterface</span><span class="pun">.</span><span class="pln">php
+                        </span><span class="typ">AnvilHeavy</span><span class="pun">.</span><span class="pln">php
+                        </span><span class="typ">AnvilLight</span><span class="pun">.</span><span class="pln">php
+                        </span><span class="typ">AnvilServiceProvider</span><span class="pun">.</span><span class="pln">php  </span><span class="com"># New file &lt;--</span><span class="pln">
+                    </span><span class="typ">Tnt</span><span class="pln">
+                        </span><span class="typ">TntInterface</span><span class="pun">.</span><span class="pln">php
+                        </span><span class="typ">TntHighyield</span><span class="pun">.</span><span class="pln">php
+                        </span><span class="typ">TntLowyield</span><span class="pun">.</span><span class="pln">php
+                        </span><span class="typ">TntServiceProvider</span><span class="pun">.</span><span class="pln">php  </span><span class="com"># New file &lt;--</span></code></pre>
+
+<p>The code to add the bindings for our classes are simple:</p>
+
+<pre style="" class="prettyprint prettyprinted"><code><span class="com">// app/lib/Acme/Product/Anvil/AnvilServiceProvider.php</span><span class="pln">
+</span><span class="pun">&lt;?</span><span class="pln">php </span><span class="kwd">namespace</span><span class="pln"> </span><span class="typ">Acme</span><span class="pln">\Product\Anvil</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">use</span><span class="pln"> </span><span class="typ">Illuminate</span><span class="pln">\Support\ServiceProvider</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">AnvilServiceProvider</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">ServiceProvider</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+    </span><span class="com">/**
+     * Register the binding
+     *
+     * @return void
+     */</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="kwd">register</span><span class="pun">()</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        $app </span><span class="pun">=</span><span class="pln"> $this</span><span class="pun">-&gt;</span><span class="pln">app</span><span class="pun">;</span><span class="pln">
+
+        $app</span><span class="pun">-&gt;</span><span class="pln">bind</span><span class="pun">(</span><span class="str">'Acme\Product\Anvil\AnvilInterface'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'Acme\Product\Anvil\AnvilHeavy'</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">// app/lib/Acme/Product/Tnt/TntServiceProdiver.php</span><span class="pln">
+</span><span class="pun">&lt;?</span><span class="pln">php </span><span class="kwd">namespace</span><span class="pln"> </span><span class="typ">Acme</span><span class="pln">\Product\Tnt</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">use</span><span class="pln"> </span><span class="typ">Illuminate</span><span class="pln">\Support\ServiceProvider</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">TntServiceProvider</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">ServiceProvider</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+    </span><span class="com">/**
+     * Register the binding
+     *
+     * @return void
+     */</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="kwd">register</span><span class="pun">()</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        $app </span><span class="pun">=</span><span class="pln"> $this</span><span class="pun">-&gt;</span><span class="pln">app</span><span class="pun">;</span><span class="pln">
+
+        $app</span><span class="pun">[</span><span class="str">'Tnt'</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">TntHighyield</span><span class="pun">;</span><span class="pln">
+        </span><span class="pun">};</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+</span><span class="pun">}</span></code></pre>
+
+<p>Now, rather than having App::bind() calls littered somewhere in our 
+code, we have them as Service Providers for our various Acme products.</p>
+
+<p>The last step is to register these service providers so they are run as part of the bootstrap process.</p>
+
+<p>Head to <code>app/config/app.php</code>. In the 'providers' array, we'll register our Service Providers.</p>
+
+<pre style="" class="prettyprint prettyprinted"><code><span class="str">'providers'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> array</span><span class="pun">(</span><span class="pln">
+    </span><span class="str">'Illuminate\Foundation\Providers\ArtisanServiceProvider'</span><span class="pun">,</span><span class="pln">
+
+    </span><span class="pun">…</span><span class="kwd">and</span><span class="pln"> so on</span><span class="pun">…</span><span class="pln">
+
+    </span><span class="str">'Acme\Product\Anvil\AnvilServiceProvider'</span><span class="pun">,</span><span class="pln">
+    </span><span class="str">'Acme\Product\Tnt\TntServiceProvider'</span><span class="pun">,</span><span class="pln">
+</span><span class="pun">)</span></code></pre>
+
+<p>Now, our bindings will be created for us on bootstrap, and we can go 
+our merry way without cluttering up a config or route file with 
+bindings.</p>
+
+<h3>Alternatively!</h3>
+
+<p>If I didn't want to create a ServiceProvider class for each product 
+in this example, I could instead create one ProductServiceProvider and 
+do all the binding there.</p>
+
+<p>You may find this way makes more sense to you:</p>
+
+<pre style="" class="prettyprint prettyprinted"><code><span class="com">// app/lib/Acme/Product/ProductServiceProvider.php</span><span class="pln">
+
+</span><span class="pun">&lt;?</span><span class="pln">php </span><span class="kwd">namespace</span><span class="pln"> </span><span class="typ">Acme</span><span class="pln">\Product</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">use</span><span class="pln"> </span><span class="typ">Illuminate</span><span class="pln">\Support\ServiceProvider</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ProductServiceProvider</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">ServiceProvider</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+    </span><span class="com">/**
+     * Register Acme Product bindings
+     *
+     * @return void
+     */</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="kwd">register</span><span class="pun">()</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        $app </span><span class="pun">=</span><span class="pln"> $this</span><span class="pun">-&gt;</span><span class="pln">app</span><span class="pun">;</span><span class="pln">
+
+        </span><span class="com">// Handle Anvil binding</span><span class="pln">
+        $app</span><span class="pun">-&gt;</span><span class="pln">bind</span><span class="pun">(</span><span class="str">'Acme\Product\Anvil\AnvilInterface'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'Acme\Product\Anvil\AnvilHeavy'</span><span class="pun">);</span><span class="pln">
+
+        </span><span class="com">// Handle Tnt binding</span><span class="pln">
+        $app</span><span class="pun">[</span><span class="str">'Tnt'</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">TntHighyield</span><span class="pun">;</span><span class="pln">
+        </span><span class="pun">};</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+</span><span class="pun">}</span></code></pre>
+
+<h3>What have we learned?</h3>
+
+<p>We learned that if you use IoC (and hopefully Dependency Injection) in Laravel, you'll likely be using container bindings.</p>
+
+<ol>
+<li>Judicious use of IoC will mean many <code>App::bind()</code> calls</li>
+<li>Organize your container bindings into ServiceProvider classes</li>
+<li>You can use many Service Providers, but also consider using one 
+ServiceProvider (perhaps per namespace) to limit the number of classes 
+and (potentially) increase maintainability.</li>
+</ol>
+
+                <div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="Laravel%204%20%20Where%20to%20put%20bindings_files/a.htm" style="width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 2770px ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" data-disqus-uid="2" id="dsq-2" frameborder="0" width="100%"></iframe></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'fideloper'; // required: replace example with your Disqus site shortname
+            var disqus_url = 'http://fideloper.com/laravel-4-where-to-put-bindings';
+            var disqus_title = "Laravel 4: Where to put bindings";
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+            </article>
+</div>
+            <aside>
+                                    
+    <h3>Recent Articles</h3>
+    <ul>
+                <li><a href="http://fideloper.com/hexagonal-architecture"><i class="entypo chevron-small-right"></i>Hexagonal Architecture</a></li>
+                <li><a href="http://fideloper.com/on-vaprobash"><i class="entypo chevron-small-right"></i>Vaprobash</a></li>
+                <li><a href="http://fideloper.com/how-we-code"><i class="entypo chevron-small-right"></i>How We Code: ORMs and Anemic Domain Models</a></li>
+            </ul>
+    <h3>Other Writings</h3>
+    <ul>
+        <li><a href="http://net.tutsplus.com/tutorials/php/laravel-4-a-start-at-a-restful-api/"><i class="entypo chevron-small-right"></i>Laravel 4 REST API</a></li>
+        <li><a href="http://net.tutsplus.com/tutorials/php/how-to-write-testable-and-maintainable-code-in-php/"><i class="entypo chevron-small-right"></i>Testable/Maintainable PHP</a></li>
+    </ul>
+            </aside>
+        </section><!-- end  #content -->
+
+        <footer id="foot">
+        <div class="container">
+            <section>
+                <ul class="wide">
+                    <li><a href="http://fideloper.com/feed"><i class="entypo rss"></i>RSS</a></li>
+                    <li><a href="https://twitter.com/fideloper"><i class="entypo-social twitter"></i>@fideloper</a></li>
+                    <li><a href="https://github.com/fideloper"><i class="entypo-social github"></i>fideloper</a></li>
+                </ul>
+            </section>
+        </div>
+    </footer>
+    
+    </div><!-- end container -->
+
+      <!--[if lte IE 9]>
+  <script src="/static/bower_components/html5-polyfills/classList.js"></script>
+  <![endif]-->
+  <script src="Laravel%204%20%20Where%20to%20put%20bindings_files/prettify.js" type="text/javascript"></script>
+  <script type="text/javascript">
+      (function(){
+          var codeBlocks = document.querySelectorAll('.post pre, table code');
+          [].forEach.call(codeBlocks, function(codeBlock){
+              codeBlock.classList.add('prettyprint');
+          });
+          prettyPrint();
+      })();
+  </script>
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20914866-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+
+  <!-- Social Widget Rendering Javascript /-->
+  <script type="text/javascript">
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'http://platform.twitter.com/widgets.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+  </script>
+  
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-6.newrelic.com","licenseKey":"e2b22fc8ea","applicationID":"3955435","transactionName":"ZlxUYERUXUZYU0xfWl8WY0ZfGlpbXVVAGEVZSQ==","queueTime":0,"applicationTime":56,"ttGuid":"","agentToken":"","userAttributes":"","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-476.min.js"}</script>
+
+<script src="Laravel%204%20%20Where%20to%20put%20bindings_files/nr-476.js"></script><script src="Laravel%204%20%20Where%20to%20put%20bindings_files/e2b22fc8ea" type="text/javascript"></script></body></html>

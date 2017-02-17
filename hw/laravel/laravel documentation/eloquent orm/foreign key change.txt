@@ -1,0 +1,6 @@
+ake note that Eloquent assumes the foreign key of the relationship based on the model name. In this case, Phone model is assumed to use a user_id foreign key. If you wish to override this convention, you may pass a second argument to the hasOne method. Furthermore, you may pass a third argument to the method to specify which local column that should be used for the association:
+
+
+return $this->hasOne('App\Phone', 'foreign_key');
+
+return $this->hasOne('App\Phone', 'foreign_key', 'local_key');

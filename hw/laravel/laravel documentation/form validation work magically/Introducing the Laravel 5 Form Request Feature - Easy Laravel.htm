@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html class=" js video" lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>Introducing the Laravel 5 Form Request Feature - Easy Laravel</title>
+  <meta name="author" content="W. Jason Gilmore">
+
+  
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="msvalidate.01" content="A6DA363195523C0D4C59B65948E30DA1">
+  
+  <link rel="canonical" href="http://easylaravelbook.com/blog/2014/11/20/introducing-the-laravel-5-form-request-feature">
+  <link href="http://easylaravelbook.com/favicon.png" type="image/png" rel="icon">
+  <link href="http://easylaravelbook.com/atom.xml" rel="alternate" title="Easy Laravel" type="application/atom+xml">
+
+  <link href="Introducing%20the%20Laravel%205%20Form%20Request%20Feature%20-%20Easy%20Laravel_files/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="Introducing%20the%20Laravel%205%20Form%20Request%20Feature%20-%20Easy%20Laravel_files/bootswatch.css" rel="stylesheet" type="text/css">
+<link href="Introducing%20the%20Laravel%205%20Form%20Request%20Feature%20-%20Easy%20Laravel_files/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="Introducing%20the%20Laravel%205%20Form%20Request%20Feature%20-%20Easy%20Laravel_files/css_002.css" rel="stylesheet" type="text/css">
+<link href="Introducing%20the%20Laravel%205%20Form%20Request%20Feature%20-%20Easy%20Laravel_files/css.css" rel="stylesheet" type="text/css">
+
+  <script src="Introducing%20the%20Laravel%205%20Form%20Request%20Feature%20-%20Easy%20Laravel_files/ga.js" async="" type="text/javascript"></script><script src="Introducing%20the%20Laravel%205%20Form%20Request%20Feature%20-%20Easy%20Laravel_files/jquery-2.js"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-21509545-5']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+<script src="Introducing%20the%20Laravel%205%20Form%20Request%20Feature%20-%20Easy%20Laravel_files/embed.js" async="" type="text/javascript"></script><script src="Introducing%20the%20Laravel%205%20Form%20Request%20Feature%20-%20Easy%20Laravel_files/widgets.js" async="" type="text/javascript"></script></head>
+
+  <body data-twttr-rendered="true">
+    <div id="wrap">
+      <header role="banner">
+        <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://easylaravelbook.com/">Easy Laravel</a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+
+
+          <li>
+                    <a href="http://easylaravelbook.com/blog">Blog</a>
+                  </li>
+ <li>
+                    <a href="http://easylaravelbook.com/#toc">TOC</a>
+                </li>
+                 <li class="purchase_link">
+                   <a href="http://easylaravelbook.com/purchase"><span style="color: white; background: #4A9B9D; padding: 10px; border-radius: 5px; -moz-border-radius: 5px;">Buy the Book</span></a>
+                </li>
+ <li>
+                    <a href="http://easylaravelbook.com/workshops">Workshops</a>
+                </li>
+
+                  
+                <li>
+                    <a href="http://easylaravelbook.com/#author">About the Author</a>
+                </li>
+                   
+                <li>
+                    <a href="http://easylaravelbook.com/changelog">The Changelog</a>
+                </li>
+                 
+                <li>
+                  <a href="http://twitter.com/wjgilmore">Twitter</a>
+                </li>
+                               
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="subscribe-rss" href="http://easylaravelbook.com/atom.xml" title="subscribe via RSS">
+                        <span class="visible-xs">RSS</span>
+                        <img class="hidden-xs" src="Introducing%20the%20Laravel%205%20Form%20Request%20Feature%20-%20Easy%20Laravel_files/rss.png" alt="RSS">
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+      </div>
+
+      <div class="collapse navbar-collapse" style="padding: 5px 0px 5px 0px; background-color: #2A0E1A; text-align: center; color: white; border-top: 2px solid white; border-bottom: 1px solid black;">
+
+        <!--
+<h3 style="margin: 5px 0px 5px 0px;">Announcing Laravel 5 Workshops in Milwaukee and Raleigh! <a href="/workshops/">Learn More</a></h3>
+
+<h3 style="margin: 5px 0px 5px 0px;">February 4, 2015: Easy Laravel 5 Officially Released! <a href="/purchase/">Purchase Now</a></h3>
+
+-->
+
+<h3 style="margin: 5px 0px 5px 0px;"><i>Your Easy Laravel 5 book is absolutely fantastic, well done and thank you.</i> - <a href="http://richlove.uk/" target="_blank">Rich Lovelock</a></h3>
+
+
+
+
+       </div>
+
+
+      </nav>
+
+
+      </header>
+      <div id="main" class="container">
+        <div id="content">
+          <div class="row">
+  <div class="page-content col-md-9">
+    <article class="hentry" role="article">
+      
+  <header class="page-header">
+
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-11-20T08:32:56-05:00" pubdate="" data-updated="true">Nov 20<span>th</span>, 2014</time>
+        
+      </p>
+    
+    
+    <h1 class="entry-title">
+        Introducing the Laravel 5 Form Request Feature
+        
+    </h1>
+    
+  </header>
+
+
+
+
+<p>
+  The following blog post is adapted from material found in my forthcoming book, <a href="http://easylaravelbook.com/">"Easy Laravel 5"</a>.
+ Among many other topics, you'll learn about creating application 
+layouts, the Blade templating engine, model generation, migrations, 
+validations, relations, scopes, forms integration, middleware, and 
+testing with PHPUnit. The book is slated for release in late November, 
+but you can purchase it now at a significant discount and receive free 
+updates for life. See <a href="http://easylaravelbook.com/">the home page</a> for purchase details. 
+</p>
+<hr>
+
+<div class="entry-content clearfix"><p>Laravel 5 introduces a new feature known as a <em>form request</em>.
+ This feature is intended to remove form authorization and validation 
+logic from your controllers by encapsulating this logic in a separate 
+class. TODOParrot (Easy Laravel 5’s sample project) uses form requests 
+in conjunction with each form used throughout the site and I’m pleased 
+to report this feature works meets its goal quite nicely. In this 
+adapted book excerpt I’ll introduce you to the Form Request feature by 
+walking you through the creation of a form used to create a new TODO 
+list. If you’re new to Laravel this post should be pretty useful because
+ it also demonstrates other key Laravel features such as how to create a
+ form using the <code>Form</code> component, how to use the RESTful <code>create</code> and <code>store</code> actions, and how to save data.</p>
+
+<!-- more -->
+
+
+<h2>Creating the Form</h2>
+
+<p>Before creating the form you’ll first need to create the <code>List</code> controller’s <code>create</code> view. Begin by creating a directory named <code>lists</code>, placing it in the directory <code>resources/views</code>. Inside this directory create a file named <code>create.blade.php</code> and add the following contents to it:</p>
+
+<pre><code>@extends('layouts.master')
+
+@section('content')
+
+&lt;h1&gt;Create a New List&lt;/h1&gt;
+
+&lt;ul&gt;
+    @foreach($errors-&gt;all() as $error)
+        &lt;li&gt;&lt;/li&gt;
+    @endforeach
+&lt;/ul&gt;
+
+{!! Form::open(array('route' =&gt; 'lists.store', 'class' =&gt; 'form')) !!}
+
+&lt;div class="form-group"&gt;
+    {!! Form::label('List Name') !!}
+    {!! Form::text('name', null,
+      array('required', 'class'=&gt;'form-control',
+            'placeholder'=&gt;'San Juan Vacation')) !!}
+&lt;/div&gt;
+
+&lt;div class="form-group"&gt;
+    {!! Form::label('List Description') !!}
+    {!! Form::textarea('description', null,
+      array('required', 'class'=&gt;'form-control',
+            'placeholder'=&gt;'Things to do before leaving for vacation')) !!}
+&lt;/div&gt;
+
+&lt;div class="form-group"&gt;
+    {!! Form::submit('Create List', array('class'=&gt;'btn btn-primary')) !!}
+&lt;/div&gt;
+{!! Form::close() !!}
+
+@stop
+</code></pre>
+
+<p>Presuming you’ve reviewed the earlier section regarding the contact 
+form, then most of the form syntax is familiar to you. After creating 
+the form, you’ll need to modify the <code>List</code> controller’s create action to serve the view:</p>
+
+<pre><code>public function create()
+{
+  return view('lists.create')-&gt;with('list', $list);
+}
+</code></pre>
+
+<p>After saving the changes to the <code>List</code> controller, navigate to <code>http://localhost:8000/lists/create</code> and you should see the form presented in the below screenshot!</p>
+
+<p><img src="Introducing%20the%20Laravel%205%20Form%20Request%20Feature%20-%20Easy%20Laravel_files/todoparrot_create_new_list.png" alt="creating a new list"></p>
+
+<p>With the form in place and the <code>create</code> action updated, it’s time to create the Form Request class used to validate the submitted form data.</p>
+
+<h2>Creating the List Form Request Class</h2>
+
+<p>In this section we’ll create a form request that will be used to 
+validate the form data. Begin by creating the form request class 
+skeleton:</p>
+
+<pre><code>$ php artisan make:request ListFormRequest
+Request created successfully.
+</code></pre>
+
+<p>Open the newly created form request class (<code>app/Http/Requests/ListFormRequest.php</code>) and you should see the following contents:</p>
+
+<pre><code>&lt;?php namespace todoparrot\Http\Requests;
+
+use todoparrot\Http\Requests\Request;
+
+class ListFormRequest extends Request {
+
+  public function rules()
+  {
+    return [
+    ];
+  }
+
+  public function authorize()
+  {
+    return false;
+  }
+
+}
+</code></pre>
+
+<p>The <code>rules</code> method is used to define the validation rules 
+which will be used in conjunction with the form fields. The TODO list 
+name and description are both logically required, so modify the method 
+to look like this:</p>
+
+<pre><code>public function rules()
+{
+      return [
+          'name' =&gt; 'required',
+          'description' =&gt; 'required'
+      ];
+}
+</code></pre>
+
+<p>The <code>required</code> validator used in this example is just one 
+of many available via Laravel’s validation class. See Chapter 3 for more
+ information about these rules. Incidentally, you can use multiple 
+validators in conjunction with a form field by concatenating the 
+validators together using a vertical bar (<code>|</code>). For instance if you wanted to validate a field used to pass an e-mail address you might define the validation rule as <code>required|email</code>.</p>
+
+<p>You’ll also want to modify the <code>authorize</code> method to return <code>true</code> instead of <code>false</code>,
+ because at this point in time we’re going to allow anybody to use the 
+form without tying a list to a particular registered user (I’ll show you
+ how this is done in Chapter 7):</p>
+
+<pre><code>public function authorize()
+{
+  return true;
+}
+</code></pre>
+
+<h2>Updating the List Controller’s Store Action</h2>
+
+<p>All that remains is to update the <code>List</code> controller’s <code>store</code> action to process the form contents. Of course, <code>ListFormRequest</code>
+ handles the tiresome matter of validation, leaving us to focus solely 
+on what to do with the data should it pass muster. In this instance all 
+we need to do is save the data to the database, as demonstrated in the 
+below revised <code>store</code> method:</p>
+
+<pre><code>public function store(ListFormRequest $request)
+{
+
+    $list = new Todolist(array(
+        'name' =&gt; $request-&gt;('name'),
+        'description' =&gt; $request-&gt;('description')
+    ));
+
+    $list-&gt;save();
+
+    return \Redirect::route('lists.create',
+      array($list-&gt;id))-&gt;with('message', 'Your list has been created!');
+
+}
+</code></pre>
+
+<p>Once the list is saved, user are redirected to the TODO list creation form should they desire to create another list right away.</p>
+
+<h2>Summary</h2>
+
+<p>Form requests can go a long way towards cleaning up your controllers 
+and thanks to integration with Laravel’s existing validation 
+capabilities you have easy access to a wide range of validators. Give it
+ aa try, I think you’ll like it!</p>
+</div>
+
+
+      <footer>
+        <p class="meta text-muted">
+          
+  
+
+<span class="glyphicon glyphicon-user"></span> <span class="byline author vcard">Posted by <span class="fn">W. Jason Gilmore</span></span>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-11-20T08:32:56-05:00" pubdate="" data-updated="true">Nov 20<span>th</span>, 2014</time>
+          
+
+<span class="glyphicon glyphicon-tags"></span>&nbsp;
+<span class="categories">
+  
+    <a class="category" href="http://easylaravelbook.com/blog/categories/form-request/">form request</a>
+  
+</span>
+
+
+        </p>
+        
+          <div class="sharing">
+  
+  <iframe style="width: 109px; height: 20px;" data-twttr-rendered="true" title="Twitter Tweet Button" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal" src="Introducing%20the%20Laravel%205%20Form%20Request%20Feature%20-%20Easy%20Laravel_files/tweet_button.htm" allowtransparency="true" scrolling="no" id="twitter-widget-0" frameborder="0"></iframe>
+  
+  
+  
+</div>
+
+        
+        
+          <ul class="meta text-muted pager">
+            
+            <li class="previous"><a href="http://easylaravelbook.com/blog/2014/11/11/introducing-laravel-5-elixir/" title="Previous Post: Introducing Laravel 5 Elixir">« Introducing Laravel 5 Elixir</a></li>
+            
+            
+            <li class="next"><a href="http://easylaravelbook.com/blog/2015/01/08/installing-and-configuring-homestead-2-dot-0-for-laravel-5/" title="Next Post: Installing and Configuring Homestead 2.0 for Laravel 5">Installing and Configuring Homestead 2.0 for Laravel 5 »</a></li>
+            
+          </ul>
+        
+      </footer>
+    </article>
+    
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><iframe verticalscrolling="no" horizontalscrolling="no" src="Introducing%20the%20Laravel%205%20Form%20Request%20Feature%20-%20Easy%20Laravel_files/a.htm" style="width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 75px ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" data-disqus-uid="2" id="dsq-2" frameborder="0" width="100%"></iframe></div>
+      </section>
+    
+  </div>
+
+  
+  <aside class="sidebar col-md-3">
+ 
+  <a href="http://easylaravelbook.com/"><img src="Introducing%20the%20Laravel%205%20Form%20Request%20Feature%20-%20Easy%20Laravel_files/book-large-web.png" style="margin-bottom: 10px; float: left; border: 1px solid black;"></a>
+    <h3>Have a Question?</h3>
+  <p>
+  I love answering questions about any PHP topic! Feel free to e-mail me at wj AT wjgilmore.com.
+  </p>
+
+              <!-- Begin MailChimp Signup Form -->
+<link href="Introducing%20the%20Laravel%205%20Form%20Request%20Feature%20-%20Easy%20Laravel_files/slim-081711.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  #mc_embed_signup{clear:left; width: 100%;}
+  /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+     We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+   </style>
+
+            <!-- Begin MailChimp Signup Form -->
+            <div id="mc_embed_signup">
+                <form class="form-inline" role="form" action="//wjgilmore.us7.list-manage.com/subscribe/post?u=f441f1bb5368236838a069f04&amp;id=2d6c711382" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate="">
+
+                    <div class="form-group">
+                        <label for="mce-EMAIL">
+                            <strong>Subscribe to receive occasional news about the book, Laravel, and PHP. No spam, ever.&nbsp;&nbsp;</strong>
+                        </label>
+                        <input class="form-control" placeholder="Your e-mail address" name="EMAIL" id="mce-EMAIL" type="email">
+                        <input value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-success" type="submit">
+                    </div>
+
+                    <div id="mce-responses" class="clear">
+                        <div class="response" id="mce-error-response" style="display:none"></div>
+                        <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>
+                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                    <div style="position: absolute; left: -5000px;"><input name="b_f441f1bb5368236838a069f04_2d6c711382" tabindex="-1" type="text"></div>
+                </form>
+            </div>
+
+            <!--End mc_embed_signup-->
+
+
+                     <br>
+
+    
+      <section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Recent Posts</h3>
+  </div>
+  
+  <div id="recent_posts" class="list-group">
+    
+    <a class="list-group-item " href="http://easylaravelbook.com/blog/2015/02/12/laravel-5-sample-application-code-now-available/">Laravel 5 Sample Application Code Now Available</a>
+    
+    <a class="list-group-item " href="http://easylaravelbook.com/blog/2015/02/11/formatting-timestamps-in-laravel/">Formatting Timestamps in Laravel</a>
+    
+    <a class="list-group-item " href="http://easylaravelbook.com/blog/2015/02/09/creating-a-contact-form-in-laravel-5-using-the-form-request-feature/">Creating a Contact Form in Laravel 5 Using the Form Request Feature</a>
+    
+    <a class="list-group-item " href="http://easylaravelbook.com/blog/2015/01/31/deploying-a-laravel-application-to-heroku/">Deploying a Laravel Application to Heroku</a>
+    
+    <a class="list-group-item " href="http://easylaravelbook.com/blog/2015/01/27/introducing-the-laravel-5-command-scheduler/">Introducing the Laravel 5 Command Scheduler</a>
+    
+  </div>
+</section>
+
+
+
+
+
+
+    
+  </aside>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+    <footer role="contentinfo"><div class="container">
+    <p class="text-muted credits">
+  Copyright © 2015 -WJ Gilmore, LLC<br>
+  Laravel is a trademark of <a href="http://taylorotwell.com/">Taylor Otwell</a>.
+  <small>
+      <span class="credit">Powered by <a href="http://octopress.org/">Octopress</a></span>,
+      <span class="credit">customized with <a href="https://github.com/kAworu/octostrap3">octostrap3</a></span>.
+  </small>
+</p>
+
+</div>
+</footer>
+    <script src="Introducing%20the%20Laravel%205%20Form%20Request%20Feature%20-%20Easy%20Laravel_files/bootstrap.js"></script>
+<script src="Introducing%20the%20Laravel%205%20Form%20Request%20Feature%20-%20Easy%20Laravel_files/modernizr-2.js"></script>
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'easylaravel';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://easylaravelbook.com/blog/2014/11/20/introducing-the-laravel-5-form-request-feature/';
+        var disqus_url = 'http://easylaravelbook.com/blog/2014/11/20/introducing-the-laravel-5-form-request-feature/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  
+
+</body></html>

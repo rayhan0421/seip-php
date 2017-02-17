@@ -1,0 +1,4 @@
+1. Implicit Route Binding
+2. API Rate Limiting
+3. Validating Arrays
+4. Auth and Resets in Minutes

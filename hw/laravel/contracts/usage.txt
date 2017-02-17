@@ -1,0 +1,22 @@
+call laravel built in interface in method of class
+
+
+example:
+
+use Illuminate\Contracts\Mail\Mailer as mail
+
+class abc{
+}
+or class abccontroller extends controller {
+
+
+public function __constructs( mail $mail){
+
+   $this->mail = $mail;
+// use it anywhere into class
+  }
+
+see more ......contracts 
+
+https://github.com/illuminate/contracts
+}

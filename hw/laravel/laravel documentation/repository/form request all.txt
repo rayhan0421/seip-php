@@ -1,0 +1,7 @@
+to get all form data use request namespace and use method $request->all();
+
+we can pass this $request->all() in repository interface 
+
+------------------
+$data = Input:: all ();
+8 var_dump( $data);

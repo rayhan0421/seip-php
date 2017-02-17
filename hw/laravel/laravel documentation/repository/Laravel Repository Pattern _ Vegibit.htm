@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en-US"> <![endif]-->
+<!--[if IE 7]>     <html class="no-js lt-ie9 lt-ie8" lang="en-US"> <![endif]-->
+<!--[if IE 8]>     <html class="no-js lt-ie9" lang="en-US"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html style="" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en-US"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Laravel Repository Pattern | Vegibit</title>
+		<meta name="viewport" content="width=device-width">
+
+		<link rel="profile" href="http://gmpg.org/xfn/11">
+		<link rel="pingback" href="http://vegibit.com/xmlrpc.php">
+        
+                	
+		<!--wordpress head-->
+<link rel="stylesheet" href="Laravel%20Repository%20Pattern%20_%20Vegibit_files/bootstrap.css">
+		<link rel="alternate" type="application/rss+xml" title="Vegibit » Feed" href="http://vegibit.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Vegibit » Comments Feed" href="http://vegibit.com/comments/feed/">
+<link rel="stylesheet" id="crayon-css" href="Laravel%20Repository%20Pattern%20_%20Vegibit_files/crayon.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-theme-github-css" href="Laravel%20Repository%20Pattern%20_%20Vegibit_files/github.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-font-monaco-css" href="Laravel%20Repository%20Pattern%20_%20Vegibit_files/monaco.css" type="text/css" media="all">
+<link rel="stylesheet" id="ssbaFont-css" href="Laravel%20Repository%20Pattern%20_%20Vegibit_files/css.css" type="text/css" media="all">
+<link rel="stylesheet" id="vegitheme-style-css" href="Laravel%20Repository%20Pattern%20_%20Vegibit_files/style_002.css" type="text/css" media="all">
+<link rel="stylesheet" id="fontawesome-style-css" href="Laravel%20Repository%20Pattern%20_%20Vegibit_files/font-awesome.css" type="text/css" media="all">
+<link rel="stylesheet" id="main-style-css" href="Laravel%20Repository%20Pattern%20_%20Vegibit_files/main.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack-top-posts-widget-css" href="Laravel%20Repository%20Pattern%20_%20Vegibit_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="Laravel%20Repository%20Pattern%20_%20Vegibit_files/jetpack.css" type="text/css" media="all">
+<script type="text/javascript" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/jquery.js"></script>
+<script type="text/javascript" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/related-posts.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"2.6.9","is_admin":"0","ajaxurl":"http:\/\/vegibit.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/crayon.js"></script>
+<script type="text/javascript" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/modernizr.js"></script>
+<script type="text/javascript" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/respond.js"></script>
+<script type="text/javascript" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/html5shiv.js"></script>
+<script type="text/javascript" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/bootstrap.js"></script>
+<script type="text/javascript" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/main.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://vegibit.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://vegibit.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Laravel File Structure" href="http://vegibit.com/laravel-file-structure/">
+<link rel="next" title="Laravel Event Listeners" href="http://vegibit.com/laravel-event-listeners/">
+<meta name="generator" content="WordPress 4.1">
+<link rel="canonical" href="http://vegibit.com/laravel-repository-pattern/">
+<link rel="shortlink" href="http://wp.me/p3iC3e-2DM">
+<style type="text/css">	.ssba {
+											padding: 10px;
+											border: 0px solid #ffffff;
+											background-color: #ffffff;
+											
+										}
+										.ssba img		
+										{ 	
+											width: 50px !important;
+											padding: 1px;
+											border:  0;
+											box-shadow: none !important;
+											display: inline !important;
+											vertical-align: middle;
+										}
+										.ssba, .ssba a		
+										{
+											text-decoration:none;
+											
+											font-family: Indie Flower;
+											font-size: 	30px;
+											color: 		#dd0000!important;
+											font-weight: bold;
+										}</style><style type="text/css">img#wpstats{display:none}</style>
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel Repository Pattern">
+<meta property="og:url" content="http://vegibit.com/laravel-repository-pattern/">
+<meta property="og:description" content="The Repository Pattern can be very helpful to you in order to keep your code a little cleaner and more readable. In fact, you don't have to be using Laravel in order to use this particular design p...">
+<meta property="article:published_time" content="2014-07-28T18:22:11+00:00">
+<meta property="article:modified_time" content="2014-07-28T18:22:11+00:00">
+<meta property="article:author" content="http://vegibit.com/author/vegibit/">
+<meta property="og:site_name" content="Vegibit">
+<meta property="og:image" content="http://vegibit.com/wp-content/uploads/2014/07/repository-pattern.png">
+<meta property="og:image" content="http://vegibit.com/wp-content/uploads/2014/07/Laravel-Repository-Pattern.png">
+<meta property="og:image" content="http://vegibit.com/wp-content/uploads/2014/07/Repository-Swap-Implementation.png">
+<meta name="twitter:site" content="@vegibit">
+<meta name="twitter:image" content="http://vegibit.com/wp-content/uploads/2014/07/repository-pattern.png?w=240">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@vegibit">
+
+
+
+<script type="text/javascript">
+$(function() {
+		$('a.switcher').click(function(){
+		jstat = this.id;
+		$.post("http://vegibit.com/wp-content/themes/vegitheme/s.php", { theme :jstat },
+			function(data) {
+			$('#message').html(data);
+			location.reload(); 
+			} );
+	})
+});
+
+	
+</script>
+	<script src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/bsa.js" async="" type="text/javascript"></script><link rel="stylesheet" type="text/css" id="gravatar-card-css" href="Laravel%20Repository%20Pattern%20_%20Vegibit_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="Laravel%20Repository%20Pattern%20_%20Vegibit_files/services.css"><script async="async" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/s_a58bf8a0e6d7e356c00f7229cc5cdedf.js" id="_bsap_js_a58bf8a0e6d7e356c00f7229cc5cdedf" type="text/javascript"></script><script id="_bsap_premium_pro" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/pro.js" type="text/javascript"></script><script async="async" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/a" id="_bsaPRO_js" type="text/javascript"></script></head>
+	<body class="single single-post postid-10154 single-format-standard">
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+		
+		
+		
+		
+		
+		<div class="col-lg-10" style="float:none; margin:0 auto; background-color:#FFF">
+			 
+			<header role="banner">
+				<div class="row row-with-vspace site-branding">
+					<div class="col-md-6 site-title">
+						<h1 class="site-title-heading">
+							<a href="http://vegibit.com/" title="Vegibit" rel="home">Vegibit</a>
+						</h1>
+						<div class="site-description">
+							<small>
+								Random Bits of Awesomeness 
+							</small>
+						</div>
+					</div>
+					<div class="col-md-6 page-header-top-right">
+						<div class="sr-only">
+							<a href="#content" title="Skip to content">Skip to content</a>
+						</div>
+						 
+					</div>
+				</div><!--.site-branding-->
+				
+				<div class="row main-navigation">
+					<div class="col-md-12">
+						<nav class="navbar navbar-default" role="navigation">
+							<div class="navbar-header">
+                            <a class="navbar-brand" href="#">
+        					  <img alt="Brand" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/nav_vegibit.png" height="20px">
+      						</a>
+								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-primary-collapse">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+							</div>
+							
+							<div class="collapse navbar-collapse navbar-primary-collapse">
+								<ul id="menu-nav" class="nav navbar-nav"><li id="menu-item-18430" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18430"><a href="http://vegibit.com/html/">Html</a></li>
+<li id="menu-item-18436" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18436"><a href="http://vegibit.com/php/">Php</a></li>
+<li id="menu-item-18441" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18441"><a href="http://vegibit.com/javascript/">JavaScript</a></li>
+<li id="menu-item-18445" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18445"><a href="http://vegibit.com/laravel/">Laravel</a></li>
+<li id="menu-item-18453" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18453"><a href="http://vegibit.com/twitter-bootstrap/">Twitter Bootstrap</a></li>
+<li id="menu-item-18463" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18463"><a href="http://vegibit.com/wordpress/">WordPress</a></li>
+<li id="menu-item-18458" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18458"><a href="http://vegibit.com/mysql/">MySQL</a></li>
+<li id="menu-item-18560" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18560"><a href="http://vegibit.com/linux/">Linux</a></li>
+</ul> 
+															</div><!--.navbar-collapse-->
+						</nav>
+					</div>
+				</div><!--.main-navigation-->
+			</header>
+			
+			
+			<div id="content" class="row row-with-vspace site-content"> 
+  
+				<div class="col-md-8 content-area" id="main-column">
+					<main id="main" class="site-main" role="main">
+						<article id="post-10154" class="post-10154 post type-post status-publish format-standard hentry category-web-development tag-laravel">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://vegibit.com/laravel-repository-pattern/" rel="bookmark">Laravel Repository Pattern</a></h1>
+
+		 
+		<div class="entry-meta">
+			 
+		</div><!-- .entry-meta -->
+		 
+	</header><!-- .entry-header -->
+
+	
+	 
+	<div class="entry-content">
+		<!-- Simple Share Buttons Adder (5.5) simplesharebuttons.com --><div class="ssba"><div style="text-align:right">Please Share!!   <a class="ssba_google_share" href="https://plus.google.com/share?url=http://vegibit.com/laravel-repository-pattern/" target="_blank"><img data-original-title="Google+" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/google.png" title="" class="ssba" alt="Share on Google+"></a><a class="ssba_twitter_share" href="http://twitter.com/share?url=http://vegibit.com/laravel-repository-pattern/&amp;text=Laravel+Repository+Pattern+" target="_blank"><img data-original-title="Twitter" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/twitter.png" title="" class="ssba" alt="Tweet about this on Twitter"></a><a class="ssba_facebook_share" href="http://www.facebook.com/sharer.php?u=http://vegibit.com/laravel-repository-pattern/" target="_blank"><img data-original-title="Facebook" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/facebook.png" title="" class="ssba" alt="Share on Facebook"></a><a class="ssba_stumbleupon_share ssba_share_link" href="http://www.stumbleupon.com/submit?url=http://vegibit.com/laravel-repository-pattern/&amp;title=Laravel%20Repository%20Pattern" target="_blank"><img data-original-title="StumbleUpon" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/stumbleupon.png" title="" class="ssba" alt="Share on StumbleUpon"></a><a class="ssba_reddit_share" href="http://reddit.com/submit?url=http://vegibit.com/laravel-repository-pattern/&amp;title=Laravel%20Repository%20Pattern" target="_blank"><img data-original-title="Reddit" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/reddit.png" title="" class="ssba" alt="Share on Reddit"></a><a class="ssba_buffer_share" href="https://bufferapp.com/add?url=http://vegibit.com/laravel-repository-pattern/&amp;text=%20Laravel%20Repository%20Pattern" target="_blank"><img data-original-title="Buffer" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/buffer.png" title="" class="ssba" alt="Buffer this page"></a></div></div><p><img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/repository-pattern_002.png" alt="repository pattern" class="alignnone size-full wp-image-10186" height="166" width="778">
+</p><p class="lead">The Repository Pattern can be very helpful to you in
+ order to keep your code a little cleaner and more readable.  In fact, 
+you don’t have to be using Laravel in order to use this particular 
+design pattern.  For this episode however, we will use Laravel to show 
+how using repositories will make our controllers a bit less verbose, 
+more loosely coupled, and easier to read.  Let’s jump in!</p>
+<hr>
+<h2>Working Without Repositories</h2>
+<p>Using repositories is not mandatory!  You can accomplish many great 
+things in your applications without using this pattern, however, over 
+time you may be painting yourself into a corner.  For example by 
+choosing not to use repositories, your application is not easily tested 
+and swapping out implementations would be cumbersome.  Let’s look at an 
+example.</p>
+<h3>Getting House Listings From a Real Estate Database</h3>
+<h4>HousesController.php</h4>
+<p></p><!-- Crayon Syntax Highlighter v2.6.9 -->
+
+		<div id="crayon-54da67754ea44372665662" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 14px ! important; line-height: 18px ! important; z-index: 0; opacity: 0;">&lt;?php
+
+class HousesController extends BaseController {
+
+
+	public function index()
+	{
+		$houses = House::all();
+		
+		return View::make('houses.index', compact('houses'));
+	}
+
+
+	public function create()
+	{
+		return View::make('houses.create');
+	}
+
+
+	public function show($id)
+	{
+		$house = House::find($id);
+		
+		return View::make('houses.show', compact('house'));
+	}
+}</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1;">
+				<table style="margin-left: -29px;" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 18px !important;"><div class="crayon-num" data-line="crayon-54da67754ea44372665662-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea44372665662-2">2</div><div class="crayon-num" data-line="crayon-54da67754ea44372665662-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea44372665662-4">4</div><div class="crayon-num" data-line="crayon-54da67754ea44372665662-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea44372665662-6">6</div><div class="crayon-num" data-line="crayon-54da67754ea44372665662-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea44372665662-8">8</div><div class="crayon-num" data-line="crayon-54da67754ea44372665662-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea44372665662-10">10</div><div class="crayon-num" data-line="crayon-54da67754ea44372665662-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea44372665662-12">12</div><div class="crayon-num" data-line="crayon-54da67754ea44372665662-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea44372665662-14">14</div><div class="crayon-num" data-line="crayon-54da67754ea44372665662-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea44372665662-16">16</div><div class="crayon-num" data-line="crayon-54da67754ea44372665662-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea44372665662-18">18</div><div class="crayon-num" data-line="crayon-54da67754ea44372665662-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea44372665662-20">20</div><div class="crayon-num" data-line="crayon-54da67754ea44372665662-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea44372665662-22">22</div><div class="crayon-num" data-line="crayon-54da67754ea44372665662-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea44372665662-24">24</div><div class="crayon-num" data-line="crayon-54da67754ea44372665662-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea44372665662-26">26</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 18px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-54da67754ea44372665662-1"><span class="crayon-ta">&lt;?php</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea44372665662-2">&nbsp;</div><div class="crayon-line" id="crayon-54da67754ea44372665662-3"><span class="crayon-t">class</span><span class="crayon-h"> </span><span class="crayon-e">HousesController</span><span class="crayon-h"> </span><span class="crayon-r">extends</span><span class="crayon-h"> </span><span class="crayon-e">BaseController</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea44372665662-4">&nbsp;</div><div class="crayon-line" id="crayon-54da67754ea44372665662-5">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea44372665662-6"><span class="crayon-h">	</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-e">index</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-54da67754ea44372665662-7"><span class="crayon-h">	</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea44372665662-8"><span class="crayon-h">		</span><span class="crayon-v">$houses</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-e">House::</span><span class="crayon-e">all</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea44372665662-9"><span class="crayon-h">		</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea44372665662-10"><span class="crayon-h">		</span><span class="crayon-k ">return</span><span class="crayon-h"> </span><span class="crayon-e">View::</span><span class="crayon-e">make</span><span class="crayon-sy">(</span><span class="crayon-s">'houses.index'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-e">compact</span><span class="crayon-sy">(</span><span class="crayon-s">'houses'</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea44372665662-11"><span class="crayon-h">	</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea44372665662-12">&nbsp;</div><div class="crayon-line" id="crayon-54da67754ea44372665662-13">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea44372665662-14"><span class="crayon-h">	</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-e">create</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-54da67754ea44372665662-15"><span class="crayon-h">	</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea44372665662-16"><span class="crayon-h">		</span><span class="crayon-k ">return</span><span class="crayon-h"> </span><span class="crayon-e">View::</span><span class="crayon-e">make</span><span class="crayon-sy">(</span><span class="crayon-s">'houses.create'</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea44372665662-17"><span class="crayon-h">	</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea44372665662-18">&nbsp;</div><div class="crayon-line" id="crayon-54da67754ea44372665662-19">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea44372665662-20"><span class="crayon-h">	</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-e">show</span><span class="crayon-sy">(</span><span class="crayon-v">$id</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-54da67754ea44372665662-21"><span class="crayon-h">	</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea44372665662-22"><span class="crayon-h">		</span><span class="crayon-v">$house</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-e">House::</span><span class="crayon-e">find</span><span class="crayon-sy">(</span><span class="crayon-v">$id</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea44372665662-23"><span class="crayon-h">		</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea44372665662-24"><span class="crayon-h">		</span><span class="crayon-k ">return</span><span class="crayon-h"> </span><span class="crayon-e">View::</span><span class="crayon-e">make</span><span class="crayon-sy">(</span><span class="crayon-s">'houses.show'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-e">compact</span><span class="crayon-sy">(</span><span class="crayon-s">'house'</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea44372665662-25"><span class="crayon-h">	</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea44372665662-26"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0043 seconds] -->
+<p></p>
+<p>This would be pretty typical code for using Eloquent to interact with
+ the database which holds listings of houses for sale.  It will work 
+just fine, but the controller is now tightly coupled to Eloquent.  We 
+can inject a repository instead to create a loosely coupled version of 
+the same code.  This loose coupling makes it easy to swap 
+implementations at a later time.</p>
+<hr>
+<h2>Working With Repositories</h2>
+<p>There are a fair number of steps to complete the entire repository 
+pattern, but once you go through it a few times it becomes second 
+nature.  We’re going to cover every step here.</p>
+<ul>
+<li>
+<h3>1: Create the Repository Folder</h3>
+</li>
+<p>We recently looked at a common <a href="http://vegibit.com/laravel-file-structure/" title="Laravel File Structure">Laravel File Structure</a> you might be using.  This creates a folder in the <code>app</code> directory to hold all of your domain specific files.  For this example we’ll create the <code>repotutrepositories</code> within our <code>app</code>
+ folder to contain our files.  This also sets up our namespace structure
+ which we will need to keep in mind for the files we create.</p>
+<li>
+<h3>2: Create Your Interface</h3>
+</li>
+<p>The next step is to create the interface which will determine the 
+contract our repository must implement.  This just lays out the methods 
+that must be present in our repository.  Our Interface will look like 
+the following.  Note the namespace and methods we will use.</p>
+<p><strong>HouseRepositoryInterface.php</strong></p><!-- Crayon Syntax Highlighter v2.6.9 -->
+
+		<div id="crayon-54da67754ea56989243845" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 14px ! important; line-height: 18px ! important; z-index: 0; opacity: 0;">&lt;?php
+namespace repotutrepositories;
+
+interface HouseRepositoryInterface {
+	
+	public function selectAll();
+	
+	public function find($id);
+	
+}</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1;">
+				<table style="margin-left: -29px;" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 18px !important;"><div class="crayon-num" data-line="crayon-54da67754ea56989243845-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea56989243845-2">2</div><div class="crayon-num" data-line="crayon-54da67754ea56989243845-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea56989243845-4">4</div><div class="crayon-num" data-line="crayon-54da67754ea56989243845-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea56989243845-6">6</div><div class="crayon-num" data-line="crayon-54da67754ea56989243845-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea56989243845-8">8</div><div class="crayon-num" data-line="crayon-54da67754ea56989243845-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea56989243845-10">10</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 18px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-54da67754ea56989243845-1"><span class="crayon-ta">&lt;?php</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea56989243845-2"><span class="crayon-t">namespace</span><span class="crayon-h"> </span><span class="crayon-i">repotutrepositories</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea56989243845-3">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea56989243845-4"><span class="crayon-t">interface</span><span class="crayon-h"> </span><span class="crayon-e">HouseRepositoryInterface</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-54da67754ea56989243845-5"><span class="crayon-h">	</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea56989243845-6"><span class="crayon-h">	</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-e">selectAll</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea56989243845-7"><span class="crayon-h">	</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea56989243845-8"><span class="crayon-h">	</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-e">find</span><span class="crayon-sy">(</span><span class="crayon-v">$id</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea56989243845-9"><span class="crayon-h">	</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea56989243845-10"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0016 seconds] -->
+<p></p>
+<li>
+<h3>3: Create Your Repository</h3>
+</li>
+<p>We can now create the repository which will do all of the heavy 
+lifting for us.  It is in this file that we can put all of our detailed 
+Eloquent queries, no matter how complex they may become.  Each method 
+simply has a custom name so that in our controller, we can just write 
+some very short code to get the desired result.  Again note the 
+namespace and the <code>use House;</code> statement.</p>
+<p><strong>DbHouseRepository.php</strong></p><!-- Crayon Syntax Highlighter v2.6.9 -->
+
+		<div id="crayon-54da67754ea5d953537389" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 14px ! important; line-height: 18px ! important; z-index: 0; opacity: 0;">&lt;?php
+namespace repotutrepositories;
+
+use House;
+
+class DbHouseRepository implements HouseRepositoryInterface {
+	
+	public function selectAll()
+	{
+		return House::all();
+	}
+	
+	public function find($id)
+	{
+		return House::find($id);
+	}
+}</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1;">
+				<table style="margin-left: -29px;" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 18px !important;"><div class="crayon-num" data-line="crayon-54da67754ea5d953537389-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea5d953537389-2">2</div><div class="crayon-num" data-line="crayon-54da67754ea5d953537389-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea5d953537389-4">4</div><div class="crayon-num" data-line="crayon-54da67754ea5d953537389-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea5d953537389-6">6</div><div class="crayon-num" data-line="crayon-54da67754ea5d953537389-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea5d953537389-8">8</div><div class="crayon-num" data-line="crayon-54da67754ea5d953537389-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea5d953537389-10">10</div><div class="crayon-num" data-line="crayon-54da67754ea5d953537389-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea5d953537389-12">12</div><div class="crayon-num" data-line="crayon-54da67754ea5d953537389-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea5d953537389-14">14</div><div class="crayon-num" data-line="crayon-54da67754ea5d953537389-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea5d953537389-16">16</div><div class="crayon-num" data-line="crayon-54da67754ea5d953537389-17">17</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 18px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-54da67754ea5d953537389-1"><span class="crayon-ta">&lt;?php</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea5d953537389-2"><span class="crayon-t">namespace</span><span class="crayon-h"> </span><span class="crayon-i">repotutrepositories</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea5d953537389-3">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea5d953537389-4"><span class="crayon-st">use</span><span class="crayon-h"> </span><span class="crayon-i">House</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea5d953537389-5">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea5d953537389-6"><span class="crayon-t">class</span><span class="crayon-h"> </span><span class="crayon-e">DbHouseRepository</span><span class="crayon-h"> </span><span class="crayon-r">implements</span><span class="crayon-h"> </span><span class="crayon-e">HouseRepositoryInterface</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-54da67754ea5d953537389-7"><span class="crayon-h">	</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea5d953537389-8"><span class="crayon-h">	</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-e">selectAll</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-54da67754ea5d953537389-9"><span class="crayon-h">	</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea5d953537389-10"><span class="crayon-h">		</span><span class="crayon-k ">return</span><span class="crayon-h"> </span><span class="crayon-e">House::</span><span class="crayon-e">all</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea5d953537389-11"><span class="crayon-h">	</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea5d953537389-12"><span class="crayon-h">	</span></div><div class="crayon-line" id="crayon-54da67754ea5d953537389-13"><span class="crayon-h">	</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-e">find</span><span class="crayon-sy">(</span><span class="crayon-v">$id</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea5d953537389-14"><span class="crayon-h">	</span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-54da67754ea5d953537389-15"><span class="crayon-h">		</span><span class="crayon-k ">return</span><span class="crayon-h"> </span><span class="crayon-e">House::</span><span class="crayon-e">find</span><span class="crayon-sy">(</span><span class="crayon-v">$id</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea5d953537389-16"><span class="crayon-h">	</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-54da67754ea5d953537389-17"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0027 seconds] -->
+<p></p>
+<li>
+<h3>4: Create Backend Service Provider</h3>
+</li>
+<p>For our controller, we are going to type hint an interface.  We are 
+going to be doing dependency injection, but by way of an interface 
+essentially.  What this means is that we need to register the interface 
+with Laravel so that it knows which implementation of our interface we 
+want to use.  We’ll first use an Eloquent implementation, but later 
+we’ll move to a File based implementation to show how we can swap 
+implementations easily using an interface.  We place this Service 
+Provider in the same namespace as our other files so far.</p>
+<p><strong>BackendServiceProvider.php</strong></p><!-- Crayon Syntax Highlighter v2.6.9 -->
+
+		<div id="crayon-54da67754ea64523449642" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 14px ! important; line-height: 18px ! important; z-index: 0; opacity: 0;">&lt;?php
+namespace repotutrepositories;
+
+use IlluminateSupportServiceProvider;
+
+class BackendServiceProvider extends ServiceProvider {
+	
+	public function register()
+	{
+		$this-&gt;app-&gt;bind('repotutrepositoriesHouseRepositoryInterface', 'repotutrepositoriesDbHouseRepository');
+	}
+}</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1;">
+				<table style="margin-left: -29px;" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 18px !important;"><div class="crayon-num" data-line="crayon-54da67754ea64523449642-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea64523449642-2">2</div><div class="crayon-num" data-line="crayon-54da67754ea64523449642-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea64523449642-4">4</div><div class="crayon-num" data-line="crayon-54da67754ea64523449642-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea64523449642-6">6</div><div class="crayon-num" data-line="crayon-54da67754ea64523449642-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea64523449642-8">8</div><div class="crayon-num" data-line="crayon-54da67754ea64523449642-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea64523449642-10">10</div><div class="crayon-num" data-line="crayon-54da67754ea64523449642-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea64523449642-12">12</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 18px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-54da67754ea64523449642-1"><span class="crayon-ta">&lt;?php</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea64523449642-2"><span class="crayon-t">namespace</span><span class="crayon-h"> </span><span class="crayon-i">repotutrepositories</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea64523449642-3">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea64523449642-4"><span class="crayon-st">use</span><span class="crayon-h"> </span><span class="crayon-i">IlluminateSupportServiceProvider</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea64523449642-5">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea64523449642-6"><span class="crayon-t">class</span><span class="crayon-h"> </span><span class="crayon-e">BackendServiceProvider</span><span class="crayon-h"> </span><span class="crayon-r">extends</span><span class="crayon-h"> </span><span class="crayon-e">ServiceProvider</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-54da67754ea64523449642-7"><span class="crayon-h">	</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea64523449642-8"><span class="crayon-h">	</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-e">register</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-54da67754ea64523449642-9"><span class="crayon-h">	</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea64523449642-10"><span class="crayon-h">		</span><span class="crayon-v">$this</span><span class="crayon-o">-&gt;</span><span class="crayon-i">app</span><span class="crayon-o">-&gt;</span><span class="crayon-e">bind</span><span class="crayon-sy">(</span><span class="crayon-s">'repotutrepositoriesHouseRepositoryInterface'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'repotutrepositoriesDbHouseRepository'</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea64523449642-11"><span class="crayon-h">	</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea64523449642-12"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0022 seconds] -->
+<p></p>
+<p>This code basically says, when you see the controller type hinting <code>HouseRepositoryInterface</code>, we know you want to make use of the <code>DbHouseRepository</code>.</p>
+<li>
+<h3>5: Update Your Providers Array</h3>
+</li>
+<p>Now that we have created a new Service Provider, we need to add this to the <code>providers</code> array within <code>app/config/app.php</code>.  It may look something like this once complete:</p>
+<p></p><!-- Crayon Syntax Highlighter v2.6.9 -->
+
+		<div id="crayon-54da67754ea6a276243695" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 14px ! important; line-height: 18px ! important; z-index: 0; opacity: 0;">	'providers' =&gt; array(
+
+		'IlluminateFoundationProvidersArtisanServiceProvider',
+		'IlluminateAuthAuthServiceProvider',
+		'IlluminateCacheCacheServiceProvider',
+		'IlluminateSessionCommandsServiceProvider',
+		'IlluminateFoundationProvidersConsoleSupportServiceProvider',
+		'IlluminateRoutingControllerServiceProvider',
+		'IlluminateCookieCookieServiceProvider',
+		'IlluminateDatabaseDatabaseServiceProvider',
+		'IlluminateEncryptionEncryptionServiceProvider',
+		'IlluminateFilesystemFilesystemServiceProvider',
+		'IlluminateHashingHashServiceProvider',
+		'IlluminateHtmlHtmlServiceProvider',
+		'IlluminateLogLogServiceProvider',
+		'IlluminateMailMailServiceProvider',
+		'IlluminateDatabaseMigrationServiceProvider',
+		'IlluminatePaginationPaginationServiceProvider',
+		'IlluminateQueueQueueServiceProvider',
+		'IlluminateRedisRedisServiceProvider',
+		'IlluminateRemoteRemoteServiceProvider',
+		'IlluminateAuthRemindersReminderServiceProvider',
+		'IlluminateDatabaseSeedServiceProvider',
+		'IlluminateSessionSessionServiceProvider',
+		'IlluminateTranslationTranslationServiceProvider',
+		'IlluminateValidationValidationServiceProvider',
+		'IlluminateViewViewServiceProvider',
+		'IlluminateWorkbenchWorkbenchServiceProvider',
+		'repotutrepositoriesBackendServiceProvider'
+
+	),</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1;">
+				<table style="margin-left: -29px;" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 18px !important;"><div class="crayon-num" data-line="crayon-54da67754ea6a276243695-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea6a276243695-2">2</div><div class="crayon-num" data-line="crayon-54da67754ea6a276243695-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea6a276243695-4">4</div><div class="crayon-num" data-line="crayon-54da67754ea6a276243695-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea6a276243695-6">6</div><div class="crayon-num" data-line="crayon-54da67754ea6a276243695-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea6a276243695-8">8</div><div class="crayon-num" data-line="crayon-54da67754ea6a276243695-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea6a276243695-10">10</div><div class="crayon-num" data-line="crayon-54da67754ea6a276243695-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea6a276243695-12">12</div><div class="crayon-num" data-line="crayon-54da67754ea6a276243695-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea6a276243695-14">14</div><div class="crayon-num" data-line="crayon-54da67754ea6a276243695-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea6a276243695-16">16</div><div class="crayon-num" data-line="crayon-54da67754ea6a276243695-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea6a276243695-18">18</div><div class="crayon-num" data-line="crayon-54da67754ea6a276243695-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea6a276243695-20">20</div><div class="crayon-num" data-line="crayon-54da67754ea6a276243695-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea6a276243695-22">22</div><div class="crayon-num" data-line="crayon-54da67754ea6a276243695-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea6a276243695-24">24</div><div class="crayon-num" data-line="crayon-54da67754ea6a276243695-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea6a276243695-26">26</div><div class="crayon-num" data-line="crayon-54da67754ea6a276243695-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea6a276243695-28">28</div><div class="crayon-num" data-line="crayon-54da67754ea6a276243695-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea6a276243695-30">30</div><div class="crayon-num" data-line="crayon-54da67754ea6a276243695-31">31</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 18px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-54da67754ea6a276243695-1"><span class="crayon-h">	</span><span class="crayon-s">'providers'</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-t">array</span><span class="crayon-sy">(</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea6a276243695-2">&nbsp;</div><div class="crayon-line" id="crayon-54da67754ea6a276243695-3"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateFoundationProvidersArtisanServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea6a276243695-4"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateAuthAuthServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-54da67754ea6a276243695-5"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateCacheCacheServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea6a276243695-6"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateSessionCommandsServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-54da67754ea6a276243695-7"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateFoundationProvidersConsoleSupportServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea6a276243695-8"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateRoutingControllerServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-54da67754ea6a276243695-9"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateCookieCookieServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea6a276243695-10"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateDatabaseDatabaseServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-54da67754ea6a276243695-11"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateEncryptionEncryptionServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea6a276243695-12"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateFilesystemFilesystemServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-54da67754ea6a276243695-13"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateHashingHashServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea6a276243695-14"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateHtmlHtmlServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-54da67754ea6a276243695-15"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateLogLogServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea6a276243695-16"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateMailMailServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-54da67754ea6a276243695-17"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateDatabaseMigrationServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea6a276243695-18"><span class="crayon-h">		</span><span class="crayon-s">'IlluminatePaginationPaginationServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-54da67754ea6a276243695-19"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateQueueQueueServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea6a276243695-20"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateRedisRedisServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-54da67754ea6a276243695-21"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateRemoteRemoteServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea6a276243695-22"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateAuthRemindersReminderServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-54da67754ea6a276243695-23"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateDatabaseSeedServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea6a276243695-24"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateSessionSessionServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-54da67754ea6a276243695-25"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateTranslationTranslationServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea6a276243695-26"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateValidationValidationServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-54da67754ea6a276243695-27"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateViewViewServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea6a276243695-28"><span class="crayon-h">		</span><span class="crayon-s">'IlluminateWorkbenchWorkbenchServiceProvider'</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-54da67754ea6a276243695-29"><span class="crayon-h">		</span><span class="crayon-s">'repotutrepositoriesBackendServiceProvider'</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea6a276243695-30">&nbsp;</div><div class="crayon-line" id="crayon-54da67754ea6a276243695-31"><span class="crayon-h">	</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0032 seconds] -->
+<p></p>
+<li>
+<h3>6: Update Your Controller for Dependency Injection</h3>
+</li>
+<p>We have most of the groundwork in place.  We can now update the 
+Controller to facilitate injecting an implementation of the 
+HouseRepositoryInterface.  This will all us to remove any calls to 
+Eloquent directly in the Controller, and replace those with simple 
+custom method calls.  Our updated controller might look something like 
+this:</p>
+<p><strong>HousesController.php</strong></p><!-- Crayon Syntax Highlighter v2.6.9 -->
+
+		<div id="crayon-54da67754ea71378939849" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 14px ! important; line-height: 18px ! important; z-index: 0; opacity: 0;">&lt;?php
+
+use repotutrepositoriesHouseRepositoryInterface;
+
+class HousesController extends BaseController {
+	
+	public function __construct(HouseRepositoryInterface $house)
+	{
+		$this-&gt;house = $house;
+	}
+
+
+	public function index()
+	{
+		$houses = $this-&gt;house-&gt;selectAll();
+
+		return View::make('houses.index', compact('houses'));
+		
+	}
+
+
+	public function create()
+	{
+		return View::make('houses.create');
+	}
+
+
+	public function show($id)
+	{
+		$house = $this-&gt;house-&gt;find($id);
+		
+		return View::make('houses.show', compact('house'));
+
+	}
+}</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1;">
+				<table style="margin-left: -29px;" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 18px !important;"><div class="crayon-num" data-line="crayon-54da67754ea71378939849-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea71378939849-2">2</div><div class="crayon-num" data-line="crayon-54da67754ea71378939849-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea71378939849-4">4</div><div class="crayon-num" data-line="crayon-54da67754ea71378939849-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea71378939849-6">6</div><div class="crayon-num" data-line="crayon-54da67754ea71378939849-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea71378939849-8">8</div><div class="crayon-num" data-line="crayon-54da67754ea71378939849-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea71378939849-10">10</div><div class="crayon-num" data-line="crayon-54da67754ea71378939849-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea71378939849-12">12</div><div class="crayon-num" data-line="crayon-54da67754ea71378939849-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea71378939849-14">14</div><div class="crayon-num" data-line="crayon-54da67754ea71378939849-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea71378939849-16">16</div><div class="crayon-num" data-line="crayon-54da67754ea71378939849-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea71378939849-18">18</div><div class="crayon-num" data-line="crayon-54da67754ea71378939849-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea71378939849-20">20</div><div class="crayon-num" data-line="crayon-54da67754ea71378939849-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea71378939849-22">22</div><div class="crayon-num" data-line="crayon-54da67754ea71378939849-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea71378939849-24">24</div><div class="crayon-num" data-line="crayon-54da67754ea71378939849-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea71378939849-26">26</div><div class="crayon-num" data-line="crayon-54da67754ea71378939849-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea71378939849-28">28</div><div class="crayon-num" data-line="crayon-54da67754ea71378939849-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea71378939849-30">30</div><div class="crayon-num" data-line="crayon-54da67754ea71378939849-31">31</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea71378939849-32">32</div><div class="crayon-num" data-line="crayon-54da67754ea71378939849-33">33</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea71378939849-34">34</div><div class="crayon-num" data-line="crayon-54da67754ea71378939849-35">35</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 18px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-54da67754ea71378939849-1"><span class="crayon-ta">&lt;?php</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea71378939849-2">&nbsp;</div><div class="crayon-line" id="crayon-54da67754ea71378939849-3"><span class="crayon-st">use</span><span class="crayon-h"> </span><span class="crayon-i">repotutrepositoriesHouseRepositoryInterface</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea71378939849-4">&nbsp;</div><div class="crayon-line" id="crayon-54da67754ea71378939849-5"><span class="crayon-t">class</span><span class="crayon-h"> </span><span class="crayon-e">HousesController</span><span class="crayon-h"> </span><span class="crayon-r">extends</span><span class="crayon-h"> </span><span class="crayon-e">BaseController</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea71378939849-6"><span class="crayon-h">	</span></div><div class="crayon-line" id="crayon-54da67754ea71378939849-7"><span class="crayon-h">	</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-e">__construct</span><span class="crayon-sy">(</span><span class="crayon-i">HouseRepositoryInterface</span><span class="crayon-h"> </span><span class="crayon-v">$house</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea71378939849-8"><span class="crayon-h">	</span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-54da67754ea71378939849-9"><span class="crayon-h">		</span><span class="crayon-v">$this</span><span class="crayon-o">-&gt;</span><span class="crayon-i">house</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">$house</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea71378939849-10"><span class="crayon-h">	</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-54da67754ea71378939849-11">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea71378939849-12">&nbsp;</div><div class="crayon-line" id="crayon-54da67754ea71378939849-13"><span class="crayon-h">	</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-e">index</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea71378939849-14"><span class="crayon-h">	</span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-54da67754ea71378939849-15"><span class="crayon-h">		</span><span class="crayon-v">$houses</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">$this</span><span class="crayon-o">-&gt;</span><span class="crayon-i">house</span><span class="crayon-o">-&gt;</span><span class="crayon-e">selectAll</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea71378939849-16">&nbsp;</div><div class="crayon-line" id="crayon-54da67754ea71378939849-17"><span class="crayon-h">		</span><span class="crayon-k ">return</span><span class="crayon-h"> </span><span class="crayon-e">View::</span><span class="crayon-e">make</span><span class="crayon-sy">(</span><span class="crayon-s">'houses.index'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-e">compact</span><span class="crayon-sy">(</span><span class="crayon-s">'houses'</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea71378939849-18"><span class="crayon-h">		</span></div><div class="crayon-line" id="crayon-54da67754ea71378939849-19"><span class="crayon-h">	</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea71378939849-20">&nbsp;</div><div class="crayon-line" id="crayon-54da67754ea71378939849-21">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea71378939849-22"><span class="crayon-h">	</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-e">create</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-54da67754ea71378939849-23"><span class="crayon-h">	</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea71378939849-24"><span class="crayon-h">		</span><span class="crayon-k ">return</span><span class="crayon-h"> </span><span class="crayon-e">View::</span><span class="crayon-e">make</span><span class="crayon-sy">(</span><span class="crayon-s">'houses.create'</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea71378939849-25"><span class="crayon-h">	</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea71378939849-26">&nbsp;</div><div class="crayon-line" id="crayon-54da67754ea71378939849-27">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea71378939849-28"><span class="crayon-h">	</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-e">show</span><span class="crayon-sy">(</span><span class="crayon-v">$id</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-54da67754ea71378939849-29"><span class="crayon-h">	</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea71378939849-30"><span class="crayon-h">		</span><span class="crayon-v">$house</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">$this</span><span class="crayon-o">-&gt;</span><span class="crayon-i">house</span><span class="crayon-o">-&gt;</span><span class="crayon-e">find</span><span class="crayon-sy">(</span><span class="crayon-v">$id</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea71378939849-31"><span class="crayon-h">		</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea71378939849-32"><span class="crayon-h">		</span><span class="crayon-k ">return</span><span class="crayon-h"> </span><span class="crayon-e">View::</span><span class="crayon-e">make</span><span class="crayon-sy">(</span><span class="crayon-s">'houses.show'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-e">compact</span><span class="crayon-sy">(</span><span class="crayon-s">'house'</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea71378939849-33">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea71378939849-34"><span class="crayon-h">	</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-54da67754ea71378939849-35"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0058 seconds] -->
+<p></p>
+<li>
+<h3>7: Confirm Routes are Correct</h3>
+</li>
+<p>For this example we simply set up a route resource like so:</p><!-- Crayon Syntax Highlighter v2.6.9 -->
+
+		<div id="crayon-54da67754ea77951552466" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 14px ! important; line-height: 18px ! important; z-index: 0; opacity: 0;">&lt;?php
+
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register all of the routes for an application.
+| It's a breeze. Simply tell Laravel the URIs it should respond to
+| and give it the Closure to execute when that URI is requested.
+|
+*/
+
+Route::resource('houses', 'HousesController');</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1;">
+				<table style="margin-left: -29px;" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 18px !important;"><div class="crayon-num" data-line="crayon-54da67754ea77951552466-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea77951552466-2">2</div><div class="crayon-num" data-line="crayon-54da67754ea77951552466-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea77951552466-4">4</div><div class="crayon-num" data-line="crayon-54da67754ea77951552466-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea77951552466-6">6</div><div class="crayon-num" data-line="crayon-54da67754ea77951552466-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea77951552466-8">8</div><div class="crayon-num" data-line="crayon-54da67754ea77951552466-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea77951552466-10">10</div><div class="crayon-num" data-line="crayon-54da67754ea77951552466-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea77951552466-12">12</div><div class="crayon-num" data-line="crayon-54da67754ea77951552466-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea77951552466-14">14</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 18px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-54da67754ea77951552466-1"><span class="crayon-ta">&lt;?php</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea77951552466-2">&nbsp;</div><div class="crayon-line" id="crayon-54da67754ea77951552466-3"><span class="crayon-c">/*</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea77951552466-4"><span class="crayon-c">|--------------------------------------------------------------------------</span></div><div class="crayon-line" id="crayon-54da67754ea77951552466-5"><span class="crayon-c">| Application Routes</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea77951552466-6"><span class="crayon-c">|--------------------------------------------------------------------------</span></div><div class="crayon-line" id="crayon-54da67754ea77951552466-7"><span class="crayon-c">|</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea77951552466-8"><span class="crayon-c">| Here is where you can register all of the routes for an application.</span></div><div class="crayon-line" id="crayon-54da67754ea77951552466-9"><span class="crayon-c">| It's a breeze. Simply tell Laravel the URIs it should respond to</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea77951552466-10"><span class="crayon-c">| and give it the Closure to execute when that URI is requested.</span></div><div class="crayon-line" id="crayon-54da67754ea77951552466-11"><span class="crayon-c">|</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea77951552466-12"><span class="crayon-c">*/</span></div><div class="crayon-line" id="crayon-54da67754ea77951552466-13">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea77951552466-14"><span class="crayon-e">Route::</span><span class="crayon-e">resource</span><span class="crayon-sy">(</span><span class="crayon-s">'houses'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'HousesController'</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0008 seconds] -->
+<p></p>
+<li>
+<h3>8: Update composer.json</h3>
+</li>
+<p>If you have not done so already, make sure that the namespace we are 
+referencing is in your composer.json.  Note the addition of <code>"psr-4":{"repotut\": "app/repotut" }</code> which tells composer to autoload the classes within the <code>repotut</code> namespace.</p>
+<p></p><!-- Crayon Syntax Highlighter v2.6.9 -->
+
+		<div id="crayon-54da67754ea7d058346464" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 14px ! important; line-height: 18px ! important; z-index: 0; opacity: 0;">{
+	"name": "laravel/laravel",
+	"description": "The Laravel Framework.",
+	"keywords": ["framework", "laravel"],
+	"license": "MIT",
+	"require": {
+		"laravel/framework": "4.2.*"
+	},
+	"autoload": {
+		"classmap": [
+			"app/commands",
+			"app/controllers",
+			"app/models",
+			"app/database/migrations",
+			"app/database/seeds",
+			"app/tests/TestCase.php"
+		],
+            
+                "psr-4":{
+                     "repotut\": "app/repotut"
+                }
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"php artisan clear-compiled",
+			"php artisan optimize"
+		],
+		"post-update-cmd": [
+			"php artisan clear-compiled",
+			"php artisan optimize"
+		],
+		"post-create-project-cmd": [
+			"php artisan key:generate"
+		]
+	},
+	"config": {
+		"preferred-install": "dist"
+	},
+	"minimum-stability": "stable"
+}</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1;">
+				<table style="margin-left: -29px;" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 18px !important;"><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-2">2</div><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-4">4</div><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-6">6</div><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-8">8</div><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-10">10</div><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-12">12</div><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-14">14</div><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-16">16</div><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-18">18</div><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-20">20</div><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-22">22</div><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-24">24</div><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-26">26</div><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-28">28</div><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-30">30</div><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-31">31</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-32">32</div><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-33">33</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-34">34</div><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-35">35</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-36">36</div><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-37">37</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-38">38</div><div class="crayon-num" data-line="crayon-54da67754ea7d058346464-39">39</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea7d058346464-40">40</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 18px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-54da67754ea7d058346464-1"><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-2"><span class="crayon-h">	</span><span class="crayon-s">"name"</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">"laravel/laravel"</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-54da67754ea7d058346464-3"><span class="crayon-h">	</span><span class="crayon-s">"description"</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">"The Laravel Framework."</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-4"><span class="crayon-h">	</span><span class="crayon-s">"keywords"</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-s">"framework"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"laravel"</span><span class="crayon-sy">]</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-54da67754ea7d058346464-5"><span class="crayon-h">	</span><span class="crayon-s">"license"</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">"MIT"</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-6"><span class="crayon-h">	</span><span class="crayon-s">"require"</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-54da67754ea7d058346464-7"><span class="crayon-h">		</span><span class="crayon-s">"laravel/framework"</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">"4.2.*"</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-8"><span class="crayon-h">	</span><span class="crayon-sy">}</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-54da67754ea7d058346464-9"><span class="crayon-h">	</span><span class="crayon-s">"autoload"</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-10"><span class="crayon-h">		</span><span class="crayon-s">"classmap"</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">[</span></div><div class="crayon-line" id="crayon-54da67754ea7d058346464-11"><span class="crayon-h">			</span><span class="crayon-s">"app/commands"</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-12"><span class="crayon-h">			</span><span class="crayon-s">"app/controllers"</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-54da67754ea7d058346464-13"><span class="crayon-h">			</span><span class="crayon-s">"app/models"</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-14"><span class="crayon-h">			</span><span class="crayon-s">"app/database/migrations"</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-54da67754ea7d058346464-15"><span class="crayon-h">			</span><span class="crayon-s">"app/database/seeds"</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-16"><span class="crayon-h">			</span><span class="crayon-s">"app/tests/TestCase.php"</span></div><div class="crayon-line" id="crayon-54da67754ea7d058346464-17"><span class="crayon-h">		</span><span class="crayon-sy">]</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-18"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div><div class="crayon-line" id="crayon-54da67754ea7d058346464-19"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s">"psr-4"</span><span class="crayon-o">:</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-20"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-s">"repotut\": "</span><span class="crayon-v">app</span><span class="crayon-o">/</span><span class="crayon-i">repotut</span><span class="crayon-s">"</span></div><div class="crayon-line" id="crayon-54da67754ea7d058346464-21"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-22"><span class="crayon-s">	},</span></div><div class="crayon-line" id="crayon-54da67754ea7d058346464-23"><span class="crayon-s">	"</span><span class="crayon-i">scripts</span><span class="crayon-s">": {</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-24"><span class="crayon-s">		"</span><span class="crayon-v">post</span><span class="crayon-o">-</span><span class="crayon-v">install</span><span class="crayon-o">-</span><span class="crayon-i">cmd</span><span class="crayon-s">": [</span></div><div class="crayon-line" id="crayon-54da67754ea7d058346464-25"><span class="crayon-s">			"</span><span class="crayon-e">php </span><span class="crayon-e">artisan </span><span class="crayon-v">clear</span><span class="crayon-o">-</span><span class="crayon-i">compiled</span><span class="crayon-s">",</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-26"><span class="crayon-s">			"</span><span class="crayon-e">php </span><span class="crayon-e">artisan </span><span class="crayon-i">optimize</span><span class="crayon-s">"</span></div><div class="crayon-line" id="crayon-54da67754ea7d058346464-27"><span class="crayon-s">		],</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-28"><span class="crayon-s">		"</span><span class="crayon-v">post</span><span class="crayon-o">-</span><span class="crayon-v">update</span><span class="crayon-o">-</span><span class="crayon-i">cmd</span><span class="crayon-s">": [</span></div><div class="crayon-line" id="crayon-54da67754ea7d058346464-29"><span class="crayon-s">			"</span><span class="crayon-e">php </span><span class="crayon-e">artisan </span><span class="crayon-v">clear</span><span class="crayon-o">-</span><span class="crayon-i">compiled</span><span class="crayon-s">",</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-30"><span class="crayon-s">			"</span><span class="crayon-e">php </span><span class="crayon-e">artisan </span><span class="crayon-i">optimize</span><span class="crayon-s">"</span></div><div class="crayon-line" id="crayon-54da67754ea7d058346464-31"><span class="crayon-s">		],</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-32"><span class="crayon-s">		"</span><span class="crayon-v">post</span><span class="crayon-o">-</span><span class="crayon-v">create</span><span class="crayon-o">-</span><span class="crayon-v">project</span><span class="crayon-o">-</span><span class="crayon-i">cmd</span><span class="crayon-s">": [</span></div><div class="crayon-line" id="crayon-54da67754ea7d058346464-33"><span class="crayon-s">			"</span><span class="crayon-e">php </span><span class="crayon-e">artisan </span><span class="crayon-v">key</span><span class="crayon-o">:</span><span class="crayon-i">generate</span><span class="crayon-s">"</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-34"><span class="crayon-s">		]</span></div><div class="crayon-line" id="crayon-54da67754ea7d058346464-35"><span class="crayon-s">	},</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-36"><span class="crayon-s">	"</span><span class="crayon-i">config</span><span class="crayon-s">": {</span></div><div class="crayon-line" id="crayon-54da67754ea7d058346464-37"><span class="crayon-s">		"</span><span class="crayon-v">preferred</span><span class="crayon-o">-</span><span class="crayon-i">install</span><span class="crayon-s">": "</span><span class="crayon-i">dist</span><span class="crayon-s">"</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-38"><span class="crayon-s">	},</span></div><div class="crayon-line" id="crayon-54da67754ea7d058346464-39"><span class="crayon-s">	"</span><span class="crayon-v">minimum</span><span class="crayon-o">-</span><span class="crayon-i">stability</span><span class="crayon-s">": "</span><span class="crayon-i">stable</span>"</div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea7d058346464-40"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0042 seconds] -->
+<p></p>
+<p>Don’t forget to run <code>composer dump</code> after updating <code>composer.json</code>!</p></ul>
+<hr>
+<p><span class="label label-success"><strong>Whoa!</strong></span> Nice work partner, let’s test it in the browser.  We can visit <code>http://localhost/repotut/public/houses</code> and we can see that we have 3 houses for sale, each a different color.</p>
+<p><img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/Laravel-Repository-Pattern.png" alt="Laravel Repository Pattern" class="alignnone size-full wp-image-10178" height="310" width="791"></p>
+<hr>
+<h2>Easy To Change Implementations</h2>
+<p>Let’s say in the future you decide that Eloquent is not the way you 
+want to handle storing data with your app.  No problem!  Since you 
+already laid out the ground work for using an interface, you can simple 
+create a new repository and change the Service Provider.   Let’s see how
+ we can swap implementations.</p>
+<ul>
+<li>
+<h3>1:  Create a New Repository</h3>
+</li>
+<p>We’ll just use a quick example here.  Let’s pretend this is a whole 
+file system class which provides data storage via flat files.  In our 
+case, we’ll just put some simple logic in to test swapping 
+implementations.  Note that this class implements the same exact methods
+ as the Eloquent version we tested prior.</p>
+<p><strong>FileHouseRepository.php</strong></p><!-- Crayon Syntax Highlighter v2.6.9 -->
+
+		<div id="crayon-54da67754ea86912766739" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 14px ! important; line-height: 18px ! important; z-index: 0; opacity: 0;">&lt;?php
+namespace repotutrepositories;
+
+class FileHouseRepository implements HouseRepositoryInterface {
+	
+	public function selectAll()
+	{
+		$houses = new stdClass;
+		
+		$house1 = new stdClass;
+		$house1-&gt;color = 'Olive';
+		
+		$house2 = new stdClass;
+		$house2-&gt;color = 'Yellow';
+		
+		$house3 = new stdClass;
+		$house3-&gt;color = 'Brown';
+		
+		$houses = array($house1,$house2,$house3);
+		
+		return $houses;
+	}
+	
+	public function find($id)
+	{
+		return 'Here is a single house listing, again using the file system';
+	}
+}</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1;">
+				<table style="margin-left: -29px;" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 18px !important;"><div class="crayon-num" data-line="crayon-54da67754ea86912766739-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea86912766739-2">2</div><div class="crayon-num" data-line="crayon-54da67754ea86912766739-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea86912766739-4">4</div><div class="crayon-num" data-line="crayon-54da67754ea86912766739-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea86912766739-6">6</div><div class="crayon-num" data-line="crayon-54da67754ea86912766739-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea86912766739-8">8</div><div class="crayon-num" data-line="crayon-54da67754ea86912766739-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea86912766739-10">10</div><div class="crayon-num" data-line="crayon-54da67754ea86912766739-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea86912766739-12">12</div><div class="crayon-num" data-line="crayon-54da67754ea86912766739-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea86912766739-14">14</div><div class="crayon-num" data-line="crayon-54da67754ea86912766739-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea86912766739-16">16</div><div class="crayon-num" data-line="crayon-54da67754ea86912766739-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea86912766739-18">18</div><div class="crayon-num" data-line="crayon-54da67754ea86912766739-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea86912766739-20">20</div><div class="crayon-num" data-line="crayon-54da67754ea86912766739-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea86912766739-22">22</div><div class="crayon-num" data-line="crayon-54da67754ea86912766739-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea86912766739-24">24</div><div class="crayon-num" data-line="crayon-54da67754ea86912766739-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea86912766739-26">26</div><div class="crayon-num" data-line="crayon-54da67754ea86912766739-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea86912766739-28">28</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 18px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-54da67754ea86912766739-1"><span class="crayon-ta">&lt;?php</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea86912766739-2"><span class="crayon-t">namespace</span><span class="crayon-h"> </span><span class="crayon-i">repotutrepositories</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea86912766739-3">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea86912766739-4"><span class="crayon-t">class</span><span class="crayon-h"> </span><span class="crayon-e">FileHouseRepository</span><span class="crayon-h"> </span><span class="crayon-r">implements</span><span class="crayon-h"> </span><span class="crayon-e">HouseRepositoryInterface</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-54da67754ea86912766739-5"><span class="crayon-h">	</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea86912766739-6"><span class="crayon-h">	</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-e">selectAll</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-54da67754ea86912766739-7"><span class="crayon-h">	</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea86912766739-8"><span class="crayon-h">		</span><span class="crayon-v">$houses</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-r">new</span><span class="crayon-h"> </span><span class="crayon-i">stdClass</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea86912766739-9"><span class="crayon-h">		</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea86912766739-10"><span class="crayon-h">		</span><span class="crayon-v">$house1</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-r">new</span><span class="crayon-h"> </span><span class="crayon-i">stdClass</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea86912766739-11"><span class="crayon-h">		</span><span class="crayon-v">$house1</span><span class="crayon-o">-&gt;</span><span class="crayon-i">color</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">'Olive'</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea86912766739-12"><span class="crayon-h">		</span></div><div class="crayon-line" id="crayon-54da67754ea86912766739-13"><span class="crayon-h">		</span><span class="crayon-v">$house2</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-r">new</span><span class="crayon-h"> </span><span class="crayon-i">stdClass</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea86912766739-14"><span class="crayon-h">		</span><span class="crayon-v">$house2</span><span class="crayon-o">-&gt;</span><span class="crayon-i">color</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">'Yellow'</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea86912766739-15"><span class="crayon-h">		</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea86912766739-16"><span class="crayon-h">		</span><span class="crayon-v">$house3</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-r">new</span><span class="crayon-h"> </span><span class="crayon-i">stdClass</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea86912766739-17"><span class="crayon-h">		</span><span class="crayon-v">$house3</span><span class="crayon-o">-&gt;</span><span class="crayon-i">color</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">'Brown'</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea86912766739-18"><span class="crayon-h">		</span></div><div class="crayon-line" id="crayon-54da67754ea86912766739-19"><span class="crayon-h">		</span><span class="crayon-v">$houses</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-t">array</span><span class="crayon-sy">(</span><span class="crayon-v">$house1</span><span class="crayon-sy">,</span><span class="crayon-v">$house2</span><span class="crayon-sy">,</span><span class="crayon-v">$house3</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea86912766739-20"><span class="crayon-h">		</span></div><div class="crayon-line" id="crayon-54da67754ea86912766739-21"><span class="crayon-h">		</span><span class="crayon-k ">return</span><span class="crayon-h"> </span><span class="crayon-v">$houses</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea86912766739-22"><span class="crayon-h">	</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-54da67754ea86912766739-23"><span class="crayon-h">	</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea86912766739-24"><span class="crayon-h">	</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-e">find</span><span class="crayon-sy">(</span><span class="crayon-v">$id</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-54da67754ea86912766739-25"><span class="crayon-h">	</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea86912766739-26"><span class="crayon-h">		</span><span class="crayon-k ">return</span><span class="crayon-h"> </span><span class="crayon-s">'Here is a single house listing, again using the file system'</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea86912766739-27"><span class="crayon-h">	</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea86912766739-28"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0054 seconds] -->
+<p></p>
+<li>
+<h3>2: Update Service Provider</h3>
+</li>
+<p>Now in the Service Provider, all we have to do is change one single 
+line of code!  We simply tell Laravel that now when you see the <code>HouseRepositoryInterface</code>, you will use the <strong>FileHouseRepository</strong> instead of the DbHouseRepository.</p>
+<p></p><!-- Crayon Syntax Highlighter v2.6.9 -->
+
+		<div id="crayon-54da67754ea8c667708952" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="readonly" style="-moz-tab-size: 4; font-size: 14px ! important; line-height: 18px ! important; z-index: 0; opacity: 0;">&lt;?php
+namespace repotutrepositories;
+
+use IlluminateSupportServiceProvider;
+
+class BackendServiceProvider extends ServiceProvider {
+	
+	public function register()
+	{
+		$this-&gt;app-&gt;bind('repotutrepositoriesHouseRepositoryInterface', 'repotutrepositoriesFileHouseRepository');
+	}
+}</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1;">
+				<table style="margin-left: -29px;" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 18px !important;"><div class="crayon-num" data-line="crayon-54da67754ea8c667708952-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea8c667708952-2">2</div><div class="crayon-num" data-line="crayon-54da67754ea8c667708952-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea8c667708952-4">4</div><div class="crayon-num" data-line="crayon-54da67754ea8c667708952-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea8c667708952-6">6</div><div class="crayon-num" data-line="crayon-54da67754ea8c667708952-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea8c667708952-8">8</div><div class="crayon-num" data-line="crayon-54da67754ea8c667708952-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea8c667708952-10">10</div><div class="crayon-num" data-line="crayon-54da67754ea8c667708952-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-54da67754ea8c667708952-12">12</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 18px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-54da67754ea8c667708952-1"><span class="crayon-ta">&lt;?php</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea8c667708952-2"><span class="crayon-t">namespace</span><span class="crayon-h"> </span><span class="crayon-i">repotutrepositories</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea8c667708952-3">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea8c667708952-4"><span class="crayon-st">use</span><span class="crayon-h"> </span><span class="crayon-i">IlluminateSupportServiceProvider</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea8c667708952-5">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea8c667708952-6"><span class="crayon-t">class</span><span class="crayon-h"> </span><span class="crayon-e">BackendServiceProvider</span><span class="crayon-h"> </span><span class="crayon-r">extends</span><span class="crayon-h"> </span><span class="crayon-e">ServiceProvider</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-54da67754ea8c667708952-7"><span class="crayon-h">	</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea8c667708952-8"><span class="crayon-h">	</span><span class="crayon-m">public</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-e">register</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-54da67754ea8c667708952-9"><span class="crayon-h">	</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea8c667708952-10"><span class="crayon-h">		</span><span class="crayon-v">$this</span><span class="crayon-o">-&gt;</span><span class="crayon-i">app</span><span class="crayon-o">-&gt;</span><span class="crayon-e">bind</span><span class="crayon-sy">(</span><span class="crayon-s">'repotutrepositoriesHouseRepositoryInterface'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'repotutrepositoriesFileHouseRepository'</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-54da67754ea8c667708952-11"><span class="crayon-h">	</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-54da67754ea8c667708952-12"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0028 seconds] -->
+<p></p></ul>
+<p>When we test it in the browser at <code>http://localhost/repotut/public/houses</code> we can see that the new implementation has indeed taken effect, very cool!<br>
+<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/Repository-Swap-Implementation.png" alt="Repository Swap Implementation" class="alignnone size-full wp-image-10182" height="316" width="802"></p>
+<h4>Repositories Conclusion</h4>
+<p>As you can see, it seems like a lot of steps to get Repositories 
+working in your application.  There are a few steps involved, no doubt 
+about it.  If you are going to be responsible for maintaining a piece of
+ code for the long term however, you are going to reap the benefits of 
+taking the time to correctly architect your app in the beginning.  
+Consider it a form of delayed gratification, which in this day and age 
+seems like a forgotten art.</p>
+<!-- Simple Share Buttons Adder (5.5) simplesharebuttons.com --><div class="ssba"><div style="text-align:right">Please Share!!   <a class="ssba_google_share" href="https://plus.google.com/share?url=http://vegibit.com/laravel-repository-pattern/" target="_blank"><img data-original-title="Google+" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/google.png" title="" class="ssba" alt="Share on Google+"></a><a class="ssba_twitter_share" href="http://twitter.com/share?url=http://vegibit.com/laravel-repository-pattern/&amp;text=Laravel+Repository+Pattern+" target="_blank"><img data-original-title="Twitter" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/twitter.png" title="" class="ssba" alt="Tweet about this on Twitter"></a><a class="ssba_facebook_share" href="http://www.facebook.com/sharer.php?u=http://vegibit.com/laravel-repository-pattern/" target="_blank"><img data-original-title="Facebook" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/facebook.png" title="" class="ssba" alt="Share on Facebook"></a><a class="ssba_stumbleupon_share ssba_share_link" href="http://www.stumbleupon.com/submit?url=http://vegibit.com/laravel-repository-pattern/&amp;title=Laravel%20Repository%20Pattern" target="_blank"><img data-original-title="StumbleUpon" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/stumbleupon.png" title="" class="ssba" alt="Share on StumbleUpon"></a><a class="ssba_reddit_share" href="http://reddit.com/submit?url=http://vegibit.com/laravel-repository-pattern/&amp;title=Laravel%20Repository%20Pattern" target="_blank"><img data-original-title="Reddit" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/reddit.png" title="" class="ssba" alt="Share on Reddit"></a><a class="ssba_buffer_share" href="https://bufferapp.com/add?url=http://vegibit.com/laravel-repository-pattern/&amp;text=%20Laravel%20Repository%20Pattern" target="_blank"><img data-original-title="Buffer" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/buffer.png" title="" class="ssba" alt="Buffer this page"></a></div></div>
+<div style="display: block;" id="jp-relatedposts" class="jp-relatedposts">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-visual"><div class="jp-relatedposts-post jp-relatedposts-post0 jp-relatedposts-post-thumbs" data-post-id="16158" data-post-format="false"><a data-position="0" data-origin="10154" rel="nofollow" title="Refactor The Laravel Regex Tool To Use Repositories and Dependency Injection
+
+Welcome back gang to another fun filled episode of working with Laravel for fun and profit. Well, fun at least. In this episode, we'll be taking a closer look at the regular expression tool we built earlier. Admittedly, this is a purely hacked together rendition created for fun really. I…" href="http://vegibit.com/refactor-the-laravel-regex-tool-to-use-repositories-and-dependency-injection/" class="jp-relatedposts-post-a"><img class="jp-relatedposts-post-img" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/Refactor-The-Laravel-Regex-Tool-To-Use-Repositories-and-Depe.jpg" alt="Refactor The Laravel Regex Tool To Use Repositories and Dependency Injection" width="350"></a><h4 class="jp-relatedposts-post-title"><a data-position="0" data-origin="10154" rel="nofollow" title="Refactor The Laravel Regex Tool To Use Repositories and Dependency Injection
+
+Welcome back gang to another fun filled episode of working with Laravel for fun and profit. Well, fun at least. In this episode, we'll be taking a closer look at the regular expression tool we built earlier. Admittedly, this is a purely hacked together rendition created for fun really. I…" href="http://vegibit.com/refactor-the-laravel-regex-tool-to-use-repositories-and-dependency-injection/" class="jp-relatedposts-post-a">Refactor The Laravel Regex Tool To Use Repositories and Dependency Injection</a></h4><p class="jp-relatedposts-post-excerpt">Welcome
+ back gang to another fun filled episode of working with Laravel for fun
+ and profit. Well, fun at least. In this episode, we'll be taking a 
+closer look at the regular expression tool we built earlier. Admittedly,
+ this is a purely hacked together rendition created for fun really. I…</p><p class="jp-relatedposts-post-date">December 17, 2014</p><p class="jp-relatedposts-post-context">In "Web Development"</p></div><div class="jp-relatedposts-post jp-relatedposts-post1 jp-relatedposts-post-thumbs" data-post-id="17542" data-post-format="false"><a data-position="1" data-origin="10154" rel="nofollow" title="Install Larabook On Laravel Homestead
+
+Ok ladies and gentlemen, you’ll notice we did a lot of work to get familiar with Virtual Box, Vagrant, and Laravel Homestead in the recent episodes. Growing pains aside, this Virtual Machine approach to creating new sites is awesome. Once the initial bootstrapping and setup is out of the way,…" href="http://vegibit.com/install-larabook-on-laravel-homestead/" class="jp-relatedposts-post-a"><img class="jp-relatedposts-post-img" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/laravel-homestead-mysql-workbench.png" alt="Install Larabook On Laravel Homestead" width="350"></a><h4 class="jp-relatedposts-post-title"><a data-position="1" data-origin="10154" rel="nofollow" title="Install Larabook On Laravel Homestead
+
+Ok ladies and gentlemen, you’ll notice we did a lot of work to get familiar with Virtual Box, Vagrant, and Laravel Homestead in the recent episodes. Growing pains aside, this Virtual Machine approach to creating new sites is awesome. Once the initial bootstrapping and setup is out of the way,…" href="http://vegibit.com/install-larabook-on-laravel-homestead/" class="jp-relatedposts-post-a">Install Larabook On Laravel Homestead</a></h4><p class="jp-relatedposts-post-excerpt">Ok
+ ladies and gentlemen, you’ll notice we did a lot of work to get 
+familiar with Virtual Box, Vagrant, and Laravel Homestead in the recent 
+episodes. Growing pains aside, this Virtual Machine approach to creating
+ new sites is awesome. Once the initial bootstrapping and setup is out 
+of the way,…</p><p class="jp-relatedposts-post-date">January 14, 2015</p><p class="jp-relatedposts-post-context">In "Web Development"</p></div><div class="jp-relatedposts-post jp-relatedposts-post2 jp-relatedposts-post-thumbs" data-post-id="10102" data-post-format="false"><a data-position="2" data-origin="10154" rel="nofollow" title="Laravel File Structure
+
+When working on applications and websites, we usually follow some type of convention for organizing files and assets that support the site. You might be familiar with how Codeigniter, CakePHP, or your own home grown solutions work. The MVC architecture has been the de facto design standard for some time…" href="http://vegibit.com/laravel-file-structure/" class="jp-relatedposts-post-a"><img class="jp-relatedposts-post-img" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/laravel-file-structure.png" alt="Laravel File Structure" width="350"></a><h4 class="jp-relatedposts-post-title"><a data-position="2" data-origin="10154" rel="nofollow" title="Laravel File Structure
+
+When working on applications and websites, we usually follow some type of convention for organizing files and assets that support the site. You might be familiar with how Codeigniter, CakePHP, or your own home grown solutions work. The MVC architecture has been the de facto design standard for some time…" href="http://vegibit.com/laravel-file-structure/" class="jp-relatedposts-post-a">Laravel File Structure</a></h4><p class="jp-relatedposts-post-excerpt">When
+ working on applications and websites, we usually follow some type of 
+convention for organizing files and assets that support the site. You 
+might be familiar with how Codeigniter, CakePHP, or your own home grown 
+solutions work. The MVC architecture has been the de facto design 
+standard for some time…</p><p class="jp-relatedposts-post-date">July 24, 2014</p><p class="jp-relatedposts-post-context">In "Web Development"</p></div></div></div> 
+		<div class="clearfix"></div>
+		 
+	</div><!-- .entry-content -->
+	 
+
+	
+	<footer class="entry-meta">
+		 
+		<div class="entry-meta-category-tag">
+			 
+			<span class="cat-links">
+				<span class="categories-icon glyphicon glyphicon-th-list" title="Posted in"></span> <a href="http://vegibit.com/category/web-development/" rel="category tag">Web Development</a> 
+			</span>
+			 
+
+			 
+			<span class="tags-links">
+				<span class="tags-icon glyphicon glyphicon-tags" title="Tagged"></span>&nbsp; <a href="http://vegibit.com/tag/laravel/" rel="tag">laravel</a> 
+			</span>
+			 
+		</div><!--.entry-meta-category-tag-->
+		 
+
+		<div class="entry-meta-comment-tools">
+			 
+
+			 
+		</div><!--.entry-meta-comment-tools-->
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+
+
+
+
+<ul class="pager">
+    <li><a href="http://vegibit.com/laravel-file-structure/" rel="prev"><span class="meta-nav">←</span> Previous</a></li>
+    <li><a href="http://vegibit.com/laravel-event-listeners/" rel="next">Next <span class="meta-nav">→</span></a></li>
+</ul> 
+					</main>
+				</div>
+ 
+				<div class="col-md-4" id="sidebar-right">
+					 
+					<aside id="text-4" class="widget widget_text">			<div class="textwidget"><div style="width:80%; margin: 0 auto;">  
+<!-- BuySellAds Ad Code -->
+<script type="text/javascript">
+(function(){
+  var bsa = document.createElement('script');
+     bsa.type = 'text/javascript';
+     bsa.async = true;
+     bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
+  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+})();
+</script>
+<!-- End BuySellAds Ad Code -->
+
+<!-- BuySellAds Zone Code -->
+<div data-serve="CASD55V" id="bsap_1298244" class="bsap bsap_1298244">
+<style type="text/css">
+div.bsap_1298244{width:100%;display:block;}div.bsap_1298244 a{width:300px;}div.bsap_1298244 a img{padding:0;}div.bsap_1298244 a em{font-style:normal;}div.bsap_1298244 a{display:block;font-size:11px;color:#888;font-family:verdana,sans-serif;margin:0;text-align:center;text-decoration:none;overflow:hidden;float:left;}
+div.bsap_1298244 img{border:0;clear:right;}
+div.bsap_1298244 a.adhere{color:#666;font-weight:bold;font-size:12px;border:1px solid #ccc;background:#e7e7e7;text-align:center;}
+div.bsap_1298244 a.adhere:hover{border:1px solid #999;background:#ddd;color:#333;}
+div.bsap_1298244 iframe{display:block;font-size:11px;color:#888;font-family:verdana,sans-serif;margin:0;text-align:center;text-decoration:none;overflow:hidden;float:left;}div.bsap_1298244 a{line-height:100%;}div.bsap_1298244 a.adhere{width:300px;height:250px;line-height:2000%;}html>body div.bsap_1298244 a.adhere{width:298px;height:248px;}div.bsap_1298244 img.s{height:0;width:0;}div.bsap_1298244{line-height:9px;}div.bsap_1298244 .bsap_adhere a{height:19px !important;width:298px !important;font-size:10px;background:#f1f1f1;border:1px solid #e1e1e1;border-top:none;border-radius: 0 0 2px 2px;line-height:16px;}.bsap_backfillframe{border:0;}
+</style>
+<a href="http://srv.buysellads.com/ads/click/x/GTND423LCKSDT2QWCKALYKQWCV7IP53LFTSDPZ3JCE7DC2QYFTSI52QKC6BD6K7MF6ADVK3EHJNCLSIZ" class="ad1 odd " title="GoJS is a fast and powerful JavaScript library for implementing interactive diagrams in HTML5 Canvas applications." id="bsa_4973930" target="_blank" rel="nofollow">
+<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/223229-1400605532.png" alt="" height="250" width="300"></a>
+
+<div class="bsap_adhere">
+
+<a href="http://buysellads.com/buy/detail/247566/zone/1298244?utm_source=site_247566&amp;utm_medium=website&amp;utm_campaign=imagetext&amp;utm_content=zone_1298244" class="">Advertise Here</a>
+
+</div>
+
+
+<script class="ignoreme" id="auto_1" type="text/javascript"> if (typeof(BSACallback) !== 'undefined') BSACallback(); </script></div>
+<!-- End BuySellAds Zone Code -->
+</div></div>
+		</aside><aside id="text-2" class="widget widget_text">			<div class="textwidget"><form class="form-inline" action="http://www.google.com/search">
+  <div class="form-group">
+    <input class="form-control input-lg" name="q" type="text">
+    <input class="btn btn-success btn-lg" value="Search" type="submit">
+    <input value="vegibit" name="sourceid" type="hidden">
+    <input value="vegibit.com" name="sitesearch" type="hidden">
+  </div>
+</form>
+</div>
+		</aside><aside id="top-posts-2" class="widget widget_top-posts"><h1 class="widget-title well">Top Posts &amp; Pages</h1><ul class="widgets-list-layout no-grav">
+					<li>
+												<a href="http://vegibit.com/many-to-many-relationships-in-laravel/" title="Many to Many Relationships in Laravel" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/Many-to-Many-Relationships-in-Laravel.png" class="widgets-list-layout-blavatar" alt="Many to Many Relationships in Laravel">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/many-to-many-relationships-in-laravel/" class="bump-view" data-bump-view="tp">
+								Many to Many Relationships in Laravel							</a>
+						</div>
+											</li>
+									<li>
+												<a href="http://vegibit.com/laravel-repository-pattern/" title="Laravel Repository Pattern" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/repository-pattern.png" class="widgets-list-layout-blavatar" alt="Laravel Repository Pattern">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/laravel-repository-pattern/" class="bump-view" data-bump-view="tp">
+								Laravel Repository Pattern							</a>
+						</div>
+											</li>
+									<li>
+												<a href="http://vegibit.com/laravel-eloquent-orm-tutorial/" title="Laravel Eloquent ORM Tutorial" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/Laravel-Eloquent-ORM-Tutorial.png" class="widgets-list-layout-blavatar" alt="Laravel Eloquent ORM Tutorial">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/laravel-eloquent-orm-tutorial/" class="bump-view" data-bump-view="tp">
+								Laravel Eloquent ORM Tutorial							</a>
+						</div>
+											</li>
+									<li>
+												<a href="http://vegibit.com/what-is-the-ioc-container-in-laravel/" title="What is the IoC Container in Laravel?" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/Laravel-IoC-Container.png" class="widgets-list-layout-blavatar" alt="What is the IoC Container in Laravel?">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/what-is-the-ioc-container-in-laravel/" class="bump-view" data-bump-view="tp">
+								What is the IoC Container in Laravel?							</a>
+						</div>
+											</li>
+									<li>
+												<a href="http://vegibit.com/laravel/" title="Laravel" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/laravel-150x150.png" class="widgets-list-layout-blavatar" alt="Laravel">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/laravel/" class="bump-view" data-bump-view="tp">
+								Laravel							</a>
+						</div>
+											</li>
+									<li>
+												<a href="http://vegibit.com/json-in-laravel/" title="JSON in Laravel" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/JSON-In-Laravel.png" class="widgets-list-layout-blavatar" alt="JSON in Laravel">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/json-in-laravel/" class="bump-view" data-bump-view="tp">
+								JSON in Laravel							</a>
+						</div>
+											</li>
+									<li>
+												<a href="http://vegibit.com/vegithemes-twitter-bootstrap-themes/" title="VegiThemes Twitter Bootstrap Themes" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/vegicasso-twitter-bootstrap-theme.png" class="widgets-list-layout-blavatar" alt="VegiThemes Twitter Bootstrap Themes">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/vegithemes-twitter-bootstrap-themes/" class="bump-view" data-bump-view="tp">
+								VegiThemes Twitter Bootstrap Themes							</a>
+						</div>
+											</li>
+									<li>
+												<a href="http://vegibit.com/html/" title="Html" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/html-150x150.png" class="widgets-list-layout-blavatar" alt="Html">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/html/" class="bump-view" data-bump-view="tp">
+								Html							</a>
+						</div>
+											</li>
+									<li>
+												<a href="http://vegibit.com/super-easy-crud-with-gii-and-the-yii2-framework/" title="Super Easy CRUD With Gii And The Yii2 Framework" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/Super-Easy-CRUD-With-Gii-And-The-Yii2-Framework.jpg" class="widgets-list-layout-blavatar" alt="Super Easy CRUD With Gii And The Yii2 Framework">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/super-easy-crud-with-gii-and-the-yii2-framework/" class="bump-view" data-bump-view="tp">
+								Super Easy CRUD With Gii And The Yii2 Framework							</a>
+						</div>
+											</li>
+									<li>
+												<a href="http://vegibit.com/php/" title="Php" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/php-150x150.png" class="widgets-list-layout-blavatar" alt="Php">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/php/" class="bump-view" data-bump-view="tp">
+								Php							</a>
+						</div>
+											</li>
+									<li>
+												<a href="http://vegibit.com/laravel-restful-controllers/" title="Laravel RESTful Controllers" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/Laravel-RESTful.png" class="widgets-list-layout-blavatar" alt="Laravel RESTful Controllers">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/laravel-restful-controllers/" class="bump-view" data-bump-view="tp">
+								Laravel RESTful Controllers							</a>
+						</div>
+											</li>
+									<li>
+												<a href="http://vegibit.com/codeigniter-model-tutorial/" title="Codeigniter Model Tutorial" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/codeigniter-models1.png" class="widgets-list-layout-blavatar" alt="Codeigniter Model Tutorial">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/codeigniter-model-tutorial/" class="bump-view" data-bump-view="tp">
+								Codeigniter Model Tutorial							</a>
+						</div>
+											</li>
+									<li>
+												<a href="http://vegibit.com/javascript/" title="JavaScript" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/Javascript-JS-150x150.png" class="widgets-list-layout-blavatar" alt="JavaScript">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/javascript/" class="bump-view" data-bump-view="tp">
+								JavaScript							</a>
+						</div>
+											</li>
+									<li>
+												<a href="http://vegibit.com/twitter-bootstrap/" title="Twitter Bootstrap" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/bootstrap-150x150.png" class="widgets-list-layout-blavatar" alt="Twitter Bootstrap">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/twitter-bootstrap/" class="bump-view" data-bump-view="tp">
+								Twitter Bootstrap							</a>
+						</div>
+											</li>
+									<li>
+												<a href="http://vegibit.com/flash-messages-in-laravel/" title="Flash Messages in Laravel" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/laravel-flash-message.png" class="widgets-list-layout-blavatar" alt="Flash Messages in Laravel">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/flash-messages-in-laravel/" class="bump-view" data-bump-view="tp">
+								Flash Messages in Laravel							</a>
+						</div>
+											</li>
+									<li>
+												<a href="http://vegibit.com/install-laravel-on-windows/" title="Install Laravel on Windows" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/Install-Laravel-on-Windows.png" class="widgets-list-layout-blavatar" alt="Install Laravel on Windows">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/install-laravel-on-windows/" class="bump-view" data-bump-view="tp">
+								Install Laravel on Windows							</a>
+						</div>
+											</li>
+									<li>
+												<a href="http://vegibit.com/how-to-install-the-advanced-template-in-yii2/" title="How To Install The Advanced Template In Yii2" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/How-To-Install-The-Advanced-Template-In-Yii2.jpg" class="widgets-list-layout-blavatar" alt="How To Install The Advanced Template In Yii2">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/how-to-install-the-advanced-template-in-yii2/" class="bump-view" data-bump-view="tp">
+								How To Install The Advanced Template In Yii2							</a>
+						</div>
+											</li>
+									<li>
+												<a href="http://vegibit.com/custom-domains-and-basic-routing-in-yii2/" title="Custom Domains And Basic Routing In Yii2" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/Custom-Domains-And-Basic-Routing-In-Yii2.jpg" class="widgets-list-layout-blavatar" alt="Custom Domains And Basic Routing In Yii2">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/custom-domains-and-basic-routing-in-yii2/" class="bump-view" data-bump-view="tp">
+								Custom Domains And Basic Routing In Yii2							</a>
+						</div>
+											</li>
+									<li>
+												<a href="http://vegibit.com/custom-helper-functions-in-laravel/" title="Custom Helper Functions in Laravel" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/composer-dump.png" class="widgets-list-layout-blavatar" alt="Custom Helper Functions in Laravel">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/custom-helper-functions-in-laravel/" class="bump-view" data-bump-view="tp">
+								Custom Helper Functions in Laravel							</a>
+						</div>
+											</li>
+									<li>
+												<a href="http://vegibit.com/linux/" title="Linux" class="bump-view" data-bump-view="tp">
+							<img src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/how-to-get-started-with-linux-150x150.png" class="widgets-list-layout-blavatar" alt="Linux">
+						</a>
+						<div class="widgets-list-layout-links">
+							<a href="http://vegibit.com/linux/" class="bump-view" data-bump-view="tp">
+								Linux							</a>
+						</div>
+											</li>
+				</ul>
+</aside> 
+				</div>
+  
+
+			</div><!--.site-content-->
+			
+			
+			<footer id="site-footer" role="contentinfo">
+				<div id="footer-row" class="row site-footer">
+					<div class="col-md-6 footer-left">
+						 
+					</div>
+					<div class="col-md-6 footer-right text-right">
+						<div id="text-3" class="widget widget_text">			<div class="textwidget"><script>$('img.ssba').tooltip();</script></div>
+		</div> 
+					</div>
+				</div>
+			</footer>
+		</div><!--.container page-container-->
+		
+		
+		<!--wordpress footer-->
+			<div style="display:none">
+	</div>
+<script type="text/javascript" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/devicepx-jetpack.js"></script>
+<script type="text/javascript" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/gprofiles.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/wpgroho.js"></script>
+
+	<script src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/e-201507.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	st_go({v:'ext',j:'1:3.3',blog:'48765184',post:'10154',tz:'0'});
+	var load_cmc = function(){linktracker_init(48765184,10154,2);};
+	if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+	else load_cmc();
+	</script><img id="wpstats" src="Laravel%20Repository%20Pattern%20_%20Vegibit_files/g.gif"> 
+	
+ </body></html>

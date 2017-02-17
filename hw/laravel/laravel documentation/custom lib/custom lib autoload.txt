@@ -1,0 +1,29 @@
+1.First step is to create the folder
+cd app/
+ 
+mkdir library
+ 
+cd library
+
+2.Now we need to add the folder to the autoload file
+
+{
+ "require": {
+ "laravel/framework": "4.0.*"
+ },
+ "autoload": {
+ "classmap": [
+ "app/commands",
+ "app/controllers",
+ "app/library", /* Added here */
+ "app/models",
+ "app/database/migrations",
+ "app/tests/TestCase.php"
+ ]
+ },
+ "minimum-stability": "dev"
+ }
+
+3.use this : composer dump-autoload
+
+Now you can use the library folder.

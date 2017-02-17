@@ -1,0 +1,15 @@
+1. The Query Builder Now Returns Collections
+2. The Global Cache Helper
+3. The JavaScript Suggestion
+4. Mailables
+5. Foreach, and the Loop Object
+6. Toggle Pivot Table Records
+7. Notifications: Email
+8. Notifications: Database
+9. Send Slack Notifications With Laravel in Minutes
+10. Super Simple File Uploading
+11. Laravel Passport
+12. Closure-Based Commands
+13. Fluent Validation Rules
+14. Facade Fakes
+15. Advanced Search With Laravel Scout

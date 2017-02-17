@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html class=" js csstransforms3d csstransitions" prefix="og: http://ogp.me/ns#" lang="en-US"><head><div class="fit-vids-style">­<style>               .fluid-width-video-wrapper {                 width: 100%;                              position: relative;                       padding: 0;                            }                                                                                   .fluid-width-video-wrapper iframe,        .fluid-width-video-wrapper object,        .fluid-width-video-wrapper embed {           position: absolute;                       top: 0;                                   left: 0;                                  width: 100%;                              height: 100%;                          }                                       </style></div>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="pingback" href="http://slashnode.com/xmlrpc.php">
+ 
+<title>Mastering Form Validation in Laravel 5 - Slashnode</title>
+<link rel="canonical" href="http://slashnode.com/mastering-form-validation-laravel-5/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mastering Form Validation in Laravel 5 - Slashnode">
+<meta property="og:description" content="Laravel developers have always had a nice validation class out of the box, but unfortunately we have never had a standard way of using it. Some people prefer doing validation in controllers, others do it in models and I, as many others, preferred to&nbsp;do&nbsp;it in a separate validation layer. Of course, all of these methods&nbsp;worked …">
+<meta property="og:url" content="http://slashnode.com/mastering-form-validation-laravel-5/">
+<meta property="og:site_name" content="Slashnode">
+<meta property="article:section" content="Laravel">
+<meta property="article:published_time" content="2014-12-05T13:25:08+00:00">
+<meta property="article:modified_time" content="2014-12-09T13:06:08+00:00">
+<meta property="og:updated_time" content="2014-12-09T13:06:08+00:00">
+ 
+<link rel="alternate" type="application/rss+xml" title="Slashnode » Feed" href="http://slashnode.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Slashnode » Comments Feed" href="http://slashnode.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Slashnode » Mastering Form Validation in Laravel 5 Comments Feed" href="http://slashnode.com/mastering-form-validation-laravel-5/feed/">
+<link rel="stylesheet" id="woo-our-team-css-css" href="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/our-team.css" type="text/css" media="all">
+<link rel="stylesheet" id="woo-testimonials-css-css" href="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/testimonials.css" type="text/css" media="all">
+<link rel="stylesheet" id="woo-features-css-css" href="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/features.css" type="text/css" media="all">
+<link rel="stylesheet" id="theme-stylesheet-css" href="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="woo-layout-css" href="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/layout.css" type="text/css" media="all">
+<link rel="stylesheet" id="woo_google_fonts-css" href="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/css.css" type="text/css" media="all">
+<script src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/a_002.htm" async=""></script><script src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript" src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/jquery_002.js"></script>
+<script type="text/javascript" src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/jquery-migrate.js"></script>
+<script type="text/javascript" src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/fitvids.js"></script>
+<script type="text/javascript" src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/modernizr.js"></script>
+<script type="text/javascript" src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/jquery.js"></script>
+<script type="text/javascript" src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/waypoints.js"></script>
+<script type="text/javascript" src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/jquery_003.js"></script>
+<script type="text/javascript" src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/general.js"></script>
+<link rel="shortlink" href="http://slashnode.com/?p=225">
+ 
+<meta name="generator" content="Hub 1.0.0">
+<meta name="generator" content="WooFramework 6.0.4">
+ 
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+ 
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+ 
+<link href="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/default.css" rel="stylesheet" type="text/css">
+ 
+<style type="text/css">#logo img{display:none;}.site-title{display:block!important;}.site-description{display:block!important;}#testimonials-holder{display:none;}#credit{display:none;}#disqus_thread{padding:30px;}#navigation{width:768px;}#header .site-title a{text-transform:uppercase;transition:all .5s;}#header .site-title a:hover{color:#aaa;text-decoration:none;}#header .site-description{font-variant:normal;font-style:normal;font-weight:normal;font-size:1.2em;}.footer-laravel{font-size:0.97em;text-align:center;padding:14px;font-family:source-sans-pro,helvetica,arial,sans-serif;color:rgb(170,170,170);text-transform:uppercase;}.gist{font-size:0.75em;line-height:1.5em;}.gist tr{display:block;}</style>
+ 
+<link href="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/shortcodes.css" rel="stylesheet" type="text/css">
+ 
+<link href="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/custom.css" rel="stylesheet" type="text/css">
+<script src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/embed.js" async="" type="text/javascript"></script><script src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/count.js" type="text/javascript" async=""></script></head>
+<body class="single single-post postid-225 single-format-standard chrome alt-style-default layout-left-content">
+<div id="wrapper">
+<div id="inner-wrapper">
+<div id="header-wrapper">
+<div class="wrapper">
+<header id="header">
+<span class="nav-toggle"><a href="#navigation"><span>Navigation</span></a></span>
+<div class="site-header">
+<h1 class="site-title"><a href="http://slashnode.com/">Slashnode</a></h1>
+<h2 class="site-description">Software as a Service Consulting</h2>
+</div>
+<nav id="navigation" role="navigation">
+<section class="menus">
+<a href="http://slashnode.com/" class="nav-home"><span>Home</span></a>
+<ul id="main-nav" class="nav">
+<li class="page_item current_page_item"><a href="http://slashnode.com/">Home</a></li>
+<li class="page_item page-item-2"><a href="http://slashnode.com/blog/">Blog</a></li>
+<li class="page_item page-item-5 page_item_has_children parent"><a href="http://slashnode.com/products-services/">Products &amp; Services</a>
+<ul style="margin-left: 12px;" class="children">
+<li class="page_item page-item-7"><a href="http://slashnode.com/products-services/laravel-consulting/">Laravel Consulting</a></li>
+</ul>
+</li>
+<li class="page_item page-item-19"><a href="http://slashnode.com/contact/">Contact</a></li>
+</ul> 
+</section> 
+<a href="#top" class="nav-close"><span>Return to Content</span></a>
+</nav> 
+</header> 
+</div> 
+</div> 
+<div id="content">
+<div class="wrapper">
+<section id="main" class="fullwidth">
+<aside id="post-details" class="fix">
+<div class="profile-image"><img alt="" src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/04443f61a26ea5f35b7633f1c7f8482e.jpg" class="avatar avatar-180 photo" height="180" width="180"></div>
+<div class="profile-content">
+<h3 class="title">Armen Markossyan</h3>
+<p>Armen is an experienced web-developer who has worked with several 
+multinational corporations, as well as with many small companies and 
+individuals.</p>
+<p>Right now he is a freelancer specializing in web-development, quality assurance and project management.</p>
+<ul class="social">
+<li><a class="twitter" href="http://twitter.com/armenka"><span>Twitter</span></a></li>
+<li><a class="gplus" href="https://plus.google.com/109456079122244208053"><span>Google+</span></a></li>
+</ul>
+<div class="profile-link">
+<a class="button" href="http://slashnode.com/author/armen/">
+More by Armen Markossyan </a>
+</div> 
+</div> 
+</aside> 
+<article class="post-225 post type-post status-publish format-standard hentry category-laravel">
+<header>
+<h1>Mastering Form Validation in Laravel 5</h1>
+<aside class="post-meta">
+<ul>
+<li class="post-date">
+<a href="http://slashnode.com/mastering-form-validation-laravel-5/" rel="bookmark" title="Mastering Form Validation in Laravel 5">December 5, 2014</a>
+</li>
+<li class="post-category">
+<a href="http://slashnode.com/category/laravel/" rel="category tag">Laravel</a> </li>
+</ul>
+</aside>
+</header>
+<a title="Mastering Form Validation in Laravel 5" href="http://slashnode.com/wp-content/uploads/2014/12/form-validation-laravel-5.jpg" rel="lightbox"><img src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/thumb.jpg" alt="" class="woo-image thumbnail aligncenter" height="350" width="825"></a>
+<section class="entry fix">
+<p>Laravel developers have always had a nice validation class out of the
+ box, but unfortunately we have never had a standard way of using it. 
+Some people prefer doing validation in controllers, others do it in 
+models and I, as many others, preferred to&nbsp;do&nbsp;it in a separate
+ validation layer. Of course, all of these methods&nbsp;worked for us, 
+but having a best practice&nbsp;is always preferred.</p>
+<p>In this article we’ll review the new feature of Laravel 5 which gives
+ us a great standard way of doing validation and several other things.</p>
+<h2>Form requests</h2>
+<p>Everytime we send a form to a server, we do a HTTP <strong>request</strong>. <strong>Form requests</strong> are dedicated classes which handle and represent these requests in Laravel 5 applications.</p>
+<p>To see a typical form request class, we can generate it like follows:</p>
+<p><code>php artisan make:request CreateUserRequest</code></p>
+<p>This command generates a <code>CreateUserRequest</code> class in the <code>app/Http/Requests</code> directory. Let’s see what it looks like:</p>
+<script src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/9dc14f7830cefd10d495.js"></script><link rel="stylesheet" href="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist16697901" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table class="lines highlight" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-createuserrequest-php-L1" rel="file-createuserrequest-php-L1">1</span>
+            <span class="line-number" id="file-createuserrequest-php-L2" rel="file-createuserrequest-php-L2">2</span>
+            <span class="line-number" id="file-createuserrequest-php-L3" rel="file-createuserrequest-php-L3">3</span>
+            <span class="line-number" id="file-createuserrequest-php-L4" rel="file-createuserrequest-php-L4">4</span>
+            <span class="line-number" id="file-createuserrequest-php-L5" rel="file-createuserrequest-php-L5">5</span>
+            <span class="line-number" id="file-createuserrequest-php-L6" rel="file-createuserrequest-php-L6">6</span>
+            <span class="line-number" id="file-createuserrequest-php-L7" rel="file-createuserrequest-php-L7">7</span>
+            <span class="line-number" id="file-createuserrequest-php-L8" rel="file-createuserrequest-php-L8">8</span>
+            <span class="line-number" id="file-createuserrequest-php-L9" rel="file-createuserrequest-php-L9">9</span>
+            <span class="line-number" id="file-createuserrequest-php-L10" rel="file-createuserrequest-php-L10">10</span>
+            <span class="line-number" id="file-createuserrequest-php-L11" rel="file-createuserrequest-php-L11">11</span>
+            <span class="line-number" id="file-createuserrequest-php-L12" rel="file-createuserrequest-php-L12">12</span>
+            <span class="line-number" id="file-createuserrequest-php-L13" rel="file-createuserrequest-php-L13">13</span>
+            <span class="line-number" id="file-createuserrequest-php-L14" rel="file-createuserrequest-php-L14">14</span>
+            <span class="line-number" id="file-createuserrequest-php-L15" rel="file-createuserrequest-php-L15">15</span>
+            <span class="line-number" id="file-createuserrequest-php-L16" rel="file-createuserrequest-php-L16">16</span>
+            <span class="line-number" id="file-createuserrequest-php-L17" rel="file-createuserrequest-php-L17">17</span>
+            <span class="line-number" id="file-createuserrequest-php-L18" rel="file-createuserrequest-php-L18">18</span>
+            <span class="line-number" id="file-createuserrequest-php-L19" rel="file-createuserrequest-php-L19">19</span>
+            <span class="line-number" id="file-createuserrequest-php-L20" rel="file-createuserrequest-php-L20">20</span>
+            <span class="line-number" id="file-createuserrequest-php-L21" rel="file-createuserrequest-php-L21">21</span>
+            <span class="line-number" id="file-createuserrequest-php-L22" rel="file-createuserrequest-php-L22">22</span>
+            <span class="line-number" id="file-createuserrequest-php-L23" rel="file-createuserrequest-php-L23">23</span>
+            <span class="line-number" id="file-createuserrequest-php-L24" rel="file-createuserrequest-php-L24">24</span>
+            <span class="line-number" id="file-createuserrequest-php-L25" rel="file-createuserrequest-php-L25">25</span>
+            <span class="line-number" id="file-createuserrequest-php-L26" rel="file-createuserrequest-php-L26">26</span>
+            <span class="line-number" id="file-createuserrequest-php-L27" rel="file-createuserrequest-php-L27">27</span>
+            <span class="line-number" id="file-createuserrequest-php-L28" rel="file-createuserrequest-php-L28">28</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-createuserrequest-php-LC1"><span class="pl-s2"><span class="pl-k">&lt;</span>?<span class="pl-c1">php</span> <span class="pl-c1">namespace</span> <span class="pl-s3">App\Http\</span><span class="pl-c1">Requests</span>;</span>
+</div><div class="line" id="file-createuserrequest-php-LC2"><span class="pl-s2"></span>
+</div><div class="line" id="file-createuserrequest-php-LC3"><span class="pl-s2"><span class="pl-k">use</span> <span class="pl-s3">App\Http\Requests\Request</span>;</span>
+</div><div class="line" id="file-createuserrequest-php-LC4"><span class="pl-s2"></span>
+</div><div class="line" id="file-createuserrequest-php-LC5"><span class="pl-s2"><span class="pl-st">class</span> <span class="pl-en">CreateUserRequest</span> <span class="pl-s">extends</span> <span class="pl-e">Request</span> {</span>
+</div><div class="line" id="file-createuserrequest-php-LC6"><span class="pl-s2"></span>
+</div><div class="line" id="file-createuserrequest-php-LC7"><span class="pl-s2">    <span class="pl-c">/**</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC8"><span class="pl-s2"><span class="pl-c">     * Get the validation rules that apply to the request.</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC9"><span class="pl-s2"><span class="pl-c">     *</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC10"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@return</span> array</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC11"><span class="pl-s2"><span class="pl-c">     */</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC12"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">rules</span>()</span>
+</div><div class="line" id="file-createuserrequest-php-LC13"><span class="pl-s2">    {</span>
+</div><div class="line" id="file-createuserrequest-php-LC14"><span class="pl-s2">        <span class="pl-k">return</span> [</span>
+</div><div class="line" id="file-createuserrequest-php-LC15"><span class="pl-s2">            <span class="pl-c">//</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC16"><span class="pl-s2">        ];</span>
+</div><div class="line" id="file-createuserrequest-php-LC17"><span class="pl-s2">    }</span>
+</div><div class="line" id="file-createuserrequest-php-LC18"><span class="pl-s2"></span>
+</div><div class="line" id="file-createuserrequest-php-LC19"><span class="pl-s2">    <span class="pl-c">/**</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC20"><span class="pl-s2"><span class="pl-c">     * Determine if the user is authorized to make this request.</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC21"><span class="pl-s2"><span class="pl-c">     *</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC22"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@return</span> bool</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC23"><span class="pl-s2"><span class="pl-c">     */</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC24"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">authorize</span>()</span>
+</div><div class="line" id="file-createuserrequest-php-LC25"><span class="pl-s2">    {</span>
+</div><div class="line" id="file-createuserrequest-php-LC26"><span class="pl-s2">        <span class="pl-k">return</span> <span class="pl-c1">false</span>;</span>
+</div><div class="line" id="file-createuserrequest-php-LC27"><span class="pl-s2">    }</span>
+</div><div class="line" id="file-createuserrequest-php-LC28"><span class="pl-s2">}</span>
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/mobileka/9dc14f7830cefd10d495/raw/CreateUserRequest.php" style="float:right">view raw</a>
+            <a href="https://gist.github.com/mobileka/9dc14f7830cefd10d495#file-createuserrequest-php">CreateUserRequest.php</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+<p>As you see, by default it consists of two public methods: <code>rules</code> and <code>authorize</code>.</p>
+<h2>Validation</h2>
+<p>You probably suspect that the <code>rules</code> method is responsible for validation and, of course, you are right.</p>
+<p>This method is expected to return a regular set of Laravel validation rules we are familiar with:</p>
+<script src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/53655ea9bd1a6ad725d8.js"></script><link rel="stylesheet" href="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist16698083" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table class="lines highlight" cellpadding="0" cellspacing="0">
+        <tbody><tr class="alt-table-row">
+          <td class="line-numbers">
+            <span class="line-number" id="file-createuserrequest-php-L1" rel="file-createuserrequest-php-L1">1</span>
+            <span class="line-number" id="file-createuserrequest-php-L2" rel="file-createuserrequest-php-L2">2</span>
+            <span class="line-number" id="file-createuserrequest-php-L3" rel="file-createuserrequest-php-L3">3</span>
+            <span class="line-number" id="file-createuserrequest-php-L4" rel="file-createuserrequest-php-L4">4</span>
+            <span class="line-number" id="file-createuserrequest-php-L5" rel="file-createuserrequest-php-L5">5</span>
+            <span class="line-number" id="file-createuserrequest-php-L6" rel="file-createuserrequest-php-L6">6</span>
+            <span class="line-number" id="file-createuserrequest-php-L7" rel="file-createuserrequest-php-L7">7</span>
+            <span class="line-number" id="file-createuserrequest-php-L8" rel="file-createuserrequest-php-L8">8</span>
+            <span class="line-number" id="file-createuserrequest-php-L9" rel="file-createuserrequest-php-L9">9</span>
+            <span class="line-number" id="file-createuserrequest-php-L10" rel="file-createuserrequest-php-L10">10</span>
+            <span class="line-number" id="file-createuserrequest-php-L11" rel="file-createuserrequest-php-L11">11</span>
+            <span class="line-number" id="file-createuserrequest-php-L12" rel="file-createuserrequest-php-L12">12</span>
+            <span class="line-number" id="file-createuserrequest-php-L13" rel="file-createuserrequest-php-L13">13</span>
+            <span class="line-number" id="file-createuserrequest-php-L14" rel="file-createuserrequest-php-L14">14</span>
+            <span class="line-number" id="file-createuserrequest-php-L15" rel="file-createuserrequest-php-L15">15</span>
+            <span class="line-number" id="file-createuserrequest-php-L16" rel="file-createuserrequest-php-L16">16</span>
+            <span class="line-number" id="file-createuserrequest-php-L17" rel="file-createuserrequest-php-L17">17</span>
+            <span class="line-number" id="file-createuserrequest-php-L18" rel="file-createuserrequest-php-L18">18</span>
+            <span class="line-number" id="file-createuserrequest-php-L19" rel="file-createuserrequest-php-L19">19</span>
+            <span class="line-number" id="file-createuserrequest-php-L20" rel="file-createuserrequest-php-L20">20</span>
+            <span class="line-number" id="file-createuserrequest-php-L21" rel="file-createuserrequest-php-L21">21</span>
+            <span class="line-number" id="file-createuserrequest-php-L22" rel="file-createuserrequest-php-L22">22</span>
+            <span class="line-number" id="file-createuserrequest-php-L23" rel="file-createuserrequest-php-L23">23</span>
+            <span class="line-number" id="file-createuserrequest-php-L24" rel="file-createuserrequest-php-L24">24</span>
+            <span class="line-number" id="file-createuserrequest-php-L25" rel="file-createuserrequest-php-L25">25</span>
+            <span class="line-number" id="file-createuserrequest-php-L26" rel="file-createuserrequest-php-L26">26</span>
+            <span class="line-number" id="file-createuserrequest-php-L27" rel="file-createuserrequest-php-L27">27</span>
+            <span class="line-number" id="file-createuserrequest-php-L28" rel="file-createuserrequest-php-L28">28</span>
+            <span class="line-number" id="file-createuserrequest-php-L29" rel="file-createuserrequest-php-L29">29</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-createuserrequest-php-LC1"><span class="pl-s2"><span class="pl-k">&lt;</span>?<span class="pl-c1">php</span> <span class="pl-c1">namespace</span> <span class="pl-s3">App\Http\</span><span class="pl-c1">Requests</span>;</span>
+</div><div class="line" id="file-createuserrequest-php-LC2"><span class="pl-s2"></span>
+</div><div class="line" id="file-createuserrequest-php-LC3"><span class="pl-s2"><span class="pl-k">use</span> <span class="pl-s3">App\Http\Requests\Request</span>;</span>
+</div><div class="line" id="file-createuserrequest-php-LC4"><span class="pl-s2"></span>
+</div><div class="line" id="file-createuserrequest-php-LC5"><span class="pl-s2"><span class="pl-st">class</span> <span class="pl-en">CreateUserRequest</span> <span class="pl-s">extends</span> <span class="pl-e">Request</span> {</span>
+</div><div class="line" id="file-createuserrequest-php-LC6"><span class="pl-s2"></span>
+</div><div class="line" id="file-createuserrequest-php-LC7"><span class="pl-s2">    <span class="pl-c">/**</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC8"><span class="pl-s2"><span class="pl-c">     * Get the validation rules that apply to the request.</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC9"><span class="pl-s2"><span class="pl-c">     *</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC10"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@return</span> array</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC11"><span class="pl-s2"><span class="pl-c">     */</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC12"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">rules</span>()</span>
+</div><div class="line" id="file-createuserrequest-php-LC13"><span class="pl-s2">    {</span>
+</div><div class="line" id="file-createuserrequest-php-LC14"><span class="pl-s2">        <span class="pl-k">return</span> [</span>
+</div><div class="line" id="file-createuserrequest-php-LC15"><span class="pl-s2">            <span class="pl-s1"><span class="pl-pds">'</span>email<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s1"><span class="pl-pds">'</span>required|email|unique:users,email<span class="pl-pds">'</span></span>,</span>
+</div><div class="line" id="file-createuserrequest-php-LC16"><span class="pl-s2">            <span class="pl-s1"><span class="pl-pds">'</span>password<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s1"><span class="pl-pds">'</span>required|min:8<span class="pl-pds">'</span></span></span>
+</div><div class="line" id="file-createuserrequest-php-LC17"><span class="pl-s2">        ];</span>
+</div><div class="line" id="file-createuserrequest-php-LC18"><span class="pl-s2">    }</span>
+</div><div class="line" id="file-createuserrequest-php-LC19"><span class="pl-s2"></span>
+</div><div class="line" id="file-createuserrequest-php-LC20"><span class="pl-s2">    <span class="pl-c">/**</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC21"><span class="pl-s2"><span class="pl-c">     * Determine if the user is authorized to make this request.</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC22"><span class="pl-s2"><span class="pl-c">     *</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC23"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@return</span> bool</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC24"><span class="pl-s2"><span class="pl-c">     */</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC25"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">authorize</span>()</span>
+</div><div class="line" id="file-createuserrequest-php-LC26"><span class="pl-s2">    {</span>
+</div><div class="line" id="file-createuserrequest-php-LC27"><span class="pl-s2">        <span class="pl-k">return</span> <span class="pl-c1">false</span>;</span>
+</div><div class="line" id="file-createuserrequest-php-LC28"><span class="pl-s2">    }</span>
+</div><div class="line" id="file-createuserrequest-php-LC29"><span class="pl-s2">}</span>
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/mobileka/53655ea9bd1a6ad725d8/raw/CreateUserRequest.php" style="float:right">view raw</a>
+            <a href="https://gist.github.com/mobileka/53655ea9bd1a6ad725d8#file-createuserrequest-php">CreateUserRequest.php</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+<p>Nothing new here. That’s good but how do we use this class?</p>
+<p>To demonstrate it, let’s generate a simple <code>Users</code> controller:</p>
+<p><code>php artisan make:controller UsersController</code></p>
+<p>I’ve removed everything except two relevant <code>store</code> and <code>update</code> methods:</p>
+<script src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/44075ac2c0c2f85cc5f6.js"></script><link rel="stylesheet" href="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist16698387" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table class="lines highlight" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-userscontroller-php-L1" rel="file-userscontroller-php-L1">1</span>
+            <span class="line-number" id="file-userscontroller-php-L2" rel="file-userscontroller-php-L2">2</span>
+            <span class="line-number" id="file-userscontroller-php-L3" rel="file-userscontroller-php-L3">3</span>
+            <span class="line-number" id="file-userscontroller-php-L4" rel="file-userscontroller-php-L4">4</span>
+            <span class="line-number" id="file-userscontroller-php-L5" rel="file-userscontroller-php-L5">5</span>
+            <span class="line-number" id="file-userscontroller-php-L6" rel="file-userscontroller-php-L6">6</span>
+            <span class="line-number" id="file-userscontroller-php-L7" rel="file-userscontroller-php-L7">7</span>
+            <span class="line-number" id="file-userscontroller-php-L8" rel="file-userscontroller-php-L8">8</span>
+            <span class="line-number" id="file-userscontroller-php-L9" rel="file-userscontroller-php-L9">9</span>
+            <span class="line-number" id="file-userscontroller-php-L10" rel="file-userscontroller-php-L10">10</span>
+            <span class="line-number" id="file-userscontroller-php-L11" rel="file-userscontroller-php-L11">11</span>
+            <span class="line-number" id="file-userscontroller-php-L12" rel="file-userscontroller-php-L12">12</span>
+            <span class="line-number" id="file-userscontroller-php-L13" rel="file-userscontroller-php-L13">13</span>
+            <span class="line-number" id="file-userscontroller-php-L14" rel="file-userscontroller-php-L14">14</span>
+            <span class="line-number" id="file-userscontroller-php-L15" rel="file-userscontroller-php-L15">15</span>
+            <span class="line-number" id="file-userscontroller-php-L16" rel="file-userscontroller-php-L16">16</span>
+            <span class="line-number" id="file-userscontroller-php-L17" rel="file-userscontroller-php-L17">17</span>
+            <span class="line-number" id="file-userscontroller-php-L18" rel="file-userscontroller-php-L18">18</span>
+            <span class="line-number" id="file-userscontroller-php-L19" rel="file-userscontroller-php-L19">19</span>
+            <span class="line-number" id="file-userscontroller-php-L20" rel="file-userscontroller-php-L20">20</span>
+            <span class="line-number" id="file-userscontroller-php-L21" rel="file-userscontroller-php-L21">21</span>
+            <span class="line-number" id="file-userscontroller-php-L22" rel="file-userscontroller-php-L22">22</span>
+            <span class="line-number" id="file-userscontroller-php-L23" rel="file-userscontroller-php-L23">23</span>
+            <span class="line-number" id="file-userscontroller-php-L24" rel="file-userscontroller-php-L24">24</span>
+            <span class="line-number" id="file-userscontroller-php-L25" rel="file-userscontroller-php-L25">25</span>
+            <span class="line-number" id="file-userscontroller-php-L26" rel="file-userscontroller-php-L26">26</span>
+            <span class="line-number" id="file-userscontroller-php-L27" rel="file-userscontroller-php-L27">27</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-userscontroller-php-LC1"><span class="pl-s2"><span class="pl-k">&lt;</span>?<span class="pl-c1">php</span> <span class="pl-c1">namespace</span> <span class="pl-s3">App\Http\</span><span class="pl-c1">Controllers</span>;</span>
+</div><div class="line" id="file-userscontroller-php-LC2"><span class="pl-s2"></span>
+</div><div class="line" id="file-userscontroller-php-LC3"><span class="pl-s2"><span class="pl-k">use</span> <span class="pl-s3">App\Http\Controllers\Controller</span>;</span>
+</div><div class="line" id="file-userscontroller-php-LC4"><span class="pl-s2"></span>
+</div><div class="line" id="file-userscontroller-php-LC5"><span class="pl-s2"><span class="pl-st">class</span> <span class="pl-en">UsersController</span> <span class="pl-s">extends</span> <span class="pl-e">Controller</span> {</span>
+</div><div class="line" id="file-userscontroller-php-LC6"><span class="pl-s2"></span>
+</div><div class="line" id="file-userscontroller-php-LC7"><span class="pl-s2">    <span class="pl-c">/**</span></span>
+</div><div class="line" id="file-userscontroller-php-LC8"><span class="pl-s2"><span class="pl-c">     * Store a newly created resource in storage.</span></span>
+</div><div class="line" id="file-userscontroller-php-LC9"><span class="pl-s2"><span class="pl-c">     *</span></span>
+</div><div class="line" id="file-userscontroller-php-LC10"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@return</span> Response</span></span>
+</div><div class="line" id="file-userscontroller-php-LC11"><span class="pl-s2"><span class="pl-c">     */</span></span>
+</div><div class="line" id="file-userscontroller-php-LC12"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">store</span>()</span>
+</div><div class="line" id="file-userscontroller-php-LC13"><span class="pl-s2">    {</span>
+</div><div class="line" id="file-userscontroller-php-LC14"><span class="pl-s2">        <span class="pl-c">//</span></span>
+</div><div class="line" id="file-userscontroller-php-LC15"><span class="pl-s2">    }</span>
+</div><div class="line" id="file-userscontroller-php-LC16"><span class="pl-s2"></span>
+</div><div class="line" id="file-userscontroller-php-LC17"><span class="pl-s2">    <span class="pl-c">/**</span></span>
+</div><div class="line" id="file-userscontroller-php-LC18"><span class="pl-s2"><span class="pl-c">     * Update the specified resource in storage.</span></span>
+</div><div class="line" id="file-userscontroller-php-LC19"><span class="pl-s2"><span class="pl-c">     *</span></span>
+</div><div class="line" id="file-userscontroller-php-LC20"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@param</span>  int  $id</span></span>
+</div><div class="line" id="file-userscontroller-php-LC21"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@return</span> Response</span></span>
+</div><div class="line" id="file-userscontroller-php-LC22"><span class="pl-s2"><span class="pl-c">     */</span></span>
+</div><div class="line" id="file-userscontroller-php-LC23"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">update</span>(<span class="pl-vo">$id</span>)</span>
+</div><div class="line" id="file-userscontroller-php-LC24"><span class="pl-s2">    {</span>
+</div><div class="line" id="file-userscontroller-php-LC25"><span class="pl-s2">        <span class="pl-c">//</span></span>
+</div><div class="line" id="file-userscontroller-php-LC26"><span class="pl-s2">    }</span>
+</div><div class="line" id="file-userscontroller-php-LC27"><span class="pl-s2">}</span>
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/mobileka/44075ac2c0c2f85cc5f6/raw/UsersController.php" style="float:right">view raw</a>
+            <a href="https://gist.github.com/mobileka/44075ac2c0c2f85cc5f6#file-userscontroller-php">UsersController.php</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+<p>And the most <em>awesome</em> part starts here. To use the form request, you have to think back the previous article about <a title="Method Injection with Laravel 5" href="http://slashnode.com/dependency-injection/" target="_blank">method injection</a> in Laravel 5. Just inject the form request into a relevant method (<code>store</code> method in our case) and you’re done:</p>
+<script src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/a51709d9a2faf6f30782.js"></script><link rel="stylesheet" href="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist16698624" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table class="lines highlight" cellpadding="0" cellspacing="0">
+        <tbody><tr class="alt-table-row">
+          <td class="line-numbers">
+            <span class="line-number" id="file-userscontroller-php-L1" rel="file-userscontroller-php-L1">1</span>
+            <span class="line-number" id="file-userscontroller-php-L2" rel="file-userscontroller-php-L2">2</span>
+            <span class="line-number" id="file-userscontroller-php-L3" rel="file-userscontroller-php-L3">3</span>
+            <span class="line-number" id="file-userscontroller-php-L4" rel="file-userscontroller-php-L4">4</span>
+            <span class="line-number" id="file-userscontroller-php-L5" rel="file-userscontroller-php-L5">5</span>
+            <span class="line-number" id="file-userscontroller-php-L6" rel="file-userscontroller-php-L6">6</span>
+            <span class="line-number" id="file-userscontroller-php-L7" rel="file-userscontroller-php-L7">7</span>
+            <span class="line-number" id="file-userscontroller-php-L8" rel="file-userscontroller-php-L8">8</span>
+            <span class="line-number" id="file-userscontroller-php-L9" rel="file-userscontroller-php-L9">9</span>
+            <span class="line-number" id="file-userscontroller-php-L10" rel="file-userscontroller-php-L10">10</span>
+            <span class="line-number" id="file-userscontroller-php-L11" rel="file-userscontroller-php-L11">11</span>
+            <span class="line-number" id="file-userscontroller-php-L12" rel="file-userscontroller-php-L12">12</span>
+            <span class="line-number" id="file-userscontroller-php-L13" rel="file-userscontroller-php-L13">13</span>
+            <span class="line-number" id="file-userscontroller-php-L14" rel="file-userscontroller-php-L14">14</span>
+            <span class="line-number" id="file-userscontroller-php-L15" rel="file-userscontroller-php-L15">15</span>
+            <span class="line-number" id="file-userscontroller-php-L16" rel="file-userscontroller-php-L16">16</span>
+            <span class="line-number" id="file-userscontroller-php-L17" rel="file-userscontroller-php-L17">17</span>
+            <span class="line-number" id="file-userscontroller-php-L18" rel="file-userscontroller-php-L18">18</span>
+            <span class="line-number" id="file-userscontroller-php-L19" rel="file-userscontroller-php-L19">19</span>
+            <span class="line-number" id="file-userscontroller-php-L20" rel="file-userscontroller-php-L20">20</span>
+            <span class="line-number" id="file-userscontroller-php-L21" rel="file-userscontroller-php-L21">21</span>
+            <span class="line-number" id="file-userscontroller-php-L22" rel="file-userscontroller-php-L22">22</span>
+            <span class="line-number" id="file-userscontroller-php-L23" rel="file-userscontroller-php-L23">23</span>
+            <span class="line-number" id="file-userscontroller-php-L24" rel="file-userscontroller-php-L24">24</span>
+            <span class="line-number" id="file-userscontroller-php-L25" rel="file-userscontroller-php-L25">25</span>
+            <span class="line-number" id="file-userscontroller-php-L26" rel="file-userscontroller-php-L26">26</span>
+            <span class="line-number" id="file-userscontroller-php-L27" rel="file-userscontroller-php-L27">27</span>
+            <span class="line-number" id="file-userscontroller-php-L28" rel="file-userscontroller-php-L28">28</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-userscontroller-php-LC1"><span class="pl-s2"><span class="pl-k">&lt;</span>?<span class="pl-c1">php</span> <span class="pl-c1">namespace</span> <span class="pl-s3">App\Http\</span><span class="pl-c1">Controllers</span>;</span>
+</div><div class="line" id="file-userscontroller-php-LC2"><span class="pl-s2"></span>
+</div><div class="line" id="file-userscontroller-php-LC3"><span class="pl-s2"><span class="pl-k">use</span> <span class="pl-s3">App\Http\Controllers\Controller</span>;</span>
+</div><div class="line" id="file-userscontroller-php-LC4"><span class="pl-s2"><span class="pl-k">use</span> <span class="pl-s3">App\Http\Requests\CreateUserRequest</span>;</span>
+</div><div class="line" id="file-userscontroller-php-LC5"><span class="pl-s2"></span>
+</div><div class="line" id="file-userscontroller-php-LC6"><span class="pl-s2"><span class="pl-st">class</span> <span class="pl-en">UsersController</span> <span class="pl-s">extends</span> <span class="pl-e">Controller</span> {</span>
+</div><div class="line" id="file-userscontroller-php-LC7"><span class="pl-s2"></span>
+</div><div class="line" id="file-userscontroller-php-LC8"><span class="pl-s2">    <span class="pl-c">/**</span></span>
+</div><div class="line" id="file-userscontroller-php-LC9"><span class="pl-s2"><span class="pl-c">     * Store a newly created resource in storage.</span></span>
+</div><div class="line" id="file-userscontroller-php-LC10"><span class="pl-s2"><span class="pl-c">     *</span></span>
+</div><div class="line" id="file-userscontroller-php-LC11"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@return</span> Response</span></span>
+</div><div class="line" id="file-userscontroller-php-LC12"><span class="pl-s2"><span class="pl-c">     */</span></span>
+</div><div class="line" id="file-userscontroller-php-LC13"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">store</span>(<span class="pl-s3">CreateUserRequest</span> <span class="pl-vo">$request</span>)</span>
+</div><div class="line" id="file-userscontroller-php-LC14"><span class="pl-s2">    {</span>
+</div><div class="line" id="file-userscontroller-php-LC15"><span class="pl-s2">        <span class="pl-c">//</span></span>
+</div><div class="line" id="file-userscontroller-php-LC16"><span class="pl-s2">    }</span>
+</div><div class="line" id="file-userscontroller-php-LC17"><span class="pl-s2"></span>
+</div><div class="line" id="file-userscontroller-php-LC18"><span class="pl-s2">    <span class="pl-c">/**</span></span>
+</div><div class="line" id="file-userscontroller-php-LC19"><span class="pl-s2"><span class="pl-c">     * Update the specified resource in storage.</span></span>
+</div><div class="line" id="file-userscontroller-php-LC20"><span class="pl-s2"><span class="pl-c">     *</span></span>
+</div><div class="line" id="file-userscontroller-php-LC21"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@param</span>  int  $id</span></span>
+</div><div class="line" id="file-userscontroller-php-LC22"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@return</span> Response</span></span>
+</div><div class="line" id="file-userscontroller-php-LC23"><span class="pl-s2"><span class="pl-c">     */</span></span>
+</div><div class="line" id="file-userscontroller-php-LC24"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">update</span>(<span class="pl-vo">$id</span>)</span>
+</div><div class="line" id="file-userscontroller-php-LC25"><span class="pl-s2">    {</span>
+</div><div class="line" id="file-userscontroller-php-LC26"><span class="pl-s2">        <span class="pl-c">//</span></span>
+</div><div class="line" id="file-userscontroller-php-LC27"><span class="pl-s2">    }</span>
+</div><div class="line" id="file-userscontroller-php-LC28"><span class="pl-s2">}</span>
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/mobileka/a51709d9a2faf6f30782/raw/UsersController.php" style="float:right">view raw</a>
+            <a href="https://gist.github.com/mobileka/a51709d9a2faf6f30782#file-userscontroller-php">UsersController.php</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+<p>Now you’re probably a little bit confused or don’t get what’s going 
+on. The code snippet above is everything you have to do to validate your
+ request. Let me explain in the next section.</p>
+<h2>Validation in depth</h2>
+<p>What makes it possible to keep the controller method free of all 
+conditional statements and explicit calls to a form request instance?</p>
+<p>The magic is in the way Laravel handles the request. There is a listener in the <code>FormRequestServiceProvider</code> which does validation *before* we hit the controller.</p>
+<p>The implementation details are not so important but it is very 
+important to understand that the application will *never* hit the 
+controller method if validation fails.</p>
+<p>Fine, but what happens in that case? By default, Laravel redirects the request back to the failed form with populated <code>$errors</code> variable (instance of familiar <code>MessageBag</code>).</p>
+<p>Of course, we can change this behavior. There are many ways to do 
+this but to keep the article short we’ll review the easiest one. To 
+change the redirect URL, you just have to set a <code>$redirect</code> property of your <code>CreateUserRequest</code> class:</p>
+<script src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/76cf5efeabe06e03d26f.js"></script><link rel="stylesheet" href="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist16699164" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table class="lines highlight" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-createuserrequest-php-L1" rel="file-createuserrequest-php-L1">1</span>
+            <span class="line-number" id="file-createuserrequest-php-L2" rel="file-createuserrequest-php-L2">2</span>
+            <span class="line-number" id="file-createuserrequest-php-L3" rel="file-createuserrequest-php-L3">3</span>
+            <span class="line-number" id="file-createuserrequest-php-L4" rel="file-createuserrequest-php-L4">4</span>
+            <span class="line-number" id="file-createuserrequest-php-L5" rel="file-createuserrequest-php-L5">5</span>
+            <span class="line-number" id="file-createuserrequest-php-L6" rel="file-createuserrequest-php-L6">6</span>
+            <span class="line-number" id="file-createuserrequest-php-L7" rel="file-createuserrequest-php-L7">7</span>
+            <span class="line-number" id="file-createuserrequest-php-L8" rel="file-createuserrequest-php-L8">8</span>
+            <span class="line-number" id="file-createuserrequest-php-L9" rel="file-createuserrequest-php-L9">9</span>
+            <span class="line-number" id="file-createuserrequest-php-L10" rel="file-createuserrequest-php-L10">10</span>
+            <span class="line-number" id="file-createuserrequest-php-L11" rel="file-createuserrequest-php-L11">11</span>
+            <span class="line-number" id="file-createuserrequest-php-L12" rel="file-createuserrequest-php-L12">12</span>
+            <span class="line-number" id="file-createuserrequest-php-L13" rel="file-createuserrequest-php-L13">13</span>
+            <span class="line-number" id="file-createuserrequest-php-L14" rel="file-createuserrequest-php-L14">14</span>
+            <span class="line-number" id="file-createuserrequest-php-L15" rel="file-createuserrequest-php-L15">15</span>
+            <span class="line-number" id="file-createuserrequest-php-L16" rel="file-createuserrequest-php-L16">16</span>
+            <span class="line-number" id="file-createuserrequest-php-L17" rel="file-createuserrequest-php-L17">17</span>
+            <span class="line-number" id="file-createuserrequest-php-L18" rel="file-createuserrequest-php-L18">18</span>
+            <span class="line-number" id="file-createuserrequest-php-L19" rel="file-createuserrequest-php-L19">19</span>
+            <span class="line-number" id="file-createuserrequest-php-L20" rel="file-createuserrequest-php-L20">20</span>
+            <span class="line-number" id="file-createuserrequest-php-L21" rel="file-createuserrequest-php-L21">21</span>
+            <span class="line-number" id="file-createuserrequest-php-L22" rel="file-createuserrequest-php-L22">22</span>
+            <span class="line-number" id="file-createuserrequest-php-L23" rel="file-createuserrequest-php-L23">23</span>
+            <span class="line-number" id="file-createuserrequest-php-L24" rel="file-createuserrequest-php-L24">24</span>
+            <span class="line-number" id="file-createuserrequest-php-L25" rel="file-createuserrequest-php-L25">25</span>
+            <span class="line-number" id="file-createuserrequest-php-L26" rel="file-createuserrequest-php-L26">26</span>
+            <span class="line-number" id="file-createuserrequest-php-L27" rel="file-createuserrequest-php-L27">27</span>
+            <span class="line-number" id="file-createuserrequest-php-L28" rel="file-createuserrequest-php-L28">28</span>
+            <span class="line-number" id="file-createuserrequest-php-L29" rel="file-createuserrequest-php-L29">29</span>
+            <span class="line-number" id="file-createuserrequest-php-L30" rel="file-createuserrequest-php-L30">30</span>
+            <span class="line-number" id="file-createuserrequest-php-L31" rel="file-createuserrequest-php-L31">31</span>
+            <span class="line-number" id="file-createuserrequest-php-L32" rel="file-createuserrequest-php-L32">32</span>
+            <span class="line-number" id="file-createuserrequest-php-L33" rel="file-createuserrequest-php-L33">33</span>
+            <span class="line-number" id="file-createuserrequest-php-L34" rel="file-createuserrequest-php-L34">34</span>
+            <span class="line-number" id="file-createuserrequest-php-L35" rel="file-createuserrequest-php-L35">35</span>
+            <span class="line-number" id="file-createuserrequest-php-L36" rel="file-createuserrequest-php-L36">36</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-createuserrequest-php-LC1"><span class="pl-s2"><span class="pl-k">&lt;</span>?<span class="pl-c1">php</span> <span class="pl-c1">namespace</span> <span class="pl-s3">App\Http\</span><span class="pl-c1">Requests</span>;</span>
+</div><div class="line" id="file-createuserrequest-php-LC2"><span class="pl-s2"></span>
+</div><div class="line" id="file-createuserrequest-php-LC3"><span class="pl-s2"><span class="pl-k">use</span> <span class="pl-s3">App\Http\Requests\Request</span>;</span>
+</div><div class="line" id="file-createuserrequest-php-LC4"><span class="pl-s2"></span>
+</div><div class="line" id="file-createuserrequest-php-LC5"><span class="pl-s2"><span class="pl-st">class</span> <span class="pl-en">CreateUserRequest</span> <span class="pl-s">extends</span> <span class="pl-e">Request</span> {</span>
+</div><div class="line" id="file-createuserrequest-php-LC6"><span class="pl-s2"></span>
+</div><div class="line" id="file-createuserrequest-php-LC7"><span class="pl-s2">    <span class="pl-c">/**</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC8"><span class="pl-s2"><span class="pl-c">     * The URI to redirect to if validation fails</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC9"><span class="pl-s2"><span class="pl-c">     *</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC10"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@var</span> string</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC11"><span class="pl-s2"><span class="pl-c">     */</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC12"><span class="pl-s2">    <span class="pl-s">protected</span> <span class="pl-vo">$redirect</span> <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">'</span>users/create<span class="pl-pds">'</span></span>;</span>
+</div><div class="line" id="file-createuserrequest-php-LC13"><span class="pl-s2"></span>
+</div><div class="line" id="file-createuserrequest-php-LC14"><span class="pl-s2">    <span class="pl-c">/**</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC15"><span class="pl-s2"><span class="pl-c">     * Get the validation rules that apply to the request.</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC16"><span class="pl-s2"><span class="pl-c">     *</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC17"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@return</span> array</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC18"><span class="pl-s2"><span class="pl-c">     */</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC19"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">rules</span>()</span>
+</div><div class="line" id="file-createuserrequest-php-LC20"><span class="pl-s2">    {</span>
+</div><div class="line" id="file-createuserrequest-php-LC21"><span class="pl-s2">        <span class="pl-k">return</span> [</span>
+</div><div class="line" id="file-createuserrequest-php-LC22"><span class="pl-s2">            <span class="pl-s1"><span class="pl-pds">'</span>email<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s1"><span class="pl-pds">'</span>required|email|unique:users,email<span class="pl-pds">'</span></span>,</span>
+</div><div class="line" id="file-createuserrequest-php-LC23"><span class="pl-s2">            <span class="pl-s1"><span class="pl-pds">'</span>password<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s1"><span class="pl-pds">'</span>required|min:8<span class="pl-pds">'</span></span></span>
+</div><div class="line" id="file-createuserrequest-php-LC24"><span class="pl-s2">        ];</span>
+</div><div class="line" id="file-createuserrequest-php-LC25"><span class="pl-s2">    }</span>
+</div><div class="line" id="file-createuserrequest-php-LC26"><span class="pl-s2"></span>
+</div><div class="line" id="file-createuserrequest-php-LC27"><span class="pl-s2">    <span class="pl-c">/**</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC28"><span class="pl-s2"><span class="pl-c">     * Determine if the user is authorized to make this request.</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC29"><span class="pl-s2"><span class="pl-c">     *</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC30"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@return</span> bool</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC31"><span class="pl-s2"><span class="pl-c">     */</span></span>
+</div><div class="line" id="file-createuserrequest-php-LC32"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">authorize</span>()</span>
+</div><div class="line" id="file-createuserrequest-php-LC33"><span class="pl-s2">    {</span>
+</div><div class="line" id="file-createuserrequest-php-LC34"><span class="pl-s2">        <span class="pl-k">return</span> <span class="pl-c1">false</span>;</span>
+</div><div class="line" id="file-createuserrequest-php-LC35"><span class="pl-s2">    }</span>
+</div><div class="line" id="file-createuserrequest-php-LC36"><span class="pl-s2">}</span>
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/mobileka/76cf5efeabe06e03d26f/raw/CreateUserRequest.php" style="float:right">view raw</a>
+            <a href="https://gist.github.com/mobileka/76cf5efeabe06e03d26f#file-createuserrequest-php">CreateUserRequest.php</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+<p>Now, if validation fails, the request will be redirected to <code>users/create</code> URI.</p>
+<p>To get better idea of how this works and how to customize it, please see the <code>response</code> and <code>getRedirectUrl</code> methods of the <code>FormRequest</code>
+ class in the Laravel repository: 
+[FormRequest.php](https://github.com/laravel/framework/blob/master/src/Illuminate/Foundation/Http/FormRequest.php).</p>
+<h2>Conclusion</h2>
+<p>From my point of view, form requests are one of the best new features of Laravel 5. A few benefits of using this approach:</p>
+<ul>
+<li>It gives us a standard way of validating our requests</li>
+<li>As <code>rules</code> is a method, you can put a custom logic in 
+there (for example, you don’t have to hard code a table name as we did 
+in the reviewed example)</li>
+<li>You have a nice object-oriented way of organizing your validations. In some cases we have different validation rules for <code>store</code> and <code>update</code> methods and having a separate form request is the best way of solving this problem. As a “home assignment”, try to create an <code>UpdateUserRequest</code> which makes <code>password</code> field optional but when it’s filled out, it has to match the <code>password_confirmation</code> field.</li>
+</ul>
+<p>This topic is too wide for a single article. That’s why I decided to 
+write another article where we’ll review autorization and several other 
+benefits of the awesome form requests. Stay tuned!</p>
+</section>
+</article> 
+<nav id="post-entries" class="fix">
+<div class="nav-prev fl"><a href="http://slashnode.com/the-12-factor-php-app-part-2/" rel="prev">The 12 Factor PHP App – Part 2</a></div>
+<div class="nav-next fr"><a href="http://slashnode.com/reusable-resource-controllers/" rel="next">A Pattern for Reusable Resource Controllers in Laravel 4.2</a></div>
+</nav> 
+</section> 
+</div> 
+<div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/a.htm" style="width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 566px ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" data-disqus-uid="2" id="dsq-2" frameborder="0" width="100%"></iframe></div>
+<script type="text/javascript">
+var disqus_url = 'http://slashnode.com/mastering-form-validation-laravel-5/';
+var disqus_identifier = '225 http://slashnode.com/?p=225';
+var disqus_container_id = 'disqus_thread';
+var disqus_shortname = 'slashnode';
+var disqus_title = "Mastering Form Validation in Laravel 5";
+var disqus_config_custom = window.disqus_config;
+var disqus_config = function () {
+    /*
+    All currently supported events:
+    onReady: fires when everything is ready,
+    onNewComment: fires when a new comment is posted,
+    onIdentify: fires when user is authenticated
+    */
+    
+    
+    this.language = '';
+        this.callbacks.onReady.push(function () {
+
+        // sync comments in the background so we don't block the page
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = '?cf_action=sync_comments&post_id=225';
+
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(script, firstScript);
+    });
+    
+    if (disqus_config_custom) {
+        disqus_config_custom.call(this);
+    }
+};
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+</div> 
+<div id="footer-wrapper">
+<div class="footer-laravel">
+We <span class="hearts">♥</span> <a title="Laravel consulting" href="http://www.slashnode.com/products-services/laravel-consulting/"><img src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/laravel-logo-sm.png"></a>
+</div>
+<section id="footer-widgets">
+<div class="wrapper col-3 fix">
+<div class="block footer-widget-1">
+<div id="woo_subscribe-2" class="widget widget_woo_subscribe"> <aside id="connect" class="fix">
+<h3>Subscribe</h3>
+<div>
+ 
+<div id="mc_embed_signup">
+<form class="newsletter-form fl" action="//us6.list-manage.com/subscribe/post?u=06e050acdd13bb286d5abf023&amp;id=6bdd8a05fd" method="post" target="popupwindow" onsubmit="window.open('http://us6.list-manage.com/subscribe/post?u=06e050acdd13bb286d5abf023&amp;id=6bdd8a05fd', 'popupwindow', 'scrollbars=yes,width=650,height=520');return true">
+<input name="EMAIL" class="required email" value="E-mail" id="mce-EMAIL" onfocus="if (this.value == 'E-mail') {this.value = '';}" onblur="if (this.value == '') {this.value = 'E-mail';}" type="text">
+<input value="Submit" name="subscribe" id="mc-embedded-subscribe" class="btn submit button" type="submit">
+</form>
+</div>
+ 
+<div class="social">
+</div>
+</div>
+</aside>
+</div> </div>
+</div> 
+</section> 
+<footer id="footer">
+<div class="wrapper">
+<div id="copyright">
+<p>Slashnode Limited © 2015. All Rights Reserved.</p>
+</div>
+<div id="credit">
+<p><a href="http://www.woothemes.com/"><img src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/woothemes.png" alt="WooThemes"></a></p>
+</div>
+</div> 
+</footer> 
+</div> 
+</div> 
+</div> 
+<script type="text/javascript">
+        // <![CDATA[
+        var disqus_shortname = 'slashnode';
+        (function () {
+            var nodes = document.getElementsByTagName('span');
+            for (var i = 0, url; i < nodes.length; i++) {
+                if (nodes[i].className.indexOf('dsq-postid') != -1) {
+                    nodes[i].parentNode.setAttribute('data-disqus-identifier', nodes[i].getAttribute('data-dsqidentifier'));
+                    url = nodes[i].parentNode.href.split('#', 1);
+                    if (url.length == 1) { url = url[0]; }
+                    else { url = url[1]; }
+                    nodes[i].parentNode.href = url + '#disqus_thread';
+                }
+            }
+            var s = document.createElement('script'); 
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        // ]]>
+        </script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15034687-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<!--[if lt IE 9]>
+<script src="//slashnode.com/wp-content/themes/hub/includes/js/respond.js"></script>
+<![endif]-->
+<script type="text/javascript" src="Mastering%20Form%20Validation%20in%20Laravel%205%20-%20Slashnode_files/comment-reply.js"></script>
+
+</body></html>

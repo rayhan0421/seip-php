@@ -1,0 +1,58 @@
+It's the same with one-to-one relationships.
+
+// e.g.: models/node.php
+class Node extends Eloquent {
+  public function position()
+  {
+    return $this->has_one('Position');
+  }
+}
+
+// e.g.: models/position.php
+class Position extends Eloquent {
+  public function node()
+  {
+    return $this->belongs_to('Node');
+  }
+}
+
+// in app logic
+$node = Node::create($node_data);
+$node->position()->insert($position_data);
+
+-------------------------------------------------
+
+2.
+
+ 1 down vote accepted
+	
+
+The docs actually explain it all.
+
+Just use the save() method on the relation:
+
+$user = new User();
+$user->name= Input::get('name');
+$user->age= Input::get('age');
+$user->save();
+
+$student= new Student();
+$student->faculty = Input::get('faculty');
+$student->gpa= Input::get('gpa');
+
+$user->Student()->save($student);
+
+Or the other way around with associate():
+
+$user = new User();
+$user->name= Input::get('name');
+$user->age= Input::get('age');
+$user->save();
+
+$student= new Student();
+$student->faculty = Input::get('faculty');
+$student->gpa= Input::get('gpa');
+$student->User()->associate($user);
+$student->save();
+
+Oh and also it's hasOne() not haveOne()

@@ -1,0 +1,24 @@
+use  laravel/app/Console/Kernel.php 
+
+open it;
+
+open laravel documentation
+
+2.artisan schedule:run 
+
+and have it run every minute.
+3.
+  Here is an example of a fictional task to clear the cache every hour:
+-----
+$schedule->command('cache:clear')
+    ->hourly()
+    ->sendOutputTo($filePath)
+    ->emailOutputTo('john@doe.com');
+here cach:clear is important
+
+
+=================================
+It doesn’t end there. You can also call class methods:
+$schedule->call('SomeClass@method')->dailyAt('10:00');
+
+-------------------

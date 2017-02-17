@@ -1,0 +1,12 @@
+$game = Juego:: find( 1 );
+ $game-> nombre = 'Assassins Creed 4' ;
+ $game-> descripcion = 'Rayos y truenos, Edward.' ;
+ $game-> save();
+
+2.
+
+Album:: where( 'artista' , '=' , 'Matt Nathanson' )
+-> update( array( 'artista' => 'Dayle Rees' ));
+
+//We update the artist field for all rows whose artist is Matt Nathanson, changing its
+Dayle value Rees. 

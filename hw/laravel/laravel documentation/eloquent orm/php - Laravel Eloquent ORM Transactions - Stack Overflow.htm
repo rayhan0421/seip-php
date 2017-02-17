@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html itemscope="" itemtype="http://schema.org/QAPage"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/ados" async="" type="text/javascript"></script>
+    
+    <title>php - Laravel Eloquent ORM Transactions - Stack Overflow</title>
+    <link rel="shortcut icon" href="http://cdn.sstatic.net/stackoverflow/img/favicon.ico?v=00a326f96f68">
+    <link rel="apple-touch-icon image_src" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="http://stackoverflow.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com">
+    <meta property="og:type" content="website">
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=ea71a5211a91">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Laravel Eloquent ORM Transactions">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="The Eloquent ORM is quite nice, though I'm wondering if there is an easy way to setup MySQL transactions using innoDB in the same fashion as PDO, or if I would have to extend the ORM to make this ">
+    <meta property="og:url" content="http://stackoverflow.com/questions/15105640/laravel-eloquent-orm-transactions">
+    <link rel="canonical" href="http://stackoverflow.com/questions/15105640/laravel-eloquent-orm-transactions">
+
+    
+    
+    <script src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/quant.js" async=""></script><script src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/beacon.js" async=""></script><script src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/analytics.js" async=""></script><script src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/ados.js" async="" type="text/javascript"></script><script src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/jquery.js"></script>
+    <script src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/stub.js"></script>
+    <link rel="stylesheet" type="text/css" href="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/all.css">
+    
+    <link rel="alternate" type="application/atom+xml" title="Feed for question 'Laravel Eloquent ORM Transactions'" href="http://stackoverflow.com/feeds/question/15105640">
+    <meta name="twitter:app:country" content="US">
+    <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+    <meta name="twitter:app:id:iphone" content="871299723">
+    <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/15105640/laravel-eloquent-orm-transactions/21865582">
+    <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+    <meta name="twitter:app:id:ipad" content="871299723">
+    <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/15105640/laravel-eloquent-orm-transactions/21865582">
+    <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+    <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/15105640/laravel-eloquent-orm-transactions/21865582">
+    <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+    <script>
+        
+        StackExchange.ready(function () {
+                
+                StackExchange.using("snippets", function () {
+                    StackExchange.snippets.initSnippetRenderer();
+                });
+                
+
+            StackExchange.using("postValidation", function () {
+                StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+            });
+
+            
+            StackExchange.question.init({showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:15105640});
+
+            styleCode();
+
+                StackExchange.realtime.subscribeToQuestion('1', '15105640');
+            
+                    });
+    </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1424984829,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"nonAsciiTags":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"588a08e850fd32f8a9329655766b4314","isAnonymous":true,"ab":{"next_answer_hook":{"v":"a","g":1}}}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"87f20631f47a","js/moderator.en.js":"3cdb19b2c791","js/full-anon.en.js":"c5525e7a9906","js/full.en.js":"3cc5fd385969","js/wmd.en.js":"282041077a84","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"d96cd4adc9de","js/help.en.js":"b5f40fd81205","js/tageditor.en.js":"3a2a3f54b3e3","js/tageditornew.en.js":"cc317fe6c48f","js/inline-tag-editing.en.js":"48f13b102998","js/revisions.en.js":"8e050c5bb5cd","js/review.en.js":"f1c330c67f2e","js/tagsuggestions.en.js":"44b9e82a8064","js/post-validation.en.js":"6c43d75a921c","js/explore-qlist.en.js":"257ba4cb7b04","js/events.en.js":"b8dadb80a850","js/keyboard-shortcuts.en.js":"136b80fdf69d","js/external-editor.en.js":"333f2972598f","js/external-editor.en.js":"333f2972598f","js/snippet-javascript.en.js":"410aced69c52","js/snippet-javascript-codemirror.en.js":"acd1d40324cf"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+<script src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/full-anon.js" async=""></script><script src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/snippet-javascript.js" async=""></script><script src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/post-validation.js" async=""></script><script src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/prettify-full.js" async=""></script><script src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/external-editor.js" async=""></script><script src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/adFeedback.js" type="text/javascript"></script><link href="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/adFeedback.css" rel="stylesheet"><link href="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/jobs.css" rel="stylesheet" type="text/css"></head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="http://stackoverflow.com/">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://chat.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+                    <a href="http://blog.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:7 })">blog</a>
+            </div>
+
+
+
+
+    <a href="http://stackoverflow.com/" class="current-site-link site-link js-gps-track" data-id="1" data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com/" class="site-link js-gps-track" data-id="552" data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track" href="http://careers.stackoverflow.com/?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider" data-gps-track="site_switcher.click({ item_type:9 })">
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f15105640%2flaravel-eloquent-orm-transactions%2f21865582" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">Sign up</a> or <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f15105640%2flaravel-eloquent-orm-transactions%2f21865582" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="http://stackexchange.com/sites">more stack exchange communities</a></h3>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="http://stackexchange.com/" class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 137 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                    <span class="topbar-menu-links">
+                            <a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f15105640%2flaravel-eloquent-orm-transactions%2f21865582" class="login-link">sign up</a>
+                            <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f15105640%2flaravel-eloquent-orm-transactions%2f21865582" class="login-link">log in</a>
+                            <a href="http://stackoverflow.com/tour">tour</a>
+
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="http://meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                            <a href="http://careers.stackoverflow.com/?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=anon-topbar">stack overflow careers</a>
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" placeholder="search" tabindex="1" autocomplete="off" maxlength="240" type="text">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://stackoverflow.com/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="http://stackoverflow.com/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="http://stackoverflow.com/tags">Tags</a></li>
+                        <li><a id="nav-users" href="http://stackoverflow.com/users">Users</a></li>
+                        <li><a id="nav-badges" href="http://stackoverflow.com/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="http://stackoverflow.com/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion" href="http://stackoverflow.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+	<link itemprop="image" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+			<!--googleoff: all-->
+
+<div id="herobox-mini">
+    <div id="hero-content">
+        <span id="controls">
+            <a href="http://stackoverflow.com/tour" id="tell-me-more" class="button">Take the 2-minute tour</a>
+            <span id="close"><a title="click to dismiss">×</a></span>
+        </span>
+        <div id="blurb">
+            Stack Overflow is a question and answer site for 
+professional and enthusiast programmers. It's 100% free, no registration
+ required.
+        </div>        
+    </div>
+    <script>
+        $('#tell-me-more').click(function () {
+            var clickSource = $("body").attr("class") + '-mini';
+            if ($("body").hasClass("questions-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("question-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("home-page")) {
+                clickSource = 'homepagemini';
+            }
+
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("aboutpage.click", { aboutclick_location: clickSource } , true);
+            });
+        });
+        $('#herobox-mini #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close" }, true);
+            });
+            $.cookie("hero", "none", { path: "/", expires: 365 });
+            var $hero = $("#herobox-mini");
+            $hero.slideUp('fast', function () { $hero.remove(); });
+            return false;
+        });
+    </script>
+</div>
+			<!--googleon: all-->
+			<div id="question-header">
+			<h1 itemprop="name"><a href="http://stackoverflow.com/questions/15105640/laravel-eloquent-orm-transactions" class="question-hyperlink">Laravel Eloquent ORM Transactions</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="15105640" id="question">
+
+    <script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk1685255938",4).setZone(43) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk1685255938"><a href="http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6NCwiYnQiOjAsImNtIjoxODY2MjQsImNoIjoxMTc4LCJjciI6Njg0MjgwLCJkaSI6IjdhMTZlOWY3MzhiNzQ5Y2Q5ZjRkNjI1NTA0MTk3YTA0IiwiZG0iOjEsImZjIjo3MDg0MzQsImZsIjo0MzE3ODAsImlwIjoiMjcuMTQ3LjIxOC4yMDIiLCJrdyI6InBocCxsYXJhdmVsIiwibnciOjIyLCJwYyI6MCwicHIiOjE2MDQsInJ0IjoxLCJyZiI6Imh0dHA6Ly9sYXJhdmVsLmlvL2ZvcnVtLzA2LTExLTIwMTQtaG93LXRvLXNhdmUtZWxvcXVlbnQtbW9kZWwtd2l0aC1yZWxhdGlvbnMtaW4tb25lLWdvIiwic3QiOjgyNzcsInVrIjoidWUxLTNiOTVlYzc4ZmY3NDQ5YzdiNjZhNmQ4M2UxYWQxZWEwIiwiem4iOjQzLCJ0cyI6MTQyNDk4NDgzMDM0NiwiYmYiOnRydWUsInBuIjoiYWR6ZXJrMTY4NTI1NTkzOCIsInVyIjoiaHR0cDovL2NhcmVlcnMuc3RhY2tvdmVyZmxvdy5jb20vcHJvZHVjdHM_dXRtX3NvdXJjZT1zdGFja292ZXJmbG93LmNvbSZ1dG1fbWVkaXVtPWFkJnV0bV9jYW1wYWlnbj1lbXBsb3llcnMtYmVzdC13YXkmdXRtX2NvbnRlbnQ9bGItYmVzdC13YXkifQ&amp;s=1tWBvI2jhufYXDNp_utzzKyaATQ" rel="nofollow" target="_blank" title=""><img src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/6a84d696ad6c4679804e4923a617ade4.png" title="" alt="" border="0" height="90" width="728"></a><div class="adzerk-vote-controls" style="display:none;"><div class="adzerk-vote-option adzerk-vote-up"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li><label><input value="12" name="downvoteReason" type="radio">Uninteresting</label></li><li><label><input value="13" name="downvoteReason" type="radio">Misleading</label></li><li><label><input value="14" name="downvoteReason" type="radio">Offensive</label></li><li><label><input value="15" name="downvoteReason" type="radio">Repetitive</label></li><li><label><input value="16" name="downvoteReason" type="radio">Other</label></li></ul><a href="#" class="adzerk-vote-cancel">Oops! I didn't mean to do this.</a></form></div><img src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/i_003.gif" style="position:absolute;" border="0" height="0px" width="0px"></div>    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input name="_id_" value="15105640" type="hidden">
+    <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">16</span>
+    <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+    
+    <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+    <div class="favoritecount"><b>5</b></div>   
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+        <p>The Eloquent ORM is quite nice, though I'm wondering if there
+ is an easy way to setup MySQL transactions using innoDB in the same 
+fashion as PDO, or if I would have to extend the ORM to make this 
+possible?</p>
+
+    </div>
+    <div class="post-taglist">
+        <a href="http://stackoverflow.com/questions/tagged/php" class="post-tag js-gps-track" title="show questions tagged 'php'" rel="tag">php</a> <a href="http://stackoverflow.com/questions/tagged/laravel" class="post-tag js-gps-track" title="show questions tagged 'laravel'" rel="tag">laravel</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/q/15105640" title="short permalink to this question" class="short-link" id="link-post-15105640">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/15105640/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2013-02-27 06:33:30Z" class="relativetime">Feb 27 '13 at 6:33</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/150774/wesside"><div class="gravatar-wrapper-32"><img src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/ee0c376805336aa118701faac4f81362.jpg" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/150774/wesside">wesside</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">2,913</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="11 silver badges"><span class="badge2"></span><span class="badgecount">11</span></span><span title="29 bronze badges"><span class="badge3"></span><span class="badgecount">29</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-15105640" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-15105640" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href="#" onclick=""></a>
+            </div>
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								4 Answers
+                                <span style="display:none;" itemprop="answerCount">4</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://stackoverflow.com/questions/15105640/laravel-eloquent-orm-transactions?answertab=active#tab-top" title="Answers with the latest activity first">active</a>
+        <a href="http://stackoverflow.com/questions/15105640/laravel-eloquent-orm-transactions?answertab=oldest#tab-top" title="Answers in the order they were provided">oldest</a>
+        <a class="youarehere" href="http://stackoverflow.com/questions/15105640/laravel-eloquent-orm-transactions?answertab=votes#tab-top" title="Answers with the highest score first">votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="15105781"></a>
+<div id="answer-15105781" class="answer accepted-answer" data-answerid="15105781" itemscope="" itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input name="_id_" value="15105781" type="hidden">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">50</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>You can do this:</p>
+
+<pre style="" class="lang-php prettyprint prettyprinted"><code><span class="pln">DB</span><span class="pun">::</span><span class="pln">transaction</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">()</span><span class="pln">
+ </span><span class="pun">{</span><span class="pln">
+      </span><span class="com">//</span><span class="pln">
+ </span><span class="pun">});</span></code></pre>
+
+<p>Everything inside the Closure executes within a transaction. If an exception occurs it will rollback automatically.</p>
+
+<p><a href="http://forumsarchive.laravel.io/viewtopic.php?id=1464">Discussed in more detail here.</a></p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/15105781" title="short permalink to this answer" class="short-link" id="link-post-15105781">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/15105781/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/15105781/revisions" title="show all edits to this post">edited <span title="2014-09-26 17:44:50Z" class="relativetime">Sep 26 '14 at 17:44</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/-1/community"><div class="gravatar-wrapper-32"><img src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/a007be5a61f6aa8f3e85ae2fc18dd66e.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/-1/community">Community</a><span class="mod-flair" title="moderator">♦</span><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">1</span>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2013-02-27 06:44:18Z" class="relativetime">Feb 27 '13 at 6:44</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1317935/the-shift-exchange"><div class="gravatar-wrapper-32"><img src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/e13d2feaca492372fc4e16318dc99b9e.jpg" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1317935/the-shift-exchange">The Shift Exchange</a><br>
+        <span class="reputation-score" title="reputation score 27622" dir="ltr">27.6k</span><span title="8 gold badges"><span class="badge1"></span><span class="badgecount">8</span></span><span title="57 silver badges"><span class="badge2"></span><span class="badgecount">57</span></span><span title="89 bronze badges"><span class="badge3"></span><span class="badgecount">89</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-15105781" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-21398974" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Appreciate your help.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/150774/wesside" title="2913 reputation" class="comment-user owner">wesside</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment21398974_15105781"><span title="2013-03-03 17:53:30Z" class="relativetime-clean">Mar 3 '13 at 17:53</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-43218495" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">THAT IS AWESOME !</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/855760/darkyen00" title="2168 reputation" class="comment-user">darkyen00</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment43218495_15105781"><span title="2014-12-09 17:28:35Z" class="relativetime-clean">Dec 9 '14 at 17:28</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-15105781" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href="#" onclick=""></a>
+            </div>
+    </td>
+</tr>    </tbody></table>
+</div>
+<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk795161212",4).setZone(44) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk795161212"><a href="http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6NCwiYnQiOjAsImNtIjoxODY2MjQsImNoIjoxMTc4LCJjciI6Njg0Mjk3LCJkaSI6Ijk3ZmVkNGY1MDExZTQ0NTJiNGRmMjI0ZGY2NDlhNmMzIiwiZG0iOjEsImZjIjo3MDg0NTEsImZsIjo0MzE3ODAsImlwIjoiMjcuMTQ3LjIxOC4yMDIiLCJrdyI6InBocCxsYXJhdmVsIiwibnciOjIyLCJwYyI6MCwicHIiOjE2MDQsInJ0IjoxLCJyZiI6Imh0dHA6Ly9sYXJhdmVsLmlvL2ZvcnVtLzA2LTExLTIwMTQtaG93LXRvLXNhdmUtZWxvcXVlbnQtbW9kZWwtd2l0aC1yZWxhdGlvbnMtaW4tb25lLWdvIiwic3QiOjgyNzcsInVrIjoidWUxLTNiOTVlYzc4ZmY3NDQ5YzdiNjZhNmQ4M2UxYWQxZWEwIiwiem4iOjQ0LCJ0cyI6MTQyNDk4NDgzMDM0OSwiYmYiOnRydWUsInBuIjoiYWR6ZXJrNzk1MTYxMjEyIiwidXIiOiJodHRwOi8vY2FyZWVycy5zdGFja292ZXJmbG93LmNvbS9wcm9kdWN0cz91dG1fc291cmNlPXN0YWNrb3ZlcmZsb3cuY29tJnV0bV9tZWRpdW09YWQmdXRtX2NhbXBhaWduPWVtcGxveWVycy1iZXN0LXdheSZ1dG1fY29udGVudD1tbGItYmVzdC13YXkifQ&amp;s=jznGsFn7lS2leNc7qSEEcwehwBc" rel="nofollow" target="_blank" title=""><img src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/6a84d696ad6c4679804e4923a617ade4.png" title="" alt="" border="0" height="90" width="728"></a><div class="adzerk-vote-controls" style="display:none;"><div class="adzerk-vote-option adzerk-vote-up"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li><label><input value="12" name="downvoteReason" type="radio">Uninteresting</label></li><li><label><input value="13" name="downvoteReason" type="radio">Misleading</label></li><li><label><input value="14" name="downvoteReason" type="radio">Offensive</label></li><li><label><input value="15" name="downvoteReason" type="radio">Repetitive</label></li><li><label><input value="16" name="downvoteReason" type="radio">Other</label></li></ul><a href="#" class="adzerk-vote-cancel">Oops! I didn't mean to do this.</a></form></div><img src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/i_004.gif" style="position:absolute;" border="0" height="0px" width="0px"></div>
+  
+<a name="15126582"></a>
+<div id="answer-15126582" class="answer" data-answerid="15126582" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input name="_id_" value="15126582" type="hidden">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">43</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>If you don't like anonymous functions:</p>
+
+<pre style="" class="lang-php prettyprint prettyprinted"><code><span class="kwd">try</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    DB</span><span class="pun">::</span><span class="pln">connection</span><span class="pun">()-&gt;</span><span class="pln">pdo</span><span class="pun">-&gt;</span><span class="pln">beginTransaction</span><span class="pun">();</span><span class="pln">
+    </span><span class="com">// database queries here</span><span class="pln">
+    DB</span><span class="pun">::</span><span class="pln">connection</span><span class="pun">()-&gt;</span><span class="pln">pdo</span><span class="pun">-&gt;</span><span class="pln">commit</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pln"> </span><span class="pun">(</span><span class="pln">\P</span><span class="typ">DOException</span><span class="pln"> $e</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// Woopsy</span><span class="pln">
+    DB</span><span class="pun">::</span><span class="pln">connection</span><span class="pun">()-&gt;</span><span class="pln">pdo</span><span class="pun">-&gt;</span><span class="pln">rollBack</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<hr>
+
+<p><strong>Update</strong>: For laravel 4, the <code>pdo</code> object isn't public anymore so:</p>
+
+<pre style="" class="lang-php prettyprint prettyprinted"><code><span class="kwd">try</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    DB</span><span class="pun">::</span><span class="pln">connection</span><span class="pun">()-&gt;</span><span class="pln">getPdo</span><span class="pun">()-&gt;</span><span class="pln">beginTransaction</span><span class="pun">();</span><span class="pln">
+    </span><span class="com">// database queries here</span><span class="pln">
+    DB</span><span class="pun">::</span><span class="pln">connection</span><span class="pun">()-&gt;</span><span class="pln">getPdo</span><span class="pun">()-&gt;</span><span class="pln">commit</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pln"> </span><span class="pun">(</span><span class="pln">\P</span><span class="typ">DOException</span><span class="pln"> $e</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// Woopsy</span><span class="pln">
+    DB</span><span class="pun">::</span><span class="pln">connection</span><span class="pun">()-&gt;</span><span class="pln">getPdo</span><span class="pun">()-&gt;</span><span class="pln">rollBack</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/15126582" title="short permalink to this answer" class="short-link" id="link-post-15126582">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/15126582/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/15126582/revisions" title="show all edits to this post">edited <span title="2013-08-06 01:42:56Z" class="relativetime">Aug 6 '13 at 1:42</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-02-28 02:47:23Z" class="relativetime">Feb 28 '13 at 2:47</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1099531/pineapple-under-the-sea"><div class="gravatar-wrapper-32"><img src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/56fe29019242494fca84d0a2db33a775.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1099531/pineapple-under-the-sea">Pineapple Under the Sea</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">3,361</span><span title="4 gold badges"><span class="badge1"></span><span class="badgecount">4</span></span><span title="36 silver badges"><span class="badge2"></span><span class="badgecount">36</span></span><span title="77 bronze badges"><span class="badge3"></span><span class="badgecount">77</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-15126582" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-21398980" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Appreciate your answer, wish I could mark two correct ;)</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/150774/wesside" title="2913 reputation" class="comment-user owner">wesside</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment21398980_15126582"><span title="2013-03-03 17:53:53Z" class="relativetime-clean">Mar 3 '13 at 17:53</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-32526912" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">4</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">You can also use the shortcut methods <code>DB::beginTransaction()</code> &amp; <code>DB::commit()</code> &amp; <code>DB::rollback()</code>. That would be a little cleaner.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/1544645/flori" title="86 reputation" class="comment-user">Flori</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment32526912_15126582"><span title="2014-02-03 22:59:39Z" class="relativetime-clean">Feb 3 '14 at 22:59</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-33275478" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Please update to use @Flori 
+suggestion. It is cleaner. Also, moving the new answer upwards will make
+ your answer less confusing. I used first method before coming back for 
+second one.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/644571/frostymarvelous" title="1069 reputation" class="comment-user">frostymarvelous</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment33275478_15126582"><span title="2014-02-22 22:52:22Z" class="relativetime-clean">Feb 22 '14 at 22:52</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-15126582" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href="#" onclick=""></a>
+            </div>
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="21865582"></a>
+<div style="" id="answer-21865582" class="answer" data-answerid="21865582" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input name="_id_" value="21865582" type="hidden">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">7</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>If you wanna to use Eloquent, you also can use this</p>
+
+<p>This is just sample code from my project</p>
+
+<pre style="" class="lang-php prettyprint prettyprinted"><code><span class="pln">        </span><span class="com">/* 
+         * Saving Question
+         */</span><span class="pln">
+        $question </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Question</span><span class="pun">;</span><span class="pln">
+        $questionCategory </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">QuestionCategory</span><span class="pun">;</span><span class="pln">
+
+        </span><span class="com">/*
+         * Insert new record for question
+         */</span><span class="pln">
+        $question</span><span class="pun">-&gt;</span><span class="pln">title </span><span class="pun">=</span><span class="pln"> $title</span><span class="pun">;</span><span class="pln">
+        $question</span><span class="pun">-&gt;</span><span class="pln">user_id </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Auth</span><span class="pun">::</span><span class="pln">user</span><span class="pun">()-&gt;</span><span class="pln">user_id</span><span class="pun">;</span><span class="pln">
+        $question</span><span class="pun">-&gt;</span><span class="pln">description </span><span class="pun">=</span><span class="pln"> $description</span><span class="pun">;</span><span class="pln">
+        $question</span><span class="pun">-&gt;</span><span class="pln">time_post </span><span class="pun">=</span><span class="pln"> date</span><span class="pun">(</span><span class="str">'Y-m-d H:i:s'</span><span class="pun">);</span><span class="pln">
+
+        </span><span class="kwd">if</span><span class="pun">(</span><span class="typ">Input</span><span class="pun">::</span><span class="pln">has</span><span class="pun">(</span><span class="str">'expiredtime'</span><span class="pun">))</span><span class="pln">
+            $question</span><span class="pun">-&gt;</span><span class="pln">expired_time </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Input</span><span class="pun">::</span><span class="kwd">get</span><span class="pun">(</span><span class="str">'expiredtime'</span><span class="pun">);</span><span class="pln">
+
+        $questionCategory</span><span class="pun">-&gt;</span><span class="pln">category_id </span><span class="pun">=</span><span class="pln"> $category</span><span class="pun">;</span><span class="pln">
+        $questionCategory</span><span class="pun">-&gt;</span><span class="pln">time_added </span><span class="pun">=</span><span class="pln"> date</span><span class="pun">(</span><span class="str">'Y-m-d H:i:s'</span><span class="pun">);</span><span class="pln">
+
+        DB</span><span class="pun">::</span><span class="pln">transaction</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="kwd">use</span><span class="pln"> </span><span class="pun">(</span><span class="pln">$question</span><span class="pun">,</span><span class="pln"> $questionCategory</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+            $question</span><span class="pun">-&gt;</span><span class="pln">save</span><span class="pun">();</span><span class="pln">
+
+            </span><span class="com">/*
+             * insert new record for question category
+             */</span><span class="pln">
+            $questionCategory</span><span class="pun">-&gt;</span><span class="pln">question_id </span><span class="pun">=</span><span class="pln"> $question</span><span class="pun">-&gt;</span><span class="pln">id</span><span class="pun">;</span><span class="pln">
+            $questionCategory</span><span class="pun">-&gt;</span><span class="pln">save</span><span class="pun">();</span><span class="pln">
+        </span><span class="pun">});</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/21865582" title="short permalink to this answer" class="short-link" id="link-post-21865582">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/21865582/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/21865582/revisions" title="show all edits to this post">edited <span title="2014-05-22 12:35:35Z" class="relativetime">May 22 '14 at 12:35</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-02-18 21:19:56Z" class="relativetime">Feb 18 '14 at 21:19</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/2216956/aditya-kresna-permana"><div class="gravatar-wrapper-32"><img src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/Xwvhr.jpg" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/2216956/aditya-kresna-permana">Aditya Kresna Permana</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">565</span><span title="4 silver badges"><span class="badge2"></span><span class="badgecount">4</span></span><span title="10 bronze badges"><span class="badge3"></span><span class="badgecount">10</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-21865582" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-39671431" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">i tried something similiar, 
+but didn't work i insert transaction and transaction amount is 
+decimal(5, 2) and i insert value 999999.99999, then i run second 
+eloquent which deduct/increase user credit(valid), i expect should throw
+ an error and rollback due to the transaction decimal is in wrong format
+ but the transaction just inserted with blank value and user credit also
+ deduct unexpected, do you know why?</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/259752/user259752" title="100 reputation" class="comment-user">user259752</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment39671431_21865582"><span title="2014-08-21 14:45:09Z" class="relativetime-clean">Aug 21 '14 at 14:45</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-21865582" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href="#" onclick=""></a>
+            </div>
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="26190673"></a>
+<div id="answer-26190673" class="answer" data-answerid="26190673" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input name="_id_" value="26190673" type="hidden">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>For some reason it is quite difficult to find this information 
+anywhere, so I decided to post it here, as my issue, while related to 
+Eloquent transactions, was exactly changing this.</p>
+
+<p>After reading <a href="http://stackoverflow.com/questions/24945631/laravel-dbtransaction-not-rolling-back-on-exception">THIS</a> stackoverflow answer, I realized my database tables were using MyISAM instead of InnoDB.</p>
+
+<p><strong>For transactions to work on Laravel (or anywhere else as it seems), it is required that your tables are set to use InnoDB</strong></p>
+
+<p>Why?</p>
+
+<p>Quoting MySQL <strong>Transactions and Atomic Operations</strong> docs (<a href="http://dev.mysql.com/doc/refman/5.0/en/ansi-diff-transactions.html" rel="nofollow">here</a>):</p>
+
+<blockquote>
+  <p>MySQL Server (version 3.23-max and all versions 4.0 and above) 
+supports transactions with the InnoDB and BDB transactional storage 
+engines. InnoDB provides full ACID compliance. See Chapter 14, Storage 
+Engines. For information about InnoDB differences from standard SQL with
+ regard to treatment of transaction errors, see Section 14.2.11, “InnoDB
+ Error Handling”.</p>
+  
+  <p>The other nontransactional storage engines in MySQL Server (such as
+ MyISAM) follow a different paradigm for data integrity called “atomic 
+operations.” In transactional terms, MyISAM tables effectively always 
+operate in autocommit = 1 mode. Atomic operations often offer comparable
+ integrity with higher performance.</p>
+  
+  <p>Because MySQL Server supports both paradigms, you can decide 
+whether your applications are best served by the speed of atomic 
+operations or the use of transactional features. This choice can be made
+ on a per-table basis.</p>
+</blockquote>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/26190673" title="short permalink to this answer" class="short-link" id="link-post-26190673">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/26190673/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-10-04 07:27:52Z" class="relativetime">Oct 4 '14 at 7:27</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/376756/dmmd"><div class="gravatar-wrapper-32"><img src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/8bLFv.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/376756/dmmd">dmmd</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">860</span><span title="11 silver badges"><span class="badge2"></span><span class="badgecount">11</span></span><span title="20 bronze badges"><span class="badge3"></span><span class="badgecount">20</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-26190673" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-26190673" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href="#" onclick=""></a>
+            </div>
+    </td>
+</tr>    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="/questions/15105640/answer/submit" method="post" class="post-form">
+						    <input id="post-id" value="15105640" type="hidden">
+                            <input id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" type="hidden">
+                            <input name="referrer" value="http://laravel.io/forum/06-11-2014-how-to-save-eloquent-model-with-relations-in-one-go" type="hidden">
+							<h2 class="space">Your Answer</h2>
+
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+            // Have to fire editor after snippets, if snippets enabled
+            if (StackExchange.options.snippets.enabled) {
+                StackExchange.using("snippets", function() {
+                    createEditor();
+                });
+            }
+            else {
+                createEditor();
+            }
+        });
+
+        function createEditor() {
+            prepareEditor({
+                heartbeatType: 'answer',
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                ,immediatelyShowMarkdownHelp:true
+                });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li style="left: 0px;" class="wmd-button" id="wmd-bold-button"><span style="background-position: 0px -20px;"></span></li><li style="left: 25px;" class="wmd-button" id="wmd-italic-button"><span style="background-position: -20px -20px;"></span></li><li style="left: 50px;" class="wmd-spacer" id="wmd-spacer1"><span style="background-position: -40px -20px;"></span></li><li style="left: 75px;" class="wmd-button" id="wmd-link-button"><span style="background-position: -40px -20px;"></span></li><li style="left: 100px;" class="wmd-button" id="wmd-quote-button"><span style="background-position: -60px -20px;"></span></li><li style="left: 125px;" class="wmd-button" id="wmd-code-button"><span style="background-position: -80px -20px;"></span></li><li style="left: 150px;" class="wmd-button" id="wmd-image-button"><span style="background-position: -100px -20px;"></span></li><li style="left: 175px;" class="wmd-spacer" id="wmd-spacer2"><span style="background-position: -120px -20px;"></span></li><li style="left: 200px;" class="wmd-button" id="wmd-olist-button"><span style="background-position: -120px -20px;"></span></li><li style="left: 225px;" class="wmd-button" id="wmd-ulist-button"><span style="background-position: -140px -20px;"></span></li><li style="left: 250px;" class="wmd-button" id="wmd-heading-button"><span style="background-position: -160px -20px;"></span></li><li style="left: 275px;" class="wmd-button" id="wmd-hr-button"><span style="background-position: -180px -20px;"></span></li><li style="left: 300px;" class="wmd-spacer" id="wmd-spacer3"><span style="background-position: -200px -20px;"></span></li><li style="left: 325px;" class="wmd-button" id="wmd-undo-button"><span style="background-position: -200px -20px;"></span></li><li style="left: 350px;" class="wmd-button" id="wmd-redo-button"><span style="background-position: -220px -20px;"></span></li></ul></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" value="588a08e850fd32f8a9329655766b4314" type="hidden">
+        <input id="author" name="author" type="text">
+    </div>
+</div>
+							<div style="position: relative;">
+								
+            <div class="form-item new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="http://stackoverflow.com/users/login?returnurl=%2fquestions%2f15105640%2flaravel-eloquent-orm-transactions%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Stack Exchange</span></p>
+                        </div>
+                    </div>
+                    <input name="manual-openid" class="manual-openid" type="hidden">
+                    <input name="use-facebook" class="use-facebook" value="false" type="hidden">
+                    <input name="use-google" class="use-google" value="false" type="hidden">
+                    <input class="submit-openid" value="Submit" style="display:none" type="button">
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tbody><tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" size="30" maxlength="30" tabindex="105" type="text">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" size="30" maxlength="100" tabindex="106" placeholder="required, but never shown" type="email">
+                </div>
+            </td>
+        </tr>
+        </tbody></table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', '%2fquestions%2f15105640%2flaravel-eloquent-orm-transactions%23new-answer');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" value="Post Your Answer" tabindex="110" type="submit">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href="http://stackexchange.com/legal/privacy-policy" target="_blank">privacy policy</a> and <a href="http://stackexchange.com/legal/terms-of-service" target="_blank">terms of service</a>.</p>
+<input name="legalLinksShown" value="1" type="hidden">								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="http://stackoverflow.com/questions/tagged/php" class="post-tag" title="show questions tagged 'php'" rel="tag">php</a> <a href="http://stackoverflow.com/questions/tagged/laravel" class="post-tag" title="show questions tagged 'laravel'" rel="tag">laravel</a>  or <a href="http://stackoverflow.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2013-02-27 06:33:30Z"><b>1 year ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>11860 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="http://stackoverflow.com/questions/15105640/laravel-eloquent-orm-transactions/21865582?lastactivity" class="lastactivity-link" title="2014-10-04 07:27:52Z">4 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+						
+			<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk269685719",[17,2221]).setZone(45) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk269685719"><a href="http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6MTcsImJ0IjowLCJjbSI6MTg2NjI0LCJjaCI6MTE3OCwiY3IiOjY5NTU1NSwiZGkiOiI3MjlhNzI5YzBlZjY0YTkwYjU3MDMxMDhiNWYwMmQ3ZSIsImRtIjoxLCJmYyI6NzIxNTg1LCJmbCI6NDQxMzM0LCJpcCI6IjI3LjE0Ny4yMTguMjAyIiwia3ciOiJwaHAsbGFyYXZlbCIsIm53IjoyMiwicGMiOjAsInByIjoxNTY4LCJydCI6MSwicmYiOiJodHRwOi8vbGFyYXZlbC5pby9mb3J1bS8wNi0xMS0yMDE0LWhvdy10by1zYXZlLWVsb3F1ZW50LW1vZGVsLXdpdGgtcmVsYXRpb25zLWluLW9uZS1nbyIsInN0Ijo4Mjc3LCJ1ayI6InVlMS0zYjk1ZWM3OGZmNzQ0OWM3YjY2YTZkODNlMWFkMWVhMCIsInpuIjo0NSwidHMiOjE0MjQ5ODQ4MzAzNTIsImJmIjp0cnVlLCJwbiI6ImFkemVyazI2OTY4NTcxOSIsInVyIjoiaHR0cDovL2NhcmVlcnMuc3RhY2tvdmVyZmxvdy5jb20vY3YvZ2V0LW9uZT91dG1fc291cmNlPXN0YWNrb3ZlcmZsb3cuY29tJnV0bV9tZWRpdW09YWQmdXRtX2NhbXBhaWduPWNhbmRpZGF0ZXMtYWRkLWN2JnV0bV9jb250ZW50PXNiLWRldmVsb3AteW91cnNlbGYifQ&amp;s=KDNnd3TCmfGS8YUMpv4uNGssZsA" rel="nofollow" target="_blank" title=""><img src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/5a1d58b95a734f0a8b7272dcc99958c3.png" title="" alt="" border="0" height="250" width="220"></a><div class="adzerk-vote-controls" style="display:none;"><div class="adzerk-vote-option adzerk-vote-up"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li><label><input value="12" name="downvoteReason" type="radio">Uninteresting</label></li><li><label><input value="13" name="downvoteReason" type="radio">Misleading</label></li><li><label><input value="14" name="downvoteReason" type="radio">Offensive</label></li><li><label><input value="15" name="downvoteReason" type="radio">Repetitive</label></li><li><label><input value="16" name="downvoteReason" type="radio">Other</label></li></ul><a href="#" class="adzerk-vote-cancel">Oops! I didn't mean to do this.</a></form></div><img src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/i_002.gif" style="position:absolute;" border="0" height="0px" width="0px"></div>  
+        <div class="orange looking tagged" id="hireme"><a href="http://careers.stackoverflow.com/jobs?a=2LRza" target="_blank" data-la="2LRza" data-hf="h" class="top"> <span>Looking for a job?</span></a><ul class="jobs"><li><a data-cid="166639" data-la="qWgNOy0o9od" href="http://careers.stackoverflow.com/jobs/80329/senior-product-manager-wikimedia-foundation" target="_blank" title="Senior Product Manager at Wikimedia Foundation. Click to learn more.">Senior Product Manager<br><div class="company">Wikimedia Foundation</div><div class="location" title="San Francisco, CA">San Francisco, CA</div></a></li><li><a data-cid="167850" data-la="rlzMXXL2HBw" href="http://careers.stackoverflow.com/jobs/81546/symfony2-developer-lingoda-gmbh" target="_blank" title="Symfony2 Developer at Lingoda GmbH. Click to learn more.">Symfony2 Developer<br><div class="company">Lingoda GmbH</div><div class="location" title="Berlin, Deutschland / remote">Berlin, Deutschland / remote</div><span class="post-tag">symfony2</span><span class="post-tag">angularjs</span></a></li></ul><img class="impression" src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/i.gif" style="display:none;"><img class="impression" src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/qWgNOy0o9od-rlzMXXL2HBw-2LRza.gif" style="display:none;"></div>
+			  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/17518630?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">1</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/17518630/laravel-4-turn-dbselect-into-eloquent-object?lq=1" class="question-hyperlink">Laravel 4, Turn DB::select into Eloquent object</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/24945631?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">0</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/24945631/laravel-dbtransaction-not-rolling-back-on-exception?lq=1" class="question-hyperlink">Laravel DB::transaction not rolling back on exception</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/24911587?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/24911587/bulk-insertion-using-laravel4-orm?lq=1" class="question-hyperlink">Bulk Insertion Using Laravel4 ORM</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/16506283?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="http://stackoverflow.com/questions/16506283/eloquent-orm-transactions-when-inserting-to-multiples-tables?rq=1" class="question-hyperlink">Eloquent ORM Transactions when inserting to multiples tables?</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/22359003?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">2
+    </div>
+</a><a href="http://stackoverflow.com/questions/22359003/unable-to-insert-into-postgresql-using-laravel-eloquent-orm?rq=1" class="question-hyperlink">Unable to insert into PostgreSQL using laravel eloquent ORM</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/23443331?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/23443331/is-it-possible-to-use-the-laravel-eloquent-orm-with-an-api?rq=1" class="question-hyperlink">Is it possible to use the Laravel Eloquent ORM with an API</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/25021679?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/25021679/laravel-eloquent-orm-and-infinidb-not-working?rq=1" class="question-hyperlink">Laravel Eloquent ORM and InfiniDB not working</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/25096617?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/25096617/laravel-eloquent-orm-and-conditional-statements?rq=1" class="question-hyperlink">Laravel Eloquent ORM and Conditional Statements</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/25299677?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="http://stackoverflow.com/questions/25299677/laravel-eloquent-orm-sync-method?rq=1" class="question-hyperlink">Laravel Eloquent ORM sync method</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/25869808?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/25869808/query-with-laravel-eloquent-orm?rq=1" class="question-hyperlink">query with Laravel Eloquent ORM</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/27131856?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="http://stackoverflow.com/questions/27131856/prepared-statement-with-eloquent-orm-laravel?rq=1" class="question-hyperlink">prepared statement with Eloquent ORM / laravel</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/27976654?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">-1
+    </div>
+</a><a href="http://stackoverflow.com/questions/27976654/using-count-function-in-eloquent-orm-outside-laravel?rq=1" class="question-hyperlink">Using COUNT() function in Eloquent ORM (outside Laravel)</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/28416664?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/28416664/laravel-raw-query-and-eloquent-orm-relationships?rq=1" class="question-hyperlink">Laravel Raw Query and Eloquent ORM relationships</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="http://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="http://money.stackexchange.com/questions/44967/after-hitting-80-ltv-my-lender-refuses-to-remove-pmi-any-recourse" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    After hitting 80% LTV, my lender refuses to remove PMI. Any recourse?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/28746023/how-to-insert-values-from-a-vector-diagonally-into-a-matrix-in-r" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to insert values from a vector diagonally into a matrix in R?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-gamedev" title="Game Development Stack Exchange"></div><a href="http://gamedev.stackexchange.com/questions/95675/how-can-i-make-a-random-generator-that-is-biased-by-prior-events" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:53 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I make a "random" generator that is biased by prior events?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-space" title="Space Exploration Stack Exchange"></div><a href="http://space.stackexchange.com/questions/8281/will-the-sls-be-cancelled-if-the-falcon-heavy-launch-is-successful-this-year" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:508 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Will the SLS be cancelled if the Falcon Heavy launch is successful this year?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/9629/ten-rebus-puzzles" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Ten Rebus puzzles
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/31556/80s-tv-action-series-about-an-electric-man" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    80s TV action series about an "electric man"
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/40649/what-to-do-with-research-results-while-being-in-high-school" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What to do with research results while being in high school?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-parenting" title="Parenting Stack Exchange"></div><a href="http://parenting.stackexchange.com/questions/18811/should-you-pick-a-baby-up-everytime-it-cries" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:228 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Should you pick a baby up everytime it cries?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-engineering" title="Engineering Stack Exchange"></div><a href="http://engineering.stackexchange.com/questions/1861/why-dont-hydroelectric-plants-use-cascades-of-turbines-instead-of-single-turbin" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:595 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why don't hydroelectric plants use cascades of turbines instead of single turbines?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/28746744/passing-lambda-as-function-pointer" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Passing lambda as function pointer
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/51633/what-does-it-mean-to-owe-someone-a-quarter" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What does it mean to "owe someone a quarter"?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/40598/would-it-be-acceptable-to-occasionally-sleep-at-the-lab" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Would it be acceptable to occasionally sleep at the lab?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/82577/was-draco-ever-punished-for-his-unforgivable-curse" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Was Draco ever punished for his Unforgivable Curse?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1166798/inequality-from-chapter-5-of-the-book-how-to-think-like-a-mathematician" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Inequality from Chapter 5 of the book *How to Think Like a Mathematician*
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="http://askubuntu.com/questions/590279/in-which-directories-can-nobody-user-write" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    In which directories can "nobody" user write?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/167250/is-there-a-limit-as-to-how-fast-a-black-hole-can-grow" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is there a limit as to how fast a black hole can grow?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-programmers" title="Programmers Stack Exchange"></div><a href="http://programmers.stackexchange.com/questions/274459/when-not-to-apply-dependency-inversion" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:131 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    When NOT to apply Dependency Inversion?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-serverfault" title="Server Fault"></div><a href="http://serverfault.com/questions/671481/how-do-i-install-the-jre-on-a-windows-server-without-oracle-adware" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:2 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do I install the JRE on a Windows server without Oracle adware?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/230300/doing-something-like-psframebox-in-tikz" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Doing something like psframebox in tikz
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-graphicdesign" title="Graphic Design Stack Exchange"></div><a href="http://graphicdesign.stackexchange.com/questions/48935/is-it-okay-to-use-font-awesomes-social-media-icons" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:174 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it okay to use Font Awesome's social media icons?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-electronics" title="Electrical Engineering Stack Exchange"></div><a href="http://electronics.stackexchange.com/questions/157188/frequency-spacing-and-the-doppler-effect" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:135 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Frequency spacing and the doppler effect
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-emacs" title="Emacs Stack Exchange"></div><a href="http://emacs.stackexchange.com/questions/9600/how-can-i-override-a-pre-defined-face-for-light-and-dark-backgrounds" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:583 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I override a pre-defined face for light and dark backgrounds?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/167077/freefall-into-snow" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Freefall into snow
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/230692/informal-way-of-saying-moreover" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Informal way of saying "moreover"
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="http://stackoverflow.com/feeds/question/15105640" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/15105640/ivc/8fc9');});
+</script>
+<noscript>
+    <div><img src="/posts/15105640/ivc/8fc9" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-php</div></div>
+
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="http://stackoverflow.com/tour">tour</a>
+                    <a href="http://stackoverflow.com/help">help</a>
+                    <a href="http://blog.stackoverflow.com/?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com/">chat</a>
+                    <a href="http://data.stackexchange.com/">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="http://stackoverflow.com/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com/" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="Information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (14)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (10)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo © 2015 stack exchange inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2015.2.26.2347
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () { ados_setKeywords('php,laravel');; ados_load(); });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');        
+        
+        ga('set', 'dimension2', '|php|laravel|');         
+        ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>        
+    
+    
+<script src="php%20-%20Laravel%20Eloquent%20ORM%20Transactions%20-%20Stack%20Overflow_files/p" type="text/javascript"></script></body></html>

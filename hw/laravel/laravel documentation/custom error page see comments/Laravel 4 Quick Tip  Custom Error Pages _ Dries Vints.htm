@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><script src="Laravel%204%20Quick%20Tip%20%20Custom%20Error%20Pages%20_%20Dries%20Vints_files/dc.js" async="" type="text/javascript"></script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=u(e),f=c.length,s=i(a,o,r),p=0;f>p;p++)c[p].apply(s,n);return s}function a(t,e){f[t]=u(t).concat(e)}function u(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:u,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=c.createElement("script");e.src=l.proto+t.agent,c.body.appendChild(e)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),u=window,c=u.document,f="addEventListener",s="attachEvent",p=(""+location).split("?")[0],l=e.exports={offset:i(),origin:p,features:{}};c[f]?(c[f]("DOMContentLoaded",o,!1),u[f]("load",n,!1)):(c[s]("onreadystatechange",r),u[s]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}]},{},["G9z0Bl"]);</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site info -->
+    <title>Laravel 4 Quick Tip: Custom Error Pages | Dries Vints</title>
+
+            <meta name="description" content="Update: For the Laravel 5 way of handling custom error pages, please check this awesome post by Matt Stauffer.
+Here's a quick tip on how to create custom error...">
+    
+    <!-- Favicons -->
+    <meta name="msapplication-TileColor" content="#2F3238">
+    <meta name="msapplication-TileImage" content="http://driesvints.com/img/touch-icon-144×144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152×152" href="http://driesvints.com/img/touch-icon-152%C3%97152-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144×144" href="http://driesvints.com/img/touch-icon-144%C3%97144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120×120" href="http://driesvints.com/img/touch-icon-120%C3%97120-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114×114" href="http://driesvints.com/img/touch-icon-114%C3%97114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72×72" href="http://driesvints.com/img/touch-icon-72%C3%9772-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="http://driesvints.com/img/touch-icon-iphone-precomposed.png">
+    <link rel="icon" sizes="32x32" href="http://driesvints.com/img/favicon-32.png">
+    <link rel="shortcut icon" href="http://driesvints.com/img/favicon.ico">
+
+    <!-- Stylsheets -->
+    <link media="all" type="text/css" rel="stylesheet" href="Laravel%204%20Quick%20Tip%20%20Custom%20Error%20Pages%20_%20Dries%20Vints_files/css.css">
+    <link media="all" type="text/css" rel="stylesheet" href="Laravel%204%20Quick%20Tip%20%20Custom%20Error%20Pages%20_%20Dries%20Vints_files/solarized_dark.css">
+    <link media="all" type="text/css" rel="stylesheet" href="Laravel%204%20Quick%20Tip%20%20Custom%20Error%20Pages%20_%20Dries%20Vints_files/app-22c7eedf.css">
+
+    <!-- Google Analytics -->
+            <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-18478762-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    <script src="Laravel%204%20Quick%20Tip%20%20Custom%20Error%20Pages%20_%20Dries%20Vints_files/embed.js" async="" type="text/javascript"></script></head>
+
+<body>
+
+<div id="page-header">
+    <a href="http://driesvints.com/"><i class="fa fa-home"></i></a>
+    <a href="http://driesvints.com/blog"><i class="fa fa-list"></i></a>
+</div>
+<div class="clearfix"></div>
+
+<div id="content">
+    
+<div class="single">
+    <p class="info">
+        <small>
+            May 02, 2013
+
+                            ·&nbsp;Tags: <a href="http://driesvints.com/tag/quick-tip">quick-tip</a>, <a href="http://driesvints.com/tag/laravel">laravel</a>
+                    </small>
+    </p>
+
+    <h1>Laravel 4 Quick Tip: Custom Error Pages</h1>
+
+            <blockquote>
+            <p>This post was published more than a year ago. Some of the tutorials or explanations in this post might be
+             out of date or might not be applicable anymore today.</p>
+
+             <p>Read at your own risk!</p>
+        </blockquote>
+    
+    <p><strong>Update:</strong> For the Laravel 5 way of handling custom error pages, please check <a href="http://mattstauffer.co/blog/laravel-5.0-custom-error-pages">this awesome post</a> by <a href="https://twitter.com/stauffermatt">Matt Stauffer</a>.</p>
+<p>Here's a quick tip on how to create custom error pages in Laravel 4. 
+Laravel has a default built-in event listener for errors attached to the
+ application instance. You can pass it a callback which will provide you
+ with two variables, the exception and the error code.<!--more--></p>
+<pre><code class="language-.php hljs lasso">App<span class="hljs-tag">::error</span>(function(<span class="hljs-variable">$exception</span>, <span class="hljs-variable">$code</span>)
+{
+    switch (<span class="hljs-variable">$code</span>)
+    {
+        <span class="hljs-keyword">case</span> <span class="hljs-number">403</span>:
+            <span class="hljs-keyword">return</span> Response<span class="hljs-tag">::view</span>(<span class="hljs-string">'errors.403'</span>, <span class="hljs-built_in">array</span>(), <span class="hljs-number">403</span>);
+
+        <span class="hljs-keyword">case</span> <span class="hljs-number">404</span>:
+            <span class="hljs-keyword">return</span> Response<span class="hljs-tag">::view</span>(<span class="hljs-string">'errors.404'</span>, <span class="hljs-built_in">array</span>(), <span class="hljs-number">404</span>);
+
+        <span class="hljs-keyword">case</span> <span class="hljs-number">500</span>:
+            <span class="hljs-keyword">return</span> Response<span class="hljs-tag">::view</span>(<span class="hljs-string">'errors.500'</span>, <span class="hljs-built_in">array</span>(), <span class="hljs-number">500</span>);
+
+        default:
+            <span class="hljs-keyword">return</span> Response<span class="hljs-tag">::view</span>(<span class="hljs-string">'errors.default'</span>, <span class="hljs-built_in">array</span>(), <span class="hljs-variable">$code</span>);
+    }
+});
+</code></pre>
+<p>This provides a very easy way to create custom error pages for your application.</p>
+<p>Edit: Edited the view response for providing the correct HTTP status code. Thanks <a href="https://twitter.com/betawax">Holger Weis</a>!</p>
+
+
+    <div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="Laravel%204%20Quick%20Tip%20%20Custom%20Error%20Pages%20_%20Dries%20Vints_files/a.htm" style="width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 7148px ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" data-disqus-uid="2" id="dsq-2" frameborder="0" width="100%"></iframe></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'driesvints';
+        var disqus_identifier = 'laravel-4-quick-tip-custom-error-pages';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+</div>
+
+</div>
+
+<div style="position: relative; z-index: 0; background: none repeat scroll 0% 0% transparent;" id="contact">
+    <div class="inner-box">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-4">
+                    <a href="https://twitter.com/driesvints"><i class="fa fa-twitter"></i></a>
+                </div>
+                <div class="col-xs-4">
+                    <a href="https://github.com/driesvints"><i class="fa fa-github"></i></a>
+                </div>
+                <div class="col-xs-4">
+                    <a href="mailto:dries.vints@gmail.com"><i class="fa fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+<div style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 186px; width: 1423px; z-index: -999998; position: absolute;" class="backstretch"><img src="Laravel%204%20Quick%20Tip%20%20Custom%20Error%20Pages%20_%20Dries%20Vints_files/header.jpg" style="position: absolute; margin: 0px; padding: 0px; border: medium none; width: 1423px; height: 937.994px; max-height: none; max-width: none; z-index: -999999; left: 0px; top: auto; right: auto; bottom: 0px;"></div></div>
+
+<div id="footer">
+    <div class="container">
+        <p>
+            Copyright © 2015 Dries Vints<br>
+
+                            <a href="http://driesvints.com/colophon">Colophon</a> ·
+            
+            <a href="https://github.com/driesvints/driesvints.com">Source Code</a>
+        </p>
+    </div>
+</div>
+
+<script src="Laravel%204%20Quick%20Tip%20%20Custom%20Error%20Pages%20_%20Dries%20Vints_files/app-4d1fb812.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-2.newrelic.com","licenseKey":"2f93271660","applicationID":"4092896","transactionName":"MlBaMUECDBVWURFcXwsabRdaTAsIU1cdG0ANRQ==","queueTime":0,"applicationTime":155,"ttGuid":"","agentToken":"","atts":"HhdZRwkYHxs=","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-476.min.js"}</script>
+<script src="Laravel%204%20Quick%20Tip%20%20Custom%20Error%20Pages%20_%20Dries%20Vints_files/nr-476.js"></script><script src="Laravel%204%20Quick%20Tip%20%20Custom%20Error%20Pages%20_%20Dries%20Vints_files/2f93271660" type="text/javascript"></script></body></html>

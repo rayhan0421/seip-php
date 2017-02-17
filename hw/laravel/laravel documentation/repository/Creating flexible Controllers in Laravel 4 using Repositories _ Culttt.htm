@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html class="wf-museosans-n7-active wf-active" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>Creating flexible Controllers in Laravel 4 using Repositories | Culttt</title>
+    <!--[if lte IE 8]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/style.css">
+    <link rel="shortcut icon" href="http://culttt.com/wp-content/themes/culttt-v3/images/favicon.ico" type="image/ico">
+    <link rel="apple-touch-icon" href="http://culttt.com/wp-content/themes/culttt-v3/images/apple-touch-icon.png">
+    <script src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/a_003.htm" async=""></script><script async="" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/cbgapi.loaded_1"></script><script async="" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/cbgapi.loaded_0"></script><script gapi_processed="true" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/plusone.js" async="" type="text/javascript"></script><script src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/all.js" id="facebook-jssdk"></script><script src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/widgets.js" id="twitter-wjs"></script><script src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/ga.js" async="" type="text/javascript"></script><script async="" type="text/javascript" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/zsc1foq.js"></script><script type="text/javascript">
+      (function() {
+        var config = {
+          kitId: 'zsc1foq',
+          scriptTimeout: 3000
+        };
+        var h=document.getElementsByTagName("html")[0];h.className+=" wf-loading";var t=setTimeout(function(){h.className=h.className.replace(/(\s|^)wf-loading(\s|$)/g," ");h.className+=" wf-inactive"},config.scriptTimeout);var tk=document.createElement("script"),d=false;tk.src='//use.typekit.net/'+config.kitId+'.js';tk.type="text/javascript";tk.async="true";tk.onload=tk.onreadystatechange=function(){var a=this.readyState;if(d||a&&a!="complete"&&a!="loaded")return;d=true;clearTimeout(t);try{Typekit.load(config)}catch(b){}};var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(tk,s)
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width">
+    
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.7.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="Last week I looked at setting up your first Controller in Laravel 4. Controllers are what dictate how data is transferred between your Models and Views and">
+<link rel="canonical" href="http://culttt.com/2013/07/08/creating-flexible-controllers-in-laravel-4-using-repositories/">
+<link rel="publisher" href="https://plus.google.com/b/105545788844824874492/105545788844824874492">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Creating flexible Controllers in Laravel 4 using Repositories | Culttt">
+<meta property="og:description" content="Last week I looked at setting up your first Controller in Laravel 4. Controllers are what dictate how data is transferred between your Models and Views and">
+<meta property="og:url" content="http://culttt.com/2013/07/08/creating-flexible-controllers-in-laravel-4-using-repositories/">
+<meta property="og:site_name" content="Culttt">
+<meta property="article:publisher" content="http://facebook.com/culttt">
+<meta property="article:author" content="https://www.facebook.com/phillyyyy">
+<meta property="article:tag" content="Cribbb">
+<meta property="article:tag" content="Laravel">
+<meta property="article:tag" content="PHP">
+<meta property="article:section" content="Code">
+<meta property="article:published_time" content="2013-07-08T07:26:55+00:00">
+<meta property="article:modified_time" content="2014-07-12T12:24:38+00:00">
+<meta property="og:updated_time" content="2014-07-12T12:24:38+00:00">
+<meta property="fb:admins" content="893905018">
+<meta property="og:image" content="http://culttt.com/wp-content/uploads/2013/07/Creating-flexible-Controllers-in-Laravel-4-using-Repositories.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="Last week I looked at setting up your first Controller in Laravel 4. Controllers are what dictate how data is transferred between your Models and Views and">
+<meta name="twitter:title" content="Creating flexible Controllers in Laravel 4 using Repositories | Culttt">
+<meta name="twitter:site" content="@culttt">
+<meta name="twitter:domain" content="Culttt">
+<meta name="twitter:creator" content="@philipbrown">
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Culttt » Creating flexible Controllers in Laravel 4 using Repositories Comments Feed" href="http://culttt.com/2013/07/08/creating-flexible-controllers-in-laravel-4-using-repositories/feed/">
+<link rel="stylesheet" id="jetpack_css-css" href="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/jetpack.css" type="text/css" media="all">
+<!-- This site uses the Google Analytics by Yoast plugin v5.3 - Universal disabled - https://yoast.com/wordpress/plugins/google-analytics/ -->
+<style type="text/css">.tk-museo-sans{font-family:"museo-sans",sans-serif;}</style><link href="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/d.css" rel="stylesheet"><script type="text/javascript">
+
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-6105422-9']);
+	_gaq.push(['_gat._forceSSL']);
+	_gaq.push(['_trackPageview']);
+
+	(function () {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+
+</script>
+<!-- / Google Analytics by Yoast -->
+<script type="text/javascript" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/jquery.js"></script>
+<script type="text/javascript" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/jquery-migrate.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://culttt.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://culttt.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.1">
+<link rel="shortlink" href="http://wp.me/p2tyoR-RE">
+<style type="text/css">img#wpstats{display:none}</style><link href="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/shCore.css" type="text/css" rel="stylesheet"><style type="text/css" id="syntaxhighlighteranchor"></style>
+  <script src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/embed.js" async="" type="text/javascript"></script><script src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/C6AILKT.json" type="text/javascript" id="_carbonads_projs"></script><style id="_legacy_carbonads_css">.one{position:relative}.one .bsa_it_ad{display:block;padding:15px;border:1px solid #e1e1e1;background:#f9f9f9;font-family:helvetica,arial,sans-serif;line-height:100%;position:relative}.one .bsa_it_ad a{text-decoration:none}.one .bsa_it_ad a:hover{text-decoration:none}.one .bsa_it_ad .bsa_it_t{display:block;font-size:12px;font-weight:bold;color:#212121;line-height:125%;padding:0 0 5px 0}.one .bsa_it_ad .bsa_it_d{display:block;color:#434343;font-size:12px;line-height:135%}.one .bsa_it_ad .bsa_it_i{float:left;margin:0 15px 10px 0}body .one .bsa_it_p{text-align:center;display:block !important}.one .bsa_it_p a{font-size:10px;color:#666;text-decoration:none}.one .bsa_it_ad .bsa_it_p a:hover{font-style:italic}</style><script src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/count.js" type="text/javascript" async=""></script><link rel="stylesheet" type="text/css" id="gravatar-card-css" href="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/services.css"><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f8;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3a5795;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #2f477a;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f8;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style><script src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/a" type="text/javascript"></script><script charset="UTF-8" async="" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/alfie.js"></script></head>
+  <body data-twttr-rendered="true" class="">
+
+    <header class="header">
+      <div class="grid">
+        <div class="col-12">
+          <span class="brand"><a href="http://culttt.com/">Culttt</a></span>
+          <a class="icons twitter" href="https://twitter.com/culttt"><i class="icon-twitter"></i></a>
+          <a class="icons facebook" href="https://www.facebook.com/culttt"><i class="icon-facebook-squared"></i></a>
+          <a class="icons googleplus" href="https://plus.google.com/105545788844824874492"><i class="icon-gplus"></i></a>
+          <a class="icons rss" href="http://culttt.com/feed/"><i class="icon-rss"></i></a>
+        </div>
+        <div class="col-12">
+          <form class="search" action="/search">
+              <input name="q" placeholder="Search..." type="text">
+              <span><button class="icon-search"></button></span>
+          </form>
+        </div>
+      </div><!--/grid-->
+    </header><!--/header-->
+
+    <div class="wrapper">
+      <div class="grid">
+
+    <div class="wrapper">
+      <div class="grid">
+
+        <nav class="navigation col-3">
+  <a href="http://culttt.com/business"><i class="icon-chart-line"></i> <span class="item">Business</span></a>
+  <a href="http://culttt.com/code"><i class="icon-code"></i> <span class="item">Code</span></a>
+  <a href="http://culttt.com/design"><i class="icon-brush"></i> <span class="item">Design</span></a>
+  <a href="http://culttt.com/mobile"><i class="icon-mobile"></i> <span class="item">Mobile</span></a>
+  <a href="http://culttt.com/random"><i class="icon-address"></i> <span class="item">Random</span></a>
+  <a href="http://culttt.com/reviews"><i class="icon-book-open"></i> <span class="item">Reviews</span></a>
+  <a href="http://culttt.com/social"><i class="icon-chat"></i> <span class="item">Social</span></a>
+  <a href="http://culttt.com/strategy"><i class="icon-chart-area"></i> <span class="item">Strategy</span></a>
+</nav>
+        <div class="col-21 wrapper-big">
+
+          <div class="col-19 wrapper-small">
+
+            <div class="content col-16 single">
+
+              <span class="breadcrumbs">
+		<span prefix="v: http://rdf.data-vocabulary.org/#">
+			<span typeof="v:Breadcrumb"><a href="http://culttt.com/" rel="v:url" property="v:title">Home</a></span> <span class="seperator">»</span> <span typeof="v:Breadcrumb"><a href="http://culttt.com/code/" rel="v:url" property="v:title">Code</a></span> <span class="seperator">»</span> <span typeof="v:Breadcrumb"><strong class="breadcrumb_last" property="v:title">Creating flexible Controllers in Laravel 4 using Repositories</strong></span>
+		</span></span>
+              
+                
+                  <h1>Creating flexible Controllers in Laravel 4 using Repositories</h1>
+
+                  <div class="meta">
+                    <span>Posted by <a href="http://culttt.com/author/philipbrown/" title="Posts by Philip Brown" rel="author">Philip Brown</a> on July 8th, 2013</span>
+                  </div>
+
+                  <div class="post">
+                    <p><img src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/Creating-flexible-Controllers-in-Laravel-4-using-Repositorie.jpg" alt="Creating flexible Controllers in Laravel 4 using Repositories"><br>
+Last week I looked at <a href="http://culttt.com/2013/07/01/setting-up-your-first-laravel-4-controller/">setting up your first Controller in Laravel 4</a>.
+ Controllers are what dictate how data is transferred between your 
+Models and Views and vice versa. We set up our first RESTful controller 
+and I described what each of the methods should be used for.</p>
+<p>This week’s tutorial is all about creating Controllers that are 
+flexible. Your Controllers are going to be one of the key components of 
+your application and so you need to ensure that you build them so that 
+if future circumstances change you don’t have to completely rewrite 
+them.</p>
+<p>To make the Controllers flexible, I’m going to use <em>Repositories</em> to abstract the database layer away.</p>
+<p>This might seem a little bit confusing, but stick with me, it will all make sense by the end of this post.</p>
+<h2>An illustration of the problem</h2>
+<p>So to really understand what I’m trying to achieve here, first I’ll give you an example of the situation I’m trying to avoid.</p>
+<p>For example, we have the following index method in the <code>UserController.php</code> file:</p>
+<div><div id="highlighter_663978" class="syntaxhighlighter  php"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php comments">/**</code></div><div class="line number2 index1 alt1"><code class="php spaces">&nbsp;</code><code class="php comments">* Display a listing of the resource.</code></div><div class="line number3 index2 alt2"><code class="php spaces">&nbsp;</code><code class="php comments">*</code></div><div class="line number4 index3 alt1"><code class="php spaces">&nbsp;</code><code class="php comments">* @return Response</code></div><div class="line number5 index4 alt2"><code class="php spaces">&nbsp;</code><code class="php comments">*/</code></div><div class="line number6 index5 alt1"><code class="php keyword">public</code> <code class="php keyword">function</code> <code class="php plain">index()</code></div><div class="line number7 index6 alt2"><code class="php plain">{</code></div><div class="line number8 index7 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php comments">// Return all Users</code></div><div class="line number9 index8 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php keyword">return</code> <code class="php plain">User::all();</code></div><div class="line number10 index9 alt1"><code class="php plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>This method simply returns a list of all users from out application.</p>
+<p>However, there is a problem with this:</p>
+<p><em>It’s not flexible</em> – <code>User::all()</code> is tied to 
+Laravel’s Eloquent ORM. What would you do if you needed to switch 
+databases to use Redis or Mongo instead? Well, you would have to find 
+all of the instances that you used Eloquent in your application and 
+update them. This isn’t very flexible in a larger application.</p>
+<p>This might not seem like big problem, but trust me it is! You might 
+be thinking, “hey, as long as it works, it’s all good right?”. Well 
+building a solid application foundation is really not that hard and 
+Laravel makes it really easy to solve both of these problems. There’s no
+ need to tightly couple your application to one particular ORM or 
+database if you don’t have to. You should seize any opportunity to build
+ future flexibility into your application!</p>
+<h2>Flexibility through Repositories</h2>
+<p>In order to cleanly separate our Controllers from the database, we 
+are going to abstract that interaction into repositories. A repository 
+is simply an interface between two things.</p>
+<p>So instead of referencing Eloquent directly, we can reference <code>UserRepository</code>. We can then bind <code>UserRepository</code> to <code>EloquentUserRepository</code> so that Laravel knows that whenever we mention <code>UserRepository</code> we want an instance of <code>EloquentUserRepository</code>.</p>
+<p>Now that we have abstracted the database layer into repositories it makes it much easier to switch database ORM.</p>
+<p>For example, if you wanted to use Mongo instead, you would simply create a <code>MongoUserRepository</code> and bind <code>UserRepository</code> to it rather than <code>EloquentUserRepository</code>.</p>
+<p>Now whenever Laravel wants a <code>UserRepository</code> it will return <code>MongoUserRepository</code>.</p>
+<p>This means that you don’t have to change any of the code in your Controllers!</p>
+<h2>What are Repositories?</h2>
+<p>As I mentioned above, Repositories are simply an interface between 
+two things. You can think of them as a contract that states that certain
+ methods will be made available when using this interface.</p>
+<p>For example:</p>
+<p>You might have the following <code>UserRepository</code>:</p>
+<div><div id="highlighter_931232" class="syntaxhighlighter  php"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php keyword">interface</code> <code class="php plain">UserRepository {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php keyword">public</code> <code class="php keyword">function</code> <code class="php plain">all(){}</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php keyword">public</code> <code class="php keyword">function</code> <code class="php plain">find(){}</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="php plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>And the following <code>EloquentUserRepository</code></p>
+<div><div id="highlighter_358419" class="syntaxhighlighter  php"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php keyword">class</code> <code class="php plain">EloquentUserRepository </code><code class="php keyword">implements</code> <code class="php plain">UserRepository {</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php keyword">public</code> <code class="php keyword">function</code> <code class="php plain">all()</code></div><div class="line number4 index3 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php plain">{</code></div><div class="line number5 index4 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php keyword">return</code> <code class="php plain">User::all();</code></div><div class="line number6 index5 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php plain">}</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php keyword">public</code> <code class="php keyword">function</code> <code class="php plain">find(</code><code class="php variable">$id</code><code class="php plain">)</code></div><div class="line number9 index8 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php plain">{</code></div><div class="line number10 index9 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php keyword">return</code> <code class="php plain">User::find(</code><code class="php variable">$id</code><code class="php plain">);</code></div><div class="line number11 index10 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php plain">}</code></div><div class="line number12 index11 alt1">&nbsp;</div><div class="line number13 index12 alt2"><code class="php plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>The <code>UserRepository</code> is just an interface for the <code>EloquentUserRepository</code> it doesn’t care what method of storing data is used, all it cares about is that those methods are available.</p>
+<p>Now in your Controller you can use the <code>UserRepository</code> interface as an abstraction from the database layer.</p>
+<p>So hopefully that all makes sense to you. We are basically just 
+making ORM specific classes and then using an interface in the 
+Controller as a way of talking to the database. The interface is simply 
+the connection between the Controller and the Repository.</p>
+<h2>What do we need to build?</h2>
+<p>In order for our application to use Repositories, first we need to set things up.</p>
+<p>We are going to need:</p>
+<ul>
+<li><code>UserRepository</code></li>
+<li><code>EloquentUserRepository</code></li>
+<li>A way to bind <code>UserRepository</code> and <code>EloquentUserRepository</code></li>
+</ul>
+<p>If you remember back to <a href="http://culttt.com/2013/06/24/creating-a-laravel-4-package/">building your first Laravel package</a>,
+ we can use Service Providers to bind things together. Service Providers
+ are just like bootstrap classes that allow you to set things up in a 
+certain way.</p>
+<h2>Project structure</h2>
+<p>As with a lot of things, you can get away with placing any of these 
+things in a lot of random areas in your project. However, it’s pretty 
+bad practice to just dump stuff in a random file or leave things in the 
+wrong directory. As your project gets bigger, things will become a mess 
+and everything will be unmaintainable.</p>
+<p>Instead, I’m going to create a new directory called <code>app/lib</code> to store all of this kind of stuff.</p>
+<p>In order for this directory to be included in the autoload, you also need to add it to your <code>composer.json</code> file.</p>
+<p>In the <code>classmap</code> array, add your new directory:</p>
+<div><div id="highlighter_408827" class="syntaxhighlighter  jscript"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="jscript string">"autoload"</code><code class="jscript plain">: {</code></div><div class="line number2 index1 alt1"><code class="jscript spaces">&nbsp;&nbsp;</code><code class="jscript string">"classmap"</code><code class="jscript plain">: [</code></div><div class="line number3 index2 alt2"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript comments">// --</code></div><div class="line number4 index3 alt1"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript string">"app/lib"</code></div><div class="line number5 index4 alt2"><code class="jscript spaces">&nbsp;&nbsp;</code><code class="jscript plain">]</code></div><div class="line number6 index5 alt1"><code class="jscript plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Run the following command in Terminal to update your autoload classmap:</p>
+<div><div id="highlighter_436126" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">$ composer dump-autoload</code></div></div></td></tr></tbody></table></div></div>
+<p>Next, in the <code>app/lib</code> directory, I’m going to create another directory call <code>Cribbb</code> to keep all of the Cribbb specific things together.</p>
+<p>Next, I’m going to create another directory under <code>app/lib/Cribbb</code> called <code>Storage</code> to keep all of my database repositories together. And finally, I’m going to separate each resource into its own directory.</p>
+<p>So my final directory structure is: <code>app/lib/Cribbb/Storage/User</code>.</p>
+<h2>Creating the User Repository</h2>
+<p>The first thing to create is the <code>UserRepository.php</code> interface.</p>
+<div><div id="highlighter_430161" class="syntaxhighlighter  php"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php plain">&lt;?php </code><code class="php keyword">namespace</code> <code class="php plain">Cribbb\Storage\User;</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="php keyword">interface</code> <code class="php plain">UserRepository {</code></div><div class="line number4 index3 alt1"><code class="php spaces">&nbsp;&nbsp;</code>&nbsp;</div><div class="line number5 index4 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php keyword">public</code> <code class="php keyword">function</code> <code class="php plain">all();</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php keyword">public</code> <code class="php keyword">function</code> <code class="php plain">find(</code><code class="php variable">$id</code><code class="php plain">);</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php keyword">public</code> <code class="php keyword">function</code> <code class="php plain">create(</code><code class="php variable">$input</code><code class="php plain">);</code></div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="php plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Interfaces are extremely simple because all I’m doing here is 
+declaring that these methods should be made available. In a future 
+tutorial I will add the other methods I’m going to need to for updating 
+or deleting, but for now we’ll keep it simple.</p>
+<h2>Creating the Eloquent User Repository</h2>
+<p>Next I will create the <code>EloquentUserRepository.php</code> file. Remember, this is simply an abstraction from the database that implements <code>UserRepository</code>:</p>
+<div><div id="highlighter_585179" class="syntaxhighlighter  php"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php plain">&lt;?php </code><code class="php keyword">namespace</code> <code class="php plain">Cribbb\Storage\User;</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="php keyword">use</code> <code class="php plain">User;</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="php keyword">class</code> <code class="php plain">EloquentUserRepository </code><code class="php keyword">implements</code> <code class="php plain">UserRepository {</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php keyword">public</code> <code class="php keyword">function</code> <code class="php plain">all()</code></div><div class="line number8 index7 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php plain">{</code></div><div class="line number9 index8 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php keyword">return</code> <code class="php plain">User::all();</code></div><div class="line number10 index9 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php plain">}</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php keyword">public</code> <code class="php keyword">function</code> <code class="php plain">find(</code><code class="php variable">$id</code><code class="php plain">)</code></div><div class="line number13 index12 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php plain">{</code></div><div class="line number14 index13 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php keyword">return</code> <code class="php plain">User::find(</code><code class="php variable">$id</code><code class="php plain">);</code></div><div class="line number15 index14 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php plain">}</code></div><div class="line number16 index15 alt1">&nbsp;</div><div class="line number17 index16 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php keyword">public</code> <code class="php keyword">function</code> <code class="php plain">create(</code><code class="php variable">$input</code><code class="php plain">)</code></div><div class="line number18 index17 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php plain">{</code></div><div class="line number19 index18 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php keyword">return</code> <code class="php plain">User::create(</code><code class="php variable">$input</code><code class="php plain">);</code></div><div class="line number20 index19 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php plain">}</code></div><div class="line number21 index20 alt2">&nbsp;</div><div class="line number22 index21 alt1"><code class="php plain">}</code></div></div></td></tr></tbody></table></div></div>
+<h2>Creating the Service Provider</h2>
+<p>Next I need to create the Service Provider which will bind the two repositories together.</p>
+<p>In <code>app/lib/cribbb/storage</code> create a new file called <code>StorageServiceProvider.php</code>, and copy the following code:</p>
+<div><div id="highlighter_464206" class="syntaxhighlighter  php"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php plain">&lt;?php </code><code class="php keyword">namespace</code> <code class="php plain">Cribbb\Storage;</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="php keyword">use</code> <code class="php plain">Illuminate\Support\ServiceProvider;</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="php keyword">class</code> <code class="php plain">StorageServiceProvider </code><code class="php keyword">extends</code> <code class="php plain">ServiceProvider {</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php keyword">public</code> <code class="php keyword">function</code> <code class="php plain">register()</code></div><div class="line number8 index7 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php plain">{</code></div><div class="line number9 index8 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php variable">$this</code><code class="php plain">-&gt;app-&gt;bind(</code></div><div class="line number10 index9 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php string">'Cribbb\Storage\User\UserRepository'</code><code class="php plain">,</code></div><div class="line number11 index10 alt2"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php string">'Cribbb\Storage\User\EloquentUserRepository'</code></div><div class="line number12 index11 alt1"><code class="php spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="php plain">);</code></div><div class="line number13 index12 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php plain">}</code></div><div class="line number14 index13 alt1">&nbsp;</div><div class="line number15 index14 alt2"><code class="php plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>If you remember back to my article on <a href="http://culttt.com/2013/06/24/creating-a-laravel-4-package/">creating a Laravel 4 Package</a>, the <code>register</code>
+ method is automatically called on the Service Provider. This allows you
+ to bootstrap your files so everything is loaded correctly.</p>
+<p>In this example, I’m binding the User Repository to the Eloquent User
+ Repository. This means, whenever I want to use the User Repository, 
+Laravel will automatically know that I want to use the Eloquent User 
+Repository. If in the future I wanted to use Mongo instead, I would 
+simply have to create a Mongo User Repository and update this binding.</p>
+<p>Finally you need to make Laravel aware of this Service Provider by placing it in the <code>providers</code> array under <code>app/config/app.php</code>:</p>
+<div><div id="highlighter_45699" class="syntaxhighlighter  php"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php string">'providers'</code> <code class="php plain">=&gt; </code><code class="php keyword">array</code><code class="php plain">(</code></div><div class="line number2 index1 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php comments">// --</code></div><div class="line number3 index2 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php string">'Cribbb\Storage\StorageServiceProvider'</code></div><div class="line number4 index3 alt1"><code class="php plain">),</code></div></div></td></tr></tbody></table></div></div>
+<h2>Implementing the Repository in the Controller</h2>
+<p>Now we can start using the Repository in the User Controller. Open up <code>UserController.php</code> and add the <code>use</code> line to the top of your file:</p>
+<div><div id="highlighter_187472" class="syntaxhighlighter  php"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php plain">&lt;?php</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="php keyword">use</code> <code class="php plain">Cribbb\Storage\User\UserRepository </code><code class="php keyword">as</code> <code class="php plain">User;</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="php keyword">class</code> <code class="php plain">UserController </code><code class="php keyword">extends</code> <code class="php plain">BaseController {}</code></div></div></td></tr></tbody></table></div></div>
+<p>Next you need to create a <code>__construct</code> method that injects an instance of the User Repository into the Controller and sets it to the <code>$this-&gt;user</code> property:</p>
+<div><div id="highlighter_548368" class="syntaxhighlighter  php"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php keyword">public</code> <code class="php keyword">function</code> <code class="php plain">__construct(User </code><code class="php variable">$user</code><code class="php plain">)</code></div><div class="line number2 index1 alt1"><code class="php plain">{</code></div><div class="line number3 index2 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php variable">$this</code><code class="php plain">-&gt;user = </code><code class="php variable">$user</code><code class="php plain">;</code></div><div class="line number4 index3 alt1"><code class="php plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>And finally, you can set the <code>index</code> method to return all of the users:</p>
+<div><div id="highlighter_255215" class="syntaxhighlighter  php"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php comments">/**</code></div><div class="line number2 index1 alt1"><code class="php spaces">&nbsp;</code><code class="php comments">* Display a listing of the resource.</code></div><div class="line number3 index2 alt2"><code class="php spaces">&nbsp;</code><code class="php comments">*</code></div><div class="line number4 index3 alt1"><code class="php spaces">&nbsp;</code><code class="php comments">* @return Response</code></div><div class="line number5 index4 alt2"><code class="php spaces">&nbsp;</code><code class="php comments">*/</code></div><div class="line number6 index5 alt1"><code class="php keyword">public</code> <code class="php keyword">function</code> <code class="php plain">index()</code></div><div class="line number7 index6 alt2"><code class="php plain">{</code></div><div class="line number8 index7 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php keyword">return</code> <code class="php variable">$this</code><code class="php plain">-&gt;user-&gt;all();</code></div><div class="line number9 index8 alt2"><code class="php plain">}</code></div></div></td></tr></tbody></table></div></div>
+<h2>Setting up a route and testing in the browser</h2>
+<p>Now all we need to do to ensure that everything is working correctly 
+is to set up a route to hit so we can see what is being returned in the 
+browser.</p>
+<p>Open up your <code>routes.php</code> file and copy the following to define a new route to the User Controller:</p>
+<div><div id="highlighter_835720" class="syntaxhighlighter  php"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php plain">Route::resource(</code><code class="php string">'user'</code><code class="php plain">, </code><code class="php string">'UserController'</code><code class="php plain">);</code></div></div></td></tr></tbody></table></div></div>
+<p>Now if you fire up the server and hit <em>/user</em> in your browser, you should see a JSON array displayed on the screen (as long as you actually have users in your database!).</p>
+<h2>Switching Repositories</h2>
+<p>Now if you ever need to switch ORM or database in the future, all you
+ have to do is to create a new database Repository and update the 
+bindings in your Service Provider.</p>
+<p>For example, to switch to Mongo, all you would have to do is to copy the <code>EloquentUserRepository.php</code> and create <code>MongoUserRepository.php</code>. You would then replace the Eloquent code with Mongo code so that the same data is returned.</p>
+<p>In your Service Provider, you would simply update the binding to use the Mongo repository instead of the Eloquent repository:</p>
+<div><div id="highlighter_790715" class="syntaxhighlighter  php"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="php variable">$this</code><code class="php plain">-&gt;app-&gt;bind(</code></div><div class="line number2 index1 alt1"><code class="php spaces">&nbsp;&nbsp;</code><code class="php string">'Cribbb\Storage\User\UserRepository'</code><code class="php plain">,</code></div><div class="line number3 index2 alt2"><code class="php spaces">&nbsp;&nbsp;</code><code class="php string">'Cribbb\Storage\User\MongoUserRepository'</code></div><div class="line number4 index3 alt1"><code class="php plain">);</code></div></div></td></tr></tbody></table></div></div>
+<p>Now you have completely switched databases without having to change any of your Controller code!</p>
+<h2>Conclusion</h2>
+<p>Repositories allow you to create a flexible abstraction layer between
+ your database and your Controller. Doing this enables you to separate 
+those concerns and it prevents your Controllers being too tightly 
+coupled with your Database.</p>
+<p>Your Controllers don’t care what storage facility you are using to 
+persist data, and so by using Repositories, you are able to make a clean
+ abstraction.</p>
+<p>This makes it beautifully simple to switch database types at some point in the future.</p>
+<p>Next week I’m going to look at how you should structure your 
+Controllers to make them easier to test. Again this is because your 
+Controllers should only be concerned with their job and not what the 
+database is doing.</p>
+<p>This is a series of posts on building an entire Open Source application called <a href="http://cribbb.com/" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://cribbb.com', 'Cribbb']);">Cribbb</a>. All of the tutorials will be free to web, and all of the code is available on <a href="https://github.com/cribbb/cribbb" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://github.com/cribbb/cribbb', 'GitHub']);">GitHub</a>.</p>
+<p>To view a full listing of the tutorials in this series, <a href="http://culttt.com/tag/cribbb/">click here</a>.</p>
+                  </div>
+
+                  <div class="about-author">
+                    <img id="grav-780290abdc8ae52adddecac01690747e-0" alt="" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/780290abdc8ae52adddecac01690747e.jpg" class="avatar avatar-100 photo grav-hashed grav-hijack" height="100" width="100">                    <p class="name">Philip Brown</p>
+                    <p class="bio">Hey, I'm <em>Philip Brown</em>, a 
+designer and developer from Durham, England. I create websites and web 
+based applications from the ground up. In 2011 I founded a company 
+called <a href="http://yflag.com/">Yellow Flag</a>. If you want to find out more about me, you can follow me on <a href="http://twitter.com/philipbrown">Twitter</a> or <a href="https://plus.google.com/100062537916148743454/?rel=author">Google Plus</a>.</p>
+                  </div>
+
+                  <div class="social-buttons group">
+                    <div class="social-button">
+                      <iframe style="width: 58px; height: 62px;" data-twttr-rendered="true" title="Twitter Tweet Button" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-vertical" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/tweet_button.htm" allowtransparency="true" scrolling="no" id="twitter-widget-0" frameborder="0"></iframe>
+                      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    </div>
+                    <div class="social-button">
+                      <div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/DU1Ia251o0y.htm" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_http" scrolling="no" allowtransparency="true" name="fb_xdm_frame_http" frameborder="0"></iframe><iframe src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/DU1Ia251o0y_002.htm" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" scrolling="no" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+                      <script>(function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s); js.id = id;
+                        js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+                        fjs.parentNode.insertBefore(js, fjs);
+                      }(document, 'script', 'facebook-jssdk'));</script>
+                      <div fb-iframe-plugin-query="app_id=&amp;container_width=164&amp;href=http%3A%2F%2Fculttt.com%2F2013%2F07%2F08%2Fcreating-flexible-controllers-in-laravel-4-using-repositories%2F&amp;layout=box_count&amp;locale=en_GB&amp;sdk=joey&amp;send=false&amp;show_faces=false" fb-xfbml-state="rendered" class="fb-like fb_iframe_widget" data-send="false" data-layout="box_count" data-show-faces="false"><span style="vertical-align: bottom; width: 49px; height: 61px;"><iframe class="" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/like.htm" style="border: medium none; visibility: visible; width: 49px; height: 61px;" title="fb:like Facebook Social Plugin" scrolling="no" allowtransparency="true" name="f204a161a14054e" frameborder="0" height="1000px" width="1000px"></iframe></span></div>
+                    </div>
+                    <div class="social-button">
+                      <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 50px; height: 60px;"><iframe title="+1" data-gapiattached="true" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/fastbutton.htm" name="I0_1423599343003" id="I0_1423599343003" vspace="0" tabindex="0" style="position: static; top: 0px; width: 50px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 60px;" scrolling="no" marginwidth="0" marginheight="0" hspace="0" frameborder="0" width="100%"></iframe></div>
+                      <script type="text/javascript">
+                        window.___gcfg = {lang: 'en-GB'};
+                        (function() {
+                        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                        po.src = 'https://apis.google.com/js/plusone.js';
+                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                        })();
+                      </script>
+                    </div>
+                    <div class="social-button">
+                      
+                      <script type="text/javascript" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/button.js"></script><iframe src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/a.htm" style="border: medium none; width: 55px; height: 62px;" class="buffer-button" scrolling="no" frameborder="0"></iframe>
+                    </div>
+                  </div>
+
+                  <div class="join-the-culttt">
+                    <h2>Join the Culttt</h2>
+                    <p><em>Become an insider</em> and join the <span>Culttt</span></p>
+                    <form action="http://culttt.us5.list-manage1.com/subscribe/post?u=303990f04b26b185f497a44bb&amp;id=ea10680817" method="POST">
+                      <input name="EMAIL" placeholder="Your email..." type="email">
+                      <button type="submit" name="submit">Join us</button>
+                    </form>
+                  </div>
+
+                  <div class="comments">
+                    
+<div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/a_002.htm" style="width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 9758px ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" data-disqus-uid="2" id="dsq-2" frameborder="0" width="100%"></iframe><iframe style="width: 617px ! important; border: medium none ! important; overflow: hidden ! important; top: 0px ! important; min-width: 617px ! important; max-width: 617px ! important; position: fixed ! important; z-index: 2147483646 ! important; height: 29px ! important; min-height: 29px ! important; max-height: 29px ! important; display: none ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" data-disqus-uid="indicator-north" id="dsq-indicator-north" frameborder="0"></iframe><iframe style="width: 617px ! important; border: medium none ! important; overflow: hidden ! important; bottom: 0px ! important; min-width: 617px ! important; max-width: 617px ! important; position: fixed ! important; z-index: 2147483646 ! important; height: 29px ! important; min-height: 29px ! important; max-height: 29px ! important; display: none ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" data-disqus-uid="indicator-south" id="dsq-indicator-south" frameborder="0"></iframe></div>
+
+<script type="text/javascript">
+var disqus_url = 'http://culttt.com/2013/07/08/creating-flexible-controllers-in-laravel-4-using-repositories/';
+var disqus_identifier = '3326 http://culttt.com/?p=3326';
+var disqus_container_id = 'disqus_thread';
+var disqus_shortname = 'culttt';
+var disqus_title = "Creating flexible Controllers in Laravel 4 using Repositories";
+var disqus_config_custom = window.disqus_config;
+var disqus_config = function () {
+    /*
+    All currently supported events:
+    onReady: fires when everything is ready,
+    onNewComment: fires when a new comment is posted,
+    onIdentify: fires when user is authenticated
+    */
+    
+    
+    this.language = '';
+        this.callbacks.onReady.push(function () {
+
+        // sync comments in the background so we don't block the page
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = '?cf_action=sync_comments&post_id=3326';
+
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(script, firstScript);
+    });
+    
+    if (disqus_config_custom) {
+        disqus_config_custom.call(this);
+    }
+};
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+                  </div>
+
+              
+              
+            </div>
+
+            <section class="sidebar col-8">
+
+  <div class="widget join-the-culttt">
+    <h2>Join the Culttt</h2>
+    <p><em>Become an insider</em> and join the <span>Culttt</span></p>
+    <form action="http://culttt.us5.list-manage1.com/subscribe/post?u=303990f04b26b185f497a44bb&amp;id=ea10680817" method="POST">
+      <input name="EMAIL" placeholder="Your email..." type="email">
+      <button type="submit" name="submit">Join us</button>
+    </form>
+  </div>
+
+  <div class="widget become-a-follower">
+    <h2>Become a follower</h2>
+      <a href="https://twitter.com/culttt"><i class="icon-twitter twitter"></i><span class="action">Follow us on</span> Twitter</a>
+      <a href="https://www.facebook.com/culttt"><i class="icon-facebook-squared facebook"></i><span class="action">Like us on</span> Facebook</a>
+      <a href="https://plus.google.com/105545788844824874492"><i class="icon-gplus googleplus"></i><span class="action">Circle us on</span> Google Plus</a>
+      <a href="http://culttt.com/feed/"><i class="icon-rss rss"></i><span class="action">Subscribe via </span> RSS</a>
+  </div>
+
+</section>
+          </div><!--/wrapper-small-->
+
+          <section class="advertisements col-5 group">
+
+  <h1>Supported by</h1>
+
+  <div class="widget ad-packs">
+    <script type="text/javascript" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/adpacks.js" id="_adpacks_js"></script><div class="bsap"><div class="bsa_it one"><div class="bsa_it_ad"><a href="http://www.launchbit.com/taz/9533-5762-111/" target="_blank"><span class="bsa_it_i"><img src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/5762-17837.gif" alt="" height="100" width="130"></span></a><a href="http://www.launchbit.com/taz/9533-5762-111/" target="_blank"><span class="bsa_it_d">Advertising is hard. We do it all day. Let us teach you what we’ve learned.</span></a><div style="clear:both"></div></div><span class="bsa_it_p"><a href="http://carbonads.net/" target="_blank">ads via Carbon</a></span></div><img style="display: none;" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/a.gif" border="0" height="1" width="1"></div>
+  </div>
+
+  <div class="widget larajobs culttt_ad">
+    <a href="https://larajobs.com/?partner=37" target="_blank"><img src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/larajobs.jpg" alt="Find your next Laravel gig">
+    <span class="culttt_ad_d">Find your next Laravel gig with Larajobs!</span></a>
+  </div>
+
+</section>
+
+        </div><!--/wrapper-big-->
+
+      </div><!--/grid-->
+    </div><!--/content-->
+    <footer class="footer">
+      <p><a href="http://yflag.com/">Yellow Flag</a></p>
+    </footer>
+  
+          <script type="text/javascript">
+        // <![CDATA[
+        var disqus_shortname = 'culttt';
+        (function () {
+            var nodes = document.getElementsByTagName('span');
+            for (var i = 0, url; i < nodes.length; i++) {
+                if (nodes[i].className.indexOf('dsq-postid') != -1) {
+                    nodes[i].parentNode.setAttribute('data-disqus-identifier', nodes[i].getAttribute('data-dsqidentifier'));
+                    url = nodes[i].parentNode.href.split('#', 1);
+                    if (url.length == 1) { url = url[0]; }
+                    else { url = url[1]; }
+                    nodes[i].parentNode.href = url + '#disqus_thread';
+                }
+            }
+            var s = document.createElement('script'); 
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        // ]]>
+        </script>
+        	<div style="display:none">
+	<div class="grofile-hash-map-780290abdc8ae52adddecac01690747e">
+	</div>
+	</div>
+<script type="text/javascript" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/shCore.js"></script>
+<script type="text/javascript" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/shBrushPhp.js"></script>
+<script type="text/javascript" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/shBrushJScript.js"></script>
+<script type="text/javascript" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/shBrushBash.js"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "http://culttt.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['tab-size'] = 2;
+	SyntaxHighlighter.all();
+</script>
+<script type="text/javascript" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/devicepx-jetpack.js"></script>
+<script type="text/javascript" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/gprofiles.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/wpgroho.js"></script>
+
+	<script src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/e-201506.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	st_go({v:'ext',j:'1:3.3',blog:'36596421',post:'3326',tz:'0'});
+	var load_cmc = function(){linktracker_init(36596421,3326,2);};
+	if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+	else load_cmc();
+	</script>
+</div></div><img id="wpstats" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/g.gif"><iframe tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="Creating%20flexible%20Controllers%20in%20Laravel%204%20using%20Repositories%20_%20Culttt_files/postmessageRelay.htm" id="oauth2relay1573852412" name="oauth2relay1573852412"></iframe></body></html>
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Page Caching using disk: enhanced
+
+ Served from: culttt.com @ 2015-02-08 17:45:25 by W3 Total Cache -->

@@ -1,0 +1,74 @@
+body, div, td {
+  font-size: 14px;
+  font-family: Helvetica, Arial, sans-serif; 
+}
+
+
+/*-------------------------------------------
+    Secondary: Color
+-------------------------------------------*/
+
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover,
+a,
+.st-ul li.st-current, .st-ul li.st-current:hover,
+.widget_display_stats dd,
+.sidebar-footer .widget-info p a.mailto,
+.flex-direction-nav a,
+.ico16:before,
+.widget-posts-views,
+#sidebar .widget-posts-title:hover {
+  color: #2980b9;
+}
+
+
+/*-------------------------------------------
+    Secondary: Background Color
+-------------------------------------------*/
+
+input[type="button"],
+input[type="submit"], button,
+#search-form-header,
+#search-form-header span,
+.term-title h1:before,
+a.button,
+.toggle-closed .toggle-title span,
+.pricing-table-featured .pricing-table-title,
+.pricing-table-featured .pricing-table-price,
+.pricing-table-featured .button,
+.skill-bar,
+.st-gallery ol li.st-gallery-tab-current,
+.more-link,
+#layout .mejs-time-loaded,
+#sidebar .sidebar .widget_display_search,
+.tagcloud a,
+.widget_custom_menu > li > a:hover,
+.widget_custom_menu > li.wHover,
+.widget-posts-icon:hover,
+.flex-control-paging li a:hover,
+.flex-control-paging li a.flex-active,
+.sidebar-footer .widget-subscribe input[type="submit"] {
+  background-color: #2980b9;
+}
+
+
+/*-------------------------------------------
+    Secondary: Border Top Color
+-------------------------------------------*/
+
+.st-ul li.st-current, .st-ul li.st-current:hover,
+#sidebar .sharrre .count:before,
+#sidebar .sharrre .count:after,
+#header-layout-2 {
+  border-top-color: #2980b9;
+}
+
+
+/*-------------------------------------------
+    Secondary: Border Bottom Color
+-------------------------------------------*/
+
+#menu {
+  border-bottom-color: #2980b9;
+}
+
+

@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'Kreon';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Kreon Regular'), local('Kreon-Regular'), url(http://fonts.gstatic.com/s/kreon/v9/gK2DcrR6Rzx5Ga9PpDfp3A.woff2) format('woff2'), url(http://fonts.gstatic.com/s/kreon/v9/a5r0-iMPk2rygJI75EuckA.woff) format('woff');
+}

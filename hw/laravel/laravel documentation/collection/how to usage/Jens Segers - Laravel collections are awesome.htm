@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Jens Segers - Laravel collections are awesome
+</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>@font-face{font-family:'Open Sans';font-style:normal;font-weight:300;src:local('Open Sans Light'),local('OpenSans-Light'),url(http://fonts.gstatic.com/s/opensans/v10/DXI1ORHCpsQm3Vp6mXoaTegdm0LZdjqr5-oayXSOefg.woff2) format('woff2'),url(http://fonts.gstatic.com/s/opensans/v10/DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff) format('woff');}@font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:local('Open Sans'),local('OpenSans'),url(http://fonts.gstatic.com/s/opensans/v10/cJZKeOuBrn4kERxqtaUH3VtXRa8TVwTICgirnJhmVJw.woff2) format('woff2'),url(http://fonts.gstatic.com/s/opensans/v10/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');}@font-face{font-family:'Open Sans';font-style:normal;font-weight:600;src:local('Open Sans Semibold'),local('OpenSans-Semibold'),url(http://fonts.gstatic.com/s/opensans/v10/MTP_ySUJH_bn48VBG8sNSugdm0LZdjqr5-oayXSOefg.woff2) format('woff2'),url(http://fonts.gstatic.com/s/opensans/v10/MTP_ySUJH_bn48VBG8sNSnhCUOGz7vYGh680lGh-uXM.woff) format('woff');}@font-face{font-family:'Open Sans';font-style:normal;font-weight:700;src:local('Open Sans Bold'),local('OpenSans-Bold'),url(http://fonts.gstatic.com/s/opensans/v10/k3k702ZOKiLJc3WVjuplzOgdm0LZdjqr5-oayXSOefg.woff2) format('woff2'),url(http://fonts.gstatic.com/s/opensans/v10/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff) format('woff');}</style>
+<style>@font-face{font-family:'Lora';font-style:normal;font-weight:400;src:local('Lora'),local('Lora-Regular'),url(http://fonts.gstatic.com/s/lora/v9/4vqKRIwnQQGUQQh-PnvdMA.woff2) format('woff2'),url(http://fonts.gstatic.com/s/lora/v9/5-AYViExptypIdFoLKAxTA.woff) format('woff');}@font-face{font-family:'Lora';font-style:normal;font-weight:700;src:local('Lora Bold'),local('Lora-Bold'),url(http://fonts.gstatic.com/s/lora/v9/P18Nsu9EiYldSvHIj_0e5w.woff2) format('woff2'),url(http://fonts.gstatic.com/s/lora/v9/XpaepWHcooQHSRnzoohUng.woff) format('woff');}</style>
+<link rel="stylesheet" href="Jens%20Segers%20-%20Laravel%20collections%20are%20awesome_files/common.css">
+<link rel="alternate" href="http://jenssegers.be/rss" type="application/rss+xml" title="RSS Feed for jenssegers.be">
+</head>
+<body>
+<div class="container">
+<div class="metabar">
+<a href="http://jenssegers.be/"><i class="fa fa-bars fa-fw"></i></a>
+<span>
+<img class="avatar" src="Jens%20Segers%20-%20Laravel%20collections%20are%20awesome_files/xphoto.jpg" title="Jens Segers">
+Jens segers on May 29 2014
+</span>
+</div>
+<article>
+<header>
+<h1>Laravel collections are awesome</h1>
+</header>
+<section class="body">
+<p>The Collection class in Laravel is really awesome. In Laravel, 
+database query results are actually returned as a collection object, 
+that contains the actual results. The class contains a lot of handy 
+methods that will make your work so much easier.</p>
+<p>When I'm working with external API's, I often wrap the results in a collection so that I can use those methods:</p>
+<pre><code>use Illuminate\Support\Collection;
+
+// Get the results from the API.
+$results = json_decode($github-&gt;request('users/jenssegers/repos'));
+
+// Wrap them in a collection.
+$collection = new Collection($results);
+
+// Sort descending by stars.
+$collection-&gt;sortByDesc('stargazers_count');
+
+// Get top 5 repositories.
+$top5 = $leaderboard-&gt;take(5);</code></pre>
+<p>These are a few methods that I use quite often:</p>
+<h2>Lists</h2>
+<p>This method will return every value of a given key. The following 
+example returns every user's email address, indexed by their user id.</p>
+<pre><code>$collection-&gt;lists('email', 'id');</code></pre>
+<p>I use it to get values to pass to a whereIn query, to get data for a pie chart or to pass data to a dropdown menu.</p>
+<h2>Filter</h2>
+<p>This will run a filter function over each of the items. If the 
+callback returns true, it will be present in the resulting collection.</p>
+<pre><code>$collection-&gt;filter(function($user)
+{
+    if ($user-&gt;isNearby($me)) return true;
+});</code></pre>
+<p>Most of the time you will be able to limit the results straight from 
+the query, but in some cases this will come in handy when the filter is 
+pretty difficult, when you're working on a cached collection or when you
+ want to filter API results.</p>
+<h2>ToJson</h2>
+<p>Another great thing about collections is that they can easily be converted to json.</p>
+<pre><code>echo $collection-&gt;toJson();</code></pre>
+<p>When you cast a collection to a string, it will actually call the toJson method:</p>
+<pre><code>echo $collection;</code></pre>
+<h2>Count</h2>
+<p>Something that's quite obvious is the count method, which just 
+returns you how many items there are in the collection. One important 
+thing to note here is that if you are using relations, execute the count
+ method on the builder object and not on the collection object:</p>
+<pre><code>User::posts()-&gt;count();</code></pre>
+<p>And not:</p>
+<pre><code>User::posts-&gt;count();</code></pre>
+<p>That last example will first get all the post object of that user and
+ wrap it in a collection, then the count method will tell you how many 
+items there are in that collection. The first example however, will 
+perform a count database query that will return the result a lot faster.</p>
+<h2>Take</h2>
+<p>Works just like the query builder, takes the first or last number of items.</p>
+<pre><code>$first5 = $collection-&gt;take(5);
+$last5 = $collection-&gt;take(-5);</code></pre>
+<h2>Sum</h2>
+<p>The sum method will return the sum based on the key or a callback function:</p>
+<pre><code>$collection-&gt;sum('points');</code></pre>
+<h2>SortBy and sortByDesc</h2>
+<p>You can use sortBy or sortByDesc to sort the collection based on a 
+key or a callback function. The first parameter is your key of the 
+callback function, the second one is the sorting method (<a target="_blank" href="http://www.php.net/manual/en/array.constants.php">http://www.php.net/manual/en/array.constants.php</a>).</p>
+<pre><code>$collection-&gt;sortBy('name');
+
+// Sort descending by rating.
+$collection-&gt;sortByDesc(function($item)
+{
+    return $item-&gt;rating;
+});</code></pre>
+<h2>More</h2>
+<p>There are a few more methods that you can see over here: <a target="_blank" href="http://laravel.com/api/class-Illuminate.Support.Collection.html">http://laravel.com/api/class-Illuminate.Support.Collection.html</a></p>
+<p>I hope I was able to show you how awesome the Laravel collection class is for handling database and API results.</p>
+</section>
+<section class="share">
+<a target="_blank" href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fjenssegers.be%2Fblog%2F51&amp;text=Laravel+collections+are+awesome&amp;via=jenssegers" class="btn twitter">Share <i class="fa fa-twitter"></i></a>
+<a target="_blank" href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=http%3A%2F%2Fjenssegers.be%2Fblog%2F51&amp;p[title]=Laravel+collections+are+awesome&amp;p[summary]=The+Collection+class+in+Laravel+is+really+awesome.+In+Laravel%2C+database+query+results+are+actually+returned+as+a+collection+object%2C+that+contains+the+actual+results." class="btn facebook">Share <i class="fa fa-facebook"></i></a>
+</section>
+</article>
+<section class="comments" id="comments">
+<hr>
+<h4>Comments</h4>
+<div class="comment" id="433">
+<img src="Jens%20Segers%20-%20Laravel%20collections%20are%20awesome_files/b4da0d64640b95814aea8190a88b424e.jpg">
+<div class="body">
+<h3>
+Alexandru Furculita <small>2 weeks ago</small>
+</h3>
+<p>There are and were even more powerful alternatives to Laravel Collections, like: <a target="_blank" href="https://github.com/schmittjoh/php-collection">https://github.com/schmittjoh/php-collection</a></p>
+</div>
+</div>
+<hr>
+<div class="comment" id="402">
+<img src="Jens%20Segers%20-%20Laravel%20collections%20are%20awesome_files/21c1c2e46ae0e394d1618913d7b29b5f.png">
+<div class="body">
+<h3>
+jenssegers <small>2 months ago</small>
+</h3>
+<p>@ Reivax <code>Book::all()</code> already returns a Collection.</p>
+</div>
+</div>
+<hr>
+<div class="comment" id="401">
+<img src="Jens%20Segers%20-%20Laravel%20collections%20are%20awesome_files/53adf1d2530cce5f050dc84d6fc6af1d.png">
+<div class="body">
+<h3>
+Reivax <small>2 months ago</small>
+</h3>
+<p>It doesn't work for me :'(</p>
+<p>Argument 1 passed to Illuminate\Support\Collection::__construct() 
+must be of the type array, object given, called in 
+/var/www/project-noosphere/app/controllers/BookController.php on line 26
+ and defined</p>
+<p>With this code:
+public function search()
+{
+$books = Book::all();
+$collection = new Collection($books);
+$collection-&gt;sortByDesc('prix');
+return View::make('search')
+-&gt;with('collection', $books);
+}</p>
+<p>Any ideas?</p>
+</div>
+</div>
+<hr>
+<div class="comment" id="344">
+<img src="Jens%20Segers%20-%20Laravel%20collections%20are%20awesome_files/4adb36109dadc91de5d0c4d8ffdcf678.png">
+<div class="body">
+<h3>
+SimonErich <small>5 months ago</small>
+</h3>
+<p><strong>@Emerson</strong> Carvalho: in the Laravel Docs there is a 
+point about attaching custom collection methods. You could use those to 
+extend the default method.
+Just look in <a target="_blank" href="http://laravel.com/docs/eloquent#collections">http://laravel.com/docs/eloquent#collections</a> at the very end of the collection part.</p>
+</div>
+</div>
+<hr>
+<div class="comment" id="342">
+<img src="Jens%20Segers%20-%20Laravel%20collections%20are%20awesome_files/023b85e4fa0c18bc54876bee23917155.jpg">
+<div class="body">
+<h3>
+Paul S <small>5 months ago</small>
+</h3>
+<p>Excellent post, and great examples - many thanks.</p>
+</div>
+</div>
+<hr>
+<div class="comment" id="291">
+<img src="Jens%20Segers%20-%20Laravel%20collections%20are%20awesome_files/39d4ef5b0e96b58b0c61288790a51b32.jpg">
+<div class="body">
+<h3>
+Emerson Carvalho <small>8 months ago</small>
+</h3>
+<p>how do I extend the collection?
+I have some ideas but I need to add methods to the Collection!
+Thanks</p>
+</div>
+</div>
+<hr>
+<div class="comment new">
+<form method="POST" action="http://jenssegers.be/blog/51/comment" accept-charset="UTF-8"><input name="_token" value="Rg2MMvonDjzgUAkU5DhHhpBuWYPyQ6fL5Lw6DEqX" type="hidden">
+<img src="Jens%20Segers%20-%20Laravel%20collections%20are%20awesome_files/a.jpg">
+<div class="body">
+<button type="submit" class="btn">Post comment</button>
+<input placeholder="Email (not visible)" required="required" name="email" type="text">
+<input placeholder="Name" required="required" name="name" type="text">
+<textarea style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 80px;" placeholder="Comment (markdown enabled)" data-post="51" name="body" required="required" cols="50" rows="10"></textarea>
+</div>
+</form>
+</div>
+</section>
+</div>
+<script src="Jens%20Segers%20-%20Laravel%20collections%20are%20awesome_files/analytics.js" async=""></script><script>
+    var base_path = "http://jenssegers.be/";
+    </script>
+<script src="Jens%20Segers%20-%20Laravel%20collections%20are%20awesome_files/vendor.js"></script>
+<script src="Jens%20Segers%20-%20Laravel%20collections%20are%20awesome_files/script.js"></script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-2447756-12', 'jenssegers.be');
+        ga('send', 'pageview');
+    </script>
+
+
+<textarea id="autosizejs" class="autosizejs" tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px none; padding: 0px; box-sizing: content-box; word-wrap: break-word; height: 0px ! important; min-height: 0px ! important; overflow: hidden; transition: none 0s ease 0s ; font-family: &quot;Open Sans&quot;,Geneva,Verdana,sans-serif; font-size: 16px; font-weight: 400; font-style: normal; letter-spacing: -0.316667px; text-transform: none; word-spacing: 0px; text-indent: 0px; white-space: pre-wrap; line-height: 22.4px; width: 620px;">Comment (markdown enabled)
+</textarea><div id="atwho-container"><div id="atwho-ground-39ee524b1425113602818"><div id="at-view-64" class="atwho-view"><ul class="atwho-view-ul"></ul></div></div></div></body></html>

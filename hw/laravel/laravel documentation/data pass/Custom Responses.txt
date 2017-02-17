@@ -1,0 +1,15 @@
+in controller
+return Response:: make( 'Hello world!' , 200);
+
+-------------
+response = Response:: make( 'Hello world!' , 200);
+$response-> headers-> set( 'our key' , 'our value' );
+return $response;
+
+------------
+$data = array( 'iron' , 'man' , 'rocks' );
+ return Response:: json( $data);
+
+---------------
+$file = 'path_to_my_file.pdf' ;
+return Response:: download( $file);

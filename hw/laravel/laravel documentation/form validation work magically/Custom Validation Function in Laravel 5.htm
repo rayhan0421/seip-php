@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html class="wf-proximanova-n4-active wf-proximanova-n7-active wf-active"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script async="" charset="UTF-8" type="text/javascript" src="Custom%20Validation%20Function%20in%20Laravel%205_files/xhr.js" id="_pusher_dependencies1"></script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"><script src="Custom%20Validation%20Function%20in%20Laravel%205_files/analytics.js"></script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=u(e),f=c.length,s=i(a,o,r),p=0;f>p;p++)c[p].apply(s,n);return s}function a(t,e){f[t]=u(t).concat(e)}function u(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:u,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=c.createElement("script");e.src=l.proto+t.agent,c.body.appendChild(e)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),u=window,c=u.document,f="addEventListener",s="attachEvent",p=(""+location).split("?")[0],l=e.exports={offset:i(),origin:p,features:{}};c[f]?(c[f]("DOMContentLoaded",o,!1),u[f]("load",n,!1)):(c[s]("onreadystatechange",r),u[s]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}]},{},["G9z0Bl"]);</script>
+        <meta name="description" content="The best Laravel screencasts on the web.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="stripe-key" content="pk_live_42cAcd2OvCDs4hpErd5ZscBT">
+
+        <title>    Custom Validation Function in Laravel 5
+</title>
+        <link rel="alternate" type="application/atom+xml" title="Laracasts" href="https://laracasts.com/feed">
+
+        <link href="Custom%20Validation%20Function%20in%20Laravel%205_files/min.css" rel="stylesheet">
+
+        
+        <script src="Custom%20Validation%20Function%20in%20Laravel%205_files/zjb5wvv.js"></script>
+        <style type="text/css">.tk-proxima-nova{font-family:"proxima-nova",sans-serif;}</style><link href="Custom%20Validation%20Function%20in%20Laravel%205_files/d.css" rel="stylesheet"><script>try{Typekit.load();}catch(e){}</script>
+
+            <link rel="stylesheet" href="Custom%20Validation%20Function%20in%20Laravel%205_files/hybrid.css">
+    </head>
+
+    <body class="forum ">
+
+        
+        <form method="GET" action="https://laracasts.com/search" accept-charset="UTF-8" class="global-search">
+    <input autocomplete="off" placeholder="Search..." name="q" type="search">
+
+    <select name="q-where" id="q-where" class="hide">
+        <option selected="selected" value="lessons">Lessons</option>
+    </select>
+</form>
+        <script id="flash-template" type="text/template">
+            <div class="flash_message alert alert-info">
+                <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
+
+                <p>
+                    <i class="icon icon-2x icon-bullhorn"></i>
+                    <a href="#" class="flash_message__body"></a>
+                </p>
+            </div>
+        </script>
+
+        
+        <div class="page   ">
+
+            
+            <nav class="navbar" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a href="https://laracasts.com/" class="navbar-brand logo">
+                Laracasts
+            </a>
+        </div> <!-- navbar-header -->
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+
+                <li class="">
+                    <a href="https://laracasts.com/lessons" class="navbar-link">
+                        <i class="icon-television"></i>
+                        Lessons
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="https://laracasts.com/series" class="navbar-link">
+                        <i class="icon-movie-play-1"></i>
+                        Series
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="https://laracasts.com/collections" class="navbar-link">
+                        <i class="icon-box-3"></i>
+                        Collections
+                    </a>
+                </li>
+
+                <li id="navbar-link-discussions" class="active">
+                    <a href="https://laracasts.com/discuss" class="navbar-link">
+                        <i class="icon-chat-4"></i>
+                        Discussions
+                    </a>
+                </li>
+
+                            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                                    <li class="">
+                        <a href="https://laracasts.com/login?return=https://laracasts.com/discuss/channels/general-discussion/custom-validation-function-in-laravel-5" class="navbar-link">Log In</a>
+                    </li>
+
+                    <li>
+                        <a href="https://laracasts.com/join" class="navbar-link btn btn-join">Start Learning</a>
+                    </li>
+                            </ul>
+        </div> <!-- collapse -->
+    </div> <!-- container -->
+</nav>
+
+
+<nav class="secondary-nav">
+    <div class="container">
+        <ul class="zeroed secondary-nav--left">
+
+            <!-- Browse -->
+            <li class="dropdown ">
+                <a href="https://laracasts.com/index" class="navbar-link dropdown-toggle" data-toggle="dropdown">
+                    Browse <b class="caret"></b>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li class=""><a href="https://laracasts.com/index">Site Index</a></li>
+                    <li class=""><a href="https://laracasts.com/latest">What's New</a></li>
+                </ul>
+            </li>
+
+
+             <!-- Discuss -->
+            <li class="dropdown active">
+                <a href="https://laracasts.com/discuss" class="navbar-link dropdown-toggle" data-toggle="dropdown">
+                    Discuss <b class="caret"></b>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li class="active"><a href="https://laracasts.com/discuss">Forum</a></li>
+                    <li><a href="http://www.laravelpodcast.com/">Laravel Podcast</a></li>
+                    <!-- <li class=""><a href="/learn-with-jeffrey">Blog</a></li> -->
+                    <li><a href="http://facebook.com/laracasts">Facebook</a></li>
+                    <li><a href="http://twitter.com/laracasts">Twitter</a></li>
+                </ul>
+            </li>
+
+
+            <!-- Deploy -->
+            <li id="navbar-link--deploy">
+                <a href="https://forge.laravel.com/" class="navbar-link" target="_blank">Deploy</a>
+            </li>
+
+
+            <!-- Work -->
+            <li id="navbar-link--work">
+                <a class="navbar-link" href="https://larajobs.com/?partner=36" target="_blank">Work</a>
+            </li>
+
+
+            <!-- Recommended Reading -->
+            <li id="navbar-link--recommended-reading" class="">
+                <a class="navbar-link" href="https://laracasts.com/recommended-reading">Recommended Reading</a>
+            </li>
+        </ul>
+
+
+        <!-- Search -->
+        <ul class="zeroed secondary-nav--right">
+            <li>
+                <div id="navbar-search-form">
+                    <form role="search" action="/search" method="GET">
+                        <i class="icon-magnifying-glass"></i>
+                        <input id="q" name="q" placeholder="Search Forum" type="text">
+
+                        <select name="q-where" id="q-where" class="hide">
+                            <option value="lessons">Lessons</option>
+                            <option value="forum" selected="selected">Forum</option>
+                        </select>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class="participation__avatar">
+                <a href="https://laracasts.com/@nschiffelbein">
+    <img src="Custom%20Validation%20Function%20in%20Laravel%205_files/e2e2b1fe3b916e90b218a132cb1050e5.png" class="img-circle" alt="nschiffelbein">
+</a>
+                            </div>
+
+            <h2 class="jumbotron__heading">
+                Custom Validation Function in Laravel 5
+            </h2>
+
+            <p class="jumbotron__sub-heading">
+                <a href="https://laracasts.com/discuss/channels/general-discussion" class="btn btn-forum" style="background-color:#4E89DA">General</a>
+
+                Updated 2 weeks ago
+
+                                    by <a href="https://laracasts.com/@bestmomo">bestmomo</a>
+                            </p>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <ol class="breadcrumb">
+            <li><a href="https://laracasts.com/">Home</a></li>
+            <li><a href="https://laracasts.com/discuss">Forum</a></li>
+            <li>
+                <a href="https://laracasts.com/discuss/channels/general-discussion">General</a>
+            </li>
+            <li class="hide-from-mobile">Custom Validation Function in Laravel 5</li>
+        </ol>
+
+        <div class="replies">
+
+            <!-- The Question -->
+            <article id="reply-886" class="media reply participation">
+
+        <div class="participation__avatar">
+            <a href="https://laracasts.com/@nschiffelbein">
+    <img src="Custom%20Validation%20Function%20in%20Laravel%205_files/e2e2b1fe3b916e90b218a132cb1050e5.png" class="img-circle" alt="nschiffelbein">
+</a>                    </div>
+
+        <div class="media-body participation__body question col-md-11">
+            
+            <div class="media-heading">
+                <h5 class="participation__name">
+                    
+                    <a href="https://laracasts.com/@nschiffelbein">nschiffelbein</a>
+                </h5>
+
+                                    <span class="participation__body__user-stats">
+                        <span class="dash-divider">—</span> 750 Points
+
+                                            </span>
+                
+                <span class="participation__body__date">
+                    Posted 5 months ago
+                </span>
+            </div>
+
+            <p>I would like to write a function in my FormRequest object
+ to perform some custom validation steps in Laravel 5, but I can't seem 
+to find a function to override/implement to perform these steps. What is
+ the best approach to do something like that?</p>
+
+        </div>
+    </article>
+
+            <div id="question-stats">
+                <span>
+                    6
+                    replies
+
+                                            with no correct answer yet
+                                    </span>
+            </div>
+
+            <!-- The Replies -->
+            <article id="reply-4497" class="media reply  participation" data-model="Forum">
+
+        <div class="participation__avatar">
+            <a href="https://laracasts.com/@danielboendergaard">
+    <img src="Custom%20Validation%20Function%20in%20Laravel%205_files/7a9f98b3cde5e068cd1c31460e70ace8.png" class="img-circle" alt="danielboendergaard">
+</a>            <i class="icon-id-1 yearly user-support-level" title="I'm a yearly supporter of Laracasts."></i>
+
+                    </div>
+
+        <div class="media-body participation__body col-md-11">
+            
+            <div class="participation__body__buttons">
+                            </div>
+
+            <div class="media-heading">
+                <h5 class="participation__name">
+
+
+                    
+                    <a href="https://laracasts.com/@danielboendergaard">danielboendergaard</a>
+                </h5>
+
+                                    <span class="participation__body__user-stats">
+                        <span class="dash-divider">—</span> 725 Points
+
+                                                    with 1 Awards
+                                            </span>
+                
+                <span class="participation__body__date">
+                    Posted <a href="https://laracasts.com/discuss/channels/general-discussion/custom-validation-function-in-laravel-5/replies/4497" class="text-muted">5 months ago</a>
+                </span>
+            </div>
+
+            <p>Override the validate method, you probably missed it because it's defined in a trait:</p>
+
+<pre><code class="php hljs "><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validate</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">parent</span>::validate();
+
+    <span class="hljs-comment">// Do something</span>
+}
+</code></pre>
+
+
+                    </div>
+
+</article>    
+            <article id="reply-4500" class="media reply  participation" data-model="Forum">
+
+        <div class="participation__avatar">
+            <a href="https://laracasts.com/@nschiffelbein">
+    <img src="Custom%20Validation%20Function%20in%20Laravel%205_files/e2e2b1fe3b916e90b218a132cb1050e5.png" class="img-circle" alt="nschiffelbein">
+</a>            
+                    </div>
+
+        <div class="media-body participation__body col-md-11">
+            
+            <div class="participation__body__buttons">
+                            </div>
+
+            <div class="media-heading">
+                <h5 class="participation__name">
+
+
+                    
+                    <a href="https://laracasts.com/@nschiffelbein">nschiffelbein</a>
+                </h5>
+
+                                    <span class="participation__body__user-stats">
+                        <span class="dash-divider">—</span> 750 Points
+
+                                            </span>
+                
+                <span class="participation__body__date">
+                    Posted <a href="https://laracasts.com/discuss/channels/general-discussion/custom-validation-function-in-laravel-5/replies/4500" class="text-muted">5 months ago</a>
+                </span>
+            </div>
+
+            <p>danielboendergaard, Thanks for your response and pointing
+ me toward the trait. Overriding the validate function seems like it 
+forces you to re-implement the core handling of valid/invalid data. 
+Looking through the trait I saw the getValidatorInstance() method and 
+came up with this solution based on a post here (<a href="http://mattstauffer.co/blog/laravel-5.0-form-requests%29:">http://mattstauffer.co/blog/laravel-5.0-form-requests):</a></p>
+
+<pre><code class="php hljs "><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getValidatorInstance</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-variable">$validator</span> = <span class="hljs-keyword">parent</span>::getValidatorInstance();
+
+        <span class="hljs-variable">$validator</span><span class="hljs-variable">-&gt;after</span>(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> <span class="hljs-title">use</span> <span class="hljs-params">(<span class="hljs-variable">$validator</span>)</span> </span>{
+            <span class="hljs-comment">// Do check here</span>
+
+            <span class="hljs-keyword">if</span>(<span class="hljs-comment">// Invalid condition)</span>
+                <span class="hljs-variable">$validator</span><span class="hljs-variable">-&gt;errors</span> ()<span class="hljs-variable">-&gt;add</span>(<span class="hljs-string">'field'</span>, <span class="hljs-string">'message'</span>);
+        });
+
+        <span class="hljs-keyword">return</span> <span class="hljs-variable">$validator</span>;
+}
+</code></pre>
+
+<p>Does this seem like a clean way to add the additional conditions or will overriding this method cause problems down the road?</p>
+
+
+                    </div>
+
+</article>    
+            <article id="reply-4501" class="media reply  participation" data-model="Forum">
+
+        <div class="participation__avatar">
+            <a href="https://laracasts.com/@keevitaja">
+    <img src="Custom%20Validation%20Function%20in%20Laravel%205_files/9d088d6b4dc34b2aec5592977c66ef19.jpg" class="img-circle" alt="keevitaja">
+</a>            <i class="icon-id-1 monthly user-support-level" title="I'm a monthly supporter of Laracasts."></i>
+
+                    </div>
+
+        <div class="media-body participation__body col-md-11">
+            
+            <div class="participation__body__buttons">
+                            </div>
+
+            <div class="media-heading">
+                <h5 class="participation__name">
+
+
+                    
+                    <a href="https://laracasts.com/@keevitaja">keevitaja</a>
+                </h5>
+
+                                    <span class="participation__body__user-stats">
+                        <span class="dash-divider">—</span> 31,650 Points
+
+                                                    with 16 Awards
+                                            </span>
+                
+                <span class="participation__body__date">
+                    Posted <a href="https://laracasts.com/discuss/channels/general-discussion/custom-validation-function-in-laravel-5/replies/4501" class="text-muted">5 months ago</a>
+                </span>
+            </div>
+
+            <p>i'm not sure, if it works with 5.0</p>
+
+<p><a href="http://laravel.com/docs/validation#custom-validation-rules">http://laravel.com/docs/validation#custom-validation-rules</a></p>
+
+
+                    </div>
+
+</article>    
+            <article id="reply-12622" class="media reply  participation" data-model="Forum">
+
+        <div class="participation__avatar">
+            <a href="https://laracasts.com/@alexleonard">
+    <img src="Custom%20Validation%20Function%20in%20Laravel%205_files/3abfb0e39a7adbf41c3036c467a161f5.jpg" class="img-circle" alt="alexleonard">
+</a>            <i class="icon-id-1 yearly user-support-level" title="I'm a yearly supporter of Laracasts."></i>
+
+                    </div>
+
+        <div class="media-body participation__body col-md-11">
+            
+            <div class="participation__body__buttons">
+                            </div>
+
+            <div class="media-heading">
+                <h5 class="participation__name">
+
+
+                                            <i class="flag flag-pl" title="Zakopane"></i>
+                    
+                    <a href="https://laracasts.com/@alexleonard">alexleonard</a>
+                </h5>
+
+                                    <span class="participation__body__user-stats">
+                        <span class="dash-divider">—</span> 5,550 Points
+
+                                            </span>
+                
+                <span class="participation__body__date">
+                    Posted <a href="https://laracasts.com/discuss/channels/general-discussion/custom-validation-function-in-laravel-5/replies/12622" class="text-muted">3 months ago</a>
+                </span>
+            </div>
+
+            <p>Thanks <a href="https://laracasts.com/@nschiffelbein">@nschiffelbein</a>, you just set me on the right path!</p>
+
+<p>Not sure if this is exactly how I should be doing it but it does work</p>
+
+<pre><code class=" hljs php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getValidatorInstance</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-variable">$validator</span> = <span class="hljs-keyword">parent</span>::getValidatorInstance();
+
+
+    <span class="hljs-variable">$validator</span><span class="hljs-variable">-&gt;after</span>(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> <span class="hljs-title">use</span> <span class="hljs-params">(<span class="hljs-variable">$validator</span>)</span> </span>{
+        <span class="hljs-variable">$input</span> = <span class="hljs-variable">$this</span><span class="hljs-variable">-&gt;formatInput</span>();
+
+        <span class="hljs-variable">$start</span> = <span class="hljs-variable">$this</span><span class="hljs-variable">-&gt;carbon</span><span class="hljs-variable">-&gt;parse</span>(<span class="hljs-variable">$input</span>[<span class="hljs-string">'start'</span>]);
+        <span class="hljs-variable">$end</span> = <span class="hljs-variable">$this</span><span class="hljs-variable">-&gt;carbon</span><span class="hljs-variable">-&gt;parse</span>(<span class="hljs-variable">$input</span>[<span class="hljs-string">'end'</span>]);
+
+        <span class="hljs-keyword">if</span>(<span class="hljs-variable">$start</span> &gt; <span class="hljs-variable">$end</span>) {
+            <span class="hljs-variable">$validator</span><span class="hljs-variable">-&gt;errors</span>()<span class="hljs-variable">-&gt;add</span>(<span class="hljs-string">'start'</span>, <span class="hljs-string">'Start date must be later than end date'</span>);
+        }
+
+        <span class="hljs-keyword">if</span>(<span class="hljs-variable">$start</span><span class="hljs-variable">-&gt;diffInMinutes</span>(<span class="hljs-variable">$end</span>) &gt; <span class="hljs-number">180</span>){
+            <span class="hljs-variable">$validator</span><span class="hljs-variable">-&gt;errors</span>()<span class="hljs-variable">-&gt;add</span>(<span class="hljs-string">'end'</span>, <span class="hljs-string">'The end time must be within three hours of the start'</span>);
+        }
+    });
+
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$validator</span>;
+}
+</code></pre>
+
+
+                    </div>
+
+</article>    
+            <article id="reply-28346" class="media reply  participation" data-model="Forum">
+
+        <div class="participation__avatar">
+            <a href="https://laracasts.com/@dbwhddn10">
+    <img src="Custom%20Validation%20Function%20in%20Laravel%205_files/a1fcec8130c7799490a24bfb2120c2d2.png" class="img-circle" alt="dbwhddn10">
+</a>            
+                    </div>
+
+        <div class="media-body participation__body col-md-11">
+            
+            <div class="participation__body__buttons">
+                            </div>
+
+            <div class="media-heading">
+                <h5 class="participation__name">
+
+
+                    
+                    <a href="https://laracasts.com/@dbwhddn10">dbwhddn10</a>
+                </h5>
+
+                                    <span class="participation__body__user-stats">
+                        <span class="dash-divider">—</span> 25 Points
+
+                                            </span>
+                
+                <span class="participation__body__date">
+                    Posted <a href="https://laracasts.com/discuss/channels/general-discussion/custom-validation-function-in-laravel-5/replies/28346" class="text-muted">2 weeks ago</a>
+                </span>
+            </div>
+
+            <p>or now you can do like this when you want to move validator method to custom class in request class</p>
+
+<pre><code class=" hljs php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestRequest</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Request</span> </span>{
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validator</span><span class="hljs-params">(<span class="hljs-variable">$factory</span>)</span>
+    </span>{
+        <span class="hljs-variable">$factory</span><span class="hljs-variable">-&gt;resolver</span> = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(<span class="hljs-variable">$translator</span>, <span class="hljs-variable">$data</span>, <span class="hljs-variable">$rules</span>, <span class="hljs-variable">$messages</span>)</span>
+        </span>{
+            <span class="hljs-keyword">new</span> TestValidator(<span class="hljs-variable">$translator</span>, <span class="hljs-variable">$data</span>, <span class="hljs-variable">$rules</span>, <span class="hljs-variable">$messages</span>);
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-variable">$factory</span><span class="hljs-variable">-&gt;make</span>(<span class="hljs-variable">$this</span><span class="hljs-variable">-&gt;formatInput</span>(), <span class="hljs-variable">$this</span><span class="hljs-variable">-&gt;container</span><span class="hljs-variable">-&gt;call</span>([<span class="hljs-variable">$this</span>, <span class="hljs-string">'rules'</span>]), <span class="hljs-variable">$this</span><span class="hljs-variable">-&gt;messages</span>());
+    }
+
+}
+</code></pre>
+
+
+                    </div>
+
+</article>    
+            <article id="reply-28363" class="media reply  participation" data-model="Forum">
+
+        <div class="participation__avatar">
+            <a href="https://laracasts.com/@bestmomo">
+    <img src="Custom%20Validation%20Function%20in%20Laravel%205_files/bf4114e6d1c5e38f94510399d16cf5e9.png" class="img-circle" alt="bestmomo">
+</a>            
+                    </div>
+
+        <div class="media-body participation__body col-md-11">
+            
+            <div class="participation__body__buttons">
+                            </div>
+
+            <div class="media-heading">
+                <h5 class="participation__name">
+
+
+                                            <i class="flag flag-fr" title="Toulouse, France"></i>
+                    
+                    <a href="https://laracasts.com/@bestmomo">bestmomo</a>
+                </h5>
+
+                                    <span class="participation__body__user-stats">
+                        <span class="dash-divider">—</span> 114,300 Points
+
+                                                    with 128 Awards
+                                            </span>
+                
+                <span class="participation__body__date">
+                    Posted <a href="https://laracasts.com/discuss/channels/general-discussion/custom-validation-function-in-laravel-5/replies/28363" class="text-muted">2 weeks ago</a>
+                </span>
+            </div>
+
+            <p>To create a new rule just extend Validator, for example :</p>
+
+<pre><code class=" hljs xml"><span class="php"><span class="hljs-preprocessor">&lt;?php</span> <span class="hljs-keyword">namespace</span> <span class="hljs-title">app</span>\<span class="hljs-title">Services</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Validation</span>\<span class="hljs-title">Validator</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Validation</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Validator</span> </span>{
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validateTags</span><span class="hljs-params">(<span class="hljs-variable">$attribute</span>, <span class="hljs-variable">$value</span>, <span class="hljs-variable">$parameters</span>)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> preg_match(<span class="hljs-string">"/^[A-Za-z0-9-éèàù]{1,50}?(,[A-Za-z0-9-éèàù]{1,50})*$/"</span>, <span class="hljs-variable">$value</span>);
+    }
+
+} 
+</span></code></pre>
+
+<p>And declare it in service provider :</p>
+
+<pre><code class=" hljs php"><span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Services</span>\<span class="hljs-title">Validation</span>;
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">boot</span><span class="hljs-params">()</span>
+</span>{
+    Validator::resolver(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$translator</span>, <span class="hljs-variable">$data</span>, <span class="hljs-variable">$rules</span>, <span class="hljs-variable">$messages</span>)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Validation(<span class="hljs-variable">$translator</span>, <span class="hljs-variable">$data</span>, <span class="hljs-variable">$rules</span>, <span class="hljs-variable">$messages</span>);
+    });
+}
+</code></pre>
+
+
+                    </div>
+
+</article>    
+
+             <div class="text-center pagination-links">
+                
+            </div>
+
+        </div>
+
+         <!-- The Form to Leave a Reply -->
+        <h5 class="text-center padded-bottom--large">
+        <a href="https://laracasts.com/login?return=https://laracasts.com/discuss/channels/general-discussion/custom-validation-function-in-laravel-5">Log in</a> or
+        <a href="https://laracasts.com/signup?billing=none&amp;plan=none&amp;title=Okay,%20we%27ll%20have%20you%20posting%20on%20the%20forum%20in%20no%20time%21">
+        create a forum account to participate in this discussion.</a>
+    </h5>
+
+            </div>
+
+<div class="modal fade" id="create-conversation-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+                <h4 class="modal-title" id="myModalLabel">
+                                            Start a Conversation
+                                    </h4>
+            </div>
+
+            <div class="modal-body">
+                                    <form method="POST" action="https://laracasts.com/discuss/conversations" accept-charset="UTF-8"><input name="_token" value="4ar9vujAnHhsLQULS9V2bkSaEKcTaC8y6JKh73Yo" type="hidden">
+    <div class="form-group">
+        <label for="channel">Pick a Channel:</label>
+        <select class="form-control" required="required" id="channel" name="channel"><option selected="selected" value="1">General</option><option value="2">Requests</option><option value="3">Site Improvements</option><option value="5">Forge</option><option value="6">Tricks</option><option value="7">Testing</option></select>
+    </div>
+
+    <!-- Title Form Input -->
+    <div class="form-group">
+        <label for="title">Give Your Conversation a Title:</label>
+        <input class="form-control" required="required" name="title" id="title" type="text">
+    </div>
+
+    <!-- Body Form Input -->
+    <div class="form-group">
+        <label for="body">And Start Talking:</label>
+        <textarea class="form-control" required="required" name="body" cols="50" rows="10" id="body"></textarea>
+        <span class="help-block text-muted" style="font-size:12px">* You may use Markdown with <a href="https://help.github.com/articles/github-flavored-markdown" target="_blank">GitHub-flavored</a> code blocks.</span>
+    </div>
+
+    <!-- Verification Form Input -->
+    <div class="form-group">
+        <label for="verification">Finally, Let's Make Sure You're Human:</label>
+        <input class="form-control" placeholder="Laravel was built using which server-side programming language?" required="required" pattern=".{3,}" title="3 characters minimum" name="verification" id="verification" type="text">
+    </div>
+
+    <div class="form-group clearfix">
+        <input class="btn btn-primary btn-submit pull-right" value="Start Conversation" type="submit">
+    </div>
+</form>
+                            </div>
+
+                    </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<footer id="footer" class="wrap">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4">
+                <h4 class="logo">Laracasts</h4>
+
+                <p class="footer__site-description">
+                    The best PHP screencasts on the web. Buy me lunch 
+once a month, and I'll teach you everything about modern PHP workflow.
+                </p>
+
+                <ul class="footer__connect">
+                    <li><a href="http://facebook.com/laracasts"><i class="icon-facebook"></i></a></li>
+                    <li><a href="http://twitter.com/laracasts"><i class="icon-twitter"></i></a></li>
+                    <li><a href="https://github.com/laracasts"><i class="icon-github"></i></a></li>
+                </ul>
+            </div>
+
+
+            <div class="col-md-2">
+                <h5>Learn</h5>
+
+                <ul class="zeroed">
+                    <li><a href="https://laracasts.com/lessons">Lessons</a></li>
+                    <li><a href="https://laracasts.com/series">Series</a></li>
+                    <li><a href="https://laracasts.com/collections">Collections</a></li>
+                    <li><a href="https://laracasts.com/recommended-reading">Recommended Reading</a></li>
+                    <li><a href="https://laracasts.com/latest">What's New</a></li>
+                    <li><a href="https://laracasts.com/index">Site Index</a></li>
+                </ul>
+            </div>
+
+
+            <div class="col-md-2">
+                <h5>Discuss</h5>
+
+                <ul class="zeroed">
+                    <li><a href="https://laracasts.com/discuss">Forum</a></li>
+                    <li><a href="http://laravelpodcast.com/">Laravel Podcast</a></li>
+                    <!-- <li><a href="/learn-with-jeffrey">Blog</a></li> -->
+                </ul>
+            </div>
+
+
+            <div class="col-md-4">
+                <h5>Related</h5>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="zeroed">
+                            <li><a href="https://forge.laravel.com/">Laravel Forge</a></li>
+                            <li><a href="https://larajobs.com/?partner=36#">Larajobs</a></li>
+                            <li><a href="https://laracasts.com/testimonials">Testimonials</a></li>
+                            <li><a href="https://laracasts.com/faq">FAQ</a></li>
+                            <li><a href="mailto:laracasts@helpful.io" data-helpful="laracasts" data-helpful-title="Got a question?" data-helpful-name="" data-helpful-email="">Customer Support</a></li>
+                            <li><a href="https://laracasts.com/feed">RSS</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-6">
+                        <ul class="zeroed">
+                            <li><a href="https://laracasts.com/stats">Statistics</a></li>
+                            <li><a href="https://laracasts.com/join">Sign Up</a>
+                            </li><li><a href="https://laracasts.com/login">Log In</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <p class="pull-left">
+                © Laracasts 2015. All rights reserved.
+            </p>
+
+            <div class="pull-right">
+                Proudly hosted with <a href="https://forge.laravel.com/">Laravel Forge</a> and <a href="https://www.digitalocean.com/?refcode=d2070a2d5f35">DigitalOcean</a>.
+            </div>
+        </div>
+    </div>
+</footer>
+
+</div> <!-- close page div -->
+
+<script>var Views = {};</script>
+<script src="Custom%20Validation%20Function%20in%20Laravel%205_files/pusher.js"></script>
+<script src="Custom%20Validation%20Function%20in%20Laravel%205_files/all.js"></script><div class="atwho-container"><div id="atwho-ground-body"><div id="at-view-64" class="atwho-view"><ul class="atwho-view-ul"></ul></div></div></div>
+<script>new WOW().init();</script>
+<script src="Custom%20Validation%20Function%20in%20Laravel%205_files/si1yxxq3.js"></script>
+<script async="" src="Custom%20Validation%20Function%20in%20Laravel%205_files/widget.js"></script>
+
+
+<!-- Google Analytics -->
+<script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+
+    ga('create','UA-44120322-1');ga('send','pageview');
+</script>
+
+
+
+    <script>
+         pusher.subscribe('forum_conversation_886')
+               .bind('ReplyWasLeftForConversation', Forum.Listeners.whenReplyWasLeftForConversation);
+    </script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-3.newrelic.com","licenseKey":"63eeee14d0","applicationID":"3670257","transactionName":"ZARTYhYAWBJQW0ReVl1OZEQNTl8PVV1IGUlbEQ==","queueTime":0,"applicationTime":190,"ttGuid":"","agentToken":"","userAttributes":"","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-476.min.js"}</script>
+
+<script src="Custom%20Validation%20Function%20in%20Laravel%205_files/nr-476.js"></script><script src="Custom%20Validation%20Function%20in%20Laravel%205_files/63eeee14d0" type="text/javascript"></script></body></html>

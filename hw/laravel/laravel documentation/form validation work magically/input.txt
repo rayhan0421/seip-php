@@ -1,0 +1,38 @@
+Still, if we want to find out whether a piece of request data exists or not, we can use the Input::has()
+option. Let’s take a look at it in action.
+
+$result = Input:: has( 'foo' );
+ var_dump( $result);
+
+.......................
+$result = Input:: only( array( 'foo' , 'baz' ));
+ var_dump( $result);
+
+In the above example we pass the Input::only() method an array containing the keys of the request
+data values we wish to return as an associative array. Actually, the array is optional. We could also
+pass each key as additional parameters to the method, like this:
+
+--------------------------
+$result = Input:: except( array( 'foo' , 'baz' ));
+var_dump( $result);
+
+----------------------
+
+Input:: flash();
+return Redirect:: to( 'new/request' );
+Route:: get( 'new/request' , function()
+ {
+ var_dump(Input:: all ());
+ });
+Now if we hit the same URL we receive… oh hold on
+array( 0) { }
+
+-------------------
+The Input::old() method lets Laravel know that we want the entire array of data that we flashed
+from the previous request.
+------------
+If you chain the withInput() method onto the redirect, Laravel will flash all of the current request
+data to the next request for you. see down
+return Redirect:: to( 'new/request' ) -> withInput();
+return Redirect:: to( 'new/request' ) -> withInput(Input:: only( 'foo' ));
+return Redirect:: to( 'new/request' ) -> withInput(Input:: except( 'foo' ));

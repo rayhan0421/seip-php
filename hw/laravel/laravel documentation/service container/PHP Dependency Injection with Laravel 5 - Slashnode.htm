@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html class=" js csstransforms3d csstransitions" prefix="og: http://ogp.me/ns#" lang="en-US"><head><div class="fit-vids-style">­<style>               .fluid-width-video-wrapper {                 width: 100%;                              position: relative;                       padding: 0;                            }                                                                                   .fluid-width-video-wrapper iframe,        .fluid-width-video-wrapper object,        .fluid-width-video-wrapper embed {           position: absolute;                       top: 0;                                   left: 0;                                  width: 100%;                              height: 100%;                          }                                       </style></div>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="pingback" href="http://slashnode.com/xmlrpc.php">
+ 
+<title>PHP Dependency Injection with Laravel 5 - Slashnode</title>
+<link rel="canonical" href="http://slashnode.com/dependency-injection/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP Dependency Injection with Laravel 5 - Slashnode">
+<meta property="og:description" content="Laravel has a great dependency injection mechanism and in the newest version this mechanism was improved even more. In this article we will review the way dependency injection works, what’s new in the 5th version and why it is amazing. Constructor injection First of all, let’s see an example of a “classical” constructor dependecy injection. …">
+<meta property="og:url" content="http://slashnode.com/dependency-injection/">
+<meta property="og:site_name" content="Slashnode">
+<meta property="article:section" content="Laravel">
+<meta property="article:published_time" content="2014-11-17T13:09:18+00:00">
+<meta property="article:modified_time" content="2014-11-20T17:18:05+00:00">
+<meta property="og:updated_time" content="2014-11-20T17:18:05+00:00">
+<meta property="og:image" content="http://slashnode.com/wp-content/uploads/2014/11/php-dependency-injection.jpg">
+ 
+<link rel="alternate" type="application/rss+xml" title="Slashnode » Feed" href="http://slashnode.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Slashnode » Comments Feed" href="http://slashnode.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Slashnode » PHP Dependency Injection with Laravel 5 Comments Feed" href="http://slashnode.com/dependency-injection/feed/">
+<link rel="stylesheet" id="woo-our-team-css-css" href="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/our-team.css" type="text/css" media="all">
+<link rel="stylesheet" id="woo-testimonials-css-css" href="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/testimonials.css" type="text/css" media="all">
+<link rel="stylesheet" id="woo-features-css-css" href="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/features.css" type="text/css" media="all">
+<link rel="stylesheet" id="theme-stylesheet-css" href="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="woo-layout-css" href="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/layout.css" type="text/css" media="all">
+<link rel="stylesheet" id="woo_google_fonts-css" href="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/css.css" type="text/css" media="all">
+<script src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/a_002.htm" async=""></script><script src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript" src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/jquery_002.js"></script>
+<script type="text/javascript" src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/jquery-migrate.js"></script>
+<script type="text/javascript" src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/fitvids.js"></script>
+<script type="text/javascript" src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/modernizr.js"></script>
+<script type="text/javascript" src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/jquery.js"></script>
+<script type="text/javascript" src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/waypoints.js"></script>
+<script type="text/javascript" src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/jquery_003.js"></script>
+<script type="text/javascript" src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/general.js"></script>
+<link rel="shortlink" href="http://slashnode.com/?p=168">
+ 
+<meta name="generator" content="Hub 1.0.0">
+<meta name="generator" content="WooFramework 6.0.4">
+ 
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+ 
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+ 
+<link href="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/default.css" rel="stylesheet" type="text/css">
+ 
+<style type="text/css">#logo img{display:none;}.site-title{display:block!important;}.site-description{display:block!important;}#testimonials-holder{display:none;}#credit{display:none;}#disqus_thread{padding:30px;}#navigation{width:768px;}#header .site-title a{text-transform:uppercase;transition:all .5s;}#header .site-title a:hover{color:#aaa;text-decoration:none;}#header .site-description{font-variant:normal;font-style:normal;font-weight:normal;font-size:1.2em;}.footer-laravel{font-size:0.97em;text-align:center;padding:14px;font-family:source-sans-pro,helvetica,arial,sans-serif;color:rgb(170,170,170);text-transform:uppercase;}.gist{font-size:0.75em;line-height:1.5em;}.gist tr{display:block;}</style>
+ 
+<link href="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/shortcodes.css" rel="stylesheet" type="text/css">
+ 
+<link href="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/custom.css" rel="stylesheet" type="text/css">
+<script src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/embed.js" async="" type="text/javascript"></script><script src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/count.js" type="text/javascript" async=""></script></head>
+<body class="single single-post postid-168 single-format-standard chrome alt-style-default layout-left-content">
+<div id="wrapper">
+<div id="inner-wrapper">
+<div id="header-wrapper">
+<div class="wrapper">
+<header id="header">
+<span class="nav-toggle"><a href="#navigation"><span>Navigation</span></a></span>
+<div class="site-header">
+<h1 class="site-title"><a href="http://slashnode.com/">Slashnode</a></h1>
+<h2 class="site-description">Software as a Service Consulting</h2>
+</div>
+<nav id="navigation" role="navigation">
+<section class="menus">
+<a href="http://slashnode.com/" class="nav-home"><span>Home</span></a>
+<ul id="main-nav" class="nav">
+<li class="page_item current_page_item"><a href="http://slashnode.com/">Home</a></li>
+<li class="page_item page-item-2"><a href="http://slashnode.com/blog/">Blog</a></li>
+<li class="page_item page-item-5 page_item_has_children parent"><a href="http://slashnode.com/products-services/">Products &amp; Services</a>
+<ul style="margin-left: 7.5px;" class="children">
+<li class="page_item page-item-7"><a href="http://slashnode.com/products-services/laravel-consulting/">Laravel Consulting</a></li>
+</ul>
+</li>
+<li class="page_item page-item-19"><a href="http://slashnode.com/contact/">Contact</a></li>
+</ul> 
+</section> 
+<a href="#top" class="nav-close"><span>Return to Content</span></a>
+</nav> 
+</header> 
+</div> 
+</div> 
+<div id="content">
+<div class="wrapper">
+<section id="main" class="fullwidth">
+<aside id="post-details" class="fix">
+<div class="profile-image"><img alt="" src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/04443f61a26ea5f35b7633f1c7f8482e.jpg" class="avatar avatar-180 photo" height="180" width="180"></div>
+<div class="profile-content">
+<h3 class="title">Armen Markossyan</h3>
+<p>Armen is an experienced web-developer who has worked with several 
+multinational corporations, as well as with many small companies and 
+individuals.</p>
+<p>Right now he is a freelancer specializing in web-development, quality assurance and project management.</p>
+<ul class="social">
+<li><a class="twitter" href="http://twitter.com/armenka"><span>Twitter</span></a></li>
+<li><a class="gplus" href="https://plus.google.com/109456079122244208053"><span>Google+</span></a></li>
+</ul>
+<div class="profile-link">
+<a class="button" href="http://slashnode.com/author/armen/">
+More by Armen Markossyan </a>
+</div> 
+</div> 
+</aside> 
+<article class="post-168 post type-post status-publish format-standard has-post-thumbnail hentry category-laravel">
+<header>
+<h1>PHP Dependency Injection with Laravel 5</h1>
+<aside class="post-meta">
+<ul>
+<li class="post-date">
+<a href="http://slashnode.com/dependency-injection/" rel="bookmark" title="PHP Dependency Injection with Laravel 5">November 17, 2014</a>
+</li>
+<li class="post-category">
+<a href="http://slashnode.com/category/laravel/" rel="category tag">Laravel</a> </li>
+</ul>
+</aside>
+</header>
+<a href="http://slashnode.com/wp-content/uploads/2014/11/php-dependency-injection.jpg" rel="lightbox" title="PHP Dependency Injection with Laravel 5"><img src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/php-dependency-injection-825x350.jpg" alt="Dependency Injection in PHP with Laravel 5" title="PHP Dependency Injection with Laravel 5" class="woo-image thumbnail aligncenter" height="350" width="825"></a>
+<section class="entry fix">
+<p>Laravel has a great dependency injection mechanism and in the newest 
+version this mechanism was improved even more. In this article we will 
+review the way dependency injection works, what’s new in the 5th version
+ and why it is amazing.</p>
+<h2>Constructor injection</h2>
+<p>First of all, let’s see an example of a “classical” constructor dependecy injection.</p>
+<p>To inject an instance of a class into a controller (or any other 
+class), you just need to type-hint it in the constructor, like follows:</p>
+<script src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/111be3a268d33e04749a.js"></script><link rel="stylesheet" href="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist16176722" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table class="lines highlight" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-gistfile1-php-L1" rel="file-gistfile1-php-L1">1</span>
+            <span class="line-number" id="file-gistfile1-php-L2" rel="file-gistfile1-php-L2">2</span>
+            <span class="line-number" id="file-gistfile1-php-L3" rel="file-gistfile1-php-L3">3</span>
+            <span class="line-number" id="file-gistfile1-php-L4" rel="file-gistfile1-php-L4">4</span>
+            <span class="line-number" id="file-gistfile1-php-L5" rel="file-gistfile1-php-L5">5</span>
+            <span class="line-number" id="file-gistfile1-php-L6" rel="file-gistfile1-php-L6">6</span>
+            <span class="line-number" id="file-gistfile1-php-L7" rel="file-gistfile1-php-L7">7</span>
+            <span class="line-number" id="file-gistfile1-php-L8" rel="file-gistfile1-php-L8">8</span>
+            <span class="line-number" id="file-gistfile1-php-L9" rel="file-gistfile1-php-L9">9</span>
+            <span class="line-number" id="file-gistfile1-php-L10" rel="file-gistfile1-php-L10">10</span>
+            <span class="line-number" id="file-gistfile1-php-L11" rel="file-gistfile1-php-L11">11</span>
+            <span class="line-number" id="file-gistfile1-php-L12" rel="file-gistfile1-php-L12">12</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-gistfile1-php-LC1"><span class="pl-s2"><span class="pl-k">&lt;</span>?<span class="pl-c1">php</span> <span class="pl-c1">namespace</span> <span class="pl-s3">App\Http\</span><span class="pl-c1">Controllers</span>;</span>
+</div><div class="line" id="file-gistfile1-php-LC2"><span class="pl-s2"></span>
+</div><div class="line" id="file-gistfile1-php-LC3"><span class="pl-s2"><span class="pl-k">use</span> <span class="pl-s3">App\Repositories\ClientRepository</span>;</span>
+</div><div class="line" id="file-gistfile1-php-LC4"><span class="pl-s2"></span>
+</div><div class="line" id="file-gistfile1-php-LC5"><span class="pl-s2"><span class="pl-st">class</span> <span class="pl-en">ClientsController</span> <span class="pl-s">extends</span> <span class="pl-e">BaseController</span></span>
+</div><div class="line" id="file-gistfile1-php-LC6"><span class="pl-s2">{</span>
+</div><div class="line" id="file-gistfile1-php-LC7"><span class="pl-s2">    <span class="pl-s">protected</span> <span class="pl-vo">$repository</span>;</span>
+</div><div class="line" id="file-gistfile1-php-LC8"><span class="pl-s2"></span>
+</div><div class="line" id="file-gistfile1-php-LC9"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-s3">__construct</span>(<span class="pl-s3">ClientRepository</span> <span class="pl-vo">$repository</span>) {</span>
+</div><div class="line" id="file-gistfile1-php-LC10"><span class="pl-s2">        <span class="pl-vo">$this</span><span class="pl-k">-&gt;</span><span class="pl-vo">repository</span> <span class="pl-k">=</span> <span class="pl-vo">$repository</span>;</span>
+</div><div class="line" id="file-gistfile1-php-LC11"><span class="pl-s2">    }</span>
+</div><div class="line" id="file-gistfile1-php-LC12"><span class="pl-s2">}</span>
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/mobileka/111be3a268d33e04749a/raw/gistfile1.php" style="float:right">view raw</a>
+            <a href="https://gist.github.com/mobileka/111be3a268d33e04749a#file-gistfile1-php">gistfile1.php</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+<p>That’s it! All the “dirty” work is being done by Laravel: it resolves
+ dependencies you type-hinted in the constructor and injects them 
+automatically.</p>
+<p>Awesome. But we can make this code even more SOLID and decouple our controller from a specific ClientRepository implementation.</p>
+<p>Let’s start with a new interface which describes what methods we expect to be available in the injected repository:</p>
+<script src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/25728f7230c0118840ca.js"></script><link rel="stylesheet" href="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist16177290" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table class="lines highlight" cellpadding="0" cellspacing="0">
+        <tbody><tr class="alt-table-row">
+          <td class="line-numbers">
+            <span class="line-number" id="file-gistfile1-php-L1" rel="file-gistfile1-php-L1">1</span>
+            <span class="line-number" id="file-gistfile1-php-L2" rel="file-gistfile1-php-L2">2</span>
+            <span class="line-number" id="file-gistfile1-php-L3" rel="file-gistfile1-php-L3">3</span>
+            <span class="line-number" id="file-gistfile1-php-L4" rel="file-gistfile1-php-L4">4</span>
+            <span class="line-number" id="file-gistfile1-php-L5" rel="file-gistfile1-php-L5">5</span>
+            <span class="line-number" id="file-gistfile1-php-L6" rel="file-gistfile1-php-L6">6</span>
+            <span class="line-number" id="file-gistfile1-php-L7" rel="file-gistfile1-php-L7">7</span>
+            <span class="line-number" id="file-gistfile1-php-L8" rel="file-gistfile1-php-L8">8</span>
+            <span class="line-number" id="file-gistfile1-php-L9" rel="file-gistfile1-php-L9">9</span>
+            <span class="line-number" id="file-gistfile1-php-L10" rel="file-gistfile1-php-L10">10</span>
+            <span class="line-number" id="file-gistfile1-php-L11" rel="file-gistfile1-php-L11">11</span>
+            <span class="line-number" id="file-gistfile1-php-L12" rel="file-gistfile1-php-L12">12</span>
+            <span class="line-number" id="file-gistfile1-php-L13" rel="file-gistfile1-php-L13">13</span>
+            <span class="line-number" id="file-gistfile1-php-L14" rel="file-gistfile1-php-L14">14</span>
+            <span class="line-number" id="file-gistfile1-php-L15" rel="file-gistfile1-php-L15">15</span>
+            <span class="line-number" id="file-gistfile1-php-L16" rel="file-gistfile1-php-L16">16</span>
+            <span class="line-number" id="file-gistfile1-php-L17" rel="file-gistfile1-php-L17">17</span>
+            <span class="line-number" id="file-gistfile1-php-L18" rel="file-gistfile1-php-L18">18</span>
+            <span class="line-number" id="file-gistfile1-php-L19" rel="file-gistfile1-php-L19">19</span>
+            <span class="line-number" id="file-gistfile1-php-L20" rel="file-gistfile1-php-L20">20</span>
+            <span class="line-number" id="file-gistfile1-php-L21" rel="file-gistfile1-php-L21">21</span>
+            <span class="line-number" id="file-gistfile1-php-L22" rel="file-gistfile1-php-L22">22</span>
+            <span class="line-number" id="file-gistfile1-php-L23" rel="file-gistfile1-php-L23">23</span>
+            <span class="line-number" id="file-gistfile1-php-L24" rel="file-gistfile1-php-L24">24</span>
+            <span class="line-number" id="file-gistfile1-php-L25" rel="file-gistfile1-php-L25">25</span>
+            <span class="line-number" id="file-gistfile1-php-L26" rel="file-gistfile1-php-L26">26</span>
+            <span class="line-number" id="file-gistfile1-php-L27" rel="file-gistfile1-php-L27">27</span>
+            <span class="line-number" id="file-gistfile1-php-L28" rel="file-gistfile1-php-L28">28</span>
+            <span class="line-number" id="file-gistfile1-php-L29" rel="file-gistfile1-php-L29">29</span>
+            <span class="line-number" id="file-gistfile1-php-L30" rel="file-gistfile1-php-L30">30</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-gistfile1-php-LC1"><span class="pl-s2"><span class="pl-k">&lt;</span>?<span class="pl-c1">php</span> <span class="pl-c1">namespace</span> <span class="pl-s3">App\Contracts\</span><span class="pl-c1">Repositories</span>;</span>
+</div><div class="line" id="file-gistfile1-php-LC2"><span class="pl-s2"></span>
+</div><div class="line" id="file-gistfile1-php-LC3"><span class="pl-s2"><span class="pl-st">interface</span> <span class="pl-en">ClientRepositoryInterface</span></span>
+</div><div class="line" id="file-gistfile1-php-LC4"><span class="pl-s2">{</span>
+</div><div class="line" id="file-gistfile1-php-LC5"><span class="pl-s2">    <span class="pl-c">/**</span></span>
+</div><div class="line" id="file-gistfile1-php-LC6"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@param</span> int   $take</span></span>
+</div><div class="line" id="file-gistfile1-php-LC7"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@param</span> array $scopes</span></span>
+</div><div class="line" id="file-gistfile1-php-LC8"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@return</span> \Illuminate\Pagination\Paginator</span></span>
+</div><div class="line" id="file-gistfile1-php-LC9"><span class="pl-s2"><span class="pl-c">     */</span></span>
+</div><div class="line" id="file-gistfile1-php-LC10"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">getCollection</span>(<span class="pl-vo">$take</span> <span class="pl-k">=</span> <span class="pl-c1">5</span>, <span class="pl-vo">$scopes</span> <span class="pl-k">=</span> []);</span>
+</div><div class="line" id="file-gistfile1-php-LC11"><span class="pl-s2"></span>
+</div><div class="line" id="file-gistfile1-php-LC12"><span class="pl-s2">    <span class="pl-c">/**</span></span>
+</div><div class="line" id="file-gistfile1-php-LC13"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@param</span> array $ids</span></span>
+</div><div class="line" id="file-gistfile1-php-LC14"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@param</span> int   $take</span></span>
+</div><div class="line" id="file-gistfile1-php-LC15"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@param</span> array $scopes</span></span>
+</div><div class="line" id="file-gistfile1-php-LC16"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@return</span> \Illuminate\Pagination\Paginator</span></span>
+</div><div class="line" id="file-gistfile1-php-LC17"><span class="pl-s2"><span class="pl-c">     */</span></span>
+</div><div class="line" id="file-gistfile1-php-LC18"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">getSubset</span>(<span class="pl-st">array</span> <span class="pl-vo">$ids</span> <span class="pl-k">=</span> <span class="pl-ii">[]</span>, <span class="pl-vo">$take</span> <span class="pl-k">=</span> <span class="pl-c1">5</span>, <span class="pl-vo">$scopes</span> <span class="pl-k">=</span> []);</span>
+</div><div class="line" id="file-gistfile1-php-LC19"><span class="pl-s2"></span>
+</div><div class="line" id="file-gistfile1-php-LC20"><span class="pl-s2">    <span class="pl-c">/**</span></span>
+</div><div class="line" id="file-gistfile1-php-LC21"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@param</span>  int $id</span></span>
+</div><div class="line" id="file-gistfile1-php-LC22"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@return</span> \App\Models\BaseModel</span></span>
+</div><div class="line" id="file-gistfile1-php-LC23"><span class="pl-s2"><span class="pl-c">     */</span></span>
+</div><div class="line" id="file-gistfile1-php-LC24"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">getItem</span>(<span class="pl-vo">$id</span>);</span>
+</div><div class="line" id="file-gistfile1-php-LC25"><span class="pl-s2"></span>
+</div><div class="line" id="file-gistfile1-php-LC26"><span class="pl-s2">    <span class="pl-c">/**</span></span>
+</div><div class="line" id="file-gistfile1-php-LC27"><span class="pl-s2"><span class="pl-c">     * <span class="pl-k">@return</span> \App\Contracts\DataProviders\BaseDataProviderInterface</span></span>
+</div><div class="line" id="file-gistfile1-php-LC28"><span class="pl-s2"><span class="pl-c">     */</span></span>
+</div><div class="line" id="file-gistfile1-php-LC29"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">getDataProvider</span>();</span>
+</div><div class="line" id="file-gistfile1-php-LC30"><span class="pl-s2">}</span>
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/mobileka/25728f7230c0118840ca/raw/gistfile1.php" style="float:right">view raw</a>
+            <a href="https://gist.github.com/mobileka/25728f7230c0118840ca#file-gistfile1-php">gistfile1.php</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+<p>The code above defines four methods which will be available in any class implementing the <code>ClientRepositoryInterface</code>.
+ As our controller is not intended to know about repository 
+implementation details, we can change the first example to something 
+like this:</p>
+<script src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/f9e5befdeee8890eb09c.js"></script><link rel="stylesheet" href="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist16177528" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table class="lines highlight" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-gistfile1-php-L1" rel="file-gistfile1-php-L1">1</span>
+            <span class="line-number" id="file-gistfile1-php-L2" rel="file-gistfile1-php-L2">2</span>
+            <span class="line-number" id="file-gistfile1-php-L3" rel="file-gistfile1-php-L3">3</span>
+            <span class="line-number" id="file-gistfile1-php-L4" rel="file-gistfile1-php-L4">4</span>
+            <span class="line-number" id="file-gistfile1-php-L5" rel="file-gistfile1-php-L5">5</span>
+            <span class="line-number" id="file-gistfile1-php-L6" rel="file-gistfile1-php-L6">6</span>
+            <span class="line-number" id="file-gistfile1-php-L7" rel="file-gistfile1-php-L7">7</span>
+            <span class="line-number" id="file-gistfile1-php-L8" rel="file-gistfile1-php-L8">8</span>
+            <span class="line-number" id="file-gistfile1-php-L9" rel="file-gistfile1-php-L9">9</span>
+            <span class="line-number" id="file-gistfile1-php-L10" rel="file-gistfile1-php-L10">10</span>
+            <span class="line-number" id="file-gistfile1-php-L11" rel="file-gistfile1-php-L11">11</span>
+            <span class="line-number" id="file-gistfile1-php-L12" rel="file-gistfile1-php-L12">12</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-gistfile1-php-LC1"><span class="pl-s2"><span class="pl-k">&lt;</span>?<span class="pl-c1">php</span> <span class="pl-c1">namespace</span> <span class="pl-s3">App\Http\</span><span class="pl-c1">Controllers</span>;</span>
+</div><div class="line" id="file-gistfile1-php-LC2"><span class="pl-s2"></span>
+</div><div class="line" id="file-gistfile1-php-LC3"><span class="pl-s2"><span class="pl-k">use</span> <span class="pl-s3">App\Contracts\Repositories\ClientRepositoryInterface</span>;</span>
+</div><div class="line" id="file-gistfile1-php-LC4"><span class="pl-s2"></span>
+</div><div class="line" id="file-gistfile1-php-LC5"><span class="pl-s2"><span class="pl-st">class</span> <span class="pl-en">ClientsController</span> <span class="pl-s">extends</span> <span class="pl-e">BaseController</span></span>
+</div><div class="line" id="file-gistfile1-php-LC6"><span class="pl-s2">{</span>
+</div><div class="line" id="file-gistfile1-php-LC7"><span class="pl-s2">    <span class="pl-s">protected</span> <span class="pl-vo">$repository</span>;</span>
+</div><div class="line" id="file-gistfile1-php-LC8"><span class="pl-s2"></span>
+</div><div class="line" id="file-gistfile1-php-LC9"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-s3">__construct</span>(<span class="pl-s3">ClientRepositoryInterface</span> <span class="pl-vo">$repository</span>) {</span>
+</div><div class="line" id="file-gistfile1-php-LC10"><span class="pl-s2">        <span class="pl-vo">$this</span><span class="pl-k">-&gt;</span><span class="pl-vo">repository</span> <span class="pl-k">=</span> <span class="pl-vo">$repository</span>;</span>
+</div><div class="line" id="file-gistfile1-php-LC11"><span class="pl-s2">    }</span>
+</div><div class="line" id="file-gistfile1-php-LC12"><span class="pl-s2">}</span>
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/mobileka/f9e5befdeee8890eb09c/raw/gistfile1.php" style="float:right">view raw</a>
+            <a href="https://gist.github.com/mobileka/f9e5befdeee8890eb09c#file-gistfile1-php">gistfile1.php</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+<p>Now we do not couple our controller with a particular repository and we can easily replace this dependency with another <code>ClientRepositoryInterface</code> implementation. But wait, how can Laravel know which particular <code>ClientRepositoryInterface</code>
+ implementation has to be injected into this controller? Of course, we 
+have to give instructions in a service provider to avoid ambiguity:</p>
+<script src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/7e139e52e2299b446c87.js"></script><link rel="stylesheet" href="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist16177935" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table class="lines highlight" cellpadding="0" cellspacing="0">
+        <tbody><tr class="alt-table-row">
+          <td class="line-numbers">
+            <span class="line-number" id="file-gistfile1-php-L1" rel="file-gistfile1-php-L1">1</span>
+            <span class="line-number" id="file-gistfile1-php-L2" rel="file-gistfile1-php-L2">2</span>
+            <span class="line-number" id="file-gistfile1-php-L3" rel="file-gistfile1-php-L3">3</span>
+            <span class="line-number" id="file-gistfile1-php-L4" rel="file-gistfile1-php-L4">4</span>
+            <span class="line-number" id="file-gistfile1-php-L5" rel="file-gistfile1-php-L5">5</span>
+            <span class="line-number" id="file-gistfile1-php-L6" rel="file-gistfile1-php-L6">6</span>
+            <span class="line-number" id="file-gistfile1-php-L7" rel="file-gistfile1-php-L7">7</span>
+            <span class="line-number" id="file-gistfile1-php-L8" rel="file-gistfile1-php-L8">8</span>
+            <span class="line-number" id="file-gistfile1-php-L9" rel="file-gistfile1-php-L9">9</span>
+            <span class="line-number" id="file-gistfile1-php-L10" rel="file-gistfile1-php-L10">10</span>
+            <span class="line-number" id="file-gistfile1-php-L11" rel="file-gistfile1-php-L11">11</span>
+            <span class="line-number" id="file-gistfile1-php-L12" rel="file-gistfile1-php-L12">12</span>
+            <span class="line-number" id="file-gistfile1-php-L13" rel="file-gistfile1-php-L13">13</span>
+            <span class="line-number" id="file-gistfile1-php-L14" rel="file-gistfile1-php-L14">14</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-gistfile1-php-LC1"><span class="pl-s2"><span class="pl-k">&lt;</span>?<span class="pl-c1">php</span> <span class="pl-c1">namespace</span> <span class="pl-s3">App\ServiceProviders\</span><span class="pl-c1">Resources</span>;</span>
+</div><div class="line" id="file-gistfile1-php-LC2"><span class="pl-s2"></span>
+</div><div class="line" id="file-gistfile1-php-LC3"><span class="pl-s2"><span class="pl-k">use</span> <span class="pl-s3">Illuminate\Support\ServiceProvider</span> <span class="pl-k">as</span> <span class="pl-s3">LaravelServiceProvider</span>;</span>
+</div><div class="line" id="file-gistfile1-php-LC4"><span class="pl-s2"></span>
+</div><div class="line" id="file-gistfile1-php-LC5"><span class="pl-s2"><span class="pl-st">class</span> <span class="pl-en">ClientServiceProvider</span> <span class="pl-s">extends</span> <span class="pl-e">LaravelServiceProvider</span></span>
+</div><div class="line" id="file-gistfile1-php-LC6"><span class="pl-s2">{</span>
+</div><div class="line" id="file-gistfile1-php-LC7"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">register</span>()</span>
+</div><div class="line" id="file-gistfile1-php-LC8"><span class="pl-s2">    {</span>
+</div><div class="line" id="file-gistfile1-php-LC9"><span class="pl-s2">        <span class="pl-vo">$this</span><span class="pl-k">-&gt;</span><span class="pl-vo">app</span><span class="pl-k">-&gt;</span>bind(</span>
+</div><div class="line" id="file-gistfile1-php-LC10"><span class="pl-s2">            <span class="pl-s1"><span class="pl-pds">'</span>App\Contracts\Repositories\ClientRepositoryInterface<span class="pl-pds">'</span></span>,</span>
+</div><div class="line" id="file-gistfile1-php-LC11"><span class="pl-s2">            <span class="pl-s1"><span class="pl-pds">'</span>App\Repositories\ClientRepository<span class="pl-pds">'</span></span></span>
+</div><div class="line" id="file-gistfile1-php-LC12"><span class="pl-s2">        );</span>
+</div><div class="line" id="file-gistfile1-php-LC13"><span class="pl-s2">    }</span>
+</div><div class="line" id="file-gistfile1-php-LC14"><span class="pl-s2">}</span>
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/mobileka/7e139e52e2299b446c87/raw/gistfile1.php" style="float:right">view raw</a>
+            <a href="https://gist.github.com/mobileka/7e139e52e2299b446c87#file-gistfile1-php">gistfile1.php</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+<p>Perfect! Now we can change the <code>ClientRepositoryInterface</code> implementation in the whole project by editing a single line of code in the service provider.</p>
+<h2>Eco-friendly dependency injection</h2>
+<p>Ok, now we know that dependency injection in Laravel is awesome and 
+it is a good time to tell you about upcoming improvements in Laravel 5.</p>
+<p>Sometimes you can find yourself injecting dependencies which are 
+needed only in a single method of a class. In the age of eco-friendly 
+technologies doing such wasteful things is unacceptable. That’s why in 
+the upcoming version Laravel introduces the method injection!</p>
+<p>As you probably suspect, everything you read in the previous section is also valid on a method level:</p>
+<script src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/0d05d15a9a138e933ed3.js"></script><link rel="stylesheet" href="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist16178466" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table class="lines highlight" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-gistfile1-php-L1" rel="file-gistfile1-php-L1">1</span>
+            <span class="line-number" id="file-gistfile1-php-L2" rel="file-gistfile1-php-L2">2</span>
+            <span class="line-number" id="file-gistfile1-php-L3" rel="file-gistfile1-php-L3">3</span>
+            <span class="line-number" id="file-gistfile1-php-L4" rel="file-gistfile1-php-L4">4</span>
+            <span class="line-number" id="file-gistfile1-php-L5" rel="file-gistfile1-php-L5">5</span>
+            <span class="line-number" id="file-gistfile1-php-L6" rel="file-gistfile1-php-L6">6</span>
+            <span class="line-number" id="file-gistfile1-php-L7" rel="file-gistfile1-php-L7">7</span>
+            <span class="line-number" id="file-gistfile1-php-L8" rel="file-gistfile1-php-L8">8</span>
+            <span class="line-number" id="file-gistfile1-php-L9" rel="file-gistfile1-php-L9">9</span>
+            <span class="line-number" id="file-gistfile1-php-L10" rel="file-gistfile1-php-L10">10</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-gistfile1-php-LC1"><span class="pl-s2"><span class="pl-k">&lt;</span>?<span class="pl-c1">php</span> <span class="pl-c1">namespace</span> <span class="pl-s3">App\Http\</span><span class="pl-c1">Controllers</span>;</span>
+</div><div class="line" id="file-gistfile1-php-LC2"><span class="pl-s2"> </span>
+</div><div class="line" id="file-gistfile1-php-LC3"><span class="pl-s2"><span class="pl-k">use</span> <span class="pl-s3">App\Repositories\ClientRepository</span>;</span>
+</div><div class="line" id="file-gistfile1-php-LC4"><span class="pl-s2"> </span>
+</div><div class="line" id="file-gistfile1-php-LC5"><span class="pl-s2"><span class="pl-st">class</span> <span class="pl-en">ClientsController</span> <span class="pl-s">extends</span> <span class="pl-e">BaseController</span></span>
+</div><div class="line" id="file-gistfile1-php-LC6"><span class="pl-s2">{</span>
+</div><div class="line" id="file-gistfile1-php-LC7"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">index</span>(<span class="pl-s3">ClientRepository</span> <span class="pl-vo">$repository</span>) {</span>
+</div><div class="line" id="file-gistfile1-php-LC8"><span class="pl-s2">        <span class="pl-k">return</span> <span class="pl-vo">$repository</span><span class="pl-k">-&gt;</span>getCollection();</span>
+</div><div class="line" id="file-gistfile1-php-LC9"><span class="pl-s2">    }</span>
+</div><div class="line" id="file-gistfile1-php-LC10"><span class="pl-s2">}</span>
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/mobileka/0d05d15a9a138e933ed3/raw/gistfile1.php" style="float:right">view raw</a>
+            <a href="https://gist.github.com/mobileka/0d05d15a9a138e933ed3#file-gistfile1-php">gistfile1.php</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+<p>Considering that we have already created a service provider and a 
+contract, you, of course, can (and probably should) do the following:</p>
+<script src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/ad2aa77b305a5bf38509.js"></script><link rel="stylesheet" href="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist16178570" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table class="lines highlight" cellpadding="0" cellspacing="0">
+        <tbody><tr class="alt-table-row">
+          <td class="line-numbers">
+            <span class="line-number" id="file-gistfile1-php-L1" rel="file-gistfile1-php-L1">1</span>
+            <span class="line-number" id="file-gistfile1-php-L2" rel="file-gistfile1-php-L2">2</span>
+            <span class="line-number" id="file-gistfile1-php-L3" rel="file-gistfile1-php-L3">3</span>
+            <span class="line-number" id="file-gistfile1-php-L4" rel="file-gistfile1-php-L4">4</span>
+            <span class="line-number" id="file-gistfile1-php-L5" rel="file-gistfile1-php-L5">5</span>
+            <span class="line-number" id="file-gistfile1-php-L6" rel="file-gistfile1-php-L6">6</span>
+            <span class="line-number" id="file-gistfile1-php-L7" rel="file-gistfile1-php-L7">7</span>
+            <span class="line-number" id="file-gistfile1-php-L8" rel="file-gistfile1-php-L8">8</span>
+            <span class="line-number" id="file-gistfile1-php-L9" rel="file-gistfile1-php-L9">9</span>
+            <span class="line-number" id="file-gistfile1-php-L10" rel="file-gistfile1-php-L10">10</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-gistfile1-php-LC1"><span class="pl-s2"><span class="pl-k">&lt;</span>?<span class="pl-c1">php</span> <span class="pl-c1">namespace</span> <span class="pl-s3">App\Http\</span><span class="pl-c1">Controllers</span>;</span>
+</div><div class="line" id="file-gistfile1-php-LC2"><span class="pl-s2"> </span>
+</div><div class="line" id="file-gistfile1-php-LC3"><span class="pl-s2"><span class="pl-k">use</span> <span class="pl-s3">App\Contracts\Repositories\ClientRepositoryInterface</span>;</span>
+</div><div class="line" id="file-gistfile1-php-LC4"><span class="pl-s2"> </span>
+</div><div class="line" id="file-gistfile1-php-LC5"><span class="pl-s2"><span class="pl-st">class</span> <span class="pl-en">ClientsController</span> <span class="pl-s">extends</span> <span class="pl-e">BaseController</span></span>
+</div><div class="line" id="file-gistfile1-php-LC6"><span class="pl-s2">{</span>
+</div><div class="line" id="file-gistfile1-php-LC7"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">index</span>(<span class="pl-s3">ClientRepositoryInterface</span> <span class="pl-vo">$repository</span>) {</span>
+</div><div class="line" id="file-gistfile1-php-LC8"><span class="pl-s2">        <span class="pl-k">return</span> <span class="pl-vo">$repository</span><span class="pl-k">-&gt;</span>getCollection();</span>
+</div><div class="line" id="file-gistfile1-php-LC9"><span class="pl-s2">    }</span>
+</div><div class="line" id="file-gistfile1-php-LC10"><span class="pl-s2">}</span>
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/mobileka/ad2aa77b305a5bf38509/raw/gistfile1.php" style="float:right">view raw</a>
+            <a href="https://gist.github.com/mobileka/ad2aa77b305a5bf38509#file-gistfile1-php">gistfile1.php</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+<p>Isn’t that great?</p>
+<p>But there are some other good news. If you are injecting a dependency
+ into a controller method which accepts parameters from URL, the order 
+of parameters is not important! Laravel uses Reflection to parse and 
+inject dependencies, so the framework exactly knows which parameters 
+come from the URL, and those which should be resolved and injected:</p>
+<script src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/a1e2dc6ecbbea8bfd0fc.js"></script><link rel="stylesheet" href="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist16178872" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table class="lines highlight" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-gistfile1-php-L1" rel="file-gistfile1-php-L1">1</span>
+            <span class="line-number" id="file-gistfile1-php-L2" rel="file-gistfile1-php-L2">2</span>
+            <span class="line-number" id="file-gistfile1-php-L3" rel="file-gistfile1-php-L3">3</span>
+            <span class="line-number" id="file-gistfile1-php-L4" rel="file-gistfile1-php-L4">4</span>
+            <span class="line-number" id="file-gistfile1-php-L5" rel="file-gistfile1-php-L5">5</span>
+            <span class="line-number" id="file-gistfile1-php-L6" rel="file-gistfile1-php-L6">6</span>
+            <span class="line-number" id="file-gistfile1-php-L7" rel="file-gistfile1-php-L7">7</span>
+            <span class="line-number" id="file-gistfile1-php-L8" rel="file-gistfile1-php-L8">8</span>
+            <span class="line-number" id="file-gistfile1-php-L9" rel="file-gistfile1-php-L9">9</span>
+            <span class="line-number" id="file-gistfile1-php-L10" rel="file-gistfile1-php-L10">10</span>
+            <span class="line-number" id="file-gistfile1-php-L11" rel="file-gistfile1-php-L11">11</span>
+            <span class="line-number" id="file-gistfile1-php-L12" rel="file-gistfile1-php-L12">12</span>
+            <span class="line-number" id="file-gistfile1-php-L13" rel="file-gistfile1-php-L13">13</span>
+            <span class="line-number" id="file-gistfile1-php-L14" rel="file-gistfile1-php-L14">14</span>
+            <span class="line-number" id="file-gistfile1-php-L15" rel="file-gistfile1-php-L15">15</span>
+            <span class="line-number" id="file-gistfile1-php-L16" rel="file-gistfile1-php-L16">16</span>
+            <span class="line-number" id="file-gistfile1-php-L17" rel="file-gistfile1-php-L17">17</span>
+            <span class="line-number" id="file-gistfile1-php-L18" rel="file-gistfile1-php-L18">18</span>
+            <span class="line-number" id="file-gistfile1-php-L19" rel="file-gistfile1-php-L19">19</span>
+            <span class="line-number" id="file-gistfile1-php-L20" rel="file-gistfile1-php-L20">20</span>
+            <span class="line-number" id="file-gistfile1-php-L21" rel="file-gistfile1-php-L21">21</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-gistfile1-php-LC1"><span class="pl-s2"><span class="pl-k">&lt;</span>?<span class="pl-c1">php</span> <span class="pl-c1">namespace</span> <span class="pl-s3">App\Http\</span><span class="pl-c1">Controllers</span>;</span>
+</div><div class="line" id="file-gistfile1-php-LC2"><span class="pl-s2"> </span>
+</div><div class="line" id="file-gistfile1-php-LC3"><span class="pl-s2"><span class="pl-k">use</span> <span class="pl-s3">App\Contracts\Repositories\ClientRepositoryInterface</span>;</span>
+</div><div class="line" id="file-gistfile1-php-LC4"><span class="pl-s2"> </span>
+</div><div class="line" id="file-gistfile1-php-LC5"><span class="pl-s2"><span class="pl-st">class</span> <span class="pl-en">ClientsController</span> <span class="pl-s">extends</span> <span class="pl-e">BaseController</span></span>
+</div><div class="line" id="file-gistfile1-php-LC6"><span class="pl-s2">{</span>
+</div><div class="line" id="file-gistfile1-php-LC7"><span class="pl-s2">    <span class="pl-c">/**</span></span>
+</div><div class="line" id="file-gistfile1-php-LC8"><span class="pl-s2"><span class="pl-c">     * Valid</span></span>
+</div><div class="line" id="file-gistfile1-php-LC9"><span class="pl-s2"><span class="pl-c">     */</span></span>
+</div><div class="line" id="file-gistfile1-php-LC10"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">show</span>(<span class="pl-s3">ClientRepositoryInterface</span> <span class="pl-vo">$repository</span>, <span class="pl-vo">$id</span>) {</span>
+</div><div class="line" id="file-gistfile1-php-LC11"><span class="pl-s2">        <span class="pl-k">return</span> <span class="pl-vo">$repository</span><span class="pl-k">-&gt;</span>getItem(<span class="pl-vo">$id</span>);</span>
+</div><div class="line" id="file-gistfile1-php-LC12"><span class="pl-s2">    }</span>
+</div><div class="line" id="file-gistfile1-php-LC13"><span class="pl-s2">    </span>
+</div><div class="line" id="file-gistfile1-php-LC14"><span class="pl-s2">    <span class="pl-c">/**</span></span>
+</div><div class="line" id="file-gistfile1-php-LC15"><span class="pl-s2"><span class="pl-c">     * Also valid</span></span>
+</div><div class="line" id="file-gistfile1-php-LC16"><span class="pl-s2"><span class="pl-c">     */</span></span>
+</div><div class="line" id="file-gistfile1-php-LC17"><span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">wohs</span>(<span class="pl-vo">$id</span>, <span class="pl-s3">ClientRepositoryInterface</span> <span class="pl-vo">$repository</span>)</span>
+</div><div class="line" id="file-gistfile1-php-LC18"><span class="pl-s2">    {</span>
+</div><div class="line" id="file-gistfile1-php-LC19"><span class="pl-s2">        <span class="pl-k">return</span> <span class="pl-vo">$repository</span><span class="pl-k">-&gt;</span>getItem(<span class="pl-vo">$id</span>);</span>
+</div><div class="line" id="file-gistfile1-php-LC20"><span class="pl-s2">    }</span>
+</div><div class="line" id="file-gistfile1-php-LC21"><span class="pl-s2">}</span>
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/mobileka/a1e2dc6ecbbea8bfd0fc/raw/gistfile1.php" style="float:right">view raw</a>
+            <a href="https://gist.github.com/mobileka/a1e2dc6ecbbea8bfd0fc#file-gistfile1-php">gistfile1.php</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+<h2>Conclusion</h2>
+<p>As I have already mentioned, Laravel has an impressive dependency 
+injection functionality but the upcoming version makes it nearly 
+perfect.</p>
+<p>Method injection can be useful in many situations such as different validation rules for <code>create</code> and <code>update</code> actions, different services needed in different controller actions and class methods, and in many other use-cases.</p>
+<p>One of these cases will be reviewed in the upcoming article about 
+validation in Laravel 5, so stay tuned and keep loving the amazing 
+Laravel framework!</p>
+</section>
+</article> 
+<nav id="post-entries" class="fix">
+<div class="nav-prev fl"><a href="http://slashnode.com/why-use-repository-pattern/" rel="prev">Why Use the Repository Pattern?</a></div>
+<div class="nav-next fr"><a href="http://slashnode.com/the-12-factor-php-app-part-2/" rel="next">The 12 Factor PHP App – Part 2</a></div>
+</nav> 
+</section> 
+</div> 
+<div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/a.htm" style="width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 566px ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" data-disqus-uid="2" id="dsq-2" frameborder="0" width="100%"></iframe></div>
+<script type="text/javascript">
+var disqus_url = 'http://slashnode.com/dependency-injection/';
+var disqus_identifier = '168 http://slashnode.com/?p=168';
+var disqus_container_id = 'disqus_thread';
+var disqus_shortname = 'slashnode';
+var disqus_title = "PHP Dependency Injection with Laravel 5";
+var disqus_config_custom = window.disqus_config;
+var disqus_config = function () {
+    /*
+    All currently supported events:
+    onReady: fires when everything is ready,
+    onNewComment: fires when a new comment is posted,
+    onIdentify: fires when user is authenticated
+    */
+    
+    
+    this.language = '';
+        this.callbacks.onReady.push(function () {
+
+        // sync comments in the background so we don't block the page
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = '?cf_action=sync_comments&post_id=168';
+
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(script, firstScript);
+    });
+    
+    if (disqus_config_custom) {
+        disqus_config_custom.call(this);
+    }
+};
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+</div> 
+<div id="footer-wrapper">
+<div class="footer-laravel">
+We <span class="hearts">♥</span> <a title="Laravel consulting" href="http://www.slashnode.com/products-services/laravel-consulting/"><img src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/logo-head.htm"></a>
+</div>
+<section id="footer-widgets">
+<div class="wrapper col-3 fix">
+<div class="block footer-widget-1">
+<div id="woo_subscribe-2" class="widget widget_woo_subscribe"> <aside id="connect" class="fix">
+<h3>Subscribe</h3>
+<div>
+ 
+<div id="mc_embed_signup">
+<form class="newsletter-form fl" action="//us6.list-manage.com/subscribe/post?u=06e050acdd13bb286d5abf023&amp;id=6bdd8a05fd" method="post" target="popupwindow" onsubmit="window.open('http://us6.list-manage.com/subscribe/post?u=06e050acdd13bb286d5abf023&amp;id=6bdd8a05fd', 'popupwindow', 'scrollbars=yes,width=650,height=520');return true">
+<input name="EMAIL" class="required email" value="E-mail" id="mce-EMAIL" onfocus="if (this.value == 'E-mail') {this.value = '';}" onblur="if (this.value == '') {this.value = 'E-mail';}" type="text">
+<input value="Submit" name="subscribe" id="mc-embedded-subscribe" class="btn submit button" type="submit">
+</form>
+</div>
+ 
+<div class="social">
+</div>
+</div>
+</aside>
+</div> </div>
+</div> 
+</section> 
+<footer id="footer">
+<div class="wrapper">
+<div id="copyright">
+<p>Slashnode Limited © 2015. All Rights Reserved.</p>
+</div>
+<div id="credit">
+<p><a href="http://www.woothemes.com/"><img src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/woothemes.png" alt="WooThemes"></a></p>
+</div>
+</div> 
+</footer> 
+</div> 
+</div> 
+</div> 
+<script type="text/javascript">
+        // <![CDATA[
+        var disqus_shortname = 'slashnode';
+        (function () {
+            var nodes = document.getElementsByTagName('span');
+            for (var i = 0, url; i < nodes.length; i++) {
+                if (nodes[i].className.indexOf('dsq-postid') != -1) {
+                    nodes[i].parentNode.setAttribute('data-disqus-identifier', nodes[i].getAttribute('data-dsqidentifier'));
+                    url = nodes[i].parentNode.href.split('#', 1);
+                    if (url.length == 1) { url = url[0]; }
+                    else { url = url[1]; }
+                    nodes[i].parentNode.href = url + '#disqus_thread';
+                }
+            }
+            var s = document.createElement('script'); 
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        // ]]>
+        </script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15034687-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<!--[if lt IE 9]>
+<script src="//slashnode.com/wp-content/themes/hub/includes/js/respond.js"></script>
+<![endif]-->
+<script type="text/javascript" src="PHP%20Dependency%20Injection%20with%20Laravel%205%20-%20Slashnode_files/comment-reply.js"></script>
+
+</body></html>

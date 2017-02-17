@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<!--[if IE 8]>               <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html style="" class=" js no-touch svg inlinesvg svgclippaths no-ie8compat" lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Best practice for view composer location - Laravel.IO - The Official Laravel PHP Framework Community Portal</title>
+          <link rel="stylesheet" href="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/app.css">
+  
+
+
+  <script src="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/ga.js" async="" type="text/javascript"></script><script src="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/custom.js"></script>
+
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-36064061-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+
+<link href="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/prettify.css" type="text/css" rel="stylesheet"><link href="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/widget.css" type="text/css" rel="stylesheet"></head>
+<body>
+
+
+<div class="wrapper">
+    <div class="top-header">
+        <header class="top-navigation">
+    <div class="top-navigation-logo">
+        <a href="http://laravel.io/">
+            <img class="logo" src="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/laravel-io-logo.png">
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li>
+                <a class="active" href="http://laravel.io/forum">Forum</a>
+            </li>
+            <li>
+                <a href="https://larajobs.com/?partner=28">Jobs</a>
+            </li>
+            <li>
+                <a class="" href="http://laravel.io/chat">Live Chat</a>
+            </li>
+            <li>
+                <a href="http://laravel.io/bin">Pastebin</a>
+            </li>
+            <li>
+                <a href="http://www.laravelpodcast.com/">Podcast</a>
+            </li>
+            <li>
+                <a target="_blank" href="http://forumsarchive.laravel.io/">Old Forum Archive</a>
+            </li>
+
+                    </ul>
+    </nav>
+    <ul class="user-navigation">
+                    <li><a class="button" href="http://laravel.io/login">Login with GitHub</a></li>
+            </ul>
+</header>
+    </div>
+
+    <div class="holder">
+        <section class="alert">
+    
+    
+        </section>
+        <div class="table">
+            <section class="sidebar">
+        <div class="search">
+    <form method="GET" action="http://laravel.io/forum/search" accept-charset="UTF-8">
+    <input placeholder="search the laravel.io forum" name="query" type="text">
+    </form>
+</div>
+
+<ul class="naver"><span class="naver-handle">Sections</span><div class="naver-wrapper"><div class="naver-container">
+                <li>
+            <a href="http://laravel.io/forum">All Threads
+<!--                    <span class="new">1</span>-->
+            </a>
+        </li>
+            <li>
+            <a href="http://laravel.io/forum?tags=installation,configuration">Installation / Configuration
+<!--                    <span class="new">1</span>-->
+            </a>
+        </li>
+            <li>
+            <a href="http://laravel.io/forum?tags=authentication,security">Authentication / Security
+<!--                    <span class="new">1</span>-->
+            </a>
+        </li>
+            <li>
+            <a href="http://laravel.io/forum?tags=requests,input">Requests / Input / Responses
+<!--                    <span class="new">1</span>-->
+            </a>
+        </li>
+            <li>
+            <a href="http://laravel.io/forum?tags=session,cache">Session / Cache
+<!--                    <span class="new">1</span>-->
+            </a>
+        </li>
+            <li>
+            <a href="http://laravel.io/forum?tags=database,eloquent">Database / Eloquent
+<!--                    <span class="new">1</span>-->
+            </a>
+        </li>
+            <li>
+            <a href="http://laravel.io/forum?tags=packages,ioc">Packages / IoC 
+<!--                    <span class="new">1</span>-->
+            </a>
+        </li>
+            <li>
+            <a class="active" href="http://laravel.io/forum?tags=views,blade,forms">Views / Blade / Forms
+<!--                    <span class="new">1</span>-->
+            </a>
+        </li>
+            <li>
+            <a href="http://laravel.io/forum?tags=mail,queues">Mail / Queues
+<!--                    <span class="new">1</span>-->
+            </a>
+        </li>
+            <li>
+            <a href="http://laravel.io/forum?tags=meetups">Local Community Meetups
+<!--                    <span class="new">1</span>-->
+            </a>
+        </li>
+            <li>
+            <a href="http://laravel.io/forum?tags=laravelio">Laravel.io Site and Community
+<!--                    <span class="new">1</span>-->
+            </a>
+        </li>
+    </div></div></ul>
+</section>
+
+<section class="content">
+        <div class="forum">
+        <div class="header">
+            <h2>Forum</h2>
+            <div class="tags">
+                <a href="http://laravel.io/forum?tags=Views">Views</a>
+            </div>
+            
+        </div>
+
+                    <div class="thread question  _post" data-author-name="&quot;ToddSmithSalter&quot;" data-quote-body="&quot;I\u0027m just wondering what the best practice is for a place to put one\u0027s view composers. Would most people place it in their domain folder i.e. Acme\/Composers\/composers.php?&quot;">
+    <h1>
+        
+        Best practice for view composer location
+    </h1>
+
+    <span class="markdown">
+        <p>I'm just wondering what the best practice is for a place to 
+put one's view composers. Would most people place it in their domain 
+folder i.e. Acme/Composers/composers.php?</p>
+
+    </span>
+
+    <div class="user">
+        <img src="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/157142size50.htm" alt="ToddSmithSalter">
+        <div class="info">
+            <h6><a href="http://laravel.io/user/ToddSmithSalter">ToddSmithSalter</a></h6>
+            <ul class="meta">
+                <li>11 months ago</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="admin-bar">
+        <ul>
+        
+                </ul>
+    </div>
+</div>
+        
+        <div class="comments">
+                            <div class="comment  _post" id="reply-2354" data-author-name="&quot;ipalaus&quot;" data-quote-body="&quot;You have various options. This could be a good way:\r\n\r\n~~~\r\n\u003C?php namespace Acme\\Composers;\r\n\r\nclass UserComposer\r\n{\r\n    public function compose($view)\r\n    {\r\n        $view-\u003Ewith(\u0027user\u0027, \u0027ipalaus\u0027);\r\n    }\r\n}\r\n~~~\r\n\r\nThen, you should register your composers:\r\n\r\n~~~\r\n\u003C?php namespace Acme\\Composers;\r\n\r\nclass ComposersServiceProvider extends \\Illuminate\\Support\\ServiceProvider {\r\n\r\n\tpublic function register()\r\n\t{\r\n\t\t$view = $this-\u003Eapp[\u0027view\u0027];\r\n\r\n\t\t$view-\u003Ecomposer(\u0027users\u0027, \u0027Acme\\Composers\\UserComposer\u0027);\r\n\t}\r\n\r\n}\r\n~~~&quot;">
+
+    <div class="user">
+        <img src="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/248183.jpg" alt="ipalaus">
+        <div class="info">
+            <h6><a href="http://laravel.io/user/ipalaus">ipalaus</a></h6>
+            <ul class="meta">
+                <li><a href="http://laravel.io/forum/02-27-2014-best-practice-for-view-composer-location?page=1#reply-2354">11 months ago</a></li>
+            </ul>
+        </div>
+
+        
+        
+    </div>
+
+    <span class="markdown">
+        <p>You have various options. This could be a good way:</p>
+
+<pre><code class="php"><span class="preprocessor">&lt;?php</span> <span class="keyword">namespace</span> Acme\Composers;
+
+<span class="class"><span class="keyword">class</span> <span class="title">UserComposer</span>
+{</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">compose</span><span class="params">(<span class="variable">$view</span>)</span>
+    {</span>
+        <span class="variable">$view</span>-&gt;with(<span class="string">'user'</span>, <span class="string">'ipalaus'</span>);
+    }
+}
+</code></pre>
+
+<p>Then, you should register your composers:</p>
+
+<pre><code class="php"><span class="preprocessor">&lt;?php</span> <span class="keyword">namespace</span> Acme\Composers;
+
+<span class="class"><span class="keyword">class</span> <span class="title">ComposersServiceProvider</span> <span class="keyword">extends</span> \<span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">ServiceProvider</span> {</span>
+
+    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">register</span><span class="params">()</span>
+    {</span>
+        <span class="variable">$view</span> = <span class="variable">$this</span>-&gt;app[<span class="string">'view'</span>];
+
+        <span class="variable">$view</span>-&gt;composer(<span class="string">'users'</span>, <span class="string">'Acme\Composers\UserComposer'</span>);
+    }
+
+}
+</code></pre>
+
+    </span>
+
+    </div>
+                            <div class="comment  _post" id="reply-2355" data-author-name="&quot;zenry&quot;" data-quote-body="&quot;    $this-\u003Eapp-\u003Eview-\u003Ecomposer(\u0027users\u0027, \u0027Acme\\Support\\Composers\\UserComposer\u0027);&quot;">
+
+    <div class="user">
+        <img src="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/1230555.png" alt="zenry">
+        <div class="info">
+            <h6><a href="http://laravel.io/user/zenry">zenry</a></h6>
+            <ul class="meta">
+                <li><a href="http://laravel.io/forum/02-27-2014-best-practice-for-view-composer-location?page=1#reply-2355">11 months ago</a></li>
+            </ul>
+        </div>
+
+        
+        
+    </div>
+
+    <span class="markdown">
+        <pre><code class="perl"><span class="variable">$this</span>-&gt;app-&gt;view-&gt;composer(<span class="string">'users'</span>, <span class="string">'Acme\Support\Composers\UserComposer'</span>);
+</code></pre>
+
+    </span>
+
+    </div>
+                    </div>
+        
+    </div>
+
+            <div class="login-cta">
+            <p>Want to reply to this thread?</p> <a class="button" href="http://laravel.io/login">Login with github.</a>
+        </div>
+    </section>
+
+        </div>
+    </div>
+</div>
+
+<div class="push"></div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="span4">
+                <p>Proudly hosted by</p>
+                <a class="fortrabbit home" href="http://fortrabbit.com/"><em>•</em> fortrabbit</a>
+            </div>
+            <div class="span4">
+                <p>Supported by</p>
+                <a class="cartalyst home" href="https://cartalyst.com/?utm_source=laravelio&amp;utm_medium=banner&amp;utm_campaign=laravelio">
+                    <img src="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/cartalyst.png" alt="Cartalyst" height="30">
+                </a>
+            </div>
+            <div class="span4">
+                <p>Customer Support by</p>
+                <a href="https://besnappy.com/partner">
+                    <img src="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/badge_red.png" alt="Streamlined Customer Support">
+                </a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</footer>
+              <script src="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/jquery_002.js"></script>
+  <script src="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/forum.js"></script>
+  <script src="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/garlic.js"></script>
+  <script src="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/jquery.js"></script>
+  <script>
+    $(".sidebar ul").naver({
+      'maxWidth': '768px',
+      labels: {
+          closed: "Sections",
+          open: "Close"
+      }
+    });
+  </script>
+
+    <link rel="stylesheet" href="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/obsidian.css">
+    <script src="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+
+        <script src="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/redactor.js"></script>
+    <link rel="stylesheet" href="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/redactor.css">
+    <script src="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/markdown_editor.js"></script>
+
+<script src="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/embed.js" data-domain="laravelio.besnappy.com" data-lang="en" data-background="#444"></script><div style="background: none repeat scroll 0% 0% rgb(68, 68, 68);" class="closed bottom right" id="snappy-faq"><a class="snappy-button" onclick="SnappyWidget.toggle(); return false;">Help &amp; Support</a><a class="snappy-close" onclick="SnappyWidget.toggle(); return false;" aria-hidden="true">×</a><iframe src="Best%20practice%20for%20view%20composer%20location%20-%20Laravel.IO%20-%20The%20Official%20Laravel%20PHP%20Framework%20Community%20Portal_files/faq.htm" id="snappy-iframe" name="snappy-iframe" allowtransparency="true" style="height: 0px; width: 0px;" frameborder="0"> </iframe></div>
+
+
+</body></html>

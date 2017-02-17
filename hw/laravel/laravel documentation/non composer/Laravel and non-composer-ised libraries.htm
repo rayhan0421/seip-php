@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html><head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    
+    <title>Laravel and non-composer-ised libraries</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="stylesheet" type="text/css" href="Laravel%20and%20non-composer-ised%20libraries_files/screen.css">
+    <link rel="stylesheet" type="text/css" href="Laravel%20and%20non-composer-ised%20libraries_files/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="Laravel%20and%20non-composer-ised%20libraries_files/css.css">
+
+    <script async="" src="Laravel%20and%20non-composer-ised%20libraries_files/cbgapi.loaded_1"></script><script async="" src="Laravel%20and%20non-composer-ised%20libraries_files/cbgapi.loaded_0"></script><script src="Laravel%20and%20non-composer-ised%20libraries_files/analytics.js" async=""></script><script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-45818192-1', 'iwader.co.uk');
+        ga('send', 'pageview');
+
+    </script>
+
+    
+    <meta name="generator" content="Ghost 0.3">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.iwader.co.uk/rss/">
+</head>
+<body class="post-template">
+
+    
+    
+
+
+
+<main class="content" role="main">
+
+    <article class="post">
+
+        
+        <header class="post-header">
+            <a id="blog-logo" href="http://blog.iwader.co.uk/">
+                
+                    Wade Urry
+                
+            </a>
+        </header>
+
+        
+        
+
+        
+        <span class="post-meta"><time datetime="2013-12-14">14 Dec 2013</time> </span>
+
+        <h1 class="post-title">Laravel and non-composer-ised libraries</h1>
+
+        <section class="post-content">
+            <p>Composer has changed the way PHP is used, distributed and
+ shared. It provides a way to easily manage dependencies and keep them 
+up-to-date through the main package provider, <a href="https://packagist.org/">Packagist</a>,
+ where anyone can register their package free, for everyone to access, 
+but this is still a relatively new concept for PHP, so what if the 
+package you want to use isn't available through packagist?</p>
+
+<p>There are a few ways you can go about adding non-composer-ised 
+packages, both methods assume the package you want to use is 
+object-orientated, but hey object-orientated methods have been around 
+for over 50 years, so I'd hope we're finally there.</p>
+
+<h2 id="repositories">Repositories  </h2>
+
+<p>Composer can fetch dependencies from pretty-much anywhere, be it a 
+git repo, svn, hg, pear package or even a zip file. If its hosted on the
+ internet composer can probably manage it.</p>
+
+<p><strong>Update: Using this method requires the repository to contain a
+ valid composer.json file. If the repository you want to use does not 
+contain a valid composer.json file you can use the Packages method found
+ below</strong></p>
+
+<p>Using the example below we'll add zizaco/confide to our 
+composer.json. Although this package is available through Packagist I'm 
+just using this as a example.</p>
+
+<pre><code>{
+    "repositories": [
+        {
+            "name": "some-vendor/package",
+            "type": "git",
+            "url": "https://github.com/Zizaco/confide.git"
+        }
+    ]
+}
+</code></pre>
+
+<p>You can then add <code>"some-vendor/package"</code> to the require 
+section of your composer.json, as you would with any other package. 
+Composer will then work its magic, keeping this package up-to-date 
+everytime you <code>composer update</code>. This repo will be treated just like every other composer dependency and will stored in your <code>vendor</code> directory.</p>
+
+<p>Check out the documentation <a href="http://getcomposer.org/doc/04-schema.md#repositories">here</a>.</p>
+
+<h2 id="autoloading">Autoloading  </h2>
+
+<p>But what if the package you want to use isn't available through a 
+repo or you simply want to use one of your own libraries without 
+bothering to setup a packagist repo for it, Simple!</p>
+
+<p>Create a directory for your libraries, <code>app/libraries</code> is 
+one often used with Laravel, but can be anything you like. Move your 
+code into this directory and configure your composer.json as shown 
+below.</p>
+
+<pre><code>{
+    "autoload": {
+        "classmap": [
+            "app/libraries/YourLibrary.php"
+        ]
+    }
+}
+</code></pre>
+
+<p>Alternatively if your library is comprised of many classes you can just supply a directory to the classmap, <code>app/libraries/package</code>. Composer will then automagically load all of your classes ready for you to use throughout your application.</p>
+
+<p>Having some issues? Drop a comment bellow and I'll reply asap.</p>
+
+<h2 id="update">Update  </h2>
+
+<p>A recent update to composer means using  repositories requires a 
+valid composer.json file to be located in the file store, so what if the
+ repository you want to use doesn't contain a composer.json?</p>
+
+<pre><code>"repositories": [
+    {
+        "type": "package",
+        "package": {
+            "name": "nnnick/Chartjs",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nnnick/Chart.js.git",
+                "reference": "origin/master"
+            }
+        }
+    }
+]
+</code></pre>
+
+<p>Thanks to Gohar Sarfraz for bringing this to my attention in the comments.</p>
+        </section>
+
+        <footer class="post-footer">
+
+            
+                <section class="author">
+                    
+                    <h4>Wade Urry</h4>
+                    <p>I'm a web developer located in Portsmouth, England. Passionate about coding and all things technology related.</p>
+                </section>
+            
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=Laravel%20and%20non-composer-ised%20libraries&amp;url=http://blog.iwader.co.uk/laravel-and-non-composer-ised-libraries/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.iwader.co.uk/laravel-and-non-composer-ised-libraries/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.iwader.co.uk/laravel-and-non-composer-ised-libraries/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+            
+        <div class="clearfix"></div>
+
+        </footer>
+        
+        <section class="comment">
+            <div id="post_5_comments"><div id="___comments_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 701px; height: 1186px;"><iframe title="Comment on this" data-gapiattached="true" src="Laravel%20and%20non-composer-ised%20libraries_files/comments.htm" name="I0_1424895269578" id="I0_1424895269578" vspace="0" tabindex="0" style="position: static; top: 0px; width: 701px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 1186px;" scrolling="no" marginwidth="0" marginheight="0" hspace="0" frameborder="0" width="100%"></iframe></div></div>
+            <script>(function () {var c = document.getElementById('post_5_comments'),w = c.offsetWidth;c.innerHTML = '<div class="g-comments" data-href="http://blog.iwader.co.uk/laravel-and-non-composer-ised-libraries/" data-width="' + w + '" data-first_party_property="BLOGGER" data-view_type="FILTERED_POSTMOD"></div>';})();</script>
+            <script gapi_processed="true" async="" type="text/javascript" src="Laravel%20and%20non-composer-ised%20libraries_files/plusone.js"></script>
+            <noscript>Please enable JavaScript to view the <a href="https://plus.google.com/">comments powered by Google+.</a></noscript>
+        </section>
+
+        
+
+    </article>
+
+</main>
+
+    <footer>
+        
+        <section class="social-footer">
+            <div class="inner">
+                <a href="https://bitbucket.org/iWader" class="social-icon" target="_blank">
+                    <i class="fa fa-bitbucket fa-3x"></i>
+                </a>
+                
+                <a href="https://github.com/iWader" class="social-icon" target="_blank">
+                    <i class="fa fa-github fa-3x"></i>
+                </a>
+                
+                <a href="https://twitter.com/iWader" class="social-icon" target="_blank">
+                    <i class="fa fa-twitter fa-3x"></i>
+                </a>
+
+                <a href="https://plus.google.com/102365286900641043056?rel=author" class="social-icon" target="_blank">
+                    <i class="fa fa-google-plus fa-3x"></i>
+                </a>
+            </div>
+        </section>
+        
+        <section class="site-footer">
+            <a class="subscribe icon-feed" href="http://blog.iwader.co.uk/rss/"><span class="tooltip">Subscribe!</span></a>
+            <div class="inner">
+                 <section class="copyright">All content copyright <a href="http://blog.iwader.co.uk/">Wade Urry</a> © 2015 • All rights reserved.</section>
+                 <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://ghost.org/">Ghost</a></section>
+            </div>
+        </section>
+    </footer>
+
+    
+    <script src="Laravel%20and%20non-composer-ised%20libraries_files/jquery.js"></script>
+
+    
+    <script type="text/javascript" src="Laravel%20and%20non-composer-ised%20libraries_files/index.js"></script>
+
+
+
+<iframe tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="Laravel%20and%20non-composer-ised%20libraries_files/postmessageRelay.htm" id="oauth2relay798114807" name="oauth2relay798114807"></iframe></body></html>

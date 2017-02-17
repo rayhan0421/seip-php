@@ -1,0 +1,9 @@
+to create a table using command line 
+
+1. php artisan make:migration tasks_tables --create="projects"
+2.  then check in phpmyadmin , table already exist or not , may show error because of duplicate table
+3. php artisan migrate
+
+4. add manually.
+
+http://laravel.com/docs/4.2/migrations

@@ -1,0 +1,43 @@
+note: helper file is not class it contain php functions
+
+note: for class we will use psr-4 in composer.json
+
+First create the file app/helpers.php.
+
+<?php
+// My common functions
+function somethingOrOther()
+{
+    return (mt_rand(1,2) == 1) ? 'something' : 'other';
+}
+?>
+
+2.Then either load it at the bottom of app\start\global.php as follows.
+ // at the bottom of the file
+require app_path().'/helpers.php';
+
+         OR
+
+ alternatively , best for laravel 5
+  Or change your composer.json file and dump the autoloader.
+
+           {
+    "autoload": {
+        "files": [
+            "app/helpers.php" // your file
+        ]
+    }
+}
+
+3.$ composer dump-auto
+
+we can use this anywhere
+
+
+we can bind :
+
+Binding: Laravel's use of IoC containers makes for a powerful tool
+App::bind('Anvil', function()
+{
+   return new Acme\Product\AnvilHeavy;
+});

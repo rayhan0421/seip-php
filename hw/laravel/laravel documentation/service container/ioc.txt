@@ -1,0 +1,65 @@
+Almost all of your service container bindings will be registered within service providers, 
+
+
+Binding:
+
+you may type-hint the Illuminate\Contracts\Container\Container contract and an instance of the container will be injected for you. Alternatively, 
+
+OR
+
+you may use the App facade to access the container. example: $this->app->bind() Within a service provide
+1.
+   $this->app->bind('FooBar', function($app)
+{
+    return new FooBar($app['SomethingElse']);
+});
+
+2. 
+ $this->app->singleton('FooBar', function($app)
+{
+    return new FooBar($app['SomethingElse']);
+});
+
+3.Program To An Interface when we have interface
+        $this->app->bind('App\Contracts\EventPusher', 'App\Services\PusherEventPusher');
+
+4. oR Sometimes you may have two classes that utilize the same interface, 
+
+use this one interface two class
+
+     $this->app->when('App\Handlers\Commands\CreateOrderHandler')
+          ->needs('App\Contracts\EventPusher')
+          ->give('App\Services\PubNubEventPusher');
+
+    ................
+
+Registering :
+There are several ways the service container can register dependencies
+
+Automatic resolution:
+
+public function __construct(UserRepository $repository)
+{
+  $this->repository = $repository; // for that we use DI
+}
+...............
+
+after creating laravel all class we have bind the class in 
+
+service provider class 
+
+
+use Illuminate\Support\ServiceProvider;
+ 
+class RepositoriesServiceProvider extends ServiceProvider {
+ 
+  public function register()
+  {
+    $this->app->bind('Cribbb\Respositories\User\UserRepository', function()
+    {
+      return new EloquentUserRepository(new User);
+    });
+  }
+ 
+}
+

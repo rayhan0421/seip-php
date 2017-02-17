@@ -1,0 +1,5 @@
+Route::group(['prefix' => 'api', 'middleware' => 'throttle:5,10'], function () {
+    Route::get('people', function () {
+        return Person::all();
+    });
+});

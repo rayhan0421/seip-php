@@ -1,0 +1,9 @@
+$('.change_main_image').on('click', function() {
+    $('input[name=photo].change_uploader').trigger('change', [{somedata:true}]);
+});
+
+
+$('input[name=photo].change_uploader').on('change', function (e, data) {
+   alert(data.somedata); 
+   //canvas resize and upload script
+});

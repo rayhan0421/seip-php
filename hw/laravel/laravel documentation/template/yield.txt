@@ -1,0 +1,48 @@
+The @yield is defining an area in the layout template where sections in views will be placed.
+It is a placeholder for @section ... @stop
+
+For example
+
+my.layout.blade.php
+
+<!DOCTYPE>
+<html>
+<head>
+<title>
+@yield('title')
+</title>
+@yield('css')
+</head>
+<body>
+@yield('content')
+
+@yield('js')
+</body>
+</html>
+
+view.blade.php
+
+@extends('my.layout')
+
+@section('title')
+This is my page!
+@stop
+
+@section('css')
+<link href="style.css" rel="stylesheet" />
+@stop
+
+@section('js')
+<script src="javascript.js" ></script>
+@stop
+
+@section('content')
+<div class="container">
+<h1>This is the content</h1>
+@foreach($posts as $post)
+<h2>{{ $post->title }}</h2>
+<p>{{ $post->description }}</p>
+<hr />
+@endforeach
+</div>
+@stop

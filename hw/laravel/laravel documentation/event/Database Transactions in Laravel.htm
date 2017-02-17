@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" itemscope="" itemtype="http://schema.org/Product" lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><script src="Database%20Transactions%20in%20Laravel_files/widgets.js" async="" type="text/javascript"></script><script src="Database%20Transactions%20in%20Laravel_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=u(e),f=c.length,s=i(a,o,r),p=0;f>p;p++)c[p].apply(s,n);return s}function a(t,e){f[t]=u(t).concat(e)}function u(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:u,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=c.createElement("script");e.src=l.proto+t.agent,c.body.appendChild(e)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),u=window,c=u.document,f="addEventListener",s="attachEvent",p=(""+location).split("?")[0],l=e.exports={offset:i(),origin:p,features:{}};c[f]?(c[f]("DOMContentLoaded",o,!1),u[f]("load",n,!1)):(c[s]("onreadystatechange",r),u[s]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}]},{},["G9z0Bl"]);</script>
+
+    <title>Database Transactions in Laravel</title>
+<meta name="description" content="Laravel's documentation on Database Transactions describes wrapping our database calls within a closure. What if we need more power? Let's dig in to see what's going on behind the scenes, and what tools we have to work with Database Transactions in Laravel.">
+<meta name="keywords" content="laravel">
+<meta name="author" content="humans.txt">
+
+<!--Facebook Metadata /-->
+<meta property="fb:page_id" content="">
+<meta property="og:image" content="http://fideloper.com/fideloper.jpg">
+<meta property="og:description" content="Laravel's documentation on Database Transactions describes wrapping our database calls within a closure. What if we need more power? Let's dig in to see what's going on behind the scenes, and what tools we have to work with Database Transactions in Laravel.">
+<meta property="og:title" content="Database Transactions in Laravel">
+
+<!--Google+ Metadata /-->
+<meta itemprop="name" content="Database Transactions in Laravel">
+<meta itemprop="description" content="Laravel's documentation on Database Transactions describes wrapping our database calls within a closure. What if we need more power? Let's dig in to see what's going on behind the scenes, and what tools we have to work with Database Transactions in Laravel.">
+<meta itemprop="image" content="http://fideloper.com/fideloper.jpg">
+
+<!-- Twitter Metadata /-->
+<meta property="twitter:account_id" content="196841165">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@fideloper">
+<meta name="twitter:title" content="Database Transactions in Laravel">
+<meta name="twitter:description" content="Laravel's documentation on Database Transactions describes wrapping our database calls within a closure. What if we need more power? Let's dig in to see what's going on behind the scenes, and what tools we have to work with Database Transactions in Laravel.">
+<meta name="twitter:image" content="http://fideloper.com/fideloper.jpg">
+<meta name="twitter:domain" content="fideloper.com">
+
+    <link rel="shortcut icon" href="http://fideloper.com/favicon.png" type="image/x-icon">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="apple-touch-icon" href="http://fideloper.com/apple-touch-icon.png">
+
+    <link type="text/plain" rel="author" href="http://fideloper.com/humans.txt">
+
+    <link rel="stylesheet" href="Database%20Transactions%20in%20Laravel_files/styles.css">
+    <!--[if lte IE 8]>
+    <script src="/static/jsmodernizr-2.6.2.min.js"></script>
+    <![endif]-->
+<script src="Database%20Transactions%20in%20Laravel_files/embed.js" async="" type="text/javascript"></script><script charset="UTF-8" async="" src="Database%20Transactions%20in%20Laravel_files/alfie.js"></script></head>
+
+<body data-twttr-rendered="true">
+
+    <div class="container">
+        
+                <header id="brand">
+            <article class="wide">
+                <h1><a href="http://fideloper.com/">Fideloper</a></h1>
+            </article>
+        </header>
+        
+        <section>
+            <div class="col-main single">
+    <article class="post">
+        <h1>Database Transactions in Laravel</h1>
+        <ul class="tags meta clearfix">
+            <li class="time"><time>1 year ago</time></li>
+                        <li class="primary badge"><i class="entypo tag"></i><a href="http://fideloper.com/tag/laravel">laravel</a></li>
+                    </ul>
+
+        <p>Laravel's documentation on Database Transactions describes 
+wrapping our database calls within a closure. What if we need more 
+power? Let's dig in to see what's going on behind the scenes, and what 
+tools we have to work with Database Transactions in Laravel.</p>
+
+<h2>What are Database Transactions?</h2>
+
+<p>You may already know what a transaction is. However, let's review! A transaction gives you the ability to <strong>safely</strong>
+ perform a set of data-modifying SQL queries (such as insertions, 
+deletions or updates). This is made safe because you can choose to 
+rollback <strong>all</strong> queries made <em>within</em> the transaction at any time.</p>
+
+<p>For example, let's pretend we have an application which allows the creation of <code>accounts</code>. Each <code>account</code> can have one or more <code>users</code> associated with it. If this application creates an <code>account</code> <strong>and</strong> the first <code>user</code> <em>at the same time</em>, you need to handle what happens when the account was created successfuly, but the user is not.</p>
+
+<p>In this sample code:</p>
+
+<pre style="" class="prettyprint prettyprinted"><code><span class="com">// Create Account</span><span class="pln">
+$newAcct </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Account</span><span class="pun">::</span><span class="pln">create</span><span class="pun">([</span><span class="pln">
+    </span><span class="str">'accountname'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="typ">Input</span><span class="pun">::</span><span class="kwd">get</span><span class="pun">(</span><span class="str">'accountname'</span><span class="pun">),</span><span class="pln">
+</span><span class="pun">]);</span><span class="pln">
+
+</span><span class="com">// Create User</span><span class="pln">
+$newUser </span><span class="pun">=</span><span class="pln"> </span><span class="typ">User</span><span class="pun">::</span><span class="pln">create</span><span class="pun">([</span><span class="pln">
+    </span><span class="str">'username'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="typ">Input</span><span class="pun">::</span><span class="kwd">get</span><span class="pun">(</span><span class="str">'username'</span><span class="pun">),</span><span class="pln">
+    </span><span class="str">'account_id'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> $newAcct</span><span class="pun">-&gt;</span><span class="pln">id</span><span class="pun">,</span><span class="pln">
+</span><span class="pun">]);</span></code></pre>
+
+<p>Two situations can cause issues:</p>
+
+<h4>Account was not created.</h4>
+
+<p>If the <code>account</code> was not created, there's no <code>id</code> available to pass to the <code>user</code> for its <code>account_id</code> field. In this scenario, the <code>account</code> and <code>user</code>
+ will fail to be created, so there isn't necessarily disparate data in 
+the database. We just need to handle that situation in code (not shown 
+above).</p>
+
+<h4>User was not created.</h4>
+
+<p>If, however, the <code>account</code> <em>was</em> created, but the <code>user</code>
+ was not, then we run into issues. You now have an account with no 
+available users, and there is disparity in the database data. You can 
+either code around that, and every other possible data disparity 
+edge-case in your application, or you can wrap this in a transaction and
+ be done with it!</p>
+
+<h3>Our Transactional Toolset</h3>
+
+<p>Database transactions consist of three possible "tools":</p>
+
+<ol>
+<li><strong>Creating a transaction</strong> - Letting the database know that next queries on a connection should be considered part of a transaction</li>
+<li><strong>Rolling back a transaction</strong> - Cancelling all queries within the transaction, ending the transactional state</li>
+<li><strong>Committing a transaction</strong> - Committing all queries 
+within the transaction, ending the transactional state. No data if 
+affected until the transaction is committed.</li>
+</ol>
+
+<blockquote>
+  <p>Table and/or row locking is important to know about as well, 
+especially on high-traffic sites. However, I won't cover that here. See <a href="http://dev.mysql.com/doc/refman/5.0/en/innodb-transaction-model.html">MySQL Transactional Locking with InnoDB</a> and/or <a href="http://www.postgresql.org/docs/9.1/static/transaction-iso.html">PostgreSQL transaction isolation</a>. Perhaps read on about <a href="http://en.wikipedia.org/wiki/ACID">ACID</a> and <a href="http://en.wikipedia.org/wiki/Concurrency_control">Concurrency Control</a>.</p>
+</blockquote>
+
+<p>The previous sample code can be pseudo-coded with transactions as such:</p>
+
+<pre style="" class="prettyprint prettyprinted"><code><span class="com">// Start transaction</span><span class="pln">
+beginTransaction</span><span class="pun">();</span><span class="pln">
+
+</span><span class="com">// Run Queries</span><span class="pln">
+$acct </span><span class="pun">=</span><span class="pln"> createAccount</span><span class="pun">();</span><span class="pln">
+$user </span><span class="pun">=</span><span class="pln"> createUser</span><span class="pun">();</span><span class="pln">
+
+</span><span class="com">// If there's an error</span><span class="pln">
+</span><span class="com">//    or queries don't do their job,</span><span class="pln">
+</span><span class="com">//    rollback!</span><span class="pln">
+</span><span class="kwd">if</span><span class="pun">(</span><span class="pln"> </span><span class="pun">!</span><span class="pln">$acct </span><span class="pun">||</span><span class="pln"> </span><span class="pun">!</span><span class="pln">$user </span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    rollbackTransaction</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// Else commit the queries</span><span class="pln">
+    commitTransaction</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<h2>Basic Transactions in Laravel</h2>
+
+<p>The first way to run a transaction within Laravel is to put your queries within a closure passed to the <code>DB::transaction()</code> method:</p>
+
+<pre style="" class="prettyprint prettyprinted"><code><span class="pln">DB</span><span class="pun">::</span><span class="pln">transaction</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    $newAcct </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Account</span><span class="pun">::</span><span class="pln">create</span><span class="pun">([</span><span class="pln">
+        </span><span class="str">'accountname'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="typ">Input</span><span class="pun">::</span><span class="kwd">get</span><span class="pun">(</span><span class="str">'accountname'</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">]);</span><span class="pln">
+
+    $newUser </span><span class="pun">=</span><span class="pln"> </span><span class="typ">User</span><span class="pun">::</span><span class="pln">create</span><span class="pun">([</span><span class="pln">
+        </span><span class="str">'username'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="typ">Input</span><span class="pun">::</span><span class="kwd">get</span><span class="pun">(</span><span class="str">'username'</span><span class="pun">),</span><span class="pln">
+        </span><span class="str">'account_id'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> $newAcct</span><span class="pun">-&gt;</span><span class="pln">id</span><span class="pun">,</span><span class="pln">
+    </span><span class="pun">]);</span><span class="pln">
+</span><span class="pun">});</span></code></pre>
+
+<p>One thing that's not evident is the answer to this question: <strong>How does this code know to rollback or commit the transaction?</strong></p>
+
+<p>We can find out by looking at the <a href="https://github.com/laravel/framework/blob/4.1/src/Illuminate/Database/Connection.php#L417">code behind the scenes</a>:</p>
+
+<pre style="" class="prettyprint prettyprinted"><code><span class="pln">    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> transaction</span><span class="pun">(</span><span class="typ">Closure</span><span class="pln"> $callback</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+            $this</span><span class="pun">-&gt;</span><span class="pln">beginTransaction</span><span class="pun">();</span><span class="pln">
+
+            </span><span class="com">// We'll simply execute the given callback within a try / catch block</span><span class="pln">
+            </span><span class="com">// and if we catch any exception we can rollback the transaction</span><span class="pln">
+            </span><span class="com">// so that none of the changes are persisted to the database.</span><span class="pln">
+            </span><span class="kwd">try</span><span class="pln">
+            </span><span class="pun">{</span><span class="pln">
+                    $result </span><span class="pun">=</span><span class="pln"> $callback</span><span class="pun">(</span><span class="pln">$this</span><span class="pun">);</span><span class="pln">
+
+                    $this</span><span class="pun">-&gt;</span><span class="pln">commit</span><span class="pun">();</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+
+            </span><span class="com">// If we catch an exception, we will roll back so nothing gets messed</span><span class="pln">
+            </span><span class="com">// up in the database. Then we'll re-throw the exception so it can</span><span class="pln">
+            </span><span class="com">// be handled how the developer sees fit for their applications.</span><span class="pln">
+            </span><span class="kwd">catch</span><span class="pln"> </span><span class="pun">(</span><span class="pln">\Exception $e</span><span class="pun">)</span><span class="pln">
+            </span><span class="pun">{</span><span class="pln">
+                    $this</span><span class="pun">-&gt;</span><span class="pln">rollBack</span><span class="pun">();</span><span class="pln">
+
+                    </span><span class="kwd">throw</span><span class="pln"> $e</span><span class="pun">;</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+
+            </span><span class="kwd">return</span><span class="pln"> $result</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span></code></pre>
+
+<p>Very simply, if an Exception of any kind is thrown within the 
+closure, then the transaction is rolled back. This means that if there's
+ a SQL error (one that would <strong>not</strong> normally fail 
+silently), then the transaction is rolled back. More powerfully, 
+however, this means that we can throw our own exceptions in order to 
+rollback a transaction. Something like this:</p>
+
+<pre style="" class="prettyprint prettyprinted"><code><span class="pln">DB</span><span class="pun">::</span><span class="pln">transaction</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    $newAcct </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Account</span><span class="pun">::</span><span class="pln">create</span><span class="pun">([</span><span class="pln">
+        </span><span class="str">'accountname'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="typ">Input</span><span class="pun">::</span><span class="kwd">get</span><span class="pun">(</span><span class="str">'accountname'</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">]);</span><span class="pln">
+
+    $newUser </span><span class="pun">=</span><span class="pln"> </span><span class="typ">User</span><span class="pun">::</span><span class="pln">create</span><span class="pun">([</span><span class="pln">
+        </span><span class="str">'username'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="typ">Input</span><span class="pun">::</span><span class="kwd">get</span><span class="pun">(</span><span class="str">'username'</span><span class="pun">),</span><span class="pln">
+        </span><span class="str">'account_id'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> $newAcct</span><span class="pun">-&gt;</span><span class="pln">id</span><span class="pun">,</span><span class="pln">
+    </span><span class="pun">]);</span><span class="pln">
+
+    </span><span class="kwd">if</span><span class="pun">(</span><span class="pln"> </span><span class="pun">!</span><span class="pln">$newUser </span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">throw</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> \Exception</span><span class="pun">(</span><span class="str">'User not created for account'</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">});</span></code></pre>
+
+<h2>Advanced Transactions in Laravel</h2>
+
+<p>I recently found myself needing more control over handling transaction. My <code>create()</code> methods also handled validation by throwing a custom <code>ValidationException</code>
+ if there was a validation issue. If this exception was caught, the 
+server responded by redirecting the user with the error messages.</p>
+
+<pre style="" class="prettyprint prettyprinted"><code><span class="kwd">try</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// Validate, then create if valid</span><span class="pln">
+    $newAcct </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Account</span><span class="pun">::</span><span class="pln">create</span><span class="pun">(</span><span class="pln"> </span><span class="pun">[</span><span class="str">'accountname'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="typ">Input</span><span class="pun">::</span><span class="kwd">get</span><span class="pun">(</span><span class="str">'accountname'</span><span class="pun">)]</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pun">(</span><span class="typ">ValidationException</span><span class="pln"> $e</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// Back to form with errors</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Redirect</span><span class="pun">::</span><span class="pln">to</span><span class="pun">(</span><span class="str">'/form'</span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">-&gt;</span><span class="pln">withErrors</span><span class="pun">(</span><span class="pln"> $e</span><span class="pun">-&gt;</span><span class="pln">getErrors</span><span class="pun">()</span><span class="pln"> </span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">-&gt;</span><span class="pln">withInput</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">try</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// Validate, then create if valid</span><span class="pln">
+    $newUser </span><span class="pun">=</span><span class="pln"> </span><span class="typ">User</span><span class="pun">::</span><span class="pln">create</span><span class="pun">([</span><span class="pln">
+        </span><span class="str">'username'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="typ">Input</span><span class="pun">::</span><span class="kwd">get</span><span class="pun">(</span><span class="str">'username'</span><span class="pun">),</span><span class="pln">
+        </span><span class="str">'account_id'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> $newAcct</span><span class="pun">-&gt;</span><span class="pln">id
+    </span><span class="pun">]);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pun">(</span><span class="typ">ValidationException</span><span class="pln"> $e</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// Back to form with errors</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Redirect</span><span class="pun">::</span><span class="pln">to</span><span class="pun">(</span><span class="str">'/form'</span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">-&gt;</span><span class="pln">withErrors</span><span class="pun">(</span><span class="pln"> $e</span><span class="pun">-&gt;</span><span class="pln">getErrors</span><span class="pun">()</span><span class="pln"> </span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">-&gt;</span><span class="pln">withInput</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<p>Conversations about this use of Exceptions aside, how would I put this in a transaction if the <code>ValidationException</code>s were always caught? Simply putting this inside of a <code>DB::transaction()</code> call would guarantee it would never trigger a rollback if the validation failed on the creation of either <code>account</code> or <code>user</code>.</p>
+
+<p>Looking more closely at the database code, however, we can see that we can manually call <a href="https://github.com/laravel/framework/blob/4.1/src/Illuminate/Database/Connection.php#L449">beginTransaction</a>, <a href="https://github.com/laravel/framework/blob/4.1/src/Illuminate/Database/Connection.php#L476">rollback</a> and <a href="https://github.com/laravel/framework/blob/4.1/src/Illuminate/Database/Connection.php#L464">commit</a>! Putting the above code into a transaction was then as simple as:</p>
+
+<pre style="" class="prettyprint prettyprinted"><code><span class="com">// Start transaction!</span><span class="pln">
+DB</span><span class="pun">::</span><span class="pln">beginTransaction</span><span class="pun">()</span><span class="pln">
+
+</span><span class="kwd">try</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// Validate, then create if valid</span><span class="pln">
+    $newAcct </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Account</span><span class="pun">::</span><span class="pln">create</span><span class="pun">(</span><span class="pln"> </span><span class="pun">[</span><span class="str">'accountname'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="typ">Input</span><span class="pun">::</span><span class="kwd">get</span><span class="pun">(</span><span class="str">'accountname'</span><span class="pun">)]</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pun">(</span><span class="typ">ValidationException</span><span class="pln"> $e</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// Rollback and then redirect</span><span class="pln">
+    </span><span class="com">// back to form with errors</span><span class="pln">
+    DB</span><span class="pun">::</span><span class="pln">rollback</span><span class="pun">();</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Redirect</span><span class="pun">::</span><span class="pln">to</span><span class="pun">(</span><span class="str">'/form'</span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">-&gt;</span><span class="pln">withErrors</span><span class="pun">(</span><span class="pln"> $e</span><span class="pun">-&gt;</span><span class="pln">getErrors</span><span class="pun">()</span><span class="pln"> </span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">-&gt;</span><span class="pln">withInput</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pun">(</span><span class="pln">\Exception $e</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    DB</span><span class="pun">::</span><span class="pln">rollback</span><span class="pun">();</span><span class="pln">
+    </span><span class="kwd">throw</span><span class="pln"> $e</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">try</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// Validate, then create if valid</span><span class="pln">
+    $newUser </span><span class="pun">=</span><span class="pln"> </span><span class="typ">User</span><span class="pun">::</span><span class="pln">create</span><span class="pun">([</span><span class="pln">
+        </span><span class="str">'username'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="typ">Input</span><span class="pun">::</span><span class="kwd">get</span><span class="pun">(</span><span class="str">'username'</span><span class="pun">),</span><span class="pln">
+        </span><span class="str">'account_id'</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> $newAcct</span><span class="pun">-&gt;</span><span class="pln">id
+    </span><span class="pun">]);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pun">(</span><span class="typ">ValidationException</span><span class="pln"> $e</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// Rollback and then redirect</span><span class="pln">
+    </span><span class="com">// back to form with errors</span><span class="pln">
+    DB</span><span class="pun">::</span><span class="pln">rollback</span><span class="pun">();</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Redirect</span><span class="pun">::</span><span class="pln">to</span><span class="pun">(</span><span class="str">'/form'</span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">-&gt;</span><span class="pln">withErrors</span><span class="pun">(</span><span class="pln"> $e</span><span class="pun">-&gt;</span><span class="pln">getErrors</span><span class="pun">()</span><span class="pln"> </span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">-&gt;</span><span class="pln">withInput</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pun">(</span><span class="pln">\Exception $e</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    DB</span><span class="pun">::</span><span class="pln">rollback</span><span class="pun">();</span><span class="pln">
+    </span><span class="kwd">throw</span><span class="pln"> $e</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">// If we reach here, then</span><span class="pln">
+</span><span class="com">// data is valid and working.</span><span class="pln">
+</span><span class="com">// Commit the queries!</span><span class="pln">
+DB</span><span class="pun">::</span><span class="pln">commit</span><span class="pun">();</span></code></pre>
+
+<p><strong>Note</strong> that I also catch a generic <code>Exception</code> as a last-ditch maneuver to ensure data integrity, just in case any other exception other than a <code>ValidationException</code>
+ is thrown. Because this strategy costs us our previously discusssed 
+automatic protection against exceptions, it's prudent to add in this 
+precaution.</p>
+
+<p>That's it! We have full control over database transactions within Laravel!</p>
+
+                <div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="Database%20Transactions%20in%20Laravel_files/a.htm" style="width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 5706px ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" data-disqus-uid="2" id="dsq-2" frameborder="0" width="100%"></iframe></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'fideloper'; // required: replace example with your Disqus site shortname
+            var disqus_url = 'http://fideloper.com/laravel-database-transactions';
+            var disqus_title = "Database Transactions in Laravel";
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+            </article>
+</div>
+            <aside>
+                                    
+    <h3>Recent Articles</h3>
+    <ul>
+                <li><a href="http://fideloper.com/hexagonal-architecture"><i class="entypo chevron-small-right"></i>Hexagonal Architecture</a></li>
+                <li><a href="http://fideloper.com/on-vaprobash"><i class="entypo chevron-small-right"></i>Vaprobash</a></li>
+                <li><a href="http://fideloper.com/how-we-code"><i class="entypo chevron-small-right"></i>How We Code: ORMs and Anemic Domain Models</a></li>
+            </ul>
+    <h3>Other Writings</h3>
+    <ul>
+        <li><a href="http://net.tutsplus.com/tutorials/php/laravel-4-a-start-at-a-restful-api/"><i class="entypo chevron-small-right"></i>Laravel 4 REST API</a></li>
+        <li><a href="http://net.tutsplus.com/tutorials/php/how-to-write-testable-and-maintainable-code-in-php/"><i class="entypo chevron-small-right"></i>Testable/Maintainable PHP</a></li>
+    </ul>
+            </aside>
+        </section><!-- end  #content -->
+
+        <footer id="foot">
+        <div class="container">
+            <section>
+                <ul class="wide">
+                    <li><a href="http://fideloper.com/feed"><i class="entypo rss"></i>RSS</a></li>
+                    <li><a href="https://twitter.com/fideloper"><i class="entypo-social twitter"></i>@fideloper</a></li>
+                    <li><a href="https://github.com/fideloper"><i class="entypo-social github"></i>fideloper</a></li>
+                </ul>
+            </section>
+        </div>
+    </footer>
+    
+    </div><!-- end container -->
+
+      <!--[if lte IE 9]>
+  <script src="/static/bower_components/html5-polyfills/classList.js"></script>
+  <![endif]-->
+  <script src="Database%20Transactions%20in%20Laravel_files/prettify.js" type="text/javascript"></script>
+  <script type="text/javascript">
+      (function(){
+          var codeBlocks = document.querySelectorAll('.post pre, table code');
+          [].forEach.call(codeBlocks, function(codeBlock){
+              codeBlock.classList.add('prettyprint');
+          });
+          prettyPrint();
+      })();
+  </script>
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20914866-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+
+  <!-- Social Widget Rendering Javascript /-->
+  <script type="text/javascript">
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'http://platform.twitter.com/widgets.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+  </script>
+  
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-6.newrelic.com","licenseKey":"e2b22fc8ea","applicationID":"3955435","transactionName":"ZlxUYERUXUZYU0xfWl8WY0ZfGlpbXVVAGEVZSQ==","queueTime":0,"applicationTime":65,"ttGuid":"","agentToken":"","userAttributes":"","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-476.min.js"}</script>
+
+<script src="Database%20Transactions%20in%20Laravel_files/nr-476.js"></script><script src="Database%20Transactions%20in%20Laravel_files/e2b22fc8ea" type="text/javascript"></script></body></html>

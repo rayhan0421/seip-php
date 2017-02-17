@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html class="js" lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><div class="fit-vids-style">­<style>               .fluid-width-video-wrapper {                 width: 100%;                              position: relative;                       padding: 0;                            }                                                                                   .fluid-width-video-wrapper iframe,        .fluid-width-video-wrapper object,        .fluid-width-video-wrapper embed {           position: absolute;                       top: 0;                                   left: 0;                                  width: 100%;                              height: 100%;                          }                                       </style></div>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>  Using AJAX in Laravel | Canned Atropine!!</title>
+			
+		
+	<link rel="stylesheet" href="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/style.css" type="text/css">
+	<link rel="pingback" href="http://blog.igeek.info/xmlrpc.php">
+	
+	<!--[if lt IE 7]>
+		<link rel="stylesheet" type="text/css" href="http://blog.igeek.info/wp-content/themes/Flexible/css/ie6style.css" />
+	<![endif]-->
+	<!--[if IE 7]>
+		<link rel="stylesheet" type="text/css" href="http://blog.igeek.info/wp-content/themes/Flexible/css/ie7style.css" />
+	<![endif]-->
+	<!--[if IE 8]>
+		<link rel="stylesheet" type="text/css" href="http://blog.igeek.info/wp-content/themes/Flexible/css/ie8style.css" />
+	<![endif]-->
+	<!--[if lt IE 9]>
+		<script src="http://blog.igeek.info/wp-content/themes/Flexible/js/html5.js" type="text/javascript"></script>
+	<![endif]-->
+
+	<script src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/all.js" id="facebook-jssdk"></script><script type="text/javascript">
+		document.documentElement.className = 'js';
+	</script>
+
+	<link rel="dns-prefetch" href="http://connect.facebook.net/">
+<link rel="alternate" type="application/rss+xml" title="Canned Atropine!! » Feed" href="http://blog.igeek.info/feed/">
+<link rel="alternate" type="application/rss+xml" title="Canned Atropine!! » Comments Feed" href="http://blog.igeek.info/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Canned Atropine!! » Using AJAX in Laravel Comments Feed" href="http://blog.igeek.info/2013/using-ajax-in-laravel/feed/">
+<meta content="Flexible v.1.1" name="generator"><link rel="stylesheet" id="se-link-styles-css" href="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/se-styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-pagenavi-css" href="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/pagenavi-css.css" type="text/css" media="all">
+<link rel="stylesheet" id="google_font_open_sans-css" href="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/css_002.css" type="text/css" media="all">
+<link rel="stylesheet" id="slb_core-css" href="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/app.css" type="text/css" media="all">
+<link rel="stylesheet" id="ig-syntax-hiliter-css" href="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/front-end.css" type="text/css" media="all">
+<link rel="stylesheet" id="kt-helper_styles-css" href="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/kt-helper-styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="et-shortcodes-css-css" href="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/shortcodes.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/jetpack.css" type="text/css" media="all">
+<link rel="stylesheet" id="fancybox-css" href="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/jquery.css" type="text/css" media="screen">
+<link rel="stylesheet" id="et_page_templates-css" href="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/page_templates.css" type="text/css" media="screen">
+<script type="text/javascript" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/jquery_006.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/jquery-migrate.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/igeek-utils.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var ig_syntax_hiliter = {"label":{"plain":"plain text","html":"hilited code"}};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/front-end.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/et_shortcodes_frontend.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.igeek.info/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.igeek.info/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="PHP: Which framework??" href="http://blog.igeek.info/2013/which-framework/">
+<link rel="next" title="API Design, Consumption &amp; Sanity" href="http://blog.igeek.info/2013/api-design-consumption-and-sanity/">
+<meta name="generator" content="WordPress 4.1.1">
+<link rel="canonical" href="http://blog.igeek.info/2013/using-ajax-in-laravel/">
+<link rel="shortlink" href="http://wp.me/p2E8ck-7l">
+<script type="text/javascript">
+	window._se_plugin_version = '8.1.3';
+</script>
+<style type="text/css">img#wpstats{display:none}</style><link rel="shortcut icon" href="http://blog.igeek.info/favicon.ico"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><style type="text/css">body { background-image: url(http://blog.igeek.info/wp-content/themes/Flexible/images/control_panel/body-bg14.png); }</style><link id="kreon" href="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/css_003.css" rel="stylesheet" type="text/css"><style type="text/css">h1, h2, h3, h4, h5, h6 { font-family: 'Kreon', Arial, sans-serif !important;  }</style><style type="text/css">h1, h2, h3, h4, h5, h6 {  }
+		</style><link id="philosopher" href="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/css.css" rel="stylesheet" type="text/css"><style type="text/css">body { font-family: 'Philosopher', Arial, sans-serif !important;  }</style><style type="text/css">body {  }</style>		<meta property="og:type" content="blog">
+		<meta property="og:image" content="http://blog.igeek.info/wp-content/themes/Flexible/images/og_image.jpg">
+		<meta property="og:site_name" content="Canned Atropine!!">
+<meta property="og:site_name" content="Canned Atropine!!">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="fb:app_id" content="226499027476383">
+<meta property="og:url" content="http://blog.igeek.info/2013/using-ajax-in-laravel/">
+<meta property="og:title" content="Using AJAX in Laravel">
+<meta property="og:description" content="..... it is as straightforward as it gets">
+<meta property="article:published_time" content="2013-12-10T03:35:18+00:00">
+<meta property="article:modified_time" content="2014-02-22T03:46:21+00:00">
+<meta property="article:author" content="http://blog.igeek.info/author/admin/">
+<meta property="article:section" content="iDevelop">
+<meta property="article:tag" content="PHP">
+<meta property="article:tag" content="AJAX">
+<meta property="article:tag" content="frameworks">
+<meta property="article:tag" content="how to">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="jquery">
+<meta property="article:tag" content="laravel">
+<meta property="fb:profile_id" content="647737181">
+<link rel="stylesheet" type="text/css" id="gravatar-card-css" href="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/services.css"><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f8;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3a5795;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #2f477a;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f8;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style></head>
+<body class="single single-post postid-455 single-format-standard chrome">
+	<div id="container">
+				<header class="clearfix">
+			<hgroup id="logo-area">
+								<h1 id="logo">
+					<a href="http://blog.igeek.info/" title="Canned Atropine!!">Canned Atropine!!</a>
+				</h1>
+			</hgroup>
+			
+			<nav id="top-menu">
+										<ul class="nav sf-js-enabled">
+															<li><a href="http://blog.igeek.info/">Home</a></li>
+							
+							<li class="page_item page-item-357"><a href="http://blog.igeek.info/about/">About</a></li>
+<li class="page_item page-item-361"><a href="http://blog.igeek.info/contact/">Contact</a></li>
+<li class="page_item page-item-250"><a href="http://blog.igeek.info/disclaimer/">Disclaimer</a></li>
+													</ul>
+								</nav> <!-- end #top-menu -->
+
+					
+		</header> 
+		<div id="main-area">
+			<a href="#" id="mobile_nav" class="closed"><span></span>Navigation Menu<ul id="mobile_menu" class="">
+															<li><a href="http://blog.igeek.info/">Home</a></li>
+							
+							<li class="page_item page-item-357"><a href="http://blog.igeek.info/about/">About</a></li>
+<li class="page_item page-item-361"><a href="http://blog.igeek.info/contact/">Contact</a></li>
+<li class="page_item page-item-250"><a href="http://blog.igeek.info/disclaimer/">Disclaimer</a></li>
+													</ul></a>
+<div id="breadcrumbs">
+					<a href="http://blog.igeek.info/">Home</a> <span class="raquo">»</span>
+				
+									<a href="http://blog.igeek.info/category/idevelop/">iDevelop</a> <span class="raquo">»</span> Using AJAX in Laravel					</div> <!-- end #breadcrumbs -->
+<div id="content-area" class="clearfix">
+	<div id="left-area">
+				
+	<article id="post-455" class="post-455 post type-post status-publish format-standard hentry category-idevelop category-php tag-ajax tag-frameworks tag-how-to tag-javascript tag-jquery tag-laravel entry clearfix">
+		<h1 class="page_title">Using AJAX in Laravel</h1>
+
+						
+		<div class="post-content">
+			<p class="meta-info">Posted  by <a href="http://blog.igeek.info/author/admin/" title="Posts by Amit" rel="author">Amit</a> on <time>10 Dec 2013</time> in <a href="http://blog.igeek.info/category/idevelop/" rel="category tag">iDevelop</a>, <a href="http://blog.igeek.info/category/idevelop/php/" rel="category tag">PHP</a> | <span class="comments-number"><a href="http://blog.igeek.info/2013/using-ajax-in-laravel/#respond">21 comments</a></span></p>			<p>This
+ question came up in a forum where I drop by now &amp; then. It is also 
+something that I recall answering previously on one or two occasions. So
+ I thought I’d write about it here with a rudimentary example to provide
+ a gist of how it works.</p>
+<p>There’s no mystery or secret voodoo involved in having AJAX work in a
+ Laravel app. On its own Laravel 4 (current version) doesn’t have any 
+API for implementing AJAX, so you’ll need to do the footwork yourself. 
+The basic concept that applies everywhere else applies here as well; 
+grab the data from a HTML form, create an AJAX request and send it to 
+server to a URL on which data is expected. Form data is retrieved on 
+server just like any normal form data would be, the only key part is 
+since you’re dealing with an AJAX request you can’t send back a normal 
+View as response, you’ll need to make your own response with proper 
+headers.</p>
+<p><strong>Note:</strong> <em>I’ve assumed availability of jQuery in 
+this example to avoid writing too much boilerplate. If you use any other
+ library then you can use that as well, usage of jQuery is just to 
+demonstrate the concept.</em></p>
+<p>Lets add example routes to our <code>routes.php</code> file:</p>
+<div id="ig-sh-1" class="syntax_hilite">	<div class="toolbar">		<div class="language-name">php</div>		<a href="#" class="view-different">&lt; view <span>plain text</span> &gt;</a>		<div class="filename" title="/app/routes.php">/app/routes.php</div>		<br clear="all">	</div>	<div class="code"><ol class="php" style="font-family:monospace;"><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #666666; font-style: italic;">//Settings: show form to create settings</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">Route<span style="color: #339933;">::</span><span style="color: #004000;">get</span><span style="color: #009900;">(</span> <span style="color: #0000ff;">'/settings/new'</span><span style="color: #339933;">,</span> <span style="color: #990000;">array</span><span style="color: #009900;">(</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #0000ff;">'as'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'settings.new'</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #0000ff;">'uses'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'SettingsController@add'</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">)</span> <span style="color: #009900;">)</span><span style="color: #339933;">;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #666666; font-style: italic;">//Settings: create a new setting</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">Route<span style="color: #339933;">::</span><span style="color: #004000;">post</span><span style="color: #009900;">(</span> <span style="color: #0000ff;">'/settings'</span><span style="color: #339933;">,</span> <span style="color: #990000;">array</span><span style="color: #009900;">(</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #0000ff;">'as'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'settings.create'</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #0000ff;">'uses'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'SettingsController@create'</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">)</span> <span style="color: #009900;">)</span><span style="color: #339933;">;</span></div></li>
+</ol>	</div></div>
+<p>Then we create a view which has a form for adding a new setting:</p>
+<div id="ig-sh-2" class="syntax_hilite">	<div class="toolbar">		<div class="language-name">php</div>		<a href="#" class="view-different">&lt; view <span>plain text</span> &gt;</a>		<div class="filename" title="/app/views/settings/new.blade.php">…views/settings/new.blade.php</div>		<br clear="all">	</div>	<div class="code"><ol class="php" style="font-family:monospace;"><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">{</span><span style="color: #009900;">{</span> Form<span style="color: #339933;">::</span><span style="color: #004000;">open</span><span style="color: #009900;">(</span> <span style="color: #990000;">array</span><span style="color: #009900;">(</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #0000ff;">'route'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'settings.create'</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #0000ff;">'method'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'post'</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #0000ff;">'id'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'form-add-setting'</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">)</span> <span style="color: #009900;">)</span> <span style="color: #009900;">}</span><span style="color: #009900;">}</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">{</span><span style="color: #009900;">{</span> Form<span style="color: #339933;">::</span><span style="color: #004000;">label</span><span style="color: #009900;">(</span> <span style="color: #0000ff;">'setting_name'</span><span style="color: #339933;">,</span> <span style="color: #0000ff;">'Setting Name:'</span> <span style="color: #009900;">)</span> <span style="color: #009900;">}</span><span style="color: #009900;">}</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">{</span><span style="color: #009900;">{</span> Form<span style="color: #339933;">::</span><span style="color: #004000;">text</span><span style="color: #009900;">(</span> <span style="color: #0000ff;">'setting_name'</span><span style="color: #339933;">,</span> <span style="color: #0000ff;">''</span><span style="color: #339933;">,</span> <span style="color: #990000;">array</span><span style="color: #009900;">(</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #0000ff;">'id'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'setting_name'</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #0000ff;">'placeholder'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'Enter Setting Name'</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #0000ff;">'maxlength'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #cc66cc;">20</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #0000ff;">'required'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900; font-weight: bold;">true</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">)</span> <span style="color: #009900;">)</span> <span style="color: #009900;">}</span><span style="color: #009900;">}</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">{</span><span style="color: #009900;">{</span> Form<span style="color: #339933;">::</span><span style="color: #004000;">label</span><span style="color: #009900;">(</span> <span style="color: #0000ff;">'setting_value'</span><span style="color: #339933;">,</span> <span style="color: #0000ff;">'Setting Value:'</span> <span style="color: #009900;">)</span> <span style="color: #009900;">}</span><span style="color: #009900;">}</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">{</span><span style="color: #009900;">{</span> Form<span style="color: #339933;">::</span><span style="color: #004000;">text</span><span style="color: #009900;">(</span> <span style="color: #0000ff;">'setting_value'</span><span style="color: #339933;">,</span> <span style="color: #0000ff;">''</span><span style="color: #339933;">,</span> <span style="color: #990000;">array</span><span style="color: #009900;">(</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #0000ff;">'id'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'setting_value'</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #0000ff;">'placeholder'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'Enter Setting Value'</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #0000ff;">'maxlength'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #cc66cc;">30</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #0000ff;">'required'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900; font-weight: bold;">true</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">)</span> <span style="color: #009900;">)</span> <span style="color: #009900;">}</span><span style="color: #009900;">}</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">{</span><span style="color: #009900;">{</span> Form<span style="color: #339933;">::</span><span style="color: #004000;">submit</span><span style="color: #009900;">(</span> <span style="color: #0000ff;">'Add Setting'</span><span style="color: #339933;">,</span> <span style="color: #990000;">array</span><span style="color: #009900;">(</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #0000ff;">'id'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'btn-add-setting'</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">)</span> <span style="color: #009900;">)</span> <span style="color: #009900;">}</span><span style="color: #009900;">}</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">{</span><span style="color: #009900;">{</span> Form<span style="color: #339933;">::</span><span style="color: #004000;">close</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">}</span><span style="color: #009900;">}</span></div></li>
+</ol>	</div></div>
+<p>After this comes the Javascript which is loaded into our view which makes the AJAX call:</p>
+<div id="ig-sh-3" class="syntax_hilite">	<div class="toolbar">		<div class="language-name">javascript</div>		<a href="#" class="view-different">&lt; view <span>plain text</span> &gt;</a>		<div class="filename" title="/public/js/settings/new.js">/public/js/settings/new.js</div>		<br clear="all">	</div>	<div class="code"><ol class="javascript" style="font-family:monospace;"><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">jQuery<span style="color: #009900;">(</span> document <span style="color: #009900;">)</span>.<span style="color: #660066;">ready</span><span style="color: #009900;">(</span> <span style="color: #000066; font-weight: bold;">function</span><span style="color: #009900;">(</span> $ <span style="color: #009900;">)</span> <span style="color: #009900;">{</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; $<span style="color: #009900;">(</span> <span style="color: #3366CC;">'#form-add-setting'</span> <span style="color: #009900;">)</span>.<span style="color: #660066;">on</span><span style="color: #009900;">(</span> <span style="color: #3366CC;">'submit'</span><span style="color: #339933;">,</span> <span style="color: #000066; font-weight: bold;">function</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #006600; font-style: italic;">//.....</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #006600; font-style: italic;">//show some spinner etc to indicate operation in progress</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #006600; font-style: italic;">//.....</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; $.<span style="color: #660066;">post</span><span style="color: #009900;">(</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $<span style="color: #009900;">(</span> <span style="color: #000066; font-weight: bold;">this</span> <span style="color: #009900;">)</span>.<span style="color: #660066;">prop</span><span style="color: #009900;">(</span> <span style="color: #3366CC;">'action'</span> <span style="color: #009900;">)</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">{</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #3366CC;">"_token"</span><span style="color: #339933;">:</span> $<span style="color: #009900;">(</span> <span style="color: #000066; font-weight: bold;">this</span> <span style="color: #009900;">)</span>.<span style="color: #660066;">find</span><span style="color: #009900;">(</span> <span style="color: #3366CC;">'input[name=_token]'</span> <span style="color: #009900;">)</span>.<span style="color: #660066;">val</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #3366CC;">"setting_name"</span><span style="color: #339933;">:</span> $<span style="color: #009900;">(</span> <span style="color: #3366CC;">'#setting_name'</span> <span style="color: #009900;">)</span>.<span style="color: #660066;">val</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #3366CC;">"setting_value"</span><span style="color: #339933;">:</span> $<span style="color: #009900;">(</span> <span style="color: #3366CC;">'#setting_value'</span> <span style="color: #009900;">)</span>.<span style="color: #660066;">val</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">}</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000066; font-weight: bold;">function</span><span style="color: #009900;">(</span> data <span style="color: #009900;">)</span> <span style="color: #009900;">{</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #006600; font-style: italic;">//do something with data/response returned by server</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">}</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #3366CC;">'json'</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">)</span><span style="color: #339933;">;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #006600; font-style: italic;">//.....</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #006600; font-style: italic;">//do anything else you might want to do</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #006600; font-style: italic;">//.....</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #006600; font-style: italic;">//prevent the form from actually submitting in browser</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #003366; font-weight: bold;">false</span><span style="color: #339933;">;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #009900;">}</span> <span style="color: #009900;">)</span><span style="color: #339933;">;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">}</span> <span style="color: #009900;">)</span><span style="color: #339933;">;</span></div></li>
+</ol>	</div></div>
+<p>And now that Javascript and form UI are in place, its time to do the backend stuff in our controller:</p>
+<div id="ig-sh-4" class="syntax_hilite">	<div class="toolbar">		<div class="language-name">php</div>		<a href="#" class="view-different">&lt; view <span>plain text</span> &gt;</a>		<div class="filename" title="/app/controllers/SettingsController.php">…llers/SettingsController.php</div>		<br clear="all">	</div>	<div class="code"><ol class="php" style="font-family:monospace;"><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #000000; font-weight: bold;">class</span> SettingsController <span style="color: #000000; font-weight: bold;">extends</span> BaseController <span style="color: #009900;">{</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009933; font-style: italic;">&nbsp; &nbsp; &nbsp;* show a view with form to create settings</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009933; font-style: italic;">&nbsp; &nbsp; &nbsp;*/</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> add<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> View<span style="color: #339933;">::</span><span style="color: #004000;">make</span><span style="color: #009900;">(</span> <span style="color: #0000ff;">'settings/new'</span> <span style="color: #009900;">)</span><span style="color: #339933;">;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #009900;">}</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #009933; font-style: italic;">/**</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009933; font-style: italic;">&nbsp; &nbsp; &nbsp;* handle data posted by ajax request</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009933; font-style: italic;">&nbsp; &nbsp; &nbsp;*/</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> create<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #666666; font-style: italic;">//check if its our form</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">if</span> <span style="color: #009900;">(</span> Session<span style="color: #339933;">::</span><span style="color: #004000;">token</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">!==</span> Input<span style="color: #339933;">::</span><span style="color: #004000;">get</span><span style="color: #009900;">(</span> <span style="color: #0000ff;">'_token'</span> <span style="color: #009900;">)</span> <span style="color: #009900;">)</span> <span style="color: #009900;">{</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> Response<span style="color: #339933;">::</span><span style="color: #004000;">json</span><span style="color: #009900;">(</span> <span style="color: #990000;">array</span><span style="color: #009900;">(</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'msg'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'Unauthorized attempt to create setting'</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">)</span> <span style="color: #009900;">)</span><span style="color: #339933;">;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">}</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$setting_name</span> <span style="color: #339933;">=</span> Input<span style="color: #339933;">::</span><span style="color: #004000;">get</span><span style="color: #009900;">(</span> <span style="color: #0000ff;">'setting_name'</span> <span style="color: #009900;">)</span><span style="color: #339933;">;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$setting_value</span> <span style="color: #339933;">=</span> Input<span style="color: #339933;">::</span><span style="color: #004000;">get</span><span style="color: #009900;">(</span> <span style="color: #0000ff;">'setting_value'</span> <span style="color: #009900;">)</span><span style="color: #339933;">;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #666666; font-style: italic;">//.....</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #666666; font-style: italic;">//validate data</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #666666; font-style: italic;">//and then store it in DB</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #666666; font-style: italic;">//.....</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000088;">$response</span> <span style="color: #339933;">=</span> <span style="color: #990000;">array</span><span style="color: #009900;">(</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'status'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'success'</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #0000ff;">'msg'</span> <span style="color: #339933;">=&gt;</span> <span style="color: #0000ff;">'Setting created successfully'</span><span style="color: #339933;">,</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">)</span><span style="color: #339933;">;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #b1b100;">return</span> Response<span style="color: #339933;">::</span><span style="color: #004000;">json</span><span style="color: #009900;">(</span> <span style="color: #000088;">$response</span> <span style="color: #009900;">)</span><span style="color: #339933;">;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #009900;">}</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #666666; font-style: italic;">//end of class</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">}</span></div></li>
+</ol>	</div></div>
+<p>&nbsp;<br>
+As you can see, it is quite straightforward. You create a POST request 
+to the URI with data and the controller method on server receives data 
+as nomral form data. It then parses it, do with it whatever it wants and
+ responds back with the header of content type <code>application/json</code> (or it can be XML or any other data format) which the Javascript in browser is expecting.</p>
+<p>Just the usual AJAX stuff. You can ofcourse find and use 
+PHP/Javascript libraries which will do the heavy lifting for you so you 
+can just make few API calls instead of writing your own Javascript 
+boilerplate.</p>
+<p>&nbsp;<br>
+<strong>UPDATE:</strong> Updated the code example above to use <code>Response::json()</code> instead of the custom function which created a <code>Response</code> object and set the content type header to <code>application/json</code>.</p>
+<p>&nbsp;</p>
+
+<div fb-iframe-plugin-query="app_id=226499027476383&amp;container_width=540&amp;font=lucida%20grande&amp;href=http%3A%2F%2Fblog.igeek.info%2F2013%2Fusing-ajax-in-laravel%2F&amp;layout=button_count&amp;locale=en_US&amp;ref=below-post&amp;sdk=joey&amp;width=450" fb-xfbml-state="rendered" class="fb-social-plugin fb-like fb_iframe_widget" data-font="lucida grande" data-ref="below-post" data-href="http://blog.igeek.info/2013/using-ajax-in-laravel/" data-layout="button_count" data-width="450"><span style="vertical-align: bottom; width: 78px; height: 20px;"><iframe class="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/like.htm" style="border: medium none; visibility: visible; width: 78px; height: 20px;" title="fb:like Facebook Social Plugin" scrolling="no" allowtransparency="true" name="f3f774034831456" frameborder="0" height="1000px" width="450px"></iframe></span></div>
+								</div> 	<!-- end .post-content -->
+	</article> <!-- end .entry -->
+	
+			
+		
+	<!-- You can start editing here. -->
+
+<section id="comment-wrap">
+			<h1 id="comments" class="page_title">21 Comments</h1>
+			
+				
+					<ol class="commentlist clearfix">
+					<li class="comment even thread-even depth-1" id="li-comment-15574">
+		<article id="comment-15574" class="comment-body clearfix">
+			<img id="grav-a7ad18914a6c8d5bd2a3697eba7e9d69-0" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/a7ad18914a6c8d5bd2a3697eba7e9d69.png" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn"><a onclick="javascript:pageTracker._trackPageview('/outgoing/www.jayeshcp.com');" href="http://www.jayeshcp.com/" rel="external nofollow" class="url">Jayesh</a></span>			<span class="comment_date">
+				January 24, 2014			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>Wonderful. Was looking for this piece of information</p>
+				
+				<div class="reply-container"><a class="comment-reply-link" href="http://blog.igeek.info/2013/using-ajax-in-laravel/?replytocom=15574#respond" onclick='return addComment.moveForm( "comment-15574", "15574", "respond", "455" )' aria-label="Reply to Jayesh">Reply</a></div>			</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-16129">
+		<article id="comment-16129" class="comment-body clearfix">
+			<img id="grav-a51723b973d636098b4d44b45f26504e-0" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/a51723b973d636098b4d44b45f26504e.png" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn">Joel</span>			<span class="comment_date">
+				January 29, 2014			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>Thank you for the helpful article.<br>
+I am having an issue however.</p>
+<p>I call a js file with my ajax from the blade view.<br>
+Then the .post call is being made to my controller and I am pretty sure 
+it gets inside the controller/action. But then my browser console is 
+outputting a 500 error: </p>
+<p>POST <a onclick="javascript:pageTracker._trackPageview('/outgoing/localhost/admin/categories/new');" href="http://localhost/admin/categories/new" rel="nofollow">http://localhost/admin/categories/new</a> 500 (Internal Server Error) jquery.1.10.2.min.js:6<br>
+send jquery.1.10.2.min.js:6<br>
+x.extend.ajax jquery.1.10.2.min.js:6<br>
+x.(anonymous function) jquery.1.10.2.min.js:6<br>
+(anonymous function) custom_js.js:73<br>
+x.event.dispatch jquery.1.10.2.min.js:5<br>
+v.handle</p>
+<p>I am confused as to where the error is occurring..  I have copied 
+create and make_response methods in my controller and  it seems to be 
+crashing at the make_response function call….</p>
+<p>any ideas?  </p>
+<p>Thanks!</p>
+				
+				<div class="reply-container"><a class="comment-reply-link" href="http://blog.igeek.info/2013/using-ajax-in-laravel/?replytocom=16129#respond" onclick='return addComment.moveForm( "comment-16129", "16129", "respond", "455" )' aria-label="Reply to Joel">Reply</a></div>			</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-16220">
+		<article id="comment-16220" class="comment-body clearfix">
+			<img id="grav-0e71c17abca6b6d745f131354f4b53cf-0" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/0e71c17abca6b6d745f131354f4b53cf.jpg" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn"><a onclick="javascript:pageTracker._trackPageview('/outgoing/amitgupta.in/');" href="http://amitgupta.in/" rel="external nofollow" class="url">Amit</a></span>			<span class="comment_date">
+				January 30, 2014			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>I really can’t glean anything from what you’ve posted. HTTP 500 
+is a server error meaning something is crashing in PHP (seems likely). 
+You’ll need to either step through your code to debug what’s breaking 
+(xdebug is an excellent tool to have) or examine your error logs &amp; 
+see if there’s anything helpful in there.</p>
+<blockquote><p>it seems to be crashing at the make_response function call</p></blockquote>
+<p>_make_response() that I’ve posted above in example is rather straight
+ forward &amp; is a quick wrapper for Laravel code. So instead of doing 
+this:</p>
+<div id="ig-sh-5" class="syntax_hilite">	<div class="toolbar">		<div class="language-name">php</div>		<a href="#" class="view-different">&lt; view <span>plain text</span> &gt;</a>	</div>	<div class="code"><ol class="php" style="font-family:monospace;"><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #b1b100;">return</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span>_make_response<span style="color: #009900;">(</span> <span style="color: #990000;">json_encode</span><span style="color: #009900;">(</span> <span style="color: #000088;">$my_array</span> <span style="color: #009900;">)</span> <span style="color: #009900;">)</span><span style="color: #339933;">;</span></div></li>
+</ol>	</div></div>
+<p>you can also do this:</p>
+<div id="ig-sh-6" class="syntax_hilite">	<div class="toolbar">		<div class="language-name">php</div>		<a href="#" class="view-different">&lt; view <span>plain text</span> &gt;</a>	</div>	<div class="code"><ol class="php" style="font-family:monospace;"><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #b1b100;">return</span> Response<span style="color: #339933;">::</span><span style="color: #004000;">make</span><span style="color: #009900;">(</span> <span style="color: #990000;">json_encode</span><span style="color: #009900;">(</span> <span style="color: #000088;">$my_array</span> <span style="color: #009900;">)</span> <span style="color: #009900;">)</span><span style="color: #339933;">-&gt;</span><span style="color: #990000;">header</span><span style="color: #009900;">(</span> <span style="color: #0000ff;">'Content-Type'</span><span style="color: #339933;">,</span> <span style="color: #0000ff;">'application/json'</span> <span style="color: #009900;">)</span><span style="color: #339933;">;</span></div></li>
+</ol>	</div></div>
+<p>Just make sure that whatever you pass to <code>Response::make()</code> needs to be a string, in this case a JSON encoded string.</p>
+				
+							</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1" id="li-comment-17878">
+		<article id="comment-17878" class="comment-body clearfix">
+			<img id="grav-798ef49b72c04c1b5858d53bad787ddd-0" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/798ef49b72c04c1b5858d53bad787ddd.jpg" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn">idmadj</span>			<span class="comment_date">
+				February 12, 2014			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>Hey, just wanted to say thanks for this article, very helpful and detailed!</p>
+				
+				<div class="reply-container"><a class="comment-reply-link" href="http://blog.igeek.info/2013/using-ajax-in-laravel/?replytocom=17878#respond" onclick='return addComment.moveForm( "comment-17878", "17878", "respond", "455" )' aria-label="Reply to idmadj">Reply</a></div>			</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-17883">
+		<article id="comment-17883" class="comment-body clearfix">
+			<img id="grav-0e71c17abca6b6d745f131354f4b53cf-1" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/0e71c17abca6b6d745f131354f4b53cf.jpg" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn"><a onclick="javascript:pageTracker._trackPageview('/outgoing/amitgupta.in/');" href="http://amitgupta.in/" rel="external nofollow" class="url">Amit</a></span>			<span class="comment_date">
+				February 12, 2014			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>Glad you found it useful. <img src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_tup.gif" alt=":tup:" class="wp-smiley"> </p>
+				
+							</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-18694">
+		<article id="comment-18694" class="comment-body clearfix">
+			<img id="grav-4b9975cc37985a2d09ca696ac41b606d-0" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/4b9975cc37985a2d09ca696ac41b606d.png" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn">Edward Mulraney</span>			<span class="comment_date">
+				February 20, 2014			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>In Laravel 4 you can simply <code>return Response::json([]);</code></p>
+				
+				<div class="reply-container"><a class="comment-reply-link" href="http://blog.igeek.info/2013/using-ajax-in-laravel/?replytocom=18694#respond" onclick='return addComment.moveForm( "comment-18694", "18694", "respond", "455" )' aria-label="Reply to Edward Mulraney">Reply</a></div>			</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-18695">
+		<article id="comment-18695" class="comment-body clearfix">
+			<img id="grav-0e71c17abca6b6d745f131354f4b53cf-2" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/0e71c17abca6b6d745f131354f4b53cf.jpg" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn"><a onclick="javascript:pageTracker._trackPageview('/outgoing/amitgupta.in/');" href="http://amitgupta.in/" rel="external nofollow" class="url">Amit</a></span>			<span class="comment_date">
+				February 20, 2014			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>You can also just return an array in the controller action &amp; 
+Laravel 4 converts it JSON before sending it to browser but that doesn’t
+ set the content type header to <code>application/json</code>. Seems like <code>Response::json()</code> sets the proper headers, hadn’t seen that one. Thanks. <img src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_tup.gif" alt=":tup:" class="wp-smiley"> </p>
+				
+							</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1" id="li-comment-19296">
+		<article id="comment-19296" class="comment-body clearfix">
+			<img id="grav-af742b87bd419506f715c63833712f47-0" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/af742b87bd419506f715c63833712f47.png" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn">Sterling</span>			<span class="comment_date">
+				March 8, 2014			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>Thanks for the post! Must needed information.</p>
+				
+				<div class="reply-container"><a class="comment-reply-link" href="http://blog.igeek.info/2013/using-ajax-in-laravel/?replytocom=19296#respond" onclick='return addComment.moveForm( "comment-19296", "19296", "respond", "455" )' aria-label="Reply to Sterling">Reply</a></div>			</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-21376">
+		<article id="comment-21376" class="comment-body clearfix">
+			<img id="grav-60ed066c2d33ee22e9e1e89f6a9c7714-0" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/60ed066c2d33ee22e9e1e89f6a9c7714.jpg" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn"><a onclick="javascript:pageTracker._trackPageview('/outgoing/codetrash.com');" href="http://codetrash.com/" rel="external nofollow" class="url">budyk_ir</a></span>			<span class="comment_date">
+				April 7, 2014			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>Im implementing this…</p>
+				
+				<div class="reply-container"><a class="comment-reply-link" href="http://blog.igeek.info/2013/using-ajax-in-laravel/?replytocom=21376#respond" onclick='return addComment.moveForm( "comment-21376", "21376", "respond", "455" )' aria-label="Reply to budyk_ir">Reply</a></div>			</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1" id="li-comment-37677">
+		<article id="comment-37677" class="comment-body clearfix">
+			<img id="grav-bf84b6caf9eb16dfd206907844583085-0" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/bf84b6caf9eb16dfd206907844583085.jpg" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn"><a onclick="javascript:pageTracker._trackPageview('/outgoing/ashwebb.com');" href="http://ashwebb.com/" rel="external nofollow" class="url">Ashley</a></span>			<span class="comment_date">
+				October 9, 2014			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>In your javascript file, what exactly is the ‘json’ on line 19 for?</p>
+				
+				<div class="reply-container"><a class="comment-reply-link" href="http://blog.igeek.info/2013/using-ajax-in-laravel/?replytocom=37677#respond" onclick='return addComment.moveForm( "comment-37677", "37677", "respond", "455" )' aria-label="Reply to Ashley">Reply</a></div>			</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-37678">
+		<article id="comment-37678" class="comment-body clearfix">
+			<img id="grav-0e71c17abca6b6d745f131354f4b53cf-3" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/0e71c17abca6b6d745f131354f4b53cf.jpg" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn"><a onclick="javascript:pageTracker._trackPageview('/outgoing/amitgupta.in/');" href="http://amitgupta.in/" rel="external nofollow" class="url">Amit</a></span>			<span class="comment_date">
+				October 9, 2014			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>The data type expected from server (ref <a onclick="javascript:pageTracker._trackPageview('/outgoing/api.jquery.com/jquery.post/');" href="http://api.jquery.com/jquery.post/" target="_blank" rel="nofollow">jQuery.post()</a>). jQuery parses it &amp; makes it available for use. See <code>SettingsController</code> line #34, we’re returning a response as JSON.</p>
+				
+							</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-39495">
+		<article id="comment-39495" class="comment-body clearfix">
+			<img id="grav-b24adf1254213f23507f2b406cefd2dc-0" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/b24adf1254213f23507f2b406cefd2dc.png" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn">Harshal</span>			<span class="comment_date">
+				November 5, 2014			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>Brilliant…</p>
+				
+				<div class="reply-container"><a class="comment-reply-link" href="http://blog.igeek.info/2013/using-ajax-in-laravel/?replytocom=39495#respond" onclick='return addComment.moveForm( "comment-39495", "39495", "respond", "455" )' aria-label="Reply to Harshal">Reply</a></div>			</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-39965">
+		<article id="comment-39965" class="comment-body clearfix">
+			<img id="grav-e3e37b99d6d0ae2fc5c1b162358645c9-0" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/e3e37b99d6d0ae2fc5c1b162358645c9.png" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn">sujti</span>			<span class="comment_date">
+				November 14, 2014			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>Can you help me with  a code<br>
+accept data-&gt;as date-&gt;go to DB -&gt; check if date is added 
+previously -&gt; if added return the entire row -&gt; to the same page 
+where date was accepted -&gt;   BUT BUT must have no submit button it 
+should have only ONSELECT DATE OPTION (using jquery)<br>
+————laravel——–<br>
+thanks in advance</p>
+				
+				<div class="reply-container"><a class="comment-reply-link" href="http://blog.igeek.info/2013/using-ajax-in-laravel/?replytocom=39965#respond" onclick='return addComment.moveForm( "comment-39965", "39965", "respond", "455" )' aria-label="Reply to sujti">Reply</a></div>			</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-40026">
+		<article id="comment-40026" class="comment-body clearfix">
+			<img id="grav-0e71c17abca6b6d745f131354f4b53cf-4" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/0e71c17abca6b6d745f131354f4b53cf.jpg" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn"><a onclick="javascript:pageTracker._trackPageview('/outgoing/amitgupta.in/');" href="http://amitgupta.in/" rel="external nofollow" class="url">Amit</a></span>			<span class="comment_date">
+				November 16, 2014			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>In your jQuery code listen for the <code>change</code> event of your select drop-down like:</p>
+<div id="ig-sh-7" class="syntax_hilite">	<div class="toolbar">		<div class="language-name">js</div>		<a href="#" class="view-different">&lt; view <span>plain text</span> &gt;</a>	</div>	<div class="code"><ol class="javascript" style="font-family:monospace;"><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">jQuery<span style="color: #009900;">(</span> <span style="color: #3366CC;">'#date-dropdown'</span> <span style="color: #009900;">)</span>.<span style="color: #660066;">on</span><span style="color: #009900;">(</span> <span style="color: #3366CC;">'change'</span><span style="color: #339933;">,</span> <span style="color: #000066; font-weight: bold;">function</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #006600; font-style: italic;">//fire the form submit event here</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; jQuery<span style="color: #009900;">(</span> <span style="color: #3366CC;">'#my-form'</span> <span style="color: #009900;">)</span>.<span style="color: #660066;">trigger</span><span style="color: #009900;">(</span> <span style="color: #3366CC;">'submit'</span> <span style="color: #009900;">)</span><span style="color: #339933;">;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">}</span> <span style="color: #009900;">)</span><span style="color: #339933;">;</span></div></li>
+</ol>	</div></div>
+<p>So anytime your drop-down list (of ID <code>date-dropdown</code>) has a change in value, it will trigger the submission of your form (of ID <code>my-form</code>). If you’re using AJAX for form submission then all you need to do is write code to handle form submit.</p>
+				
+							</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-41449">
+		<article id="comment-41449" class="comment-body clearfix">
+			<img id="grav-b3c46d4f658d95734016ebc5c015b7c6-0" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/b3c46d4f658d95734016ebc5c015b7c6.jpg" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn">jeremy</span>			<span class="comment_date">
+				December 12, 2014			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>Just wanted to point out, that with a little effort, this stuff 
+really works. I realized this is the post that got me actually sending 
+stuff back and forth from the server. I use this technique several times
+ a day now, with several variations for purpose. thanks again!</p>
+				
+				<div class="reply-container"><a class="comment-reply-link" href="http://blog.igeek.info/2013/using-ajax-in-laravel/?replytocom=41449#respond" onclick='return addComment.moveForm( "comment-41449", "41449", "respond", "455" )' aria-label="Reply to jeremy">Reply</a></div>			</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1" id="li-comment-43512">
+		<article id="comment-43512" class="comment-body clearfix">
+			<img id="grav-1517b4d53ccea328cd1244ef1107a82e-0" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/1517b4d53ccea328cd1244ef1107a82e.png" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn">Nik</span>			<span class="comment_date">
+				January 9, 2015			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>Hi Im getting “Unsupported operand types ”</p>
+<p>on </p>
+<p> $response – array(<br>
+‘status’ =&gt; ‘success’,<br>
+‘msg’ =&gt; “Registration Failed – $messages”<br>
+);<br>
+return Response::json($response);</p>
+<p>in Laravel4 … any clues?</p>
+				
+				<div class="reply-container"><a class="comment-reply-link" href="http://blog.igeek.info/2013/using-ajax-in-laravel/?replytocom=43512#respond" onclick='return addComment.moveForm( "comment-43512", "43512", "respond", "455" )' aria-label="Reply to Nik">Reply</a></div>			</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment even depth-2" id="li-comment-43515">
+		<article id="comment-43515" class="comment-body clearfix">
+			<img id="grav-1517b4d53ccea328cd1244ef1107a82e-1" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/1517b4d53ccea328cd1244ef1107a82e.png" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn">nik</span>			<span class="comment_date">
+				January 9, 2015			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>Ok found the error was a silly typo.. had a “-” instead of “=” next to $response. Now I get and out put of</p>
+<p>{“status”:”success”,”msg”:”Registration Failed”}</p>
+<p>But how to I redirect back to the original form?</p>
+				
+							</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-45894">
+		<article id="comment-45894" class="comment-body clearfix">
+			<img id="grav-2b2fac5b2a214b540fcb0e52d9912fed-0" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/2b2fac5b2a214b540fcb0e52d9912fed.jpg" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn">john fadly</span>			<span class="comment_date">
+				February 9, 2015			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>can I combine this JS Jquery with jquery form validation?<br>
+How?<br>
+Thanks.</p>
+				
+				<div class="reply-container"><a class="comment-reply-link" href="http://blog.igeek.info/2013/using-ajax-in-laravel/?replytocom=45894#respond" onclick='return addComment.moveForm( "comment-45894", "45894", "respond", "455" )' aria-label="Reply to john fadly">Reply</a></div>			</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-46416">
+		<article id="comment-46416" class="comment-body clearfix">
+			<img id="grav-0e71c17abca6b6d745f131354f4b53cf-5" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/0e71c17abca6b6d745f131354f4b53cf.jpg" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn"><a onclick="javascript:pageTracker._trackPageview('/outgoing/amitgupta.in/');" href="http://amitgupta.in/" rel="external nofollow" class="url">Amit</a></span>			<span class="comment_date">
+				February 13, 2015			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>Ofcourse, this is just like any other Javascript code for AJAX using jQuery, you can add whatever you want to it.</p>
+				
+							</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1" id="li-comment-46459">
+		<article id="comment-46459" class="comment-body clearfix">
+			<img id="grav-a6f5177a6279afdff2154d9bd653fa3e-0" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/a6f5177a6279afdff2154d9bd653fa3e.png" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn">Prashant</span>			<span class="comment_date">
+				February 14, 2015			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>Hi,<br>
+     I want to know from where you are extracting the token<br>
+on this line<br>
+“_token”: $( this ).find( ‘input[name=_token]’ ).val()</p>
+<p>thanks</p>
+				
+				<div class="reply-container"><a class="comment-reply-link" href="http://blog.igeek.info/2013/using-ajax-in-laravel/?replytocom=46459#respond" onclick='return addComment.moveForm( "comment-46459", "46459", "respond", "455" )' aria-label="Reply to Prashant">Reply</a></div>			</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+<ul class="children">
+	<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-46507">
+		<article id="comment-46507" class="comment-body clearfix">
+			<img id="grav-0e71c17abca6b6d745f131354f4b53cf-6" alt="" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/0e71c17abca6b6d745f131354f4b53cf.jpg" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">			
+			<span class="fn"><a onclick="javascript:pageTracker._trackPageview('/outgoing/amitgupta.in/');" href="http://amitgupta.in/" rel="external nofollow" class="url">Amit</a></span>			<span class="comment_date">
+				February 19, 2015			</span>		
+						
+
+																		
+			<div class="comment-content clearfix">
+				<p>Its a hidden input field that Laravel adds automatically with a CSRF protection token when <code>Form::open()</code> is used. That’s what we validate in line 15 of <code>SettingsController</code>. Check the Laravel docs <a onclick="javascript:pageTracker._trackPageview('/outgoing/laravel.com/docs/4.2/html#csrf-protection');" href="http://laravel.com/docs/4.2/html#csrf-protection" target="_blank" rel="nofollow">here</a>.</p>
+				
+							</div> <!-- end comment-content-->
+		</article> <!-- end comment-body -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+			</ol>
+				
+					
+				
+												<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title"><span>Post a Reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://blog.igeek.info/2013/using-ajax-in-laravel/#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="http://blog.igeek.info/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																			<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label style="display: none;" for="author">Name <span class="required">*</span></label> <input id="author" name="author" value="Name *" size="30" aria-required="true" type="text"></p>
+<p class="comment-form-email"><label style="display: none;" for="email">Email <span class="required">*</span></label> <input id="email" name="email" value="Email *" size="30" aria-describedby="email-notes" aria-required="true" type="text"></p>
+<p class="comment-form-url"><label style="display: none;" for="url">Website</label> <input id="url" name="url" value="Website" size="30" type="text"></p>
+												<p class="comment-form-comment"><label style="display: none;" for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-describedby="form-allowed-tags" aria-required="true">Comment</textarea></p>						<p class="form-allowed-tags" id="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a
+ href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; 
+&lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del 
+datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; 
+&lt;strong&gt; </code></p>						<p class="form-submit">
+							<input name="submit" id="submit" class="submit" value="Submit Comment" type="submit">
+							<input name="comment_post_ID" value="455" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+						</p>
+						<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="80aeb0800d" type="hidden"></p><div id="smilies_toolbar">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_mrgreen.gif" class="wp-smiley" alt=":mrgreen:" title=":mrgreen:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_twisted.gif" class="wp-smiley" alt=":twisted:" title=":twisted:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_arrow.gif" class="wp-smiley" alt=":arrow:" title=":arrow:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_evil.gif" class="wp-smiley" alt=":evil:" title=":evil:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_idea.gif" class="wp-smiley" alt=":idea:" title=":idea:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_redface.gif" class="wp-smiley" alt=":oops:" title=":oops:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_rolleyes.gif" class="wp-smiley" alt=":roll:" title=":roll:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_cry.gif" class="wp-smiley" alt=":cry:" title=":cry:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_lol.gif" class="wp-smiley" alt=":lol:" title=":lol:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_cool.gif" class="wp-smiley" alt=":cool:" title=":cool:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_eek.gif" class="wp-smiley" alt=":shock:" title=":shock:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_sad.gif" class="wp-smiley" alt=":sad:" title=":sad:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_smile.gif" class="wp-smiley" alt=":smile:" title=":smile:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_confused.gif" class="wp-smiley" alt=":???:" title=":???:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_biggrin.gif" class="wp-smiley" alt=":grin:" title=":grin:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_razz.gif" class="wp-smiley" alt=":razz:" title=":razz:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_surprised.gif" class="wp-smiley" alt=":eek:" title=":eek:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_mad.gif" class="wp-smiley" alt=":mad:" title=":mad:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_neutral.gif" class="wp-smiley" alt=":neutral:" title=":neutral:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_wink.gif" class="wp-smiley" alt=":wink:" title=":wink:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_exclaim.gif" class="wp-smiley" alt=":!:" title=":!:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_question.gif" class="wp-smiley" alt=":?:" title=":?:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_tup.gif" class="wp-smiley" alt=":tup:" title=":tup:">
+<img style="cursor: pointer;" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/icon_tdown.gif" class="wp-smiley" alt=":tdown:" title=":tdown:">
+</div>
+<p class="comment-subscription-form"><input name="subscribe_comments" id="subscribe_comments" value="Notify me of follow-up comments by email." style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" type="checkbox"> <label style="display: none;" class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notify me of follow-up comments by email.</label></p><p class="comment-subscription-form"><input name="subscribe_blog" id="subscribe_blog" value="Notify me of new posts by email." style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" type="checkbox"> <label style="display: none;" class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notify me of new posts by email.</label></p><p style="display: none;"></p>					<input id="ak_js" name="ak_js" value="1424607418982" type="hidden"></form>
+							</div><!-- #respond -->
+					
+</section>	</div> <!-- end #left_area -->
+
+		<div id="sidebar">
+		<div id="search-2" class="widget widget_search"><h4 class="widgettitle"> </h4><form role="search" method="get" id="searchform" class="searchform" action="http://blog.igeek.info/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input name="s" id="s" type="text">
+					<input id="searchsubmit" value="Search" type="submit">
+				</div>
+			</form></div> <!-- end .widget -->		<div id="recent-posts-2" class="widget widget_recent_entries">		<h4 class="widgettitle">Recent Posts</h4>		<ul>
+					<li>
+				<a href="http://blog.igeek.info/2014/abstract-properties-in-php/">Abstract properties in PHP</a>
+						</li>
+					<li>
+				<a href="http://blog.igeek.info/2014/supercharged-models-in-laravel/">Supercharged Models in Laravel</a>
+						</li>
+					<li>
+				<a href="http://blog.igeek.info/2013/api-design-consumption-and-sanity/">API Design, Consumption &amp; Sanity</a>
+						</li>
+					<li>
+				<a href="http://blog.igeek.info/2013/using-ajax-in-laravel/">Using AJAX in Laravel</a>
+						</li>
+					<li>
+				<a href="http://blog.igeek.info/2013/which-framework/">PHP: Which framework??</a>
+						</li>
+				</ul>
+		</div> <!-- end .widget --><div id="categories-3" class="widget widget_categories"><h4 class="widgettitle">Categories</h4><select name="cat" id="cat" class="postform">
+	<option selected="selected" value="-1">Select Category</option>
+	<option class="level-0" value="3">Blog Help!&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="4">ezFAQs&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="5">iDesign&nbsp;&nbsp;(9)</option>
+	<option class="level-0" value="6">iDevelop&nbsp;&nbsp;(86)</option>
+	<option class="level-1" value="18">&nbsp;&nbsp;&nbsp;PHP&nbsp;&nbsp;(21)</option>
+	<option class="level-0" value="7">iNews&nbsp;&nbsp;(157)</option>
+	<option class="level-0" value="9">RegEx&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="10">Serious Jokes&nbsp;&nbsp;(86)</option>
+	<option class="level-0" value="11">WP-Plugins&nbsp;&nbsp;(20)</option>
+	<option class="level-1" value="12">&nbsp;&nbsp;&nbsp;iG:CoComment&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="13">&nbsp;&nbsp;&nbsp;iG:Syntax Hiliter&nbsp;&nbsp;(18)</option>
+	<option class="level-1" value="43">&nbsp;&nbsp;&nbsp;iG:Twitter Cards&nbsp;&nbsp;(1)</option>
+</select>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+	var dropdown = document.getElementById("cat");
+	function onCatChange() {
+		if ( dropdown.options[dropdown.selectedIndex].value > 0 ) {
+			location.href = "http://blog.igeek.info/?cat="+dropdown.options[dropdown.selectedIndex].value;
+		}
+	}
+	dropdown.onchange = onCatChange;
+/* ]]> */
+</script>
+
+</div> <!-- end .widget --><div id="archives-2" class="widget widget_archive"><h4 class="widgettitle">Archives</h4>		<select name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;">
+			<option selected="selected" value="">Select Month</option>
+
+				<option value="http://blog.igeek.info/2014/02/"> February 2014 &nbsp;(1)</option>
+	<option value="http://blog.igeek.info/2014/01/"> January 2014 &nbsp;(1)</option>
+	<option value="http://blog.igeek.info/2013/12/"> December 2013 &nbsp;(3)</option>
+	<option value="http://blog.igeek.info/2013/08/"> August 2013 &nbsp;(1)</option>
+	<option value="http://blog.igeek.info/2013/07/"> July 2013 &nbsp;(1)</option>
+	<option value="http://blog.igeek.info/2013/05/"> May 2013 &nbsp;(1)</option>
+	<option value="http://blog.igeek.info/2013/04/"> April 2013 &nbsp;(2)</option>
+	<option value="http://blog.igeek.info/2013/03/"> March 2013 &nbsp;(2)</option>
+	<option value="http://blog.igeek.info/2013/02/"> February 2013 &nbsp;(1)</option>
+	<option value="http://blog.igeek.info/2013/01/"> January 2013 &nbsp;(1)</option>
+	<option value="http://blog.igeek.info/2012/09/"> September 2012 &nbsp;(1)</option>
+	<option value="http://blog.igeek.info/2012/08/"> August 2012 &nbsp;(2)</option>
+	<option value="http://blog.igeek.info/2006/11/"> November 2006 &nbsp;(2)</option>
+	<option value="http://blog.igeek.info/2006/05/"> May 2006 &nbsp;(2)</option>
+	<option value="http://blog.igeek.info/2006/04/"> April 2006 &nbsp;(2)</option>
+	<option value="http://blog.igeek.info/2006/02/"> February 2006 &nbsp;(5)</option>
+	<option value="http://blog.igeek.info/2006/01/"> January 2006 &nbsp;(4)</option>
+	<option value="http://blog.igeek.info/2005/12/"> December 2005 &nbsp;(13)</option>
+	<option value="http://blog.igeek.info/2005/11/"> November 2005 &nbsp;(10)</option>
+	<option value="http://blog.igeek.info/2005/10/"> October 2005 &nbsp;(19)</option>
+	<option value="http://blog.igeek.info/2005/09/"> September 2005 &nbsp;(16)</option>
+	<option value="http://blog.igeek.info/2005/08/"> August 2005 &nbsp;(18)</option>
+	<option value="http://blog.igeek.info/2005/07/"> July 2005 &nbsp;(10)</option>
+	<option value="http://blog.igeek.info/2005/06/"> June 2005 &nbsp;(17)</option>
+	<option value="http://blog.igeek.info/2005/05/"> May 2005 &nbsp;(10)</option>
+	<option value="http://blog.igeek.info/2005/04/"> April 2005 &nbsp;(19)</option>
+	<option value="http://blog.igeek.info/2005/03/"> March 2005 &nbsp;(11)</option>
+	<option value="http://blog.igeek.info/2005/02/"> February 2005 &nbsp;(10)</option>
+	<option value="http://blog.igeek.info/2005/01/"> January 2005 &nbsp;(4)</option>
+	<option value="http://blog.igeek.info/2004/12/"> December 2004 &nbsp;(5)</option>
+	<option value="http://blog.igeek.info/2004/11/"> November 2004 &nbsp;(14)</option>
+	<option value="http://blog.igeek.info/2004/10/"> October 2004 &nbsp;(8)</option>
+	<option value="http://blog.igeek.info/2004/09/"> September 2004 &nbsp;(23)</option>
+	<option value="http://blog.igeek.info/2004/08/"> August 2004 &nbsp;(19)</option>
+	<option value="http://blog.igeek.info/2004/07/"> July 2004 &nbsp;(11)</option>
+	<option value="http://blog.igeek.info/2004/06/"> June 2004 &nbsp;(21)</option>
+	<option value="http://blog.igeek.info/2004/05/"> May 2004 &nbsp;(20)</option>
+	<option value="http://blog.igeek.info/2004/04/"> April 2004 &nbsp;(20)</option>
+		</select>
+</div> <!-- end .widget --><div id="text-2" class="widget widget_text"><h4 class="widgettitle">Currently Reading…..</h4>			<div class="textwidget"><embed src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/shelfH.swf" wmode="transparent" flashvars="UserName=amit&amp;ShelfType=list&amp;verE=s1.5&amp;ListType=nowreading&amp;booksize=large&amp;AmazonAssociate=xodus-20&amp;Alpha=0&amp;BGColor=FFFFFF" height="220" width="300">
+</div>
+		</div> <!-- end .widget --><div id="text-3" class="widget widget_text"><h4 class="widgettitle">Next on Reading List…..</h4>			<div class="textwidget"><embed src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/shelfH.swf" wmode="transparent" flashvars="UserName=amit&amp;ShelfType=list&amp;verE=s1.5&amp;ListType=reading&amp;booksize=large&amp;AmazonAssociate=xodus-20&amp;Alpha=0&amp;BGColor=FFFFFF" height="220" width="300"></div>
+		</div> <!-- end .widget --><div id="text-4" class="widget widget_text"><h4 class="widgettitle">Previously Read…..</h4>			<div class="textwidget"><embed src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/shelf.swf" wmode="transparent" flashvars="UserName=amit&amp;ShelfType=list&amp;verE=s1.5&amp;ListType=isread&amp;booksize=large&amp;AmazonAssociate=xodus-20&amp;Alpha=0&amp;BGColor=000000" height="465" width="300">
+</div>
+		</div> <!-- end .widget --><div id="linkcat-27" class="widget widget_links"><h4 class="widgettitle">My Links</h4>
+	<ul class="xoxo blogroll">
+<li><a href="http://twitter.com/amitgupta" title="Me on Twitter" target="_blank">@amitgupta</a></li>
+<li><a href="http://amitgupta.in/" rel="me" title="My web profile" target="_top">amitgupta.in</a></li>
+<li><a href="http://blissfulinfusion.com/" rel="me" title="My photo blog" target="_top">Blissful Infusion</a></li>
+<li><a href="https://github.com/coolamit" title="Me on gitHub" target="_blank">github: coolamit</a></li>
+<li><a href="http://hindiblog.org/" rel="me" title="My personal blog in Hindi" target="_top">दुनिया मेरी नज़र से</a></li>
+
+	</ul>
+</div> <!-- end .widget -->
+<div id="linkcat-14" class="widget widget_links"><h4 class="widgettitle">Web Development</h4>
+	<ul class="xoxo blogroll">
+<li><a href="http://codex.wordpress.org/Data_Validation" target="_blank">Data Validation in WordPress</a></li>
+<li><a href="http://codex.wordpress.org/Function_Reference" target="_blank">WordPress Function Reference</a></li>
+<li><a href="http://codex.wordpress.org/Plugin_API" target="_blank">WordPress Plugin API</a></li>
+
+	</ul>
+</div> <!-- end .widget -->
+	</div> <!-- end #sidebar -->
+</div> 	<!-- end #content-area -->
+	
+			</div> 	<!-- end #main-area -->
+		
+		<footer id="main_footer" class="clearfix">
+			<p id="copyright">Copyright © 2004-2015 - <a href="http://amitgupta.in/">Amit Gupta</a>. All rights reserved.</p>
+		</footer> <!-- end #main_footer -->
+	</div> <!-- end #container -->
+	<script type="text/javascript">
+/* <![CDATA[ */
+(function($) {
+	/* OnClick action */
+	$("#smilies_toolbar img").click(function() {
+		var text = $(this).attr('alt');
+		/* get an html escaped version of the text: */
+		tempdiv = $('<div/>');
+		text = tempdiv.text(text).html();
+		tempdiv.remove(); // Free up memory
+		var commentbox = $("form[action$=wp-comments-post.php] textarea:visible");
+		if (!commentbox.length) return;
+		commentbox.insertAtCaret(text);
+	});
+	$("#smilies_toolbar img").css('cursor', 'pointer');
+})(jQuery);
+/* ]]> */
+</script>
+
+<!-- tracker added by Ultimate Google Analytics plugin v1.6.0: http://www.oratransplant.nl/uga -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-114051-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+	<div style="display:none">
+	<div class="grofile-hash-map-a7ad18914a6c8d5bd2a3697eba7e9d69">
+	</div>
+	<div class="grofile-hash-map-a51723b973d636098b4d44b45f26504e">
+	</div>
+	<div class="grofile-hash-map-0e71c17abca6b6d745f131354f4b53cf">
+	</div>
+	<div class="grofile-hash-map-798ef49b72c04c1b5858d53bad787ddd">
+	</div>
+	<div class="grofile-hash-map-4b9975cc37985a2d09ca696ac41b606d">
+	</div>
+	<div class="grofile-hash-map-af742b87bd419506f715c63833712f47">
+	</div>
+	<div class="grofile-hash-map-60ed066c2d33ee22e9e1e89f6a9c7714">
+	</div>
+	<div class="grofile-hash-map-bf84b6caf9eb16dfd206907844583085">
+	</div>
+	<div class="grofile-hash-map-b24adf1254213f23507f2b406cefd2dc">
+	</div>
+	<div class="grofile-hash-map-e3e37b99d6d0ae2fc5c1b162358645c9">
+	</div>
+	<div class="grofile-hash-map-b3c46d4f658d95734016ebc5c015b7c6">
+	</div>
+	<div class="grofile-hash-map-1517b4d53ccea328cd1244ef1107a82e">
+	</div>
+	<div class="grofile-hash-map-2b2fac5b2a214b540fcb0e52d9912fed">
+	</div>
+	<div class="grofile-hash-map-a6f5177a6279afdff2154d9bd653fa3e">
+	</div>
+	</div>
+	
+<!-- Smilies package, iG-Cool Smilies, courtesy of Amit Gupta (http://blog.igeek.info/) -->
+<script type="text/javascript" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/form.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/stt-common.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/devicepx-jetpack.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/gprofiles.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/wpgroho.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/superfish.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/jquery.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/jquery_005.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/jquery_003.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/jquery_004.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var etsettings = {"ajaxurl":"http:\/\/blog.igeek.info\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/custom.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/comment-reply.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var FB_WP=FB_WP||{};FB_WP.queue={_methods:[],flushed:false,add:function(fn){FB_WP.queue.flushed?fn():FB_WP.queue._methods.push(fn)},flush:function(){for(var fn;fn=FB_WP.queue._methods.shift();){fn()}FB_WP.queue.flushed=true}};window.fbAsyncInit=function(){FB.init({"xfbml":true,"appId":"226499027476383"});if(FB_WP && FB_WP.queue && FB_WP.queue.flush){FB_WP.queue.flush()}}
+/* ]]> */
+</script>
+<script type="text/javascript">(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="http:\/\/connect.facebook.net\/en_US\/all.js";fjs.parentNode.insertBefore(js,fjs)}(document,"script","facebook-jssdk"));</script>
+<script type="text/javascript" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/jquery_002.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/et-ptemplates-frontend.js"></script>
+<script type="text/javascript" id="slb_context">/* <![CDATA[ */if ( !!window.jQuery ) {(function($){$(document).ready(function(){if ( !!window.SLB ) { {$.extend(SLB, {"context":["public","user_guest"]});} }})})(jQuery);}/* ]]> */</script>
+
+	<script src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/e-201508.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	st_go({v:'ext',j:'1:3.3.1',blog:'39117308',post:'455',tz:'5.5'});
+	var load_cmc = function(){linktracker_init(39117308,455,2);};
+	if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+	else load_cmc();
+	</script><img id="wpstats" src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/g.gif"><div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/DU1Ia251o0y.htm" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_http" scrolling="no" allowtransparency="true" name="fb_xdm_frame_http" frameborder="0"></iframe><iframe src="Using%20AJAX%20in%20Laravel%20_%20Canned%20Atropine%21%21_files/DU1Ia251o0y_002.htm" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" scrolling="no" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+
+
+
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div></body></html>
+<!-- Dynamic page generated in 1.396 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2015-02-22 13:35:34 -->
+<!-- Compression = gzip -->

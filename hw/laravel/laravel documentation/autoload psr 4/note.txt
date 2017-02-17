@@ -1,0 +1,15 @@
+The PSR-0 standard is:
+
+{
+    "autoload": {
+        "psr-0": { "Acme": "src/" }
+    }
+}
+-----------------
+And the PSR-4 standard:
+
+{
+    "autoload": {
+         "psr-4": { "Acme\\": "src/" }
+    }
+}

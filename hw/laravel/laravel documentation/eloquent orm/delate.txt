@@ -1,0 +1,22 @@
+$game = Juego:: find( 1 );
+ $game-> delete();
+
+We can also delete a single instance or multiple instances of our models, using
+their ids, and the static method destroy ().
+
+Juego:: destroy( 1 );
+or
+Juego:: destroy( 1 , 2, 3);
+
+or
+
+uego:: destroy( array( 1 , 2, 3));
+
+2. Album:: where( 'artista' , '=' , 'Matt Nathanson' )
+-> delete();
+ /// Retrieve all the albums that have a column with artist Matt Nathanson value.
+Then we use the delete () method to delete rows from the database.
+
+3. for empty table 
+
+Album:: truncate();

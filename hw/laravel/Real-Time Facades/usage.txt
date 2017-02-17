@@ -1,0 +1,13 @@
+after create service class
+
+we call anywhere  just adding Facade before namespace
+
+like that
+
+use Facade/App\services\twitter; 
+use App\services\twitter; // original
+
+use:
+         Twitter::publish();
+ 
+

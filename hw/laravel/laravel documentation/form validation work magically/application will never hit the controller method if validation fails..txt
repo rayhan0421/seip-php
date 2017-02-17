@@ -1,0 +1,7 @@
+The magic is in the way Laravel handles the request. There is a listener in the FormRequestServiceProvider which does validation *before* we hit the controller.
+----------
+
+application will never hit the controller method if validation fails.
+
+=------------
+By default, Laravel redirects the request back to the failed form with populated $errors variable (instance of familiar MessageBag).

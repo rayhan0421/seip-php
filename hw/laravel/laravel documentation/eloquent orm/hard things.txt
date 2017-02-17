@@ -1,0 +1,33 @@
+1. Saving A Model And Relationships
+
+Sometimes you may wish to save not only a model, but also all of its relationships. To do so, you may use the push method:
+
+$user->push();
+
+2.Defining A Query Scope // just method for clean query 
+
+Scopes allow you to easily re-use query logic in your models. To define a scope, simply prefix a model method with scope:
+
+class User extends Model {
+
+    public function scopePopular($query)
+    {
+        return $query->where('votes', '>', 100);
+    }
+
+    public function scopeWomen($query)
+    {
+        return $query->whereGender('W');
+    }
+
+}
+
+example Utilizing A Query Scope
+
+$users = User::popular()->women()->orderBy('created_at')->get();
+// here popular is method scopePopular and women is method of scopewomen
+
+2.1
+ Dynamic Scopes // see laravel documenatation
+
+2.2 Global Scopes

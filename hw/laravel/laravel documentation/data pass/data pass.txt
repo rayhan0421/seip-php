@@ -1,0 +1,10 @@
+in controller
+
+$data[ 'squirrel' ] = $squirrel ;
+
+return View:: make( 'simple' , $data)
+
+in view
+
+<p> I wish I were a <?php echo $squirrel; ?> squirrel! </p>
+---------------------

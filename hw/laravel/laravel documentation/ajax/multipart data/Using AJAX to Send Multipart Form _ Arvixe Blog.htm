@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>Using AJAX to Send Multipart Form | Arvixe Blog</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="stylesheet" type="text/css" media="all" href="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/style.css">
+
+<style type="text/css">
+					.no-break br {
+						display: none !important;
+					}
+			</style><link rel="alternate" type="application/rss+xml" title="Arvixe Blog » Feed" href="http://blog.arvixe.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Arvixe Blog » Comments Feed" href="http://blog.arvixe.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Arvixe Blog » Using AJAX to Send Multipart Form Comments Feed" href="http://blog.arvixe.com/using-ajax-to-send-multipart-form/feed/">
+<link rel="stylesheet" id="cptch_stylesheet-css" href="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/style_002.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-pagenavi-css" href="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/pagenavi-css.css" type="text/css" media="all">
+<link rel="stylesheet" id="wordpress-popular-posts-css" href="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/wpp.css" type="text/css" media="all">
+<link rel="stylesheet" id="authorsure-css" href="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/public.css" type="text/css" media="all">
+<link rel="stylesheet" id="core3.0-css" href="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/shCore_002.css" type="text/css" media="all">
+<link rel="stylesheet" id="core-Default3.0-css" href="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/shCoreDefault.css" type="text/css" media="all">
+<link rel="stylesheet" id="theme-Default3.0-css" href="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/shThemeDefault_002.css" type="text/css" media="all">
+<link rel="stylesheet" id="avhec-widget-css" href="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/avh-ec.css" type="text/css" media="all">
+<!-- This site uses the Google Analytics by Yoast plugin v5.3.2 - Universal disabled - https://yoast.com/wordpress/plugins/google-analytics/ -->
+<script async="" type="text/javascript" src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/bootstrap.js"></script><script src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/buttons.htm" async="" type="text/javascript"></script><script src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/buttons.htm" async="" type="text/javascript"></script><script src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript">
+
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-513718-4']);
+	_gaq.push(['_gat._forceSSL']);
+	_gaq.push(['_trackPageview']);
+
+	(function () {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+
+</script>
+<!-- / Google Analytics by Yoast -->
+<script type="text/javascript" src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/jquery.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/jquery-migrate.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/sharebar.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/wp-ajaxify-comments.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.arvixe.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.arvixe.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.0.1">
+<link rel="canonical" href="http://blog.arvixe.com/using-ajax-to-send-multipart-form/">
+<link rel="shortlink" href="http://blog.arvixe.com/?p=32883">
+<script charset="utf-8" type="text/javascript">var switchTo5x=true;</script><script charset="utf-8" type="text/javascript" src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/buttons.js"></script><script charset="utf-8" type="text/javascript">stLight.options({publisher:"ccd341f4-3c11-4d5a-87ff-a7f8d4cdbc8b" });var st_type='wordpress3.6.1';</script><link rel="stylesheet" href="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/sharebar.css" type="text/css" media="screen">
+<script type="text/javascript">jQuery(document).ready(function($) { $('.sharebar').sharebar({horizontal:'true',swidth:'65',minwidth:1000,position:'left',leftOffset:20,rightOffset:10}); });</script>
+<!-- Sharebar Plugin by Monjurul Dolon (http://mdolon.com/) - more info at: http://devgrow.com/sharebar-wordpress-plugin -->
+<script type="text/javascript">/* <![CDATA[ */if (!window["WPAC"]) var WPAC = {};WPAC._Options = {debug:false,selectorCommentForm:"#commentform",selectorCommentsContainer:"#comments",selectorCommentPagingLinks:"#comments [class^='nav-'] a",selectorCommentLinks:"#comments a[href*=\"/comment-page-\"]",selectorRespondContainer:"#respond",selectorErrorContainer:"p:parent",popupCornerRadius:5,popupMarginTop:10,popupWidth:30,popupPadding:5,popupFadeIn:400,popupFadeOut:400,popupTimeout:3000,popupBackgroundColorLoading:"#000",popupTextColorLoading:"#fff",popupBackgroundColorSuccess:"#008000",popupTextColorSuccess:"#fff",popupBackgroundColorError:"#f00",popupTextColorError:"#fff",popupOpacity:70,popupTextAlign:"center",popupTextFontSize:"Default font size",popupZindex:1000,scrollSpeed:500,autoUpdateIdleTime:0,textPosted:"Your comment has been posted. Thank you!",textPostedUnapproved:"Your comment has been posted and is awaiting moderation. Thank you!",textReloadPage:"Reloading page. Please wait&hellip;",textPostComment:"Posting your comment. Please wait&hellip;",textRefreshComments:"Loading comments. Please wait&hellip;",textUnknownError:"Something went wrong, your comment has not been posted.",selectorPostContainer:"",commentPagesUrlRegex:"",asyncLoadTrigger:"DomReady",disableUrlUpdate:false,disableScrollToAnchor:false,disableCache:false,commentsEnabled:true,version:"1.2.0"};WPAC._Callbacks = {"beforeSelectElements": function(dom) {},"beforeUpdateComments": function(newDom, commentUrl) {},"afterUpdateComments": function(newDom, commentUrl) {},"beforeSubmitComment": function() {}};/* ]]> */</script>				<!-- WordPress Popular Posts v3.2.1 -->
+				<script type="text/javascript">//<![CDATA[
+
+					// Create XMLHttpRequest object and set variables
+					var xhr = ( window.XMLHttpRequest )
+					  ? new XMLHttpRequest()
+					  : new ActiveXObject( "Microsoft.XMLHTTP" ),
+					url = 'http://blog.arvixe.com/wp-admin/admin-ajax.php',
+					params = 'action=update_views_ajax&token=1dbb0214ab&id=32883';
+					// Set request method and target URL
+					xhr.open( "POST", url, true );
+					// Set request header
+					xhr.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
+					// Hook into onreadystatechange
+					xhr.onreadystatechange = function() {
+						if ( 4 == xhr.readyState && 200 == xhr.status ) {
+							if ( window.console && window.console.log ) {
+								window.console.log( xhr.responseText );
+							}
+						}
+					}
+					// Send request
+					xhr.send( params );
+
+				//]]></script>
+				<!-- End WordPress Popular Posts v3.2.1 -->
+				<style type="text/css">
+.avatar {vertical-align:middle}
+.credit {font-size: 50%;}
+</style>
+		<link href="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/shCore.css" type="text/css" rel="stylesheet"><link href="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/shThemeDefault.css" type="text/css" rel="stylesheet"><style type="text/css" id="syntaxhighlighteranchor"></style>
+<script src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/getAllAppDefault.esi" type="text/javascript"></script><script src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/checkOAuth.esi" type="text/javascript"></script><link href="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/buttons.css" type="text/css" rel="stylesheet"><script src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/getCount2.php" type="text/javascript"></script></head>
+
+<body data-twttr-rendered="true" class="single single-post postid-32883 single-format-standard"><iframe src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/hub.htm" style="position: absolute; top: -9999em; width: 10px; height: 10px;" name="twttrHubFrameSecure" tabindex="0" scrolling="no" allowtransparency="true" id="twttrHubFrameSecure" frameborder="0"></iframe><iframe src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/hub_002.htm" style="position: absolute; top: -9999em; width: 10px; height: 10px;" name="twttrHubFrame" tabindex="0" scrolling="no" allowtransparency="true" id="twttrHubFrame" frameborder="0"></iframe>
+<div id="wrapper" class="hfeed">
+
+	<div id="header">
+<style>
+	body {
+	   margin : 0px 0px 0px 0px;
+	background:  #014c83 url("http://www.arvixe.com//images/background4.png") repeat-x top left;
+		}
+    a.main_links {
+      color: #5c5c5c;
+      font-size: 11px;
+      font-family: Verdana, Arial;
+      margin: 0px 0px 0px 0px;
+      font-weight: normal;
+      text-decoration: none;
+      }
+
+      a.main_links:hover {
+      color: #333333 !important;
+	  text-decoration: none;
+      }
+</style>
+<div align="center">
+ 
+	<table cellpadding="0" cellspacing="0" width="1000">
+	 <tbody><tr>
+	  <td style="padding-left: 20px;" align="left" height="100" valign="middle" width="213">
+          <a href="http://www.arvixe.com/"><img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/logo_hosting.png" alt="Arvixe Web Hosting" style="padding: 0px; margin: 0px;" border="0" height="100" width="213"></a>
+	  </td>
+	  <td style="padding-right: 20px;" align="right" valign="bottom" width="787">
+
+      <table>
+       <tbody><tr>
+        <td align="right">
+        
+           <table style="margin-top: 5px;" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+             <td style="padding-right: 20px;" valign="top">
+              </td>
+              <td valign="top">
+              
+                <table cellpadding="0" cellspacing="0">
+                 <tbody><tr>
+                  <td height="40">
+                  </td>
+                 </tr>
+                 <tr>
+                  <td style="padding-top: 8px;" align="right" height="40">
+                   
+                  </td>
+                 </tr>
+                 <tr>
+                  <td height="10px;">
+                  </td>
+                 </tr>
+                </tbody></table>
+              
+              </td>
+             </tr>
+            </tbody></table>
+
+            
+        </td>
+       </tr>
+       <tr>
+        <td>
+            <font style="display: block;margin-bottom: 15px;"><a class="main_links" href="http://support.arvixe.com/"><img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/support_icon.png" alt="Support Center" style="vertical-align:text-bottom;" border="0">&nbsp;&nbsp;Support Center</a><a class="main_links">&nbsp;&nbsp;&nbsp;&nbsp;</a><a class="main_links" href="http://forum.arvixe.com/smf"><img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/discussion.png" alt="Discussion Board" style="vertical-align:text-bottom;" border="0">&nbsp;&nbsp;Discussion Board</a><a class="main_links">&nbsp;&nbsp;&nbsp;&nbsp;</a><a class="main_links" href="http://blog.arvixe.com/"><img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/blog_icon.png" alt="Blog" style="vertical-align:text-bottom;" border="0">&nbsp;&nbsp;Blog</a><a class="main_links">&nbsp;&nbsp;&nbsp;&nbsp;</a><a class="main_links" href="http://www.arvixe.com/about_arvixe"><img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/about_icon.png" alt="About Us" style="vertical-align:text-bottom;" border="0">&nbsp;&nbsp;About Us</a><a class="main_links">&nbsp;&nbsp;&nbsp;&nbsp;</a><a class="main_links" href="https://www.arvixe.com/order.php"><img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/cart_icon.png" alt="View Cart" style="vertical-align:text-bottom;" border="0">&nbsp;&nbsp;View Cart</a>
+        </font></td>
+       </tr>
+      </tbody></table>
+		
+		<!--font style="display: block;"><a class="main_links_community" href="http://blog.arvixe.com">Blog</a><a class="main_links_community">&nbsp;&nbsp;&nbsp;&nbsp;</a><a class="main_links_community" href="http://forum.arvixe.com">Discussion Board</a><a class="main_links_community">&nbsp;&nbsp;&nbsp;&nbsp;</a><a class="main_links_community" href="arvixe_reviews">Testimonials</a></font-->
+	   <!--a href="javascript:startChat('0');"><img src="http://www.arvixe.com/images/livechat.270.50.jpg" width="270" height="50" border="0" style="border-left: thin dotted #cccccc;padding-left: 20px;" alt="Click here for Live Chat! Toll Free at 1-888-927-8493" /></a-->
+	  </td>
+	 </tr>
+	</tbody></table>
+
+</div>
+<div id="knowledge_base_dialog" class="font" style="display: none"> <!-- Inline is intentional. This will be included by various pages, some lacking our CSS files. -->
+	<div>
+		<p class="inline">Your Question:</p>
+		<input id="knowledge_base_question" class="font spacing" maxlength="100" type="text">
+		<button id="knowledge_base_search" class="font spacing">Search</button>
+		<button id="knowledge_base_cancel" class="font spacing">Cancel</button>
+		<p id="knowledge_base_error" class="error">Please enter a question</p>
+	</div>
+	
+	<div id="response_sources">
+		<div id="knowledge_base">
+			<p class="title">Searching Knowledgebase:</p>
+			<div class="loader"><img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/ajax-loader.htm"></div>
+			<p class="results"></p>
+		</div>
+		
+		<div id="blog_entries">
+			<p class="title">Searching Blog:</p>
+			<div class="loader"><img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/ajax-loader.htm"></div>
+			<p class="results"></p>
+		</div>
+		
+		<div id="comunity_forums">
+			<p class="title">Searching Forum:</p>
+			<div class="loader"><img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/ajax-loader.htm"></div>
+			<p class="results"></p>
+		</div>
+	</div>
+	
+	<div id="knowledge_base_feedback">
+		<p class="inline">Was this search helpful?</p>
+		<button id="unhelpful_answer" class="font spacing">No, Continue to LiveChat</button>
+		<button id="helpful_answer" class="font spacing">Yes, I'm good! </button>
+	</div>
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	jQuery('#knowledge_base_search').click(search_knowledge_base);
+	jQuery('#knowledge_base_question').keypress(function(event) { if(event.which == 13) { search_knowledge_base(); };});
+	jQuery('#knowledge_base_cancel').click(close_knowledge_base_dialog);
+	jQuery('#helpful_answer').click(function () {process_search_response(true);});
+	jQuery('#unhelpful_answer').click(function () {process_search_response(false);});
+});
+
+function search_knowledge_base() {
+	jQuery('#knowledge_base .results, #blog_entries .results, #comunity_forums .results, #knowledge_base_error').hide();
+	
+	var search_question = jQuery.trim(jQuery('#knowledge_base_question').val());
+	if(search_question.length == 0) {
+		jQuery('#knowledge_base_error').show();
+		return;
+	}
+	
+	jQuery('#knowledge_base, #knowledge_base .loader, #blog_entries, #blog_entries .loader, #comunity_forums, #comunity_forums .loader, #knowledge_base_feedback').show();
+	jQuery('#knowledge_base .results').load('/public_includer.php', { script: 'structure/sphinx/kbindex.php', data: search_question }, function() { show_results(jQuery('#knowledge_base')); });
+	jQuery('#blog_entries .results').load('/public_includer.php', { script: 'structure/sphinx/blogindex.php', data: search_question }, function() { show_results(jQuery('#blog_entries')); });
+	jQuery('#comunity_forums .results').load('/public_includer.php', { script: 'structure/sphinx/forumindex.php', data: search_question }, function() { show_results(jQuery('#comunity_forums')); });
+}
+
+function show_results(response_container) {
+	response_container.children('.loader').hide();
+	if(response_container.children('.results').html().indexOf('None Found.') != -1) response_container.children('.results').html('No Articles Found'); 
+	response_container.children('.results').show();
+	jQuery('#knowledge_base_dialog').dialog({ position: { my: 'center', at: 'center', of: window }});
+}
+
+function show_knowledge_base_dialog() {
+	var knowledge_base_dialog = jQuery('#knowledge_base_dialog').dialog({ 
+		autoOpen: false, 
+		resizable: false, 
+		modal: true,
+		maxHeight: 700,
+		maxWidth: 1000,
+		show: { effect: 'fade', duration: 500 },
+		width: 'auto',
+		height: 'auto',
+		position: { my: 'center', at: 'center', of: window},
+		open: function() { jQuery('.ui-widget-overlay').bind('click', function() { jQuery('#knowledge_base_dialog').dialog('close'); }); }});
+	jQuery('.ui-dialog-titlebar').hide();
+	jQuery('.ui-dialog').css('padding', '0');
+	jQuery('.ui-dialog').css('border-color', '#FFFFFF');
+	jQuery(knowledge_base_dialog).dialog('open');
+	jQuery('.ui-dialog, #knowledge_base_dialog').css('min-height', '30px');
+}
+
+function process_search_response(helpful) {
+	store_search_response(helpful);
+	if( !helpful) continue_to_chat();
+	close_knowledge_base_dialog();
+}
+
+function store_search_response(helpful) {
+	jQuery.ajax({
+		url: 'http://www.arvixe.com/knowledge_base_search.php',
+		method: 'POST',
+		data: { 
+			store_response: 'true',
+			helpful: helpful ? 'Y' : 'N',
+			search_term: jQuery.trim(jQuery('#knowledge_base_question').val()),
+		},
+		success: function() {},
+		error: function() {}
+	});
+}
+
+function continue_to_chat() {
+	var function_name = jQuery('#chat_blocker').next().children('a').prop('href').replace('javascript:', '').replace("('0');", '');
+	var function_content = eval(function_name+'.toString()');
+	var window_open_statment = function_content.substring(function_content.indexOf('chatwindow'), function_content.indexOf(';', function_content.indexOf('chatwindow')) + 1);
+	function_content = function_content.replace(window_open_statment, '');
+	invoke_chat_window = new Function('proactive', function_content.substring(function_content.indexOf('{')+1, function_content.lastIndexOf('}')));
+	invoke_chat_window('0');
+	window.open('http://www.arvixe.com/knowledge_base_search.php'+'?show_chat=true&chat_url='+encodeURIComponent(_chatWindowURL)+'&subject='+encodeURIComponent(jQuery.trim(jQuery('#knowledge_base_question').val())), 'chatWindow',
+			'toolbar=0,location=0,directories=0,status=1,menubar=0,scrollbars=yes,resizable=1,width=599,height=679,left='+docWidth+',top='+docHeight);
+}
+
+function close_knowledge_base_dialog() {
+	jQuery('#knowledge_base_dialog').dialog('close');
+	jQuery('#knowledge_base_dialog').dialog('destroy');
+}
+</script>   
+		
+                <div class="a-banner">
+                                    
+						<h1 class="entry-title">Arvixe Blog</h1>
+                                    
+                                    <div class="breadcrumbs">
+                                             <!-- Breadcrumb NavXT 5.2.0 -->
+<a title="Go to Arvixe Blog." href="http://blog.arvixe.com/" class="home">Arvixe Blog</a> &gt; <span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" title="Go to the ASP .NET 4.0 category archives." href="http://blog.arvixe.com/category/asp-net-4/" class="taxonomy category">ASP .NET 4.0</a></span> &gt; Using AJAX to Send Multipart Form                                     </div>
+                                     <div class="site-map"><a href="http://blog.arvixe.com/sitemap.xml">Sitemap</a>
+                                     </div>
+                                     <div style="clear:both;"></div>
+                 </div>
+	</div><!-- #header -->
+
+	<div id="main">
+		<div id="container">
+			<div id="content" role="main">
+
+			
+
+				<div id="nav-above" class="navigation">
+					<div class="nav-previous"><a href="http://blog.arvixe.com/zurmo-how-to-change-logo/" rel="prev"><span class="meta-nav">←</span> [Zurmo] How to Change Logo</a></div>
+					<div class="nav-next"><a href="http://blog.arvixe.com/how-to-use-the-htaccess-file/" rel="next">How to Use the .htaccess File <span class="meta-nav">→</span></a></div>
+				</div><!-- #nav-above -->
+
+				<div id="post-32883" class="post-32883 post type-post status-publish format-standard hentry category-asp-net-4 category-programming-coding tag-ajax tag-form tag-how-to tag-jquery tag-multipart tag-send tag-use tag-using">
+					<h1 class="entry-title">Using AJAX to Send Multipart Form</h1>
+
+					<div class="c-entry-meta">
+				             <!--   <div class="modify">Last Update:Sunday,27 October 2013  07 30 PM</div>
+                                                 <span class="meta-sep">|</span>      -->
+                                                 <div class="c-author">
+					              <a href="http://blog.arvixe.com/author/stockcer/" rel="author">
+					              Written by David Bauernschmidt 					</a>
+				                </div>  <!-- c-author -->
+                                                <span class="meta-sep">|</span>                              
+                                                <div class="post-date">Thursday,24 October 2013  12 00 PM</div>
+                                                <div class="clear"></div>
+			               </div><!-- .entry-meta -->
+
+					<div class="entry-content">
+						<ul id="sharebar" style="width: 65px; margin-left: -85px; display: block; position: fixed; top: 10px;">
+<li><script type="text/javascript">(function() { var s = document.createElement('SCRIPT'), s1 = document.getElementsByTagName('SCRIPT')[0]; s.type = 'text/javascript'; s.async = true; s.src = 'http://widgets.digg.com/buttons.js'; s1.parentNode.insertBefore(s, s1); })(); </script><a class="DiggThisButton DiggMedium"></a></li><li><iframe style="width: 58px; height: 62px;" data-twttr-rendered="true" title="Twitter Tweet Button" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-vertical" src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/tweet_button.htm" allowtransparency="true" scrolling="no" id="twitter-widget-0" frameborder="0"></iframe><script type="text/javascript" src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/widgets.js"></script></li><li><iframe src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/like.htm" scrolling="no" style="border:none; overflow:hidden; width:45px; height:60px;" allowtransparency="true" frameborder="0"></iframe></li><li><script type="text/javascript" src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/buttons.js"></script><span st_processed="yes" class="st_facebook_vcount" displaytext="Share"><span class="stButton" style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;"><div><div style="display: block;" class="stBubble"><div class="stBubble_count">2</div></div><span style="background-image: url(&quot;http://w.sharethis.com/images/facebook_counter.png&quot;);" class="stMainServices st-facebook-counter">&nbsp;</span></div></span></span><span st_processed="yes" class="st_email" displaytext="Email"><span class="stButton" style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;"><span class="chicklets email">Email</span></span></span><span st_processed="yes" class="st_sharethis" displaytext="Share"><span class="stButton" style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;"><span class="chicklets sharethis">Share</span></span></span></li></ul><ul style="" id="sharebarx">
+<li><script type="text/javascript">(function() { var s = document.createElement('SCRIPT'), s1 = document.getElementsByTagName('SCRIPT')[0]; s.type = 'text/javascript'; s.async = true; s.src = 'http://widgets.digg.com/buttons.js'; s1.parentNode.insertBefore(s, s1); })(); </script><a class="DiggThisButton DiggCompact"></a></li><li><iframe style="width: 109px; height: 20px;" data-twttr-rendered="true" title="Twitter Tweet Button" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal" src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/tweet_button_002.htm" allowtransparency="true" scrolling="no" id="twitter-widget-1" frameborder="0"></iframe><script type="text/javascript" src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/widgets.js"></script></li><li><iframe src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/like_002.htm" scrolling="no" style="border:none; overflow:hidden; width:85px; height:21px;" allowtransparency="true" frameborder="0"></iframe></li><li><span st_processed="yes" class="st_facebook_hcount" displaytext="Share"><span class="stButton" style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;"><span><span style="background-image: url(&quot;http://w.sharethis.com/images/facebook_counter.png&quot;);" class="stMainServices st-facebook-counter">&nbsp;</span><span class="stArrow"><span style="display: inline-block;" class="stButton_gradient stHBubble"><span class="stBubble_hcount">2</span></span></span></span></span></span><span st_processed="yes" class="st_email" displaytext="Email"><span class="stButton" style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;"><span class="chicklets email">Email</span></span></span><span st_processed="yes" class="st_sharethis" displaytext="Share"><span class="stButton" style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;"><span class="chicklets sharethis">Share</span></span></span></li></ul><p>In my continuing detailed blogs in reference to <a href="http://blog.arvixe.com/issues-when-trying-to-use-multipart-form-data-with-jquery-ajax-forms/">Issues when trying to use multipart form data with jquery ajax forms</a>,
+ I want to talk about using AJAX to send Multipart forms. Although you 
+might think that sending multipart data is the akin to sending data 
+using Jquery and web.api, you would be very wrong. In many ways it is 
+more difficult. In the simplest explanation, processing a multipart form
+ is like building the data transport between the client and the server 
+from scratch. Most of the time you could just put the field names and 
+values in a JSON syntax or something similar and just pass it to the 
+server for processing. However; with multipart forms you are not only 
+sending the additional attributes but you are sending an actual file. 
+This means that your server side web service, api, or MVC must get the 
+object in a way that it can understand both the attributes and the file.<span id="more-32883"></span><br>
+Although this might sound confusing let’s look at an example. I have a 
+form which allows the user to add personal information and then allows 
+them to upload (email) their resume. (Figure 1) Using .net I could just 
+write the necessary code in the code behind but I want to do this using 
+async processing.<br>
+Using jquery and html 5 syntax, I could use the Dataform and bind all of this and send it to server. Like this.</p>
+<div><div id="highlighter_899150" class="syntaxhighlighter notranslate jscript"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="jscript keyword">var</code> <code class="jscript plain">formURL = </code><code class="jscript string">"api/applicant/Upload"</code></div><div class="line number2 index1 alt1"><code class="jscript keyword">var</code> <code class="jscript plain">jForm = </code><code class="jscript keyword">new</code> <code class="jscript plain">FormData();</code></div><div class="line number3 index2 alt2"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">jForm.append(</code><code class="jscript string">"txtHighSchool"</code><code class="jscript plain">, $(</code><code class="jscript string">'#txtHighSchool'</code><code class="jscript plain">).val());</code></div><div class="line number4 index3 alt1"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">jForm.append(</code><code class="jscript string">"txtCollege"</code><code class="jscript plain">, $(</code><code class="jscript string">'#txtCollege'</code><code class="jscript plain">).val());</code></div><div class="line number5 index4 alt2"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">jForm.append(</code><code class="jscript string">"txtTraining"</code><code class="jscript plain">, $(</code><code class="jscript string">'#txtTraining'</code><code class="jscript plain">).val());</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">jForm.append(</code><code class="jscript string">"file"</code><code class="jscript plain">, $(</code><code class="jscript string">'#file'</code><code class="jscript plain">).get(0).files[0]);</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">$.ajax({</code></div><div class="line number10 index9 alt1"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">url: formURL,</code></div><div class="line number11 index10 alt2"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">type: </code><code class="jscript string">"POST"</code><code class="jscript plain">,</code></div><div class="line number12 index11 alt1"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">data: jForm,</code></div><div class="line number13 index12 alt2"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">mimeType: </code><code class="jscript string">"multipart/form-data"</code><code class="jscript plain">,</code></div><div class="line number14 index13 alt1"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">contentType: </code><code class="jscript keyword">false</code><code class="jscript plain">,</code></div><div class="line number15 index14 alt2"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">cache: </code><code class="jscript keyword">false</code><code class="jscript plain">,</code></div><div class="line number16 index15 alt1"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">processData: </code><code class="jscript keyword">false</code><code class="jscript plain">,</code></div><div class="line number17 index16 alt2"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">success: </code><code class="jscript keyword">function</code> <code class="jscript plain">(data, textStatus, jqXHR) {</code></div><div class="line number18 index17 alt1"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">}</code></div><div class="line number19 index18 alt2"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">},</code></div><div class="line number20 index19 alt1"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">error: </code><code class="jscript keyword">function</code> <code class="jscript plain">(jqXHR, textStatus, errorThrown) {</code></div><div class="line number21 index20 alt2"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">}</code></div><div class="line number22 index21 alt1"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">}</code></div><div class="line number23 index22 alt2"><code class="jscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="jscript plain">});</code></div></div></td></tr></tbody></table></div></div>
+<p>Instead of adding each field individually I could just do this</p>
+<div><div id="highlighter_673821" class="syntaxhighlighter notranslate jscript"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="jscript keyword">var</code> <code class="jscript plain">form = document.getElementById(</code><code class="jscript string">'form-id'</code><code class="jscript plain">);</code></div><div class="line number2 index1 alt1"><code class="jscript keyword">var</code> <code class="jscript plain">formData = </code><code class="jscript keyword">new</code> <code class="jscript plain">FormData(form);</code></div></div></td></tr></tbody></table></div></div>
+<p>However; I like having complete control over the form’s object.<br>
+That’s all there is ….This is great but what if you need to allow a 
+browser that does not have formdata available. (I am glad you asked.) My
+ <a href="http://blog.arvixe.com/how-to-send-multipart-data-without-using-html5-formdata/">next blog</a> will talk about your options there. You might also be wondering what does the server side code look like….That is coming up.</p>
+<p>Looking for quality web hosting? Look no further than&nbsp;<a href="http://www.arvixe.com/">Arvixe Web Hosting</a>!</p>
+											</div><!-- .entry-content -->
+
+
+
+					<div class="entry-utility">
+                                					<span class="tag-links">
+						<span class="entry-utility-prep entry-utility-prep-tag-links">Tags: </span> <a href="http://blog.arvixe.com/tag/ajax/" rel="tag">ajax</a>, <a href="http://blog.arvixe.com/tag/form/" rel="tag">Form</a>, <a href="http://blog.arvixe.com/tag/how-to/" rel="tag">how to</a>, <a href="http://blog.arvixe.com/tag/jquery/" rel="tag">jQuery</a>, <a href="http://blog.arvixe.com/tag/multipart/" rel="tag">multipart</a>, <a href="http://blog.arvixe.com/tag/send/" rel="tag">send</a>, <a href="http://blog.arvixe.com/tag/use/" rel="tag">use</a>, <a href="http://blog.arvixe.com/tag/using/" rel="tag">using</a>					</span>
+					<span class="meta-sep">|</span>
+													<span class="cat-links">
+						<span class="entry-utility-prep entry-utility-prep-cat-links">Posted under</span> <a href="http://blog.arvixe.com/category/asp-net-4/" rel="category tag">ASP .NET 4.0</a>, <a href="http://blog.arvixe.com/category/programming-coding/" rel="category tag">Programming/Coding</a>					</span>
+					<span class="meta-sep">|</span>
+								
+				<a target="_blank" href="http://blog.arvixe.com/feed/"><span class="rss-link">RSS 2.0</span></a>
+				                                <div class="clear"></div>
+			</div><!-- .entry-utility -->
+                        <div class="pst-shadow"><img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/post-shadow.png"></div>
+                        
+					<div id="entry-author-info">
+                                                <h1>Author Spotlight</h1>
+                                            <div class="author-main-desc">
+						<div id="author-avatar">
+							<img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/StockCer-7.jpg" alt="David Bauernschmidt" height="60" width="60">						</div><!-- #author-avatar -->
+						<div id="author-description">
+							<h2> David Bauernschmidt</h2>
+							I live in the historical triangle of Virginia where I am married 
+with two daughters.  I  have spent over 13 years working for a Fortune 
+500 company in the computer area.  I started in VB 6.0 and by the time I
+ ended my employment I was supervising a development team where we built
+ many web applications.  When my first daughter was born I wanted to 
+spend more time with her so I left and became a programmer analyst for 
+local government as well as launch my own company. Since then I have 
+grown <a href="http://www.jamesriverwebs.com/">James River Webs </a>into
+ a profitable web design and application company helping small 
+businesses create a big presence on the internet.  As an employee I have
+ created web application used by citizens and other companies.  I enjoy 
+fly fishing, and spending time with my family.  I also enjoy learning 
+new approaches and development tools when it comes to developing 
+applications.							
+                                           
+						</div><!-- #author-description -->
+                                                <div class="clear"></div>
+                                            </div> <!--- author-main-desc -->
+                                                 <div class="author-meta-footer">
+                                                    <div id="author-link">
+								<a href="http://blog.arvixe.com/author/stockcer/" rel="author">
+									More posts by the David Bauernschmidt								</a>
+							</div><!-- #author-link	-->
+                                                        <span class="meta-sep">|</span>
+                                                        
+                                                     <div class="author-web">
+                                                              <a target="_blank" rel="nofollow" href="http://www.jamesriverwebs.com/">Personal Website</a> </div>
+                                                         <!-- <span class="meta-sep">|</span>
+                                                          <div class="author-share"><a href="#"><img src="http://blog.arvixe.com/wp-content/uploads/2013/07/twitter1.png"/></a><a href="#"><img src="http://blog.arvixe.com/wp-content/uploads/2013/07/fb1.png"/></a><a href="#"><img src="http://blog.arvixe.com/wp-content/uploads/2013/07/skype.png"/></a><a href="#"><img src="http://blog.arvixe.com/wp-content/uploads/2013/07/youtube.png"/></a></div> -->
+                                                     <div class="clear"></div>
+                                                 </div><!-- author-meta-footer -->
+                                                 
+					</div><!-- #entry-author-info -->
+                         
+				</div><!-- #post-## -->
+
+				<div id="nav-below" class="navigation">
+					<div class="nav-previous"><a href="http://blog.arvixe.com/zurmo-how-to-change-logo/" rel="prev"><span class="meta-nav">←</span> [Zurmo] How to Change Logo</a></div>
+					<div class="nav-next"><a href="http://blog.arvixe.com/how-to-use-the-htaccess-file/" rel="next">How to Use the .htaccess File <span class="meta-nav">→</span></a></div>
+				</div><!-- #nav-below -->
+
+				
+			<div id="comments">
+
+
+
+
+								<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://blog.arvixe.com/using-ajax-to-send-multipart-form/#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="http://blog.arvixe.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																			<p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" size="30" aria-required="true" type="text"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" size="30" aria-required="true" type="text"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" size="30" type="text"></p>
+<p class="cptch_block"><label>Please complete the following math problem:<span class="required"> *</span></label><br>		<input name="cptch_result" value="AdFI" type="hidden">
+		<input name="cptch_time" value="1424607810" type="hidden">
+		<input value="Version: 4.0.9" type="hidden">
+		9 × 8 =  <input id="cptch_input" class="cptch_input" autocomplete="off" name="cptch_number" maxlength="2" size="2" aria-required="true" required="required" style="margin-bottom:0;display:inline;font-size: 12px;width: 40px;" type="text"></p>												<p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						<p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a
+ href="" title="" rel=""&gt; &lt;abbr title=""&gt; &lt;acronym 
+title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; 
+&lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q 
+cite=""&gt; &lt;strike&gt; &lt;strong&gt; </code></p>						<p class="form-submit">
+							<input name="submit" id="submit" value="Post Comment" type="submit">
+							<input name="comment_post_ID" value="32883" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+						</p>
+						<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="4f4418909f" type="hidden"></p><p style="display: none;"></p>					<input id="ak_js" name="ak_js" value="1424607747356" type="hidden"></form>
+							</div><!-- #respond -->
+			
+</div><!-- #comments -->
+
+                        <div class="popular_post">
+<!-- WordPress Popular Posts Plugin v3.2.1 [W] [daily] [views] [regular] -->
+<div id="wpp-2">
+<h3 class="widget-title">Articles You May Like</h3>
+<ul class="wpp-list">
+<li><a href="http://blog.arvixe.com/manage-your-database-with-ssms-2012/" title="Manage Your Database with SSMS 2012" target="_self"></a> <a href="http://blog.arvixe.com/manage-your-database-with-ssms-2012/" title="Manage Your Database with SSMS 2012" class="wpp-post-title" target="_self">Manage Your Database with SSMS 2012</a>  <span class="post-stats"></span> </li>
+<li><a href="http://blog.arvixe.com/cpanel-setup-google-apps-mx-cname-and-spf-records/" title="cPanel – Setup Google Apps MX, CNAME and SPF records" target="_self"></a> <a href="http://blog.arvixe.com/cpanel-setup-google-apps-mx-cname-and-spf-records/" title="cPanel – Setup Google Apps MX, CNAME and SPF records" class="wpp-post-title" target="_self">cPanel – Setup Google Apps MX, CNAME and SPF records</a>  <span class="post-stats"></span> </li>
+<li><a href="http://blog.arvixe.com/setting-up-your-pop3imap-email-account/" title="Setting up Your POP3/IMAP email account" target="_self"></a> <a href="http://blog.arvixe.com/setting-up-your-pop3imap-email-account/" title="Setting up Your POP3/IMAP email account" class="wpp-post-title" target="_self">Setting up Your POP3/IMAP email account</a>  <span class="post-stats"></span> </li>
+<li><a href="http://blog.arvixe.com/how-to-add-addon-domains-to-your-website-using-cpanel/" title="How to Add Addon Domains to Your Website Using cPanel" target="_self"></a> <a href="http://blog.arvixe.com/how-to-add-addon-domains-to-your-website-using-cpanel/" title="How to Add Addon Domains to Your Website Using cPanel" class="wpp-post-title" target="_self">How to Add Addon Domains to Your Website Using cPanel</a>  <span class="post-stats"></span> </li>
+<li><a href="http://blog.arvixe.com/modifying-a-domains-name-servers/" title="Modifying a domain’s Name Servers" target="_self"></a> <a href="http://blog.arvixe.com/modifying-a-domains-name-servers/" title="Modifying a domain’s Name Servers" class="wpp-post-title" target="_self">Modifying a domain’s Name Servers</a>  <span class="post-stats"></span> </li>
+<li><a href="http://blog.arvixe.com/how-to-install-wordpress-from-your-cpanel-using-softaculous/" title="How to Install WordPress From Your cPanel Using Softaculous" target="_self"></a> <a href="http://blog.arvixe.com/how-to-install-wordpress-from-your-cpanel-using-softaculous/" title="How to Install WordPress From Your cPanel Using Softaculous" class="wpp-post-title" target="_self">How to Install WordPress From Your cPanel Using Softaculous</a>  <span class="post-stats"></span> </li>
+<li><a href="http://blog.arvixe.com/how-do-manage-your-domains-dns-records/" title="How do manage your domain(s) DNS records" target="_self"></a> <a href="http://blog.arvixe.com/how-do-manage-your-domains-dns-records/" title="How do manage your domain(s) DNS records" class="wpp-post-title" target="_self">How do manage your domain(s) DNS records</a>  <span class="post-stats"></span> </li>
+<li><a href="http://blog.arvixe.com/how-to-use-microsoft-sql-server-2008-to-connect-to-your-database/" title="How to Use Microsoft SQL Server 2008 to Connect to your Database" target="_self"></a> <a href="http://blog.arvixe.com/how-to-use-microsoft-sql-server-2008-to-connect-to-your-database/" title="How to Use Microsoft SQL Server 2008 to Connect to your Database" class="wpp-post-title" target="_self">How to Use Microsoft SQL Server 2008 to Connect to your Database</a>  <span class="post-stats"></span> </li>
+<li><a href="http://blog.arvixe.com/how-to-use-imapsize-to-backup-and-restore-your-imap-email-account/" title="How to use IMAPSize to backup and restore your IMAP email account" target="_self"></a> <a href="http://blog.arvixe.com/how-to-use-imapsize-to-backup-and-restore-your-imap-email-account/" title="How to use IMAPSize to backup and restore your IMAP email account" class="wpp-post-title" target="_self">How to use IMAPSize to backup and restore your IMAP email account</a>  <span class="post-stats"></span> </li>
+
+</ul>
+</div>
+<!-- End WordPress Popular Posts Plugin v3.2.1 -->
+<div class="clear"></div></div>
+			</div><!-- #content -->
+		</div><!-- #container -->
+
+
+		<div id="primary" class="widget-area" role="complementary">
+			<ul class="xoxo">
+
+<li id="newsletterwidget-2" class="widget-container widget_newsletterwidget"><h3 class="widget-title">Newsletter</h3>
+
+<script type="text/javascript">
+//<![CDATA[
+if (typeof newsletter_check !== "function") {
+window.newsletter_check = function (f) {
+    var re = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-]{1,})+\.)+([a-zA-Z0-9]{2,})+$/;
+    if (!re.test(f.elements["ne"].value)) {
+        alert("The email is not correct");
+        return false;
+    }
+    if (f.elements["ny"] && !f.elements["ny"].checked) {
+        alert("You must accept the privacy statement");
+        return false;
+    }
+    return true;
+}
+}
+//]]>
+</script>
+
+<div class="newsletter newsletter-widget">
+
+<script type="text/javascript">
+//<![CDATA[
+if (typeof newsletter_check !== "function") {
+window.newsletter_check = function (f) {
+    var re = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-]{1,})+\.)+([a-zA-Z0-9]{2,})+$/;
+    if (!re.test(f.elements["ne"].value)) {
+        alert("The email is not correct");
+        return false;
+    }
+    if (f.elements["ny"] && !f.elements["ny"].checked) {
+        alert("You must accept the privacy statement");
+        return false;
+    }
+    return true;
+}
+}
+//]]>
+</script>
+
+<form action="http://blog.arvixe.com/wp-content/plugins/newsletter/do/subscribe.php" onsubmit="return newsletter_check(this)" method="post"><input name="nr" value="widget" type="hidden"><p><input class="newsletter-firstname" name="nn" value="Name" onclick="if (this.defaultValue==this.value) this.value=''" onblur="if (this.value=='') this.value=this.defaultValue" type="text"></p><p><input class="newsletter-email" required="" name="ne" value="Email" onclick="if (this.defaultValue==this.value) this.value=''" onblur="if (this.value=='') this.value=this.defaultValue" type="email"></p><p><input class="newsletter-submit" value="Subscribe" type="submit"></p></form></div></li><li id="text-3" class="widget-container widget_text">			<div class="textwidget"><div class="s-search">
+<h1>Search for:</h1>
+<form action="http://blog.arvixe.com/" id="searchform" method="get" role="search">
+ <div><label for="s" class="screen-reader-text">Search for:</label>
+ <input id="s" name="s" onblur="if(this.value=='')this.value='keywords...';" onfocus="if(this.value=='keywords...')this.value='';" value="keywords..." type="text">
+ <input value="search" id="sidebar-search" <img="" src="" type="submit">
+ </div>
+    </form>
+</div></div>
+		</li>		<li id="authors-4" class="widget-container widget_authors">			<h3 class="widget-title">Authors</h3>			<select onchange="window.location=this.options[this.selectedIndex].value">
+<option selected="selected" value="#">Select Author...</option>
+<option value="http://blog.arvixe.com/author/abner/">Abner Myloth</option>
+<option value="http://blog.arvixe.com/author/adam/">Adam Bryner</option>
+<option value="http://blog.arvixe.com/author/adrian-rick/">Adrian Rick</option>
+<option value="http://blog.arvixe.com/author/alex/">Alex Ali</option>
+<option value="http://blog.arvixe.com/author/alvaro/">Alvaro A</option>
+<option value="http://blog.arvixe.com/author/anandn/">Anand Narayanaswamy</option>
+<option value="http://blog.arvixe.com/author/andrea/">Andrea B.</option>
+<option value="http://blog.arvixe.com/author/crossy4life/">Andrew Cross</option>
+<option value="http://blog.arvixe.com/author/usernt/">Andrew Ivanov</option>
+<option value="http://blog.arvixe.com/author/silexlabs/">Antonin</option>
+<option value="http://blog.arvixe.com/author/archana-jade/">Archana Jade</option>
+<option value="http://blog.arvixe.com/author/arian/">Arian Jahansouz</option>
+<option value="http://blog.arvixe.com/author/arvand/">Arvand Sabetian</option>
+<option value="http://blog.arvixe.com/author/avesta/">Avesta Sabetian</option>
+<option value="http://blog.arvixe.com/author/ben/">Ben Salisbury</option>
+<option value="http://blog.arvixe.com/author/bobray/">Bob Ray</option>
+<option value="http://blog.arvixe.com/author/brentriggs/">Brent Riggs</option>
+<option value="http://blog.arvixe.com/author/brian/">Brian Timm</option>
+<option value="http://blog.arvixe.com/author/bryce/">Bryce Abbott</option>
+<option value="http://blog.arvixe.com/author/carolebennett/">Carole Bennett</option>
+<option value="http://blog.arvixe.com/author/tattooboy/">Charles Benson</option>
+<option value="http://blog.arvixe.com/author/chris-lamb/">Chris Lamb</option>
+<option value="http://blog.arvixe.com/author/chris-worley/">Chris Worley</option>
+<option value="http://blog.arvixe.com/author/christine-chung/">Christine Chung</option>
+<option value="http://blog.arvixe.com/author/craig/">Craig Rorrer</option>
+<option value="http://blog.arvixe.com/author/dale/">Dale Peterson</option>
+<option value="http://blog.arvixe.com/author/stockcer/">David Bauernschmidt</option>
+<option value="http://blog.arvixe.com/author/tenken/">David Gurba</option>
+<option value="http://blog.arvixe.com/author/evlsnoopy/">Eric Anderson</option>
+<option value="http://blog.arvixe.com/author/nemo/">Fabio Porta</option>
+<option value="http://blog.arvixe.com/author/francois/">Francois Letendre</option>
+<option value="http://blog.arvixe.com/author/glenn/">Glenn O.</option>
+<option value="http://blog.arvixe.com/author/goran/">Goran Ilic</option>
+<option value="http://blog.arvixe.com/author/gregg-hawkins/">Gregg Hawkins</option>
+<option value="http://blog.arvixe.com/author/phenry/">Henry Soria</option>
+<option value="http://blog.arvixe.com/author/ianmcintosh/">Ian McIntosh</option>
+<option value="http://blog.arvixe.com/author/tomatocart/">Jack Yin</option>
+<option value="http://blog.arvixe.com/author/jai-awasthi/">Jai Awasthi</option>
+<option value="http://blog.arvixe.com/author/jimd/">Jim Davidson</option>
+<option value="http://blog.arvixe.com/author/avvici/">Joe Stenhouse</option>
+<option value="http://blog.arvixe.com/author/fullauto/">John Cashimer</option>
+<option value="http://blog.arvixe.com/author/johnnyb/">JohnnyB</option>
+<option value="http://blog.arvixe.com/author/justin-scott/">Justin Scott</option>
+<option value="http://blog.arvixe.com/author/karen-s/">Karen S</option>
+<option value="http://blog.arvixe.com/author/keithpotz/">Keith Pottratz</option>
+<option value="http://blog.arvixe.com/author/kabom/">Kemin Bao</option>
+<option value="http://blog.arvixe.com/author/kendo451/">Ken Griffith</option>
+<option value="http://blog.arvixe.com/author/kevin-hall/">kevin.hall</option>
+<option value="http://blog.arvixe.com/author/khaleel/">Khaleel Demeri</option>
+<option value="http://blog.arvixe.com/author/kim-middleton/">Kim Middleton</option>
+<option value="http://blog.arvixe.com/author/l-k/">Lavish Kumar</option>
+<option value="http://blog.arvixe.com/author/leadzer/">Leadzer</option>
+<option value="http://blog.arvixe.com/author/manniat/">ManniAT</option>
+<option value="http://blog.arvixe.com/author/michael-blandford/">Michael Blandford</option>
+<option value="http://blog.arvixe.com/author/michaelcarr/">Michael Carr</option>
+<option value="http://blog.arvixe.com/author/michelle-deal/">Michelle Deal</option>
+<option value="http://blog.arvixe.com/author/mike-hoffman/">Mike Hoffman</option>
+<option value="http://blog.arvixe.com/author/mjparadac/">Milton Parada</option>
+<option value="http://blog.arvixe.com/author/mitpatoliya/">mitpatoliya</option>
+<option value="http://blog.arvixe.com/author/mohsin-sarfraz/">Mohsin Sarfraz</option>
+<option value="http://blog.arvixe.com/author/mourad/">Mourad Dmeiri</option>
+<option value="http://blog.arvixe.com/author/mscott/">Mscott</option>
+<option value="http://blog.arvixe.com/author/naveed/">Naveed Ashraf</option>
+<option value="http://blog.arvixe.com/author/nicmare/">Nic Bug</option>
+<option value="http://blog.arvixe.com/author/nick-azzo/">Nick Azzo</option>
+<option value="http://blog.arvixe.com/author/noah/">Noah S</option>
+<option value="http://blog.arvixe.com/author/patrick-stein/">Patrick Stein</option>
+<option value="http://blog.arvixe.com/author/petecooper/">Pete Cooper</option>
+<option value="http://blog.arvixe.com/author/praeritg/">praeritg</option>
+<option value="http://blog.arvixe.com/author/raymond/">Raymond Wong</option>
+<option value="http://blog.arvixe.com/author/richardenglish/">Richard English</option>
+<option value="http://blog.arvixe.com/author/juapo2services/">Richi González</option>
+<option value="http://blog.arvixe.com/author/rick/">Rick Hubka</option>
+<option value="http://blog.arvixe.com/author/rjcalifornia/">Rodolfo Hernandez</option>
+<option value="http://blog.arvixe.com/author/ryan/">ryan</option>
+<option value="http://blog.arvixe.com/author/sandeep-krishnan/">Sandeep</option>
+<option value="http://blog.arvixe.com/author/saravanan-shanmugam/">Saravanan Shanmugam</option>
+<option value="http://blog.arvixe.com/author/scott-white/">Scott White</option>
+<option value="http://blog.arvixe.com/author/gilliland/">Sean Gilliland-Sauer</option>
+<option value="http://blog.arvixe.com/author/sefket-nouri/">Sefket Nouri</option>
+<option value="http://blog.arvixe.com/author/shai/">Shai Ben-Naphtali</option>
+<option value="http://blog.arvixe.com/author/solomon/">Solomon Reda</option>
+<option value="http://blog.arvixe.com/author/sreenath/">Sreenath V</option>
+<option value="http://blog.arvixe.com/author/liphpfox/">Stephanie Brown</option>
+<option value="http://blog.arvixe.com/author/steve/">Stephen Holsapple</option>
+<option value="http://blog.arvixe.com/author/steve-jarvis/">Steve Jarvis</option>
+<option value="http://blog.arvixe.com/author/taylor/">Taylor Toussaint</option>
+<option value="http://blog.arvixe.com/author/webdoc/">Teet Bergmann</option>
+<option value="http://blog.arvixe.com/author/tjmarsh/">TJ Marsh</option>
+<option value="http://blog.arvixe.com/author/victor/">Victor Gebhardt</option>
+<option value="http://blog.arvixe.com/author/windsor/">Windsor Wallaby</option>
+<option value="http://blog.arvixe.com/author/lam-cherk/">wooncherk</option>
+<option value="http://blog.arvixe.com/author/yiannis/">Yiannis Androulakis</option>
+<option value="http://blog.arvixe.com/author/stefano/">Zapp Brannigan</option>
+<option value="http://blog.arvixe.com/author/zee/">ZArvixe</option>
+</select>					</li>	<li id="recent-comments-2" class="widget-container widget_recent_comments"><h3 class="widget-title">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://www.bloggingstart.com/arvixe-coupon-code/" rel="external nofollow" class="url">Noman</a></span> on <a href="http://blog.arvixe.com/annual-black-friday-web-hosting-sale-50-percent-discount-for-life/comment-page-1/#comment-284226">Annual Black Friday Web Hosting Sale: 50% Discount for Life!</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.arvixe.com/" rel="external nofollow" class="url">Noah S</a></span> on <a href="http://blog.arvixe.com/how-do-i-configure-pop3-mail-account-using-microsoft-outlook/comment-page-1/#comment-284115">How to Configure POP3 Mail Account using Microsoft Outlook</a></li><li class="recentcomments"><span class="comment-author-link">jasveer</span> on <a href="http://blog.arvixe.com/how-do-i-configure-pop3-mail-account-using-microsoft-outlook/comment-page-1/#comment-284092">How to Configure POP3 Mail Account using Microsoft Outlook</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.arvixe.com/" rel="external nofollow" class="url">Noah S</a></span> on <a href="http://blog.arvixe.com/setting-up-your-pop3imap-email-account/comment-page-1/#comment-283956">Setting up Your POP3/IMAP email account</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.swsocialweb.com/shop" rel="external nofollow" class="url">Rodolfo Hernandez</a></span> on <a href="http://blog.arvixe.com/how-to-restart-application-pool-in-websitepanel/comment-page-1/#comment-283952">How to Restart Application Pool in WebsitePanel</a></li></ul></li><li id="tag_cloud-2" class="widget-container widget_tag_cloud"><h3 class="widget-title">Tags</h3><div class="tagcloud"><a href="http://blog.arvixe.com/tag/7/" class="tag-link-1166" title="111 topics" style="font-size: 8.5223880597pt;">7</a>
+<a href="http://blog.arvixe.com/tag/add/" class="tag-link-520" title="318 topics" style="font-size: 13.223880597pt;">add</a>
+<a href="http://blog.arvixe.com/tag/adding/" class="tag-link-1319" title="173 topics" style="font-size: 10.5074626866pt;">adding</a>
+<a href="http://blog.arvixe.com/tag/admin/" class="tag-link-510" title="104 topics" style="font-size: 8.20895522388pt;">admin</a>
+<a href="http://blog.arvixe.com/tag/alfresco/" class="tag-link-3526" title="107 topics" style="font-size: 8.31343283582pt;">Alfresco</a>
+<a href="http://blog.arvixe.com/tag/arvixe/" class="tag-link-36" title="193 topics" style="font-size: 11.0298507463pt;">arvixe</a>
+<a href="http://blog.arvixe.com/tag/bucket/" class="tag-link-471" title="124 topics" style="font-size: 9.0447761194pt;">bucket</a>
+<a href="http://blog.arvixe.com/tag/change/" class="tag-link-507" title="147 topics" style="font-size: 9.77611940299pt;">change</a>
+<a href="http://blog.arvixe.com/tag/clip/" class="tag-link-470" title="125 topics" style="font-size: 9.0447761194pt;">clip</a>
+<a href="http://blog.arvixe.com/tag/clipbucket/" class="tag-link-469" title="132 topics" style="font-size: 9.25373134328pt;">ClipBucket</a>
+<a href="http://blog.arvixe.com/tag/cms/" class="tag-link-794" title="204 topics" style="font-size: 11.2388059701pt;">CMS</a>
+<a href="http://blog.arvixe.com/tag/cpanel/" class="tag-link-17" title="306 topics" style="font-size: 13.1194029851pt;">cPanel/Linux Hosting</a>
+<a href="http://blog.arvixe.com/tag/create/" class="tag-link-147" title="196 topics" style="font-size: 11.0298507463pt;">create</a>
+<a href="http://blog.arvixe.com/tag/dolphin/" class="tag-link-110" title="221 topics" style="font-size: 11.6567164179pt;">dolphin</a>
+<a href="http://blog.arvixe.com/tag/elgg-2/" class="tag-link-637" title="255 topics" style="font-size: 12.2835820896pt;">elgg</a>
+<a href="http://blog.arvixe.com/tag/elgg-hosting/" class="tag-link-1262" title="99 topics" style="font-size: 8pt;">Elgg Hosting</a>
+<a href="http://blog.arvixe.com/tag/elgg-tutorials/" class="tag-link-1258" title="107 topics" style="font-size: 8.31343283582pt;">elgg tutorials</a>
+<a href="http://blog.arvixe.com/tag/email/" class="tag-link-101" title="112 topics" style="font-size: 8.5223880597pt;">email</a>
+<a href="http://blog.arvixe.com/tag/how/" class="tag-link-706" title="173 topics" style="font-size: 10.5074626866pt;">how</a>
+<a href="http://blog.arvixe.com/tag/how-to/" class="tag-link-127" title="2,177 topics" style="font-size: 22pt;">how to</a>
+<a href="http://blog.arvixe.com/tag/install/" class="tag-link-125" title="380 topics" style="font-size: 14.0597014925pt;">install</a>
+<a href="http://blog.arvixe.com/tag/joomla/" class="tag-link-34" title="134 topics" style="font-size: 9.35820895522pt;">joomla</a>
+<a href="http://blog.arvixe.com/tag/module/" class="tag-link-530" title="153 topics" style="font-size: 9.98507462687pt;">module</a>
+<a href="http://blog.arvixe.com/tag/mojoportal-2/" class="tag-link-680" title="148 topics" style="font-size: 9.77611940299pt;">mojoPortal</a>
+<a href="http://blog.arvixe.com/tag/net/" class="tag-link-518" title="100 topics" style="font-size: 8pt;">net</a>
+<a href="http://blog.arvixe.com/tag/new/" class="tag-link-269" title="126 topics" style="font-size: 9.0447761194pt;">New</a>
+<a href="http://blog.arvixe.com/tag/panel/" class="tag-link-519" title="124 topics" style="font-size: 9.0447761194pt;">panel</a>
+<a href="http://blog.arvixe.com/tag/php/" class="tag-link-32" title="109 topics" style="font-size: 8.41791044776pt;">php</a>
+<a href="http://blog.arvixe.com/tag/plugin/" class="tag-link-1309" title="114 topics" style="font-size: 8.62686567164pt;">plugin</a>
+<a href="http://blog.arvixe.com/tag/security-2/" class="tag-link-638" title="106 topics" style="font-size: 8.31343283582pt;">security</a>
+<a href="http://blog.arvixe.com/tag/setup/" class="tag-link-105" title="166 topics" style="font-size: 10.2985074627pt;">setup</a>
+<a href="http://blog.arvixe.com/tag/set-up/" class="tag-link-126" title="206 topics" style="font-size: 11.3432835821pt;">set up</a>
+<a href="http://blog.arvixe.com/tag/site/" class="tag-link-214" title="246 topics" style="font-size: 12.0746268657pt;">site</a>
+<a href="http://blog.arvixe.com/tag/socialengine/" class="tag-link-791" title="110 topics" style="font-size: 8.5223880597pt;">socialengine</a>
+<a href="http://blog.arvixe.com/tag/softaculous/" class="tag-link-297" title="149 topics" style="font-size: 9.88059701493pt;">softaculous</a>
+<a href="http://blog.arvixe.com/tag/tips/" class="tag-link-944" title="127 topics" style="font-size: 9.14925373134pt;">tips</a>
+<a href="http://blog.arvixe.com/tag/to/" class="tag-link-707" title="158 topics" style="font-size: 10.0895522388pt;">to</a>
+<a href="http://blog.arvixe.com/tag/tomatocart/" class="tag-link-1286" title="125 topics" style="font-size: 9.0447761194pt;">TomatoCart</a>
+<a href="http://blog.arvixe.com/tag/use/" class="tag-link-148" title="214 topics" style="font-size: 11.447761194pt;">use</a>
+<a href="http://blog.arvixe.com/tag/using/" class="tag-link-1716" title="167 topics" style="font-size: 10.4029850746pt;">using</a>
+<a href="http://blog.arvixe.com/tag/video/" class="tag-link-1074" title="185 topics" style="font-size: 10.8208955224pt;">video</a>
+<a href="http://blog.arvixe.com/tag/web/" class="tag-link-150" title="178 topics" style="font-size: 10.6119402985pt;">web</a>
+<a href="http://blog.arvixe.com/tag/website/" class="tag-link-215" title="224 topics" style="font-size: 11.6567164179pt;">website</a>
+<a href="http://blog.arvixe.com/tag/websitepanel/" class="tag-link-513" title="174 topics" style="font-size: 10.5074626866pt;">websitepanel</a>
+<a href="http://blog.arvixe.com/tag/wordpress/" class="tag-link-37" title="162 topics" style="font-size: 10.1940298507pt;">WordPress</a></div>
+</li>			</ul>
+		</div><!-- #primary .widget-area -->
+
+	</div><!-- #main -->
+</div><!-- #wrapper -->
+	<div id="footer" role="contentinfo">
+<div width="200px">
+<table cellpadding="0" cellspacing="0" width="1000">
+    <tbody><tr>
+        <td height="20">
+        </td>
+    </tr>
+    <tr>
+        <td width="1000">
+
+                            <table style="background: #d0dde9 url('http://www.arvixe.com/images/bottom/software_bg.png');" cellpadding="0" cellspacing="0" width="1000">
+                    <tbody><tr>
+                        <td style="padding: 20px 20px 20px 20px;width: 210px;" align="left" valign="top">
+                            <a href="http://www.arvixe.com/" class="bottom_links_header">Web Hosting</a><br><br>
+                            <a href="http://www.arvixe.com/linux_web_hosting" class="bottom_links">Linux Hosting</a><br>
+                            <a href="http://www.arvixe.com/asp_net_web_hosting" class="bottom_links">ASP
+                                .NET Hosting</a><br>
+                            <a href="http://www.arvixe.com/business_web_hosting" class="bottom_links">Business&nbsp;Hosting</a><br>
+                            <a href="http://www.arvixe.com/reseller_web_hosting" class="bottom_links">Reseller&nbsp;Hosting</a><br>
+                            <a href="http://www.arvixe.com/managed_dedicated_servers" class="bottom_links">Dedicated Servers</a><br>
+                            <br>
+                            <a href="http://www.arvixe.com/alerts" class="bottom_links">Server Alerts</a><br>
+                            <a href="http://www.arvixe.com/aup.php" class="bottom_links">Acceptable Use Policy</a><br>
+                            <a href="http://www.arvixe.com/tos.php" class="bottom_links">Terms of Service</a><br>
+                            <a href="http://www.arvixe.com/pp.php" class="bottom_links">Privacy Policy</a><br>
+                            <br>
+                            <a href="http://affiliates.arvixe.com/" class="bottom_links">Affiliate Program</a><br>
+                            <a href="http://www.arvixe.com/sitemap.php" class="bottom_links">Site Map</a><br><br>
+
+                        </td>
+                                                        <td style="background: #a8c2d9; width: 1px;"></td>
+                                <td style="background: #ffffff; width: 1px;">
+                                </td><td style="padding: 20px; 20px; 20px; 20px; width: 210px;" align="left" valign="top">
+                            
+                            <a href="http://www.arvixe.com/blog_hosting" class="bottom_links_header">Blog                                &nbsp;Hosting</a><br><br>
+                                                            <a href="http://www.arvixe.com/wordpress_hosting" class="bottom_links">WordPress&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/ExpressionEngine_hosting" class="bottom_links">ExpressionEngine&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/Movable_Type_hosting" class="bottom_links">Movable Type&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/habari_hosting" class="bottom_links">Habari&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/textpattern_hosting" class="bottom_links">Textpattern&nbsp;Hosting</a>
+                                <br>
+                                                            <br><br>
+                            <a href="http://www.arvixe.com/cms_hosting" class="bottom_links_header">CMS                                &nbsp;Hosting</a><br><br>
+                                                            <a href="http://www.arvixe.com/joomla_hosting" class="bottom_links">Joomla&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/drupal_hosting" class="bottom_links">Drupal&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/modx_hosting" class="bottom_links">MODX&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/concrete5_hosting" class="bottom_links">Concrete5&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/xoops_hosting" class="bottom_links">Xoops&nbsp;Hosting</a>
+                                <br>
+                                                            </td>                                <td style="background: #a8c2d9; width: 1px;"></td>
+                                <td style="background: #ffffff; width: 1px;">
+                                </td><td style="padding: 20px; 20px; 20px; 20px; width: 210px;" align="left" valign="top">
+                            
+                            <a href="http://www.arvixe.com/ecommerce_hosting" class="bottom_links_header">Ecommerce                                &nbsp;Hosting</a><br><br>
+                                                            <a href="http://www.arvixe.com/nopcommerce_hosting" class="bottom_links">nopCommerce&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/opencart_hosting" class="bottom_links">OpenCart&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/magento_hosting" class="bottom_links">Magento&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/oscommerce_hosting" class="bottom_links">osCommerce&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/tomatocart_hosting" class="bottom_links">Tomato Cart&nbsp;Hosting</a>
+                                <br>
+                                                            <br><br>
+                            <a href="http://www.arvixe.com/video_sharing_hosting" class="bottom_links_header">Video Sharing Software                                &nbsp;Hosting</a><br><br>
+                                                            <a href="http://www.arvixe.com/clipbucket_hosting" class="bottom_links">ClipBucket&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/phpmotion_hosting" class="bottom_links">PHPMotion&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/clipshare_hosting" class="bottom_links">ClipShare&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/ostube_hosting" class="bottom_links">osTube&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/vShare_hosting" class="bottom_links">vShare&nbsp;Hosting</a>
+                                <br>
+                                                            </td>                                <td style="background: #a8c2d9; width: 1px;"></td>
+                                <td style="background: #ffffff; width: 1px;">
+                                </td><td style="padding: 20px; 20px; 20px; 20px; width: 210px;" align="left" valign="top">
+                            
+                            <a href="http://www.arvixe.com/forum_hosting" class="bottom_links_header">Forum                                &nbsp;Hosting</a><br><br>
+                                                            <a href="http://www.arvixe.com/xenforo_hosting" class="bottom_links">XenForo&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/vbulletin_hosting" class="bottom_links">vBulletin&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/mybb_hosting" class="bottom_links">MyBB&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/phpbb_hosting" class="bottom_links">phpBB&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/simplemachines_smf_hosting" class="bottom_links">Simple Machines&nbsp;Hosting</a>
+                                <br>
+                                                            <br><br>
+                            <a href="http://www.arvixe.com/social_network_hosting" class="bottom_links_header">Social Network and Community Website                                &nbsp;Hosting</a><br><br>
+                                                            <a href="http://www.arvixe.com/socialengine_hosting" class="bottom_links">SocialEngine&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/elgg_hosting" class="bottom_links">Elgg&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/dolphin_hosting" class="bottom_links">Dolphin&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/phpfox_hosting" class="bottom_links">phpfox&nbsp;Hosting</a>
+                                <br>
+                                                                <a href="http://www.arvixe.com/oxwall_hosting" class="bottom_links">OxWall&nbsp;Hosting</a>
+                                <br>
+                                                            </td>                    </tr>
+
+                </tbody></table>
+                        </td>
+    </tr>
+    <tr>
+        <td>
+                            <table cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td style="">
+
+                            <table style="margin: 20px 20px 20px 20px;">
+                                <tbody><tr>
+                                    <td>
+                                        <a href="http://facebook.arvixe.com/" target="_blank"><img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/facebook_icon.png" border="0"></a>
+                                    </td>
+                                    <td>
+                                        <a href="http://twitter.com/arvixe" target="_blank"><img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/twitter_icon.png" border="0"></a>
+                                    </td>
+                                    <td>
+                                        <a href="http://linkedin.arvixe.com/" target="_blank"><img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/linkedin_icon.png" border="0"></a>
+                                    </td>
+                                    <td>
+                                        <a href="https://plus.google.com/+arvixe/" target="_blank"><img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/gplus_icon.png" border="0"></a>
+                                    </td>
+                                    <td width="124"></td>
+                                    <td>
+                                        <img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/payment_icons.png" border="0">
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                </tbody></table>
+            
+    </td></tr><tr>
+
+        <td style="background: #eeeeee" align="center" height="30" valign="middle">
+                                <font class="cp">Copyright ©
+                        2003-2015 Arvixe, LLC. All trademarks are property of their legal owner.</font>
+                                                <script type="text/javascript">
+                    __compete_code = '25f19125dfcbc47e8a015876798a7c86';
+                    (function () {
+                        var s = document.createElement('script'),
+                            e = document.getElementsByTagName('script')[0];
+                        s.src = (document.location.protocol.toLowerCase() === 'https:' ? 'https:' : 'http:') +
+                        '//c.compete.com/bootstrap/25f19125dfcbc47e8a015876798a7c86/bootstrap.js ';
+                        s.type = 'text/javascript';
+                        s.async = true;
+                        if (e) {
+                            e.parentNode.insertBefore(s, e);
+                        }
+                    }());
+                </script>
+        </td>
+
+    </tr>
+    <tr>
+        <td style="background: #ffffff" height="5">
+        </td>
+    </tr>
+</tbody></table>
+<!--ARVIXE FOOTER END-->    
+   
+</div>          
+<div id="upper-footer" style="display:none;">
+</div>
+
+</div>
+
+		<div id="colophon" style="display:none;">
+                          <div class="social-icon"><a target="_blank" href="http://facebook.arvixe.com/"><img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/fb.png"></a><a target="_blank" href="http://twitter.com/arvixe"><img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/twitter.png"></a><a target="_blank" href="http://linkedin.arvixe.com/"><img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/linkedin.png"></a><a target="_blank" href="https://plus.google.com/+arvixe/"><img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/g.png"></a></div>
+                          <a target="_blank" href="http://blog.arvixe.com/partners.php"><img src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/cards.jpg" class="cards"></a>
+			  <div class="clear"></div>
+                          <div class="copyright">Copyright © 2003-2013 Arvixe, LLC. All trademarks are property of their legal owner. </div>
+		</div><!-- #colophon -->
+	<!-- #footer -->
+
+
+
+
+<!-- WP SyntaxHighlighter Ver.1.7.3 Begin -->
+<script type="text/javascript" src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/shCore.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/shAutoloader.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/shBrushXml.js"></script>
+<script type="text/javascript">//<![CDATA[
+	SyntaxHighlighter.autoloader(
+	"applescript	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushAppleScript.js?ver=3.0"
+	,"as3 actionscript3	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushAS3.js?ver=3.0"
+	,"bash shell	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushBash.js?ver=3.0"
+	,"cf coldfusion	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushColdFusion.js?ver=3.0"
+	,"cpp c	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js?ver=3.0"
+	,"c# c-sharp csharp	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js?ver=3.0"
+	,"css	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCss.js?ver=3.0"
+	,"delphi pas pascal	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushDelphi.js?ver=3.0"
+	,"diff patch	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushDiff.js?ver=3.0"
+	,"erl erlang	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushErlang.js?ver=3.0"
+	,"groovy	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushGroovy.js?ver=3.0"
+	,"java	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJava.js?ver=3.0"
+	,"jfx javafx	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJavaFX.js?ver=3.0"
+	,"js jscript javascript	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJScript.js?ver=3.0"
+	,"perl pl	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPerl.js?ver=3.0"
+	,"php	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPhp.js?ver=3.0"
+	,"plain text	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js?ver=3.0"
+	,"ps powershell	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPowerShell.js?ver=3.0"
+	,"py python	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPython.js?ver=3.0"
+	,"rails ror ruby rb	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushRuby.js?ver=3.0"
+	,"sass scss	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushSass.js?ver=3.0"
+	,"scala	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushScala.js?ver=3.0"
+	,"sql	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushSql.js?ver=3.0"
+	,"vb vbnet	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushVb.js?ver=3.0"
+	,"xml xhtml xslt html	http://blog.arvixe.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/scripts/shBrushXml.js?ver=3.0"
+	);
+	SyntaxHighlighter.defaults['auto-links'] = true;
+	SyntaxHighlighter.defaults['quick-code'] = true;
+	SyntaxHighlighter.defaults['title'] = '';
+	SyntaxHighlighter.defaults['class-name'] = 'notranslate';
+	SyntaxHighlighter.defaults['collapse'] = false;
+	SyntaxHighlighter.defaults['first-line'] = 1;
+	SyntaxHighlighter.defaults['gutter'] = true;
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['smart-tabs'] = true;
+	SyntaxHighlighter.defaults['tab-size'] = 4;
+	SyntaxHighlighter.defaults['toolbar'] = true;
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = "Can't find brush for: ";
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = "Brush wasn't configured for html-script option: ";
+	SyntaxHighlighter.all();
+	
+//]]></script>
+<!-- WP SyntaxHighlighter Ver.1.7.3 End -->
+<script type="text/javascript" src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/form.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/shCore_002.js"></script>
+<script type="text/javascript" src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/shBrushJScript.js"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "http://blog.arvixe.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "http://blog.arvixe.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+</script>
+<script type="text/javascript" src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/comment-reply.js"></script>
+
+
+<div style="position: absolute; top: -1999px; left: -1988px;" id="stcpDiv">ShareThis Copy and Paste</div><iframe style="display:none;" scrolling="no" src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/getSegment.htm" name="stSegmentFrame" id="stSegmentFrame" frameborder="0" height="0px" width="0px"></iframe><div style="display: none;" class="stwrapper stwrapper5x" id="stwrapper"><iframe src="Using%20AJAX%20to%20Send%20Multipart%20Form%20_%20Arvixe%20Blog_files/index.htm" scrolling="no" name="stLframe" class="stLframe" id="stLframe" allowtransparency="true" frameborder="0"></iframe></div><div onclick="javascript:stWidget.closeWidget();" id="stOverlay"></div></body></html>

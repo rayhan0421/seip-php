@@ -1,0 +1,1 @@
+1. we can create a composer.php in app/composer.php root folder 

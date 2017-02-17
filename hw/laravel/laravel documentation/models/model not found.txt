@@ -1,0 +1,12 @@
+This handler basically catches every error if there are no other specific handler were declared. To declare a specific (only for one type of error) you may use something like following in your 
+
+global.php file:
+
+App::error(function(Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
+
+    // Log the error
+    Log::error($exception);
+
+    // Redirect to error route with any message
+    return Redirect::to('error')->with('message', $exception->getMessage());
+});

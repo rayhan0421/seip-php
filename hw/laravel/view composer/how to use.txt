@@ -1,0 +1,5 @@
+Injecting Services With Blade
+==========================================
+make class 
+@inject in template file 
+call method

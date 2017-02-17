@@ -1,0 +1,6 @@
+1. Form Requests for Validation and Authorization 
+2. Method Injection 
+3. Contracts
+4. Event Annotations
+
+5.Commands & Handlers

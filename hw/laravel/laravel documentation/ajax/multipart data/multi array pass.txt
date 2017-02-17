@@ -1,0 +1,4 @@
+1.var formSubmit = $(this).serialize() + "&formSubmit=true";
+
+2. we don't need unserialize. we can use $_post['var'];
+foreach for multi;

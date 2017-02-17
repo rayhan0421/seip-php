@@ -1,0 +1,46 @@
+$coleccion = Album:: all ();
+
+$new = $coleccion-> filter( function( $album)
+      {
+        if ( $album-> artist == 'Something Corporate' ) {
+    return true;
+       }
+ });
+
+2. sort
+
+$coleccion = Album:: all ();
+
+$coleccion-> sort( function( $a, $b)
+ {
+ $a = $a-> ano;
+ $b = $b-> ano;
+ if ( $a === $b) {
+ return 0;
+ }
+ return ( $a > $b) ? 1 : - 1 ;
+ });
+
+ $coleccion-> each( function( $album)
+ {
+ var_dump( $album-> ano);
+});
+
+3.Reverse
+
+$coleccion = Album:: all ();
+
+$coleccion-> each( function( $album)
+ {
+ var_dump( $album-> titulo);
+ });
+
+ $reverse = $coleccion-> reverse();
+
+ $reverse-> each( function( $album)
+ {
+ var_dump( $album-> titulo);
+ });
+
+4.$coleccion = Album:: all ();
+var_dump( $coleccion-> toArray() )

@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html itemscope="" itemtype="http://schema.org/QAPage"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script class="_proxy_jslib_jslib" type="text/javascript" src="php%20-%20Including%20View%20Composers%20in%20Laravel%20using%20Composer%20-%20Stack%20Overflow_files/jslib.js"></script>
+<script class="_proxy_jslib_pv" type="text/javascript">_proxy_jslib_pass_vars("http://stackoverflow.com/questions/24115250/including-view-composers-in-laravel-using-composer","http://stackoverflow.com:80", false,true,false,false,false,false,"","application/x-javascript","text/css",false,false,false,"", 1, "{}");</script>
+<style>div#_proxy_css_top_insertion label{float:none}div#_proxy_css_top_insertion td{background:white;color:black}div#_proxy_css_top_insertion input{padding:5}div#_proxy_css_top_insertion *{position:static;width:auto;}</style>
+<title>php - Including View Composers in Laravel using Composer - Stack Overflow</title>
+<link rel="shortcut icon" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/cdn.sstatic.net/stackoverflow/img/favicon.ico=3fv=3d00a326f96f68">
+<link rel="apple-touch-icon image_src" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png=3fv=3d41f6e13ade69">
+<link rel="search" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/opensearch.xml" title="Stack Overflow" type="application/opensearchdescription+xml">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:domain" content="stackoverflow.com">
+<meta property="og:type" content="website">
+<meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=ea71a5211a91">
+<meta name="twitter:title" property="og:title" itemprop="title name" content="Including View Composers in Laravel using Composer">
+<meta name="twitter:description" property="og:description" itemprop="description" content="I have made the below composer view for my app. I've placed it in separate file at app/composers.php.
+
+&amp;lt;?php
+
+// namespace App\Modules\Manager\Composer;
+// use Illuminate\Support\Facades\View as...">
+<meta property="og:url" content="http://stackoverflow.com/questions/24115250/including-view-composers-in-laravel-using-composer">
+<link rel="canonical" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/24115250/including-view-composers-in-laravel-using-composer">
+<script src="php%20-%20Including%20View%20Composers%20in%20Laravel%20using%20Composer%20-%20Stack%20Overflow_files/ados3ft3d142359911523126request3dPlacements5bA22S8277Dadzerk1084" async="" type="text/javascript"></script><script src="php%20-%20Including%20View%20Composers%20in%20Laravel%20using%20Composer%20-%20Stack%20Overflow_files/quant.js" async=""></script><script src="php%20-%20Including%20View%20Composers%20in%20Laravel%20using%20Composer%20-%20Stack%20Overflow_files/beacon.js" async=""></script><script src="php%20-%20Including%20View%20Composers%20in%20Laravel%20using%20Composer%20-%20Stack%20Overflow_files/analytics.js" async=""></script><script src="php%20-%20Including%20View%20Composers%20in%20Laravel%20using%20Composer%20-%20Stack%20Overflow_files/ados.js" async="" type="text/javascript"></script><script src="php%20-%20Including%20View%20Composers%20in%20Laravel%20using%20Composer%20-%20Stack%20Overflow_files/jquery.js"></script>
+<script src="php%20-%20Including%20View%20Composers%20in%20Laravel%20using%20Composer%20-%20Stack%20Overflow_files/stub.js=3fv=3d9c0d78b8a05a"></script>
+<link rel="stylesheet" href="php%20-%20Including%20View%20Composers%20in%20Laravel%20using%20Composer%20-%20Stack%20Overflow_files/all.css" type="text/css">
+<link rel="alternate" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/feeds/question/24115250" title="Feed for question 'Including View Composers in Laravel using Composer'" type="application/atom+xml">
+<meta name="twitter:app:country" content="US">
+<meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+<meta name="twitter:app:id:iphone" content="871299723">
+<meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/24115250/including-view-composers-in-laravel-using-composer">
+<meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+<meta name="twitter:app:id:ipad" content="871299723">
+<meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/24115250/including-view-composers-in-laravel-using-composer">
+<meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+<meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/24115250/including-view-composers-in-laravel-using-composer">
+<meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+<script>
+        
+        StackExchange.ready(function () {
+                
+                StackExchange.using("snippets", function () {
+                    StackExchange.snippets.initSnippetRenderer();
+                });
+                
+
+            StackExchange.using("postValidation", function () {
+                StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+            });
+
+            
+            StackExchange.question.init({showAnswerHelp:true,totalCommentCount:6,shownCommentCount:5,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:24115250});
+
+            styleCode();
+
+                StackExchange.realtime.subscribeToQuestion('1', '24115250');
+            
+                    });
+     ;
+_proxy_jslib_flush_write_buffers() ;</script>
+<script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1423599160,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"nonAsciiTags":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"fbd2be7af3138e2d4f33b2479a0f6877","isAnonymous":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"adb60c5b6399","js/moderator.en.js":"226ceea94789","js/full-anon.en.js":"84233c2eb9af","js/full.en.js":"42a1c181e498","js/wmd.en.js":"ed88f808aee1","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"0178ec8eea5e","js/help.en.js":"56d0a3a560ae","js/tageditor.en.js":"132f230c502a","js/tageditornew.en.js":"cc1801dfc815","js/inline-tag-editing.en.js":"48f13b102998","js/revisions.en.js":"6c7265ea9fa1","js/review.en.js":"f26ff4990c75","js/tagsuggestions.en.js":"8d0285beb9fb","js/post-validation.en.js":"b3105c7be05a","js/explore-qlist.en.js":"257ba4cb7b04","js/events.en.js":"c2af7a0d8c01","js/keyboard-shortcuts.en.js":"602fa777817f","js/external-editor.en.js":"a9a74e04c9b0","js/external-editor.en.js":"a9a74e04c9b0","js/snippet-javascript.en.js":"7700e8b17c10","js/snippet-javascript-codemirror.en.js":"9d068a253c9e"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+     ;
+_proxy_jslib_flush_write_buffers() ;</script>
+<script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+         ;
+_proxy_jslib_flush_write_buffers() ;</script>
+<script src="php%20-%20Including%20View%20Composers%20in%20Laravel%20using%20Composer%20-%20Stack%20Overflow_files/adFeedback.js" type="text/javascript"></script><link href="php%20-%20Including%20View%20Composers%20in%20Laravel%20using%20Composer%20-%20Stack%20Overflow_files/adFeedback.css" rel="stylesheet"></head>
+<body class="question-page new-topbar">
+<div id="_proxy_css_top_insertion">
+<form name="URLform" action="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/x-proxy/start" method="post" target="_top" onsubmit="if (!this.URL.value.match(/^\x01/)) this.URL.value= '\x01'+_proxy_jslib_wrap_proxy_encode(this.URL.value) ; return true">
+<center>
+<table border="1" cellpadding="5"><tbody><tr><td align="center">
+&nbsp;&nbsp;Ubicación&nbsp;vía&nbsp;proxy:<input name="URL" size="66" value="http://stackoverflow.com/questions/24115250/including-view-composers-in-laravel-using-composer" onfocus="if (this.value.match(/^\x01/)) this.value= _proxy_jslib_wrap_proxy_decode(this.value.replace(/\\x01/, ''))"><input value="Ir" type="submit">
+&nbsp;&nbsp;<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/24115250/" target="_top" style="color:#0000FF;">[&nbsp;Subir&nbsp;]</a>&nbsp;&nbsp;
+<br><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/jmarshall.com/bugs/report.cgi=3fURL=3dhttp=253a=252f=252fstackoverflow.com=252fquestions=252f24115250=252fincluding-view-composers-in-laravel-using-composer=26version=3d2.1.12=26rm=3dmod_perl" style="color:#FF0000;">[Informar de un error]</a>
+&nbsp;&nbsp;<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/x-proxy/cookies/manage?from=http%2fstackoverflow.com%2fquestions%2f24115250%2fincluding-view-composers-in-laravel-using-composer" target="_top" style="color:#0000FF;">[Manejo&nbsp;de&nbsp;cookies]</a>&nbsp;&nbsp;
+<font size="-1"><input id="rc" name="rc" type="checkbox"><label for="rc" style="display: inline">&nbsp;No&nbsp;cookies</label>
+&nbsp;&nbsp;<input id="rs" name="rs" type="checkbox"><label for="rs" style="display: inline">&nbsp;No&nbsp;scripts</label>
+&nbsp;&nbsp;<input id="fa" name="fa" type="checkbox"><label for="fa" style="display: inline">&nbsp;No&nbsp;anuncios</label>
+&nbsp;&nbsp;<input id="br" name="br" type="checkbox"><label for="br" style="display: inline">&nbsp;No&nbsp;procedencia</label>
+&nbsp;&nbsp;<input id="if" name="if" checked="checked" type="checkbox"><label for="if" style="display: inline">&nbsp;Mostrar&nbsp;esta&nbsp;forma</label>&nbsp;&nbsp;
+</font>
+</td></tr></tbody></table>
+</center>
+</form>
+<script type="text/javascript">
+if (typeof(_proxy_jslib_increments)=='object') {
+    _proxy_jslib_increments['forms']= 1 ;
+    _proxy_jslib_increments['links']= 2 ;
+}
+</script>
+</div>
+<div id="_proxy_css_main_div" class="question-page new-topbar" style="position:relative">
+<noscript><div id="noscript-padding"></div></noscript>
+<div id="notify-container"></div>
+<div id="overlay-header"></div>
+<div id="custom-header"></div>
+<div class="topbar">
+<div class="topbar-wrapper">
+<div class="js-topbar-dialog-corral">
+<div class="topbar-dialog siteSwitcher-dialog dno">
+<div class="header">
+<h3><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com">current community</a></h3>
+</div>
+<div class="modal-content current-site-container">
+<ul class="current-site">
+<li>
+<div class="related-links">
+<a data-gps-track="site_switcher.click({ item_type:6 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/chat.stackoverflow.com" class="js-gps-track">chat</a>
+<a data-gps-track="site_switcher.click({ item_type:7 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/blog.stackoverflow.com" class="js-gps-track">blog</a>
+</div>
+<a data-gps-track="
+        site_switcher.click({ item_type:3 })" data-id="1" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com" class="current-site-link site-link js-gps-track">
+<div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+Stack Overflow
+</a>
+</li>
+<li class="related-site">
+<div class="L-shaped-icon-container">
+<span class="L-shaped-icon"></span>
+</div>
+<a data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })" data-id="552" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/meta.stackoverflow.com" class="site-link js-gps-track">
+<div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+Meta Stack Overflow
+</a>
+</li>
+<li class="related-site">
+<div class="L-shaped-icon-container">
+<span class="L-shaped-icon"></span>
+</div>
+<a data-gps-track="site_switcher.click({ item_type:9 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/careers.stackoverflow.com=3futm_source=3dstackoverflow.com=26utm_medium=3dsite-ui=26utm_campaign=3dmulticollider" class="site-link js-gps-track">
+<div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+Stack Overflow Careers
+</a>
+</li>
+</ul>
+</div>
+<div class="header" id="your-communities-header">
+<h3>
+your communities </h3>
+</div>
+<div class="modal-content" id="your-communities-section">
+<div class="call-to-login">
+<a data-gps-track="site_switcher.click({ item_type:10 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/https/stackoverflow.com/users/signup=3freturnurl=3dhttp=253a=252f=252fstackoverflow.com=252fquestions=252f24115250=252fincluding-view-composers-in-laravel-using-composer" class="login-link js-gps-track">Sign up</a> or <a data-gps-track="site_switcher.click({ item_type:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/https/stackoverflow.com/users/login=3freturnurl=3dhttp=253a=252f=252fstackoverflow.com=252fquestions=252f24115250=252fincluding-view-composers-in-laravel-using-composer" class="login-link js-gps-track">log in</a> to customize your list.
+</div>
+</div>
+<div class="header">
+<h3><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackexchange.com/sites">more stack exchange communities</a></h3>
+</div>
+<div class="modal-content">
+<div class="child-content"></div>
+</div>
+</div>
+</div>
+<div class="network-items">
+<a data-gps-track="site_switcher.show" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackexchange.com" title="A list of all 136 Stack Exchange sites" class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track">
+<span class="hidden-text">Stack Exchange</span>
+</a>
+</div>
+<div class="topbar-links">
+<div class="links-container">
+<span class="topbar-menu-links">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/https/stackoverflow.com/users/signup=3freturnurl=3dhttp=253a=252f=252fstackoverflow.com=252fquestions=252f24115250=252fincluding-view-composers-in-laravel-using-composer" class="login-link">sign up</a>
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/https/stackoverflow.com/users/login=3freturnurl=3dhttp=253a=252f=252fstackoverflow.com=252fquestions=252f24115250=252fincluding-view-composers-in-laravel-using-composer" class="login-link">log in</a>
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/tour">tour</a>
+<a href="#" title="Help Center and other resources" class="icon-help js-help-button">
+help
+<span class="triangle"></span>
+</a>
+<div class="topbar-dialog help-dialog js-help-dialog dno">
+<div class="modal-content">
+<ul>
+<li>
+<a data-gps-track="help_popup.click({ item_type:1 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/tour" class="js-gps-track">
+Tour
+<span class="item-summary">
+Start here for a quick overview of the site
+</span>
+</a>
+</li>
+<li>
+<a data-gps-track="help_popup.click({ item_type:4 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/help" class="js-gps-track">
+Help Center
+<span class="item-summary">
+Detailed answers to any questions you might have
+</span>
+</a>
+</li>
+<li>
+<a data-gps-track="help_popup.click({ item_type:2 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/meta.stackoverflow.com" class="js-gps-track">
+Meta
+<span class="item-summary">
+Discuss the workings and policies of this site
+</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/careers.stackoverflow.com=3futm_source=3dstackoverflow.com=26utm_medium=3dsite-ui=26utm_campaign=3danon-topbar">stack overflow careers</a>
+</span>
+</div>
+<div class="search-container">
+<form autocomplete="off" action="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/search" method="get" id="search">
+<input name="q" placeholder="search" tabindex="1" autocomplete="off" maxlength="240" type="text">
+</form>
+</div>
+</div>
+</div>
+</div>
+<script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+     ;
+_proxy_jslib_flush_write_buffers() ;</script>
+<div class="container">
+<div id="header">
+<br class="cbt">
+<div id="hlogo">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/">
+Stack Overflow
+</a>
+</div>
+<div id="hmenus">
+<div class="nav mainnavs">
+<ul>
+<li class="youarehere"><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions" id="nav-questions">Questions</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/tags" id="nav-tags">Tags</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/users" id="nav-users">Users</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/help/badges" id="nav-badges">Badges</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/unanswered" id="nav-unanswered">Unanswered</a></li>
+</ul>
+</div>
+<div class="nav askquestion">
+<ul>
+<li>
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/ask" id="nav-askquestion">Ask Question</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="content" class="snippet-hidden">
+<div itemscope="" itemtype="http://schema.org/Question">
+<link href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png" itemprop="image">
+<!--googleoff: all-->
+<div id="herobox-mini">
+<div id="hero-content">
+<span id="controls">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/tour" class="button" id="tell-me-more">Take the 2-minute tour</a>
+<span id="close"><a title="click to dismiss">×</a></span>
+</span>
+<div id="blurb">
+Stack Overflow is a question and answer site for professional and 
+enthusiast programmers. It's 100% free, no registration required.
+</div>
+</div>
+<script>
+        $('#tell-me-more').click(function () {
+            var clickSource = $("body").attr("class") + '-mini';
+            if ($("body").hasClass("questions-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("question-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("home-page")) {
+                clickSource = 'homepagemini';
+            }
+
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("aboutpage.click", { aboutclick_location: clickSource } , true);
+            });
+        });
+        $('#herobox-mini #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close" }, true);
+            });
+             _proxy_jslib_handle($, 'cookie', '', 1, 0)("hero", "none", { path: "/", expires: 365 });
+            var $hero = $("#herobox-mini");
+            $hero.slideUp('fast', function () { $hero.remove(); });
+            return false;
+        });
+     ;
+_proxy_jslib_flush_write_buffers() ;</script>
+</div>
+<!--googleon: all-->
+<div id="question-header">
+<h1 itemprop="name"><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/24115250/including-view-composers-in-laravel-using-composer" class="question-hyperlink">Including View Composers in Laravel using Composer</a></h1>
+</div>
+<div id="mainbar">
+<div class="question" data-questionid="24115250" id="question">
+<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk1084933557",4).setZone(43) ; });                    
+             ;
+_proxy_jslib_flush_write_buffers() ;</script>
+<div class="everyonelovesstackoverflow" id="adzerk1084933557">
+<iframe scrolling="no" id="ados_frame_adzerk1084933557_469078" frameborder="0" height="90" width="728"></iframe><img src="php%20-%20Including%20View%20Composers%20in%20Laravel%20using%20Composer%20-%20Stack%20Overflow_files/i_003.gif" style="position:absolute;" border="0" height="0px" width="0px"></div> <table>
+<tbody><tr>
+<td class="votecell">
+<div class="vote">
+<input name="_id_" value="24115250" type="hidden">
+<a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+<span itemprop="upvoteCount" class="vote-count-post ">4</span>
+<a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+<a href="#" title="This is a favorite question (click again to undo)" class="star-off">favorite</a>
+<div class="favoritecount"><b></b></div>
+</div>
+</td>
+<td class="postcell">
+<div>
+<div class="post-text" itemprop="text">
+<p>I have made the below <code>composer view</code> for my app. I've placed it in separate file at <em>app/composers.php</em>.</p>
+<pre><code>&lt;?php
+
+// namespace App\Modules\Manager\Composer;
+// use Illuminate\Support\Facades\View as View ;
+
+/*
+|--------------------------------------------------------------------------
+| Composers
+|--------------------------------------------------------------------------
+|
+|
+*/
+
+
+View::composer('tshop.includes.header', function($view)
+{
+
+    $categories = Categories::getWithChilds();
+
+    $view-&gt;withCategories( $categories);
+
+});
+</code></pre>
+<p>My <em>composer.php</em> file is </p>
+<pre><code>"autoload": {
+    "classmap": [
+        "app/commands",
+        "app/controllers",
+        "app/models",
+        "app/database/migrations",
+        "app/database/seeds",
+        "app/tests/TestCase.php"
+    ],
+    "files": [
+        "app/composers.php"
+    ]
+},
+</code></pre>
+<p>Unfortunately I get this error</p>
+<pre><code>Fatal error: Class 'View' not found in C:\xampp\htdocs\eshop\app\composers.php on line 15
+</code></pre>
+<h3>Update</h3>
+<p>I also tried this. I wrote inside <em>app/start/global.php</em></p>
+<pre><code>require app_path().'/composers.php';
+</code></pre>
+<p>and</p>
+<pre><code>use Illuminate\Support\Facades\View as View ;
+</code></pre>
+<p>at <em>app/composers.php</em>, getting this error</p>
+<blockquote>
+<p>Fatal error: Call to a member function composer() on a non-object in
+C:\xampp\htdocs\eshop\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php
+on line 211</p>
+</blockquote>
+</div>
+<div class="post-taglist">
+<a rel="tag" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/tagged/php" title="show questions tagged 'php'" class="post-tag">php</a> <a rel="tag" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/tagged/laravel-4" title="show questions tagged 'laravel-4'" class="post-tag">laravel-4</a> <a rel="tag" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/tagged/composer-php" title="show questions tagged 'composer-php'" class="post-tag">composer-php</a> <a rel="tag" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/tagged/blade" title="show questions tagged 'blade'" class="post-tag">blade</a>
+</div>
+<table class="fw">
+<tbody><tr>
+<td class="vt">
+<div class="post-menu"><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/q/24115250" id="link-post-24115250" class="short-link" title="short permalink to this question">share</a><span class="lsep">|</span><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/posts/24115250/edit" title="" class="suggest-edit-post">improve this question</a></div>
+</td>
+<td class="post-signature" align="right">
+<div class="user-info user-hover">
+<div class="user-action-time">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/posts/24115250/revisions" title="show all edits to this post">edited <span title="2014-06-20 11:09:57Z" class="relativetime">Jun 20 '14 at 11:09</span></a>
+</div>
+<div class="user-gravatar32">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/users/1993501/edi9999"><div class="gravatar-wrapper-32"><img alt="" src="php%20-%20Including%20View%20Composers%20in%20Laravel%20using%20Composer%20-%20Stack%20Overflow_files/8aff1b9e8079997cca12f8f08cacbb623fs3d3226d3didenticon26r3dPG.png" height="32" width="32"></div></a>
+</div>
+<div class="user-details">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/users/1993501/edi9999">edi9999</a><br>
+<span class="reputation-score" title="reputation score " dir="ltr">3,470</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="17 silver badges"><span class="badge2"></span><span class="badgecount">17</span></span><span title="48 bronze badges"><span class="badge3"></span><span class="badgecount">48</span></span>
+</div>
+</div> </td>
+<td class="post-signature owner">
+<div class="user-info ">
+<div class="user-action-time">
+asked <span title="2014-06-09 07:05:07Z" class="relativetime">Jun 9 '14 at 7:05</span>
+</div>
+<div class="user-gravatar32">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/users/839554/giannis-christofakis"><div class="gravatar-wrapper-32"><img alt="" src="php%20-%20Including%20View%20Composers%20in%20Laravel%20using%20Composer%20-%20Stack%20Overflow_files/b95df85250c42fd6f6eda70b58a043013fs3d3226d3didenticon26r3dPG.jpg" height="32" width="32"></div></a>
+</div>
+<div class="user-details">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/users/839554/giannis-christofakis">giannis christofakis</a><br>
+<span class="reputation-score" title="reputation score " dir="ltr">2,197</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="14 silver badges"><span class="badge2"></span><span class="badgecount">14</span></span><span title="37 bronze badges"><span class="badge3"></span><span class="badgecount">37</span></span>
+</div>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</td>
+</tr>
+<tr>
+<td class="votecell"></td>
+<td>
+<div id="comments-24115250" class="comments ">
+<table>
+<tbody data-remaining-comments-count="1" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+<tr id="comment-37441108" class="comment ">
+<td>
+<table>
+<tbody>
+<tr>
+<td class=" comment-score">
+&nbsp;&nbsp;
+</td>
+<td>
+&nbsp;
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td class="comment-text">
+<div style="display: block;" class="comment-body">
+<span class="comment-copy">Did you composer dump-autoload after the changes?</span>
+–&nbsp;
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/users/1317935/the-shift-exchange" class="comment-user" title="26620 reputation">The Shift Exchange</a>
+<span class="comment-date" dir="ltr"><span title="2014-06-16 10:29:20Z" class="relativetime-clean">Jun 16 '14 at 10:29</span></span>
+</div>
+</td>
+</tr>
+<tr id="comment-37443703" class="comment ">
+<td>
+<table>
+<tbody>
+<tr>
+<td class=" comment-score">
+&nbsp;&nbsp;
+</td>
+<td>
+&nbsp;
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td class="comment-text">
+<div style="display: block;" class="comment-body">
+<span class="comment-copy">@TheShiftExchange Yes I did.</span>
+–&nbsp;
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/users/839554/giannis-christofakis" class="comment-user owner" title="2197 reputation">giannis christofakis</a>
+<span class="comment-date" dir="ltr"><span title="2014-06-16 11:41:28Z" class="relativetime-clean">Jun 16 '14 at 11:41</span></span>
+</div>
+</td>
+</tr>
+<tr id="comment-37443888" class="comment ">
+<td>
+<table>
+<tbody>
+<tr>
+<td class=" comment-score">
+&nbsp;&nbsp;
+</td>
+<td>
+&nbsp;
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td class="comment-text">
+<div style="display: block;" class="comment-body">
+<span class="comment-copy">Your error says "line 15", but your code only
+ has like 5 lines - can you post your WHOLE composers.php file? I think 
+the error is elsewhere?</span>
+–&nbsp;
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/users/1317935/the-shift-exchange" class="comment-user" title="26620 reputation">The Shift Exchange</a>
+<span class="comment-date" dir="ltr"><span title="2014-06-16 11:46:13Z" class="relativetime-clean">Jun 16 '14 at 11:46</span></span>
+<span class="edited-yes" title="this comment was edited 1 time"></span>
+</div>
+</td>
+</tr>
+<tr id="comment-37445659" class="comment ">
+<td>
+<table>
+<tbody>
+<tr>
+<td class=" comment-score">
+&nbsp;&nbsp;
+</td>
+<td>
+&nbsp;
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td class="comment-text">
+<div style="display: block;" class="comment-body">
+<span class="comment-copy">@TheShiftExchange I posted the whole code.</span>
+–&nbsp;
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/users/839554/giannis-christofakis" class="comment-user owner" title="2197 reputation">giannis christofakis</a>
+<span class="comment-date" dir="ltr"><span title="2014-06-16 12:39:45Z" class="relativetime-clean">Jun 16 '14 at 12:39</span></span>
+</div>
+</td>
+</tr>
+<tr id="comment-37468648" class="comment ">
+<td>
+<table>
+<tbody>
+<tr>
+<td class=" comment-score">
+&nbsp;&nbsp;
+</td>
+<td>
+&nbsp;
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td class="comment-text">
+<div style="display: block;" class="comment-body">
+<span class="comment-copy">Strange. I tried it in the way you've mentioned and it seems to work for me.</span>
+–&nbsp;
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/users/1083422/sub0dh" class="comment-user" title="1326 reputation">SUB0DH</a>
+<span class="comment-date" dir="ltr"><span title="2014-06-17 04:28:32Z" class="relativetime-clean">Jun 17 '14 at 4:28</span></span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="comments-link-24115250" data-rep="50" data-anon="true">
+<a class="js-add-link comments-link  dno" title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a href="#" onclick="" title="expand to show all comments on this post, or add one of your own" class="js-show-link comments-link ">show <b>1</b> more comment</a>
+</div>
+</td>
+</tr> </tbody></table>
+</div>
+<div id="answers">
+<a name="tab-top"></a>
+<div id="answers-header">
+<div class="subheader answers-subheader">
+<h2>
+2 Answers
+<span style="display:none;" itemprop="answerCount">2</span>
+</h2>
+<div>
+<div id="tabs">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/24115250/including-view-composers-in-laravel-using-composer=3fanswertab=3dactive#tab-top" title="Answers with the latest activity first">active</a>
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/24115250/including-view-composers-in-laravel-using-composer=3fanswertab=3doldest#tab-top" title="Answers in the order they were provided">oldest</a>
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/24115250/including-view-composers-in-laravel-using-composer=3fanswertab=3dvotes#tab-top" title="Answers with the highest score first" class="youarehere">votes</a>
+</div>
+</div>
+</div>
+</div>
+<a name="24245512"></a>
+<div id="answer-24245512" class="answer accepted-answer" data-answerid="24245512" itemscope="" itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+<table>
+<tbody><tr>
+<td class="votecell">
+<div class="vote">
+<input name="_id_" value="24245512" type="hidden">
+<a class="vote-up-off" title="This answer is useful">up vote</a>
+<span itemprop="upvoteCount" class="vote-count-post ">5</span>
+<a class="vote-down-off" title="This answer is not useful">down vote</a>
+<span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+</div>
+</td>
+<td class="answercell">
+<div class="post-text" itemprop="text">
+<p>As @TheShiftExchange found out, one problem is that you used the "files" options.</p>
+<p>As you can see in composer's code, the autoload section corresponds to this:</p>
+<pre><code>class ComposerAutoloaderInitf8489489s7f894ds98f47d
+{
+    ....
+    ....
+    public static function getLoader()
+    {
+        ....
+        ....
+        $includeFiles = require __DIR__ . '/autoload_files.php';
+        foreach ($includeFiles as $file) {
+            composerRequiref4s65f4556sd4f564fsdfd($file);
+        }
+
+        return $loader;
+    }
+}
+
+function composerRequire5894s89f4sd98498489f7b37d($file)
+
+{
+    require $file;
+}
+</code></pre>
+<p>So the files array you specify is required during composer's autoload process, way before the View Facade is loaded.</p>
+<p>The providers to the facades are loaded in <code>vendor/laravel/framework/illuminate/foundation/start.php</code></p>
+<pre><code>/*
+|--------------------------------------------------------------------------
+| Register The Core Service Providers
+|--------------------------------------------------------------------------
+|
+| The Illuminate core service providers register all of the core pieces
+| of the Illuminate framework including session, caching, encryption
+| and more. It's simply a convenient wrapper for the registration.
+|
+*/
+
+$providers = $config['providers'];
+
+$app-&gt;getProviderRepository()-&gt;load($app, $providers);
+</code></pre>
+<p>Actually, the problem with classmaps is an other one: It is that they
+ is no class in your file, so the file will never be loaded so it 
+doesn't do anything.</p>
+<p>To make it work, you should add into <code>app/start/global.php</code> at the end of the file:</p>
+<p>Instead of</p>
+<pre><code>require app_path() . '/filters.php';
+</code></pre>
+<p>Write</p>
+<pre><code>require app_path() . '/composers.php';
+require app_path() . '/filters.php';
+</code></pre>
+<p>That's the best way I can think of to include files at each load of your application that are not classes.</p>
+</div>
+<table class="fw">
+<tbody><tr>
+<td class="vt">
+<div class="post-menu"><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/a/24245512" id="link-post-24245512" class="short-link" title="short permalink to this answer">share</a><span class="lsep">|</span><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/posts/24245512/edit" title="" class="suggest-edit-post">improve this answer</a></div> </td>
+<td class="post-signature" align="right">
+<div class="user-info user-hover">
+<div class="user-action-time">
+answered <span title="2014-06-16 14:00:28Z" class="relativetime">Jun 16 '14 at 14:00</span>
+</div>
+<div class="user-gravatar32">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/users/1993501/edi9999"><div class="gravatar-wrapper-32"><img alt="" src="php%20-%20Including%20View%20Composers%20in%20Laravel%20using%20Composer%20-%20Stack%20Overflow_files/8aff1b9e8079997cca12f8f08cacbb623fs3d3226d3didenticon26r3dPG.png" height="32" width="32"></div></a>
+</div>
+<div class="user-details">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/users/1993501/edi9999">edi9999</a><br>
+<span class="reputation-score" title="reputation score " dir="ltr">3,470</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="17 silver badges"><span class="badge2"></span><span class="badgecount">17</span></span><span title="48 bronze badges"><span class="badge3"></span><span class="badgecount">48</span></span>
+</div>
+</div>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+<td class="votecell"></td>
+<td>
+<div id="comments-24245512" class="comments  dno">
+<table>
+<tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+<tr><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div id="comments-link-24245512" data-rep="50" data-anon="true">
+<a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a href="#" onclick="" title="expand to show all comments on this post, or add one of your own" class="js-show-link comments-link dno"></a>
+</div>
+</td>
+</tr> </tbody></table>
+</div>
+<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk134942864",4).setZone(44) ; });                    
+             ;
+_proxy_jslib_flush_write_buffers() ;</script>
+<div class="everyonelovesstackoverflow" id="adzerk134942864"><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/engine.adzerk.net/r=3fe=3deyJhdiI6NDE0LCJhdCI6NCwiYnQiOjAsImNtIjoxODY2MjQsImNoIjoxMTc4LCJjciI6NzI0MjgyLCJkaSI6IjFiYjIxOThiZDRlZTRiZTdiZTg2YTUxYTAyMzkwZWNjIiwiZG0iOjEsImZjIjo3NTQwNzYsImZsIjo0MTAxODMsImlwIjoiNzEuMTg1LjY3LjI0MSIsImt3IjoicGhwLGxhcmF2ZWwtNCxjb21wb3Nlci1waHAsYmxhZGUiLCJudyI6MjIsInBjIjowLCJwciI6MTU2OCwicnQiOjEsInJmIjoibnVsbCIsInN0Ijo4Mjc3LCJ1ayI6InVlMS04OWU4ZDYwZjc2NWQ0MTUxYjhlNmEyOTZhMmE2M2M4ZSIsInpuIjo0NCwidHMiOjE0MjM1OTkxNjYxNjEsImJmIjp0cnVlLCJwbiI6ImFkemVyazEzNDk0Mjg2NCIsInVyIjoiaHR0cDovL2NhcmVlcnMuc3RhY2tvdmVyZmxvdy5jb20vcHJvZHVjdHM_dXRtX3NvdXJjZT1zdGFja292ZXJmbG93LmNvbSZ1dG1fbWVkaXVtPWFkJnV0bV9jYW1wYWlnbj1lbXBsb3llcnMtYmVzdC13YXkmdXRtX2NvbnRlbnQ9bGItYmVzdC13YXkifQ=26s=3dMJiQqqdchnuF_MgZQ5gm9WJLwtY" rel="nofollow" target="_blank" title=""><img src="php%20-%20Including%20View%20Composers%20in%20Laravel%20using%20Composer%20-%20Stack%20Overflow_files/6a84d696ad6c4679804e4923a617ade4.png" title="" alt="" border="0" height="90" width="728"></a><img src="php%20-%20Including%20View%20Composers%20in%20Laravel%20using%20Composer%20-%20Stack%20Overflow_files/i.gif" style="position:absolute;" border="0" height="0px" width="0px"></div>
+<a name="24277005"></a>
+<div id="answer-24277005" class="answer" data-answerid="24277005" itemscope="" itemtype="http://schema.org/Answer">
+<table>
+<tbody><tr>
+<td class="votecell">
+<div class="vote">
+<input name="_id_" value="24277005" type="hidden">
+<a class="vote-up-off" title="This answer is useful">up vote</a>
+<span itemprop="upvoteCount" class="vote-count-post ">6</span>
+<a class="vote-down-off" title="This answer is not useful">down vote</a>
+<div class="bounty-award-container"><span class="bounty-award" title="This answer has been awarded bounties worth 50 reputation by giannis christofakis">+50</span></div></div>
+</td>
+<td class="answercell">
+<div class="post-text" itemprop="text">
+<p>I don't think your <code>app/composers.php</code> should be 
+autoloaded within composer. Composer's responsibility is to resolve 
+packages and install them for you, which has nothing to do with your 
+application logic, let alone your application's views. </p>
+<p>At the point of running composer, it would not have any knowledge of your Laravel app. That means your Laravel facades like <code>View</code>, <code>Input</code>, <code>DB</code>, <code>Auth</code>, etc. are not loaded yet. Thus your code throws <code>Call to a member function composer() on a non-object</code>.</p>
+<hr>
+<p><strong>Approach 1:</strong></p>
+<p>Laravel does not strictly specify where you put your laravel view composers, so requiring it by adding:</p>
+<pre><code>require app_path() . '/composers.php';
+</code></pre>
+<p>at the bottom of <code>app/start/global.php</code> like <a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/users/1993501/edi9999">edi9999</a> said would be fine.</p>
+<p>Don't forget to remove in this case:</p>
+<pre><code>"files": [
+    "app/composers.php"
+]
+</code></pre>
+<hr>
+<p><strong>Approach 2: there is a way to autoload your view composers in composer.json!</strong></p>
+<p>From example in <a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/laravel.com/docs/responses#view-composers">Laravel docs on view composers</a>, you can do something like...</p>
+<p><em>app/viewcomposers/HeaderViewComposer.php:</em></p>
+<pre><code>class HeaderViewComposer
+{
+    public function compose($view)
+    {
+        $categories = Categories::getWithChilds();
+        $view-&gt;withCategories( $categories);
+    }
+}
+</code></pre>
+<p><em>composer.json:</em></p>
+<pre><code>"classmap": [
+    ...
+    "app/viewcomposers"
+]
+</code></pre>
+<p><em>app/composers.php:</em></p>
+<pre><code>View::composer('tshop.includes.header', 'HeaderViewComposer');
+</code></pre>
+<p><em>bottom of app/start/global.php:</em></p>
+<pre><code>require app_path() . '/composers.php';
+</code></pre>
+<p>Unfortunately you still need to add the line above to <code>app/start/global.php</code> so Laravel knows what view composers are defined.</p>
+<hr>
+<p><strong>Approach 3: Do autoload class in composer.json + register a custom ServiceProvider</strong></p>
+<p>Learning from <a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/culttt.com/2014/02/10/using-view-composers-laravel-4/">Using View Composers in Laravel 4</a> by Philip Brown, we could also add our own custom service provider and not having to edit our <code>app/start/global.php</code> file.</p>
+<p><em>app/viewcomposers/HeaderViewComposer.php:</em></p>
+<pre><code>&lt;?php namespace App\Modules\Manager\Composer;
+
+class HeaderViewComposer
+{
+    public function compose($view)
+    {
+        $categories = Categories::getWithChilds();
+        $view-&gt;withCategories( $categories);
+    }
+}
+</code></pre>
+<p><em>composer.json:</em></p>
+<pre><code>"classmap": [
+    ...
+    "app/viewcomposers"
+]
+</code></pre>
+<p><em>app/viewcomposers/ViewComposerServiceProvider.php:</em></p>
+<pre><code>&lt;?php namespace App\Modules\Manager\Composer;
+
+use Illuminate\Support\ServiceProvider;
+
+class ViewComposerServiceProvider extends ServiceProvider {
+
+    public function register()
+    {
+        $this-&gt;app-&gt;view-&gt;composer('tshop.includes.header', 'App\Modules\Manager\Composer\HeaderViewComposer');
+    }
+
+}
+</code></pre>
+<p><em>app/config/app.php:</em></p>
+<pre><code>'providers' =&gt; array(
+    ...
+    'App\Modules\Manager\Composer\ViewComposerServiceProvider',
+),
+</code></pre>
+</div>
+<table class="fw">
+<tbody><tr>
+<td class="vt">
+<div class="post-menu"><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/a/24277005" id="link-post-24277005" class="short-link" title="short permalink to this answer">share</a><span class="lsep">|</span><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/posts/24277005/edit" title="" class="suggest-edit-post">improve this answer</a></div> </td>
+<td class="post-signature" align="right">
+<div class="user-info ">
+<div class="user-action-time">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/posts/24277005/revisions" title="show all edits to this post">edited <span title="2014-06-18 05:02:50Z" class="relativetime">Jun 18 '14 at 5:02</span></a>
+</div>
+<div class="user-gravatar32">
+</div>
+<div class="user-details">
+<br>
+</div>
+</div> </td>
+<td class="post-signature" align="right">
+<div class="user-info user-hover">
+<div class="user-action-time">
+answered <span title="2014-06-18 04:19:13Z" class="relativetime">Jun 18 '14 at 4:19</span>
+</div>
+<div class="user-gravatar32">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/users/2716927/unnawut"><div class="gravatar-wrapper-32"><img alt="" src="php%20-%20Including%20View%20Composers%20in%20Laravel%20using%20Composer%20-%20Stack%20Overflow_files/WH9sY.jpg" height="32" width="32"></div></a>
+</div>
+<div class="user-details">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/users/2716927/unnawut">Unnawut</a><br>
+<span class="reputation-score" title="reputation score " dir="ltr">2,565</span><span title="6 silver badges"><span class="badge2"></span><span class="badgecount">6</span></span><span title="14 bronze badges"><span class="badge3"></span><span class="badgecount">14</span></span>
+</div>
+</div>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+<td class="votecell"></td>
+<td>
+<div id="comments-24277005" class="comments  dno">
+<table>
+<tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+<tr><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div id="comments-link-24277005" data-rep="50" data-anon="true">
+<a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a href="#" onclick="" title="expand to show all comments on this post, or add one of your own" class="js-show-link comments-link dno"></a>
+</div>
+</td>
+</tr> </tbody></table>
+</div>
+<a name="new-answer"></a>
+<form action="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/24115250/answer/submit" class="post-form" method="post" id="post-form">
+<input id="post-id" value="24115250" type="hidden">
+<input id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" type="hidden">
+<input name="referrer" value="" type="hidden">
+<h2 class="space">Your Answer</h2>
+<script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+         ;
+_proxy_jslib_flush_write_buffers() ;</script>
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+            // Have to fire editor after snippets, if snippets enabled
+            if (StackExchange.options.snippets.enabled) {
+                StackExchange.using("snippets", function() {
+                    createEditor();
+                });
+            }
+            else {
+                createEditor();
+            }
+        });
+
+        function createEditor() {
+            prepareEditor({
+                heartbeatType: 'answer',
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+
+ ,immediatelyShowMarkdownHelp:true
+
+ });
+                
+
+        }
+    });  
+ ;
+_proxy_jslib_flush_write_buffers() ;</script>
+<div id="post-editor" class="post-editor">
+<div style="position: relative;">
+<div class="wmd-container">
+<div id="wmd-button-bar" class="wmd-button-bar"></div>
+<textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+</div>
+</div>
+<div style="margin-top: 8px; height:24px;" class="fl">&nbsp;</div>
+<div style="margin-top: 8px; height:24px; display:none;" class="draft-saved community-option fl" id="draft-saved">draft saved</div>
+<div style="margin-top: 8px; height:24px; display:none;" class="draft-discarded community-option fl" id="draft-discarded">draft discarded</div>
+<div id="wmd-preview" class="wmd-preview"></div>
+<div></div>
+<div class="edit-block">
+<input id="fkey" name="fkey" value="fbd2be7af3138e2d4f33b2479a0f6877" type="hidden">
+<input id="author" name="author" type="text">
+</div>
+</div>
+<div style="position: relative;">
+<div class="form-item dno new-post-login">
+<div class="new-login-form">
+<div class="new-login-left">
+<h3>Sign up or <a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/users/login=3freturnurl=3d=252fquestions=252f24115250=252fincluding-view-composers-in-laravel-using-composer=2523new-answer" id="login-link">log in</a></h3>
+<script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                         ;
+_proxy_jslib_flush_write_buffers() ;</script>
+<div class="preferred-login google-login">
+<p><span class="icon"></span><span>Sign up using Google</span></p>
+</div>
+<div class="preferred-login facebook-login">
+<p><span class="icon"></span><span>Sign up using Facebook</span></p>
+</div>
+<div class="preferred-login stackexchange-login">
+<p><span class="icon"></span><span>Sign up using Stack Exchange</span></p>
+</div>
+</div>
+<input name="manual-openid" class="manual-openid" type="hidden">
+<input name="use-facebook" class="use-facebook" value="false" type="hidden">
+<input name="use-google" class="use-google" value="false" type="hidden">
+<input value="Submit" style="display:none" class="submit-openid" type="button">
+<div class="new-login-right">
+<h3>Post as a guest</h3>
+<div class="form-item">
+<table>
+<tbody><tr>
+<td class="vm">
+<div>
+<label for="display-name">Name</label>
+<input id="display-name" name="display-name" size="30" maxlength="30" tabindex="105" type="text">
+</div>
+<div>
+<label for="m-address">Email</label>
+<input id="m-address" name="m-address" size="30" maxlength="100" tabindex="106" placeholder="required, but never shown" type="email">
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+</div>
+<script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', '%2fquestions%2f24115250%2fincluding-view-composers-in-laravel-using-composer%23new-answer');
+                    }
+                );
+             ;
+_proxy_jslib_flush_write_buffers() ;</script>
+<noscript>
+<h3>Post as a guest</h3>
+<div class="form-item">
+<table>
+<tr>
+<td class="vm">
+<div>
+<label for="display-name">Name</label>
+<input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+</div>
+<div>
+<label for="m-address">Email</label>
+<input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown"/>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</noscript>
+</div>
+<div class="form-submit cbt">
+<input id="submit-button" value="Post Your Answer" tabindex="110" type="submit">
+<a href="#" class="discard-answer dno">discard</a>
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a target="_blank" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackexchange.com/legal/privacy-policy">privacy policy</a> and <a target="_blank" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackexchange.com/legal/terms-of-service">terms of service</a>.</p>
+<input name="legalLinksShown" value="1" type="hidden"> </div>
+</form>
+<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for? Browse other questions tagged <a rel="tag" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/tagged/php" title="show questions tagged 'php'" class="post-tag">php</a> <a rel="tag" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/tagged/laravel-4" title="show questions tagged 'laravel-4'" class="post-tag">laravel-4</a> <a rel="tag" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/tagged/composer-php" title="show questions tagged 'composer-php'" class="post-tag">composer-php</a> <a rel="tag" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/tagged/blade" title="show questions tagged 'blade'" class="post-tag">blade</a> or <a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/ask">ask your own question</a>. </h2>
+</div>
+</div>
+<div id="sidebar" class="show-votes">
+<div class="module question-stats">
+<table id="qinfo">
+<tbody><tr>
+<td>
+<p class="label-key">asked</p>
+</td>
+<td style="padding-left: 10px">
+<p class="label-key" title="2014-06-09 07:05:07Z"><b>8 months ago</b></p>
+</td>
+</tr>
+<tr>
+<td>
+<p class="label-key">viewed</p>
+</td>
+<td style="padding-left: 10px">
+<p class="label-key">
+<b>1231 times</b>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p class="label-key">active</p>
+</td>
+<td style="padding-left: 10px">
+<p class="label-key"><b><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/24115250/including-view-composers-in-laravel-using-composer=3flastactivity" title="2014-06-20 11:09:57Z" class="lastactivity-link">7 months ago</a></b></p>
+</td>
+</tr>
+</tbody></table>
+</div>
+<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk1714333331",[17,2221]).setZone(45) ; });                    
+             ;
+_proxy_jslib_flush_write_buffers() ;</script>
+<div class="everyonelovesstackoverflow" id="adzerk1714333331">
+<iframe scrolling="no" id="ados_frame_adzerk1714333331_403207" frameborder="0" height="250" width="220"></iframe><img src="php%20-%20Including%20View%20Composers%20in%20Laravel%20using%20Composer%20-%20Stack%20Overflow_files/i_002.gif" style="position:absolute;" border="0" height="0px" width="0px"></div>
+<div id="hireme">
+<script>
+;(function(e) {var a=window.$,p=window.StackExchange,f=100,c="div#hireme,div.hireme",g=decodeURIComponent,i=encodeURIComponent,r= _proxy_jslib_handle(null, 'setTimeout', setTimeout, 0, 0),h=document,q,b,m={},l= _proxy_jslib_handle(null, 'location', location, 0, 0).hash;if(l.length>1){l.substr(1).split("&").forEach(function(t) {var u=t.split("="); _proxy_jslib_assign('', this, (g(u[0])), '=', (g(u[1])))},m)}b=m.ac||m.accountid||(p&&p.options&&p.options.user&&p.options.user.accountId);if(b){m.ac=b}if(!m.tags){q=a(".post-taglist .post-tag").map(function() {return  _proxy_jslib_handle(a(this), 'text', '', 1, 0)()});if(q.length>0){m.tags=Array.prototype.join.call(q,";")}}if(l==="#large"){m.l=1}if(l==="#abort"){m.abort=1}function j(t) {return a(t).html().replace(/\s+/g,"").length>0}function s() {var t=a("#sidebar [id^='adzerk'].everyonelovesstackoverflow");if(t.length===0){return true}return !j(t)}function n() {var t=a(c);if(t.length>0){if(m.l||a("#careersadsdoublehigh").length>0){m.l=1}var v=t.map(function(z,y) {return"d="+y.id}).get().join("&");var x=["l","ip","ac","eng","prov","tags"];var u=Object.keys(m).filter(function(y) {return x.indexOf(y)!==-1}).map(function(y) {return i(y)+"="+i( _proxy_jslib_handle(m, (y), '', 0, 0))}).join("&");if(u){v+="&"+u}var w= _proxy_jslib_handle(h, 'createElement', '', 1, 0)("script");w.type="text/javascript"; _proxy_jslib_assign('', w, 'src', '=', (e+(e.indexOf("?")===-1?"?":"&")+v)); _proxy_jslib_handle( _proxy_jslib_handle(h, 'body', '', 0, 0), 'appendChild', '', 1, 0)(w)}}function o() {if(s()){d=r(o,f);return}if(m.abort){k()}n()}function k() {clearTimeout(d);a(c).each(function() {var t=a(this);if(!j(t)){var v=t;var u=t.parents(".everyonelovesstackoverflow").first();if(u.length>0){v=u}v.remove()}})}r(k,2000);var d=r(o,f)}).apply(null, ["//clc.stackoverflow.com/j/p"]);             ;
+_proxy_jslib_flush_write_buffers() ;</script>
+</div>
+<div class="module sidebar-related">
+<h4 id="h-related">Related</h4>
+<div class="related js-gps-related-questions" data-tracker="rq=1">
+<div class="spacer">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/q/17394219" title="Vote score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">2
+</div>
+</a><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/17394219/twitter-bootstrap-not-installing-using-composer-in-laravel-4" class="question-hyperlink">Twitter bootstrap not installing using composer in laravel 4</a>
+</div>
+<div class="spacer">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/q/19775012" title="Vote score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">10
+</div>
+</a><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/19775012/my-composer-wont-update-completely-with-laravel-4-it-gets-stuck-with-artisan" class="question-hyperlink">My composer won't update completely with Laravel 4 it gets stuck with artisan</a>
+</div>
+<div class="spacer">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/q/22433919" title="Vote score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">0
+</div>
+</a><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/22433919/composer-update-not-working-to-update-laravel-dependencies" class="question-hyperlink">Composer update not working to update laravel dependencies</a>
+</div>
+<div class="spacer">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/q/22509731" title="Vote score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">0
+</div>
+</a><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/22509731/composer-laravel-and-local-packages" class="question-hyperlink">Composer, Laravel and local packages</a>
+</div>
+<div class="spacer">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/q/23281664" title="Vote score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">1
+</div>
+</a><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/23281664/installing-rocketeer-with-laravel-4-1-getting-composer-update-error" class="question-hyperlink">Installing Rocketeer with Laravel 4.1, getting composer update error</a>
+</div>
+<div class="spacer">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/q/23745050" title="Vote score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">3
+</div>
+</a><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/23745050/laravel-composer-the-use-statement-with-non-compound-name" class="question-hyperlink">Laravel/Composer: The use statement with non-compound name</a>
+</div>
+<div class="spacer">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/q/25231653" title="Vote score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">0
+</div>
+</a><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/25231653/composer-update-php-warning-unexpected-character-error-message-laravel-4" class="question-hyperlink">Composer update “PHP Warning: unexpected character” error message Laravel-4</a>
+</div>
+<div class="spacer">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/q/25630167" title="Vote score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">4
+</div>
+</a><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/25630167/composer-update-not-installing-the-entirety-of-laravel-app" class="question-hyperlink">Composer update not installing the entirety of Laravel app</a>
+</div>
+<div class="spacer">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/q/26647375" title="Vote score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">1
+</div>
+</a><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/26647375/laravel-4-2-composer-install-error-could-not-scan-for-classes" class="question-hyperlink">Laravel 4.2 Composer install error: “could not scan for classes”</a>
+</div>
+<div class="spacer">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/q/26680458" title="Vote score (upvotes - downvotes)">
+<div class="answer-votes answered-accepted default">0
+</div>
+</a><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/questions/26680458/composer-json-gives-runtime-exception" class="question-hyperlink">Composer json gives runtime exception</a>
+</div>
+</div>
+</div>
+<div id="hot-network-questions" class="module">
+<h4>
+<a data-gps-track="posts_hot_network.click({ item_type:1, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackexchange.com/questions=3ftab=3dhot" class="js-gps-track">
+Hot Network Questions
+</a>
+</h4>
+<ul>
+<li>
+<div class="favicon favicon-codereview" title="Code Review Stack Exchange"></div><a data-gps-track="site.switch({ item_type:11, target_site:196 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/codereview.stackexchange.com/questions/80167/lru-cache-design" class="js-gps-track">
+LRU cache design
+</a>
+</li>
+<li>
+<div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/unix.stackexchange.com/questions/183745/why-is-a-shell-builtin-and-a-shell-keyword" class="js-gps-track">
+Why is `[` a shell builtin and `[[` a shell keyword?
+</a>
+</li>
+<li>
+<div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/unix.stackexchange.com/questions/183994/what-does-a-d-stand-for-in-unix-file-permissions" class="js-gps-track">
+What does a 'd' stand for in UNIX file permissions
+</a>
+</li>
+<li>
+<div class="favicon favicon-craftcms" title="Craft CMS Stack Exchange"></div><a data-gps-track="site.switch({ item_type:11, target_site:563 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/craftcms.stackexchange.com/questions/7080/start-matrix-loop-from-block-id" class="js-gps-track">
+Start matrix loop from block ID
+</a>
+</li>
+<li>
+<div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/askubuntu.com/questions/583698/how-do-i-measure-dimensions-on-screen-without-using-a-ruler" class="js-gps-track">
+How do I measure dimensions on screen without using a ruler?
+</a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/scifi.stackexchange.com/questions/81352/where-is-the-independence-day-power-source" class="js-gps-track">
+Where is the Independence day power source?
+</a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/academia.stackexchange.com/questions/38571/what-is-the-origin-of-the-underwater-basket-weaving-meme-in-academia" class="js-gps-track">
+What is the origin of the "underwater basket weaving" meme in Academia?
+</a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-space" title="Space Exploration Stack Exchange"></div><a data-gps-track="site.switch({ item_type:11, target_site:508 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/space.stackexchange.com/questions/8087/can-either-opportunity-or-curiosity-explore-the-state-of-spirit" class="js-gps-track">
+Can either Opportunity or Curiosity explore the state of Spirit?
+</a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-pets" title="Pets Stack Exchange"></div><a data-gps-track="site.switch({ item_type:11, target_site:518 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/pets.stackexchange.com/questions/7568/will-dogs-overeat" class="js-gps-track">
+Will dogs overeat?
+</a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/aviation.stackexchange.com/questions/12573/does-european-airspace-use-the-metric-system" class="js-gps-track">
+Does European airspace use the metric system?
+</a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/scifi.stackexchange.com/questions/81378/are-korra-and-asami-a-couple" class="js-gps-track">
+Are Korra and Asami a couple?
+</a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/askubuntu.com/questions/583890/how-to-uninstall-a-truetype-font" class="js-gps-track">
+How to uninstall a TrueType font?
+</a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-judaism" title="Mi Yodeya"></div><a data-gps-track="site.switch({ item_type:11, target_site:248 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/judaism.stackexchange.com/questions/53721/can-a-jew-buy-non-kosher-food-for-a-gentile" class="js-gps-track">
+can a Jew buy non kosher food for a gentile
+</a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/scifi.stackexchange.com/questions/81351/story-identification-past-history-of-anything-touched" class="js-gps-track">
+Story identification - past history of anything touched
+</a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-superuser" title="Super User"></div><a data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/superuser.com/questions/875344/are-cpu-clock-ticks-strictly-periodic" class="js-gps-track">
+Are CPU clock ticks strictly periodic?
+</a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-buddhism" title="Buddhism Stack Exchange"></div><a data-gps-track="site.switch({ item_type:11, target_site:565 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/buddhism.stackexchange.com/questions/7576/should-one-give-to-beggars" class="js-gps-track">
+Should one give to beggars?
+</a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/travel.stackexchange.com/questions/43152/where-to-find-dacquoise-in-paris" class="js-gps-track">
+Where to find dacquoise in Paris?
+</a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/worldbuilding.stackexchange.com/questions/9966/how-would-an-empire-survive-weak-crown-authority" class="js-gps-track">
+How would an Empire survive weak crown authority
+</a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-mathoverflow" title="MathOverflow"></div><a data-gps-track="site.switch({ item_type:11, target_site:504 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/mathoverflow.net/questions/196162/unable-to-find-any-information-regarding-this-fact-frey-elliptic-curves" class="js-gps-track">
+Unable to find any information regarding this fact (Frey, elliptic curves)
+</a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-codereview" title="Code Review Stack Exchange"></div><a data-gps-track="site.switch({ item_type:11, target_site:196 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/codereview.stackexchange.com/questions/80175/using-linq-or-lambda-instead-of-nested-and-multiple-foreach-statements" class="js-gps-track">
+Using LINQ or Lambda instead of nested and multiple foreach statements
+</a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/security.stackexchange.com/questions/81228/why-can-protocols-on-higher-layers-be-left-unchanged" class="js-gps-track">
+Why can protocols on higher layers be left unchanged?
+</a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/english.stackexchange.com/questions/226780/like-responsible-but-for-things-or-activities" class="js-gps-track">
+Like "responsible" but for things or activities
+</a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/english.stackexchange.com/questions/226511/what-word-starts-with-pro-ends-with-ive-and-means-generally-accepted-or-e" class="js-gps-track">
+What word starts with "pro", ends with "ive", and means generally-accepted or -expected
+</a>
+</li>
+<li class="dno js-hidden">
+<div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/academia.stackexchange.com/questions/38591/i-am-a-phd-student-and-hate-it-here-how-can-i-warn-prospective-students-during" class="js-gps-track">
+I am a PhD student and hate it here. How can I warn prospective students during admit weekend without ruining my reputation?
+</a>
+</li>
+</ul>
+<a data-gps-track="posts_hot_network.click({ item_type:3, location:11 })" href="#" class="show-more js-show-more js-gps-track">
+more hot questions
+</a>
+</div>
+</div>
+<div id="feed-link">
+<div id="feed-link-text">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/feeds/question/24115250" title="feed of this question and its answers">
+<span class="feed-icon"></span>question feed
+</a>
+</div>
+</div> <script>
+StackExchange.ready(function() {$.get('/posts/24115250/ivc/81cf');});
+ ;
+_proxy_jslib_flush_write_buffers() ;</script>
+<noscript>
+<div><img width="0" alt="" src="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/posts/24115250/ivc/81cf" height="0" class="dno"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-php</div></div>
+</div>
+</div>
+<div id="footer" class="categories">
+<div class="footerwrap">
+<div id="footer-menu">
+<div class="top-footer-links">
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/tour">tour</a>
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/help">help</a>
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/blog.stackoverflow.com=3fblb=3d1">blog</a>
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/chat.stackoverflow.com">chat</a>
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/data.stackexchange.com">data</a>
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackexchange.com/legal">legal</a>
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackexchange.com/legal/privacy-policy">privacy policy</a>
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackexchange.com/work-here">work here</a>
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackexchange.com/mediakit">advertising info</a>
+<a onclick='StackExchange.switchMobile("on") ;
+_proxy_jslib_flush_write_buffers() ;'>mobile</a>
+<b><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com/contact">contact us</a></b>
+<b><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/meta.stackoverflow.com">feedback</a></b>
+</div>
+<div id="footer-sites">
+<table>
+<tbody><tr>
+<th colspan="3">
+Technology
+</th>
+<th>
+Life / Arts
+</th>
+<th>
+Culture / Recreation
+</th>
+<th>
+Science
+</th>
+<th>
+Other
+</th>
+</tr>
+<tr>
+<td>
+<ol>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/serverfault.com" title="system and network administrators">Server Fault</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+</ol></td><td><ol>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Development</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/security.stackexchange.com" title="Information security professionals">Information Security</a></li>
+</ol></td><td><ol>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/salesforce.stackexchange.com" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+<li>
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackexchange.com/sites#technology" class="more">
+more (14)
+</a>
+</li>
+</ol>
+</td>
+<td>
+<ol>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/graphicdesign.stackexchange.com" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/money.stackexchange.com" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/academia.stackexchange.com" title="academics and those enrolled in higher education">Academia</a></li>
+<li>
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackexchange.com/sites#lifearts" class="more">
+more (10)
+</a>
+</li>
+</ol>
+</td>
+<td>
+<ol>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+<li>
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackexchange.com/sites#culturerecreation" class="more">
+more (21)
+</a>
+</li>
+</ol>
+</td>
+<td>
+<ol>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stats.stackexchange.com" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+<li>
+<a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackexchange.com/sites#science" class="more">
+more (7)
+</a>
+</li>
+</ol>
+</td>
+<td>
+<ol>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/meta.stackexchange.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+<li><a href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/careers.stackoverflow.com">Stack Overflow Careers</a></li>
+</ol>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div id="copyright">
+site design / logo © 2015 stack exchange inc; user contributions licensed under <a rel="license" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/creativecommons.org/licenses/by-sa/3.0/">cc by-sa 3.0</a> with <a rel="license" href="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/blog.stackoverflow.com/2009/06/attribution-required/">attribution required</a>
+</div>
+<div id="svnrev">
+rev 2015.2.10.2282
+</div>
+</div>
+</div>
+<noscript>
+<div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img alt="" src="http://quia.cf/orange/pooxy4/nph-poxy.pl/es/20/http/pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" class="dno"></div>
+</noscript>
+<script>var p = "http", d = "static"; if ( _proxy_jslib_handle( _proxy_jslib_handle(document, 'location', '', 0, 0), 'protocol', '', 0, 0) == "https:") { p += "s"; d = "engine"; } var z =  _proxy_jslib_handle(document, 'createElement', '', 1, 0)("script"); z.type = "text/javascript"; z.async = true;  _proxy_jslib_assign('', z, 'src', '=', ( p + "://" + d + ".adzerk.net/ados.js")); var s =  _proxy_jslib_handle(document, 'getElementsByTagName', '', 1, 0)("script")[0];  _proxy_jslib_handle( _proxy_jslib_handle(s, 'parentNode', '', 0, 0), 'insertBefore', '', 1, 0)(z, s); ;
+_proxy_jslib_flush_write_buffers() ;</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () { ados_setKeywords('php,laravel-4,composer-php,blade');; ados_load(); });         
+ ;
+_proxy_jslib_flush_write_buffers() ;</script>
+<script>
+        (function (i, s, o, g, r, a, m) {
+             _proxy_jslib_assign('', i, ('GoogleAnalyticsObject'), '=', ( r));  _proxy_jslib_assign('', i, (r), '=', (  _proxy_jslib_handle(i, (r), '', 0, 0) || function () { ( _proxy_jslib_handle(i, (r), '', 0, 0).q =  _proxy_jslib_handle(i, (r), '', 0, 0).q || []).push(arguments) })),  _proxy_jslib_handle(i, (r), '', 0, 0).l = 1 * _proxy_jslib_new(Date); a =  _proxy_jslib_handle(s, 'createElement', '', 1, 0)(o),
+            m =  _proxy_jslib_handle(s, 'getElementsByTagName', '', 1, 0)(o)[0]; a.async = 1;  _proxy_jslib_assign('', a, 'src', '=', ( g));  _proxy_jslib_handle( _proxy_jslib_handle(m, 'parentNode', '', 0, 0), 'insertBefore', '', 1, 0)(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');        
+        
+        ga('set', 'dimension2', '|php|laravel-4|composer-php|blade|');         
+        ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'== _proxy_jslib_handle( _proxy_jslib_handle(document, 'location', '', 0, 0), 'protocol', '', 0, 0),
+                s= _proxy_jslib_handle(document, 'getElementsByTagName', '', 1, 0)('script')[0],
+                qc= _proxy_jslib_handle(document, 'createElement', '', 1, 0)('script');
+            qc.async=true;
+             _proxy_jslib_assign('', qc, 'src', '=', ((ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js'));
+             _proxy_jslib_handle( _proxy_jslib_handle(s, 'parentNode', '', 0, 0), 'insertBefore', '', 1, 0)(qc, s);
+            var sc= _proxy_jslib_handle(document, 'createElement', '', 1, 0)('script');
+            sc.async=true;
+             _proxy_jslib_assign('', sc, 'src', '=', ((ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js'));
+             _proxy_jslib_handle( _proxy_jslib_handle(s, 'parentNode', '', 0, 0), 'insertBefore', '', 1, 0)(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+     ;
+_proxy_jslib_flush_write_buffers() ;</script>
+</div>
+
+</body></html>

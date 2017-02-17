@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html class="wf-proximanova-n4-active wf-proximanova-n7-active wf-active"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script async="" charset="UTF-8" type="text/javascript" src="Laravel%205%20view%20composers_files/xhr.js" id="_pusher_dependencies1"></script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"><script src="Laravel%205%20view%20composers_files/analytics.js"></script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=u(e),f=c.length,s=i(a,o,r),p=0;f>p;p++)c[p].apply(s,n);return s}function a(t,e){f[t]=u(t).concat(e)}function u(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:u,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=l.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){l.proto="https"===p.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=c.createElement("script");e.src=l.proto+t.agent,c.body.appendChild(e)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),u=window,c=u.document,f="addEventListener",s="attachEvent",p=(""+location).split("?")[0],l=e.exports={offset:i(),origin:p,features:{}};c[f]?(c[f]("DOMContentLoaded",o,!1),u[f]("load",n,!1)):(c[s]("onreadystatechange",r),u[s]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}]},{},["G9z0Bl"]);</script>
+        <meta name="description" content="The best Laravel screencasts on the web.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="stripe-key" content="pk_live_42cAcd2OvCDs4hpErd5ZscBT">
+
+        <title>    Laravel 5 view composers
+</title>
+        <link rel="alternate" type="application/atom+xml" title="Laracasts" href="https://laracasts.com/feed">
+
+        <link href="Laravel%205%20view%20composers_files/min.css" rel="stylesheet">
+
+        
+        <script src="Laravel%205%20view%20composers_files/zjb5wvv.js"></script>
+        <style type="text/css">.tk-proxima-nova{font-family:"proxima-nova",sans-serif;}</style><link href="Laravel%205%20view%20composers_files/d.css" rel="stylesheet"><script>try{Typekit.load();}catch(e){}</script>
+
+            <link rel="stylesheet" href="Laravel%205%20view%20composers_files/hybrid.css">
+    </head>
+
+    <body class="forum ">
+
+        
+        <form method="GET" action="https://laracasts.com/search" accept-charset="UTF-8" class="global-search">
+    <input autocomplete="off" placeholder="Search..." name="q" type="search">
+
+    <select name="q-where" id="q-where" class="hide">
+        <option selected="selected" value="lessons">Lessons</option>
+    </select>
+</form>
+        <script id="flash-template" type="text/template">
+            <div class="flash_message alert alert-info">
+                <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
+
+                <p>
+                    <i class="icon icon-2x icon-bullhorn"></i>
+                    <a href="#" class="flash_message__body"></a>
+                </p>
+            </div>
+        </script>
+
+        
+        <div class="page   ">
+
+            
+            <nav class="navbar" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a href="https://laracasts.com/" class="navbar-brand logo">
+                Laracasts
+            </a>
+        </div> <!-- navbar-header -->
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+
+                <li class="">
+                    <a href="https://laracasts.com/lessons" class="navbar-link">
+                        <i class="icon-television"></i>
+                        Lessons
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="https://laracasts.com/series" class="navbar-link">
+                        <i class="icon-movie-play-1"></i>
+                        Series
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="https://laracasts.com/collections" class="navbar-link">
+                        <i class="icon-box-3"></i>
+                        Collections
+                    </a>
+                </li>
+
+                <li id="navbar-link-discussions" class="active">
+                    <a href="https://laracasts.com/discuss" class="navbar-link">
+                        <i class="icon-chat-4"></i>
+                        Discussions
+                    </a>
+                </li>
+
+                            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                                    <li class="">
+                        <a href="https://laracasts.com/login?return=https://laracasts.com/discuss/channels/general-discussion/laravel-5-view-composers" class="navbar-link">Log In</a>
+                    </li>
+
+                    <li>
+                        <a href="https://laracasts.com/join" class="navbar-link btn btn-join">Start Learning</a>
+                    </li>
+                            </ul>
+        </div> <!-- collapse -->
+    </div> <!-- container -->
+</nav>
+
+
+<nav class="secondary-nav">
+    <div class="container">
+        <ul class="zeroed secondary-nav--left">
+
+            <!-- Browse -->
+            <li class="dropdown ">
+                <a href="https://laracasts.com/index" class="navbar-link dropdown-toggle" data-toggle="dropdown">
+                    Browse <b class="caret"></b>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li class=""><a href="https://laracasts.com/index">Site Index</a></li>
+                    <li class=""><a href="https://laracasts.com/latest">What's New</a></li>
+                </ul>
+            </li>
+
+
+             <!-- Discuss -->
+            <li class="dropdown active">
+                <a href="https://laracasts.com/discuss" class="navbar-link dropdown-toggle" data-toggle="dropdown">
+                    Discuss <b class="caret"></b>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li class="active"><a href="https://laracasts.com/discuss">Forum</a></li>
+                    <li><a href="http://www.laravelpodcast.com/">Laravel Podcast</a></li>
+                    <!-- <li class=""><a href="/learn-with-jeffrey">Blog</a></li> -->
+                    <li><a href="http://facebook.com/laracasts">Facebook</a></li>
+                    <li><a href="http://twitter.com/laracasts">Twitter</a></li>
+                </ul>
+            </li>
+
+
+            <!-- Deploy -->
+            <li id="navbar-link--deploy">
+                <a href="https://forge.laravel.com/" class="navbar-link" target="_blank">Deploy</a>
+            </li>
+
+
+            <!-- Work -->
+            <li id="navbar-link--work">
+                <a class="navbar-link" href="https://larajobs.com/?partner=36" target="_blank">Work</a>
+            </li>
+
+
+            <!-- Recommended Reading -->
+            <li id="navbar-link--recommended-reading" class="">
+                <a class="navbar-link" href="https://laracasts.com/recommended-reading">Recommended Reading</a>
+            </li>
+        </ul>
+
+
+        <!-- Search -->
+        <ul class="zeroed secondary-nav--right">
+            <li>
+                <div id="navbar-search-form">
+                    <form role="search" action="/search" method="GET">
+                        <i class="icon-magnifying-glass"></i>
+                        <input id="q" name="q" placeholder="Search Forum" type="text">
+
+                        <select name="q-where" id="q-where" class="hide">
+                            <option value="lessons">Lessons</option>
+                            <option value="forum" selected="selected">Forum</option>
+                        </select>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class="participation__avatar">
+                <a href="https://laracasts.com/@laloutre">
+    <img src="Laravel%205%20view%20composers_files/abae4d6f76cd2160f2737dcc79316fe8.jpg" class="img-circle" alt="laloutre">
+</a>
+                            </div>
+
+            <h2 class="jumbotron__heading">
+                Laravel 5 view composers
+            </h2>
+
+            <p class="jumbotron__sub-heading">
+                <a href="https://laracasts.com/discuss/channels/general-discussion" class="btn btn-forum" style="background-color:#4E89DA">General</a>
+
+                Updated 3 months ago
+
+                                    by <a href="https://laracasts.com/@usman">usman</a>
+                            </p>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <ol class="breadcrumb">
+            <li><a href="https://laracasts.com/">Home</a></li>
+            <li><a href="https://laracasts.com/discuss">Forum</a></li>
+            <li>
+                <a href="https://laracasts.com/discuss/channels/general-discussion">General</a>
+            </li>
+            <li class="hide-from-mobile">Laravel 5 view composers</li>
+        </ol>
+
+        <div class="replies">
+
+            <!-- The Question -->
+            <article id="reply-2095" class="media reply participation">
+
+        <div class="participation__avatar">
+            <a href="https://laracasts.com/@laloutre">
+    <img src="Laravel%205%20view%20composers_files/abae4d6f76cd2160f2737dcc79316fe8.jpg" class="img-circle" alt="laloutre">
+</a>            <i class="icon-id-1 yearly user-support-level" title="I'm a yearly supporter of Laracasts."></i>
+        </div>
+
+        <div class="media-body participation__body question col-md-11">
+            
+            <div class="media-heading">
+                <h5 class="participation__name">
+                    
+                    <a href="https://laracasts.com/@laloutre">laloutre</a>
+                </h5>
+
+                                    <span class="participation__body__user-stats">
+                        <span class="dash-divider">—</span> 1,475 Points
+
+                                                    with 1 Awards
+                                            </span>
+                
+                <span class="participation__body__date">
+                    Posted 3 months ago
+                </span>
+            </div>
+
+            <p>What are your solutions to register View Composers in Laravel 5 (I have to confess that I used route.php in L4 for that...)?</p>
+
+<p>Mine is to create a app/Http/viewcomposer.php file, and to load it in RouteServiceProvider like that:</p>
+
+<pre><code class=" hljs php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">map</span><span class="hljs-params">(Router <span class="hljs-variable">$router</span>)</span>
+</span>{
+    <span class="hljs-keyword">require</span> app_path(<span class="hljs-string">'Http/viewcomposers.php'</span>);
+}
+</code></pre>
+
+<p>Is there a better way?</p>
+
+        </div>
+    </article>
+
+            <div id="question-stats">
+                <span>
+                    6
+                    replies
+
+                                            with no correct answer yet
+                                    </span>
+            </div>
+
+            <!-- The Replies -->
+            <article id="reply-12423" class="media reply  participation" data-model="Forum">
+
+        <div class="participation__avatar">
+            <a href="https://laracasts.com/@laloutre">
+    <img src="Laravel%205%20view%20composers_files/abae4d6f76cd2160f2737dcc79316fe8.jpg" class="img-circle" alt="laloutre">
+</a>            <i class="icon-id-1 yearly user-support-level" title="I'm a yearly supporter of Laracasts."></i>
+
+                    </div>
+
+        <div class="media-body participation__body col-md-11">
+            
+            <div class="participation__body__buttons">
+                            </div>
+
+            <div class="media-heading">
+                <h5 class="participation__name">
+
+
+                    
+                    <a href="https://laracasts.com/@laloutre">laloutre</a>
+                </h5>
+
+                                    <span class="participation__body__user-stats">
+                        <span class="dash-divider">—</span> 1,475 Points
+
+                                                    with 1 Awards
+                                            </span>
+                
+                <span class="participation__body__date">
+                    Posted <a href="https://laracasts.com/discuss/channels/general-discussion/laravel-5-view-composers/replies/12423" class="text-muted">3 months ago</a>
+                </span>
+            </div>
+
+            <p>Well, maybe not.</p>
+
+
+                    </div>
+
+</article>    
+            <article id="reply-12424" class="media reply  participation" data-model="Forum">
+
+        <div class="participation__avatar">
+            <a href="https://laracasts.com/@thepsion5">
+    <img src="Laravel%205%20view%20composers_files/d71431e91dc16361b315b41782c2f0b1.jpg" class="img-circle" alt="thepsion5">
+</a>            
+                    </div>
+
+        <div class="media-body participation__body col-md-11">
+            
+            <div class="participation__body__buttons">
+                            </div>
+
+            <div class="media-heading">
+                <h5 class="participation__name">
+
+
+                                            <i class="flag flag-us" title="Nashville, TN"></i>
+                    
+                    <a href="https://laracasts.com/@thepsion5">thepsion5</a>
+                </h5>
+
+                                    <span class="participation__body__user-stats">
+                        <span class="dash-divider">—</span> 67,325 Points
+
+                                                    with 59 Awards
+                                            </span>
+                
+                <span class="participation__body__date">
+                    Posted <a href="https://laracasts.com/discuss/channels/general-discussion/laravel-5-view-composers/replies/12424" class="text-muted">3 months ago</a>
+                </span>
+            </div>
+
+            <p>Realistically, the RouteServiceProvider shouldn't be 
+dealing with View Composers. It seems like it'd be pretty easy to create
+ a ViewServiceProvider and register your view composers there. But I 
+think for most projects you could get away with just using it with your 
+Route service provider.</p>
+
+
+                    </div>
+
+</article>    
+            <article id="reply-12680" class="media reply  participation" data-model="Forum">
+
+        <div class="participation__avatar">
+            <a href="https://laracasts.com/@martinbean">
+    <img src="Laravel%205%20view%20composers_files/6b17165d23ead15e66854ff882c59e0c.jpg" class="img-circle" alt="martinbean">
+</a>            
+                    </div>
+
+        <div class="media-body participation__body col-md-11">
+            
+            <div class="participation__body__buttons">
+                            </div>
+
+            <div class="media-heading">
+                <h5 class="participation__name">
+
+
+                    
+                    <a href="https://laracasts.com/@martinbean">martinbean</a>
+                </h5>
+
+                                    <span class="participation__body__user-stats">
+                        <span class="dash-divider">—</span> 225 Points
+
+                                            </span>
+                
+                <span class="participation__body__date">
+                    Posted <a href="https://laracasts.com/discuss/channels/general-discussion/laravel-5-view-composers/replies/12680" class="text-muted">3 months ago</a>
+                </span>
+            </div>
+
+            <p>I used a view composer recently. I had a cart package, 
+and I wanted to show the user’s cart total throughout the site. In 
+Laravel 4, this is where I would have used a view composer and attach it
+ to my master layout template.</p>
+
+<p>In my Laravel 5 application, I registered the view composer in my <code>CartServerProvider</code> class, which looks like this:</p>
+
+<pre><code class="php hljs "><span class="hljs-preprocessor">&lt;?php</span> <span class="hljs-keyword">namespace</span> <span class="hljs-title">Vendor</span>\<span class="hljs-title">Cart</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Support</span>\<span class="hljs-title">ServiceProvider</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CartServiceProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ServiceProvider</span> </span>{
+
+  <span class="hljs-comment">/**
+   * Register the service provider.
+   *
+   *<span class="hljs-phpdoc"> </span></span><a href="https://laracasts.com/@return"><span class="hljs-comment"><span class="hljs-phpdoc">@return</span></span></a><span class="hljs-comment"> void
+   */</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">register</span><span class="hljs-params">()</span>
+  </span>{
+    <span class="hljs-variable">$this</span><span class="hljs-variable">-&gt;app</span><span class="hljs-variable">-&gt;make</span>(<span class="hljs-string">'view'</span>)<span class="hljs-variable">-&gt;composer</span>(<span class="hljs-string">'layouts.master'</span>, <span class="hljs-string">'Vendor\Cart\Http\ViewComposers\CartComposer'</span>);
+  }
+
+}
+</code></pre>
+
+<p>The <code>CartComposer</code> class looks like this:</p>
+
+<pre><code class="php hljs "><span class="hljs-preprocessor">&lt;?php</span> <span class="hljs-keyword">namespace</span> <span class="hljs-title">Vendor</span>\<span class="hljs-title">Cart</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">ViewComposers</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Contracts</span>\<span class="hljs-title">View</span>\<span class="hljs-title">View</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CartComposer</span> </span>{
+
+  <span class="hljs-comment">/**
+   * Cart manager instance.
+   *
+   *<span class="hljs-phpdoc"> </span></span><a href="https://laracasts.com/@var"><span class="hljs-comment"><span class="hljs-phpdoc">@var</span></span></a><span class="hljs-comment"> \Vendor\Cart\StoreInterface
+   */</span>
+  <span class="hljs-keyword">protected</span> <span class="hljs-variable">$cart</span>;
+
+  <span class="hljs-comment">/**
+   * Create a new CartComposer instance.
+   */</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span>
+  </span>{
+    <span class="hljs-variable">$this</span><span class="hljs-variable">-&gt;cart</span> = app()<span class="hljs-variable">-&gt;make</span>(<span class="hljs-string">'cart.store'</span>);
+  }
+
+  <span class="hljs-comment">/**
+   * Compose the view.
+   *
+   *<span class="hljs-phpdoc"> </span></span><a href="https://laracasts.com/@return"><span class="hljs-comment"><span class="hljs-phpdoc">@return</span></span></a><span class="hljs-comment"> void
+   */</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compose</span><span class="hljs-params">(View <span class="hljs-variable">$view</span>)</span>
+  </span>{
+    <span class="hljs-variable">$view</span><span class="hljs-variable">-&gt;with</span>(<span class="hljs-string">'cart'</span>, <span class="hljs-variable">$this</span><span class="hljs-variable">-&gt;cart</span>);
+  }
+
+}
+</code></pre>
+
+<p><code>cart.store</code> is a custom cart implementation I injected 
+into the container, but the above should be enough to show you how to 
+register a simple view composer.</p>
+
+
+                    </div>
+
+</article>    
+            <article id="reply-14555" class="media reply  participation" data-model="Forum">
+
+        <div class="participation__avatar">
+            <a href="https://laracasts.com/@FroimsonM">
+    <img src="Laravel%205%20view%20composers_files/9ffc8f01186438babf2a9ded17a9f2ff.png" class="img-circle" alt="FroimsonM">
+</a>            <i class="icon-id-1 monthly user-support-level" title="I'm a monthly supporter of Laracasts."></i>
+
+                    </div>
+
+        <div class="media-body participation__body col-md-11">
+            
+            <div class="participation__body__buttons">
+                            </div>
+
+            <div class="media-heading">
+                <h5 class="participation__name">
+
+
+                    
+                    <a href="https://laracasts.com/@FroimsonM">FroimsonM</a>
+                </h5>
+
+                                    <span class="participation__body__user-stats">
+                        <span class="dash-divider">—</span> 50 Points
+
+                                            </span>
+                
+                <span class="participation__body__date">
+                    Posted <a href="https://laracasts.com/discuss/channels/general-discussion/laravel-5-view-composers/replies/14555" class="text-muted">3 months ago</a>
+                </span>
+            </div>
+
+            <p>Guys, I tried the example in the docs and the example above and both didn't work for me.
+In the docs (<a href="http://laravel.com/docs/master/views%29">http://laravel.com/docs/master/views)</a> we have a "boot" method and no "register", so I got an error that I have an abstract method in my ViewComposerServiceProvider.</p>
+
+<p>In martinbean's case my app cannot instantiate "view" class (Class 
+view does not exist), I tried "view" instead and then got "Call to 
+undefined method Illuminate\Support\Facades\View::composer()"</p>
+
+
+                    </div>
+
+</article>    
+            <article id="reply-14565" class="media reply  participation" data-model="Forum">
+
+        <div class="participation__avatar">
+            <a href="https://laracasts.com/@pmall">
+    <img src="Laravel%205%20view%20composers_files/1920c014c960dece834f5acad7d4304c.jpg" class="img-circle" alt="pmall">
+</a>            
+                    </div>
+
+        <div class="media-body participation__body col-md-11">
+            
+            <div class="participation__body__buttons">
+                            </div>
+
+            <div class="media-heading">
+                <h5 class="participation__name">
+
+
+                                            <i class="flag flag-fr" title="Lyon, France"></i>
+                    
+                    <a href="https://laracasts.com/@pmall">pmall</a>
+                </h5>
+
+                                    <span class="participation__body__user-stats">
+                        <span class="dash-divider">—</span> 97,550 Points
+
+                                                    with 102 Awards
+                                            </span>
+                
+                <span class="participation__body__date">
+                    Posted <a href="https://laracasts.com/discuss/channels/general-discussion/laravel-5-view-composers/replies/14565" class="text-muted">3 months ago</a>
+                </span>
+            </div>
+
+            <p><a href="https://laracasts.com/@FroimsonM">@FroimsonM</a> he doesn't instantiate a new view class he gets it from the IoC container</p>
+
+
+                    </div>
+
+</article>    
+            <article id="reply-14577" class="media reply  participation" data-model="Forum">
+
+        <div class="participation__avatar">
+            <a href="https://laracasts.com/@usman">
+    <img src="Laravel%205%20view%20composers_files/ee02304e7ceaeaa44f97c693cb8e6142.jpg" class="img-circle" alt="usman">
+</a>            
+                    </div>
+
+        <div class="media-body participation__body col-md-11">
+            
+            <div class="participation__body__buttons">
+                            </div>
+
+            <div class="media-heading">
+                <h5 class="participation__name">
+
+
+                    
+                    <a href="https://laracasts.com/@usman">usman</a>
+                </h5>
+
+                                    <span class="participation__body__user-stats">
+                        <span class="dash-divider">—</span> 17,775 Points
+
+                                                    with 20 Awards
+                                            </span>
+                
+                <span class="participation__body__date">
+                    Posted <a href="https://laracasts.com/discuss/channels/general-discussion/laravel-5-view-composers/replies/14577" class="text-muted">3 months ago</a>
+                </span>
+            </div>
+
+            <p>Hi <a href="https://laracasts.com/@FroimsonM">@FroimsonM</a>, try this provider:</p>
+
+<pre><code class=" hljs xml"><span class="php"><span class="hljs-preprocessor">&lt;?php</span> <span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Providers</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Support</span>\<span class="hljs-title">ServiceProvider</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ComposerServiceProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ServiceProvider</span> </span>{
+
+    <span class="hljs-comment">/**
+     * Bootstrap the application services.
+     *
+     *<span class="hljs-phpdoc"> </span></span></span><a href="https://laracasts.com/@return"><span class="php"><span class="hljs-comment"><span class="hljs-phpdoc">@return</span></span></span></a><span class="php"><span class="hljs-comment"> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">boot</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-variable">$this</span><span class="hljs-variable">-&gt;app</span>[<span class="hljs-string">'view'</span>]<span class="hljs-variable">-&gt;composer</span>(<span class="hljs-string">'index'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$view</span>)</span></span>{
+            <span class="hljs-variable">$view</span><span class="hljs-variable">-&gt;title</span> = <span class="hljs-string">'Laracasts'</span>;
+        });
+    }
+
+    <span class="hljs-comment">/**
+     * Register the application services.
+     *
+     *<span class="hljs-phpdoc"> </span></span></span><a href="https://laracasts.com/@return"><span class="php"><span class="hljs-comment"><span class="hljs-phpdoc">@return</span></span></span></a><span class="php"><span class="hljs-comment"> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">register</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+    }
+
+}
+</span></code></pre>
+
+<p>I hope this helps, Regards!</p>
+
+
+                    </div>
+
+</article>    
+
+             <div class="text-center pagination-links">
+                
+            </div>
+
+        </div>
+
+         <!-- The Form to Leave a Reply -->
+        <h5 class="text-center padded-bottom--large">
+        <a href="https://laracasts.com/login?return=https://laracasts.com/discuss/channels/general-discussion/laravel-5-view-composers">Log in</a> or
+        <a href="https://laracasts.com/signup?billing=none&amp;plan=none&amp;title=Okay,%20we%27ll%20have%20you%20posting%20on%20the%20forum%20in%20no%20time%21">
+        create a forum account to participate in this discussion.</a>
+    </h5>
+
+            </div>
+
+<div class="modal fade" id="create-conversation-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+                <h4 class="modal-title" id="myModalLabel">
+                                            Start a Conversation
+                                    </h4>
+            </div>
+
+            <div class="modal-body">
+                                    <form method="POST" action="https://laracasts.com/discuss/conversations" accept-charset="UTF-8"><input name="_token" value="PuNClzl49ItYv7dno0Ap9E9ck6S0rrjncLq6h1II" type="hidden">
+    <div class="form-group">
+        <label for="channel">Pick a Channel:</label>
+        <select class="form-control" required="required" id="channel" name="channel"><option selected="selected" value="1">General</option><option value="2">Requests</option><option value="3">Site Improvements</option><option value="5">Forge</option><option value="6">Tricks</option><option value="7">Testing</option></select>
+    </div>
+
+    <!-- Title Form Input -->
+    <div class="form-group">
+        <label for="title">Give Your Conversation a Title:</label>
+        <input class="form-control" required="required" name="title" id="title" type="text">
+    </div>
+
+    <!-- Body Form Input -->
+    <div class="form-group">
+        <label for="body">And Start Talking:</label>
+        <textarea class="form-control" required="required" name="body" cols="50" rows="10" id="body"></textarea>
+        <span class="help-block text-muted" style="font-size:12px">* You may use Markdown with <a href="https://help.github.com/articles/github-flavored-markdown" target="_blank">GitHub-flavored</a> code blocks.</span>
+    </div>
+
+    <!-- Verification Form Input -->
+    <div class="form-group">
+        <label for="verification">Finally, Let's Make Sure You're Human:</label>
+        <input class="form-control" placeholder="Laravel was built using which server-side programming language?" required="required" pattern=".{3,}" title="3 characters minimum" name="verification" id="verification" type="text">
+    </div>
+
+    <div class="form-group clearfix">
+        <input class="btn btn-primary btn-submit pull-right" value="Start Conversation" type="submit">
+    </div>
+</form>
+                            </div>
+
+                    </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<footer id="footer" class="wrap">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4">
+                <h4 class="logo">Laracasts</h4>
+
+                <p class="footer__site-description">
+                    The best PHP screencasts on the web. Buy me lunch 
+once a month, and I'll teach you everything about modern PHP workflow.
+                </p>
+
+                <ul class="footer__connect">
+                    <li><a href="http://facebook.com/laracasts"><i class="icon-facebook"></i></a></li>
+                    <li><a href="http://twitter.com/laracasts"><i class="icon-twitter"></i></a></li>
+                    <li><a href="https://github.com/laracasts"><i class="icon-github"></i></a></li>
+                </ul>
+            </div>
+
+
+            <div class="col-md-2">
+                <h5>Learn</h5>
+
+                <ul class="zeroed">
+                    <li><a href="https://laracasts.com/lessons">Lessons</a></li>
+                    <li><a href="https://laracasts.com/series">Series</a></li>
+                    <li><a href="https://laracasts.com/collections">Collections</a></li>
+                    <li><a href="https://laracasts.com/recommended-reading">Recommended Reading</a></li>
+                    <li><a href="https://laracasts.com/latest">What's New</a></li>
+                    <li><a href="https://laracasts.com/index">Site Index</a></li>
+                </ul>
+            </div>
+
+
+            <div class="col-md-2">
+                <h5>Discuss</h5>
+
+                <ul class="zeroed">
+                    <li><a href="https://laracasts.com/discuss">Forum</a></li>
+                    <li><a href="http://laravelpodcast.com/">Laravel Podcast</a></li>
+                    <!-- <li><a href="/learn-with-jeffrey">Blog</a></li> -->
+                </ul>
+            </div>
+
+
+            <div class="col-md-4">
+                <h5>Related</h5>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="zeroed">
+                            <li><a href="https://forge.laravel.com/">Laravel Forge</a></li>
+                            <li><a href="https://larajobs.com/?partner=36#">Larajobs</a></li>
+                            <li><a href="https://laracasts.com/testimonials">Testimonials</a></li>
+                            <li><a href="https://laracasts.com/faq">FAQ</a></li>
+                            <li><a href="mailto:laracasts@helpful.io" data-helpful="laracasts" data-helpful-title="Got a question?" data-helpful-name="" data-helpful-email="">Customer Support</a></li>
+                            <li><a href="https://laracasts.com/feed">RSS</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-6">
+                        <ul class="zeroed">
+                            <li><a href="https://laracasts.com/stats">Statistics</a></li>
+                            <li><a href="https://laracasts.com/join">Sign Up</a>
+                            </li><li><a href="https://laracasts.com/login">Log In</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <p class="pull-left">
+                © Laracasts 2015. All rights reserved.
+            </p>
+
+            <div class="pull-right">
+                Proudly hosted with <a href="https://forge.laravel.com/">Laravel Forge</a> and <a href="https://www.digitalocean.com/?refcode=d2070a2d5f35">DigitalOcean</a>.
+            </div>
+        </div>
+    </div>
+</footer>
+
+</div> <!-- close page div -->
+
+<script>var Views = {};</script>
+<script src="Laravel%205%20view%20composers_files/pusher.js"></script>
+<script src="Laravel%205%20view%20composers_files/all.js"></script>
+<script>new WOW().init();</script>
+<script src="Laravel%205%20view%20composers_files/si1yxxq3.js"></script>
+<script async="" src="Laravel%205%20view%20composers_files/widget.js"></script>
+
+
+<!-- Google Analytics -->
+<script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+
+    ga('create','UA-44120322-1');ga('send','pageview');
+</script>
+
+
+
+    <script>
+         pusher.subscribe('forum_conversation_2095')
+               .bind('ReplyWasLeftForConversation', Forum.Listeners.whenReplyWasLeftForConversation);
+    </script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-3.newrelic.com","licenseKey":"63eeee14d0","applicationID":"3670257","transactionName":"ZARTYhYAWBJQW0ReVl1OZEQNTl8PVV1IGUlbEQ==","queueTime":0,"applicationTime":366,"ttGuid":"","agentToken":"","userAttributes":"","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-476.min.js"}</script>
+
+<script src="Laravel%205%20view%20composers_files/nr-476.js"></script><script src="Laravel%205%20view%20composers_files/63eeee14d0" type="text/javascript"></script></body></html>

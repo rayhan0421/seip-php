@@ -1,0 +1,2 @@
+if you want to hard code sql query in controller add db namespace in controller
+

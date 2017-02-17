@@ -1,0 +1,33 @@
+http://laravel.com/docs/5.0/requests
+//in public/index.php see what happen
+
+<script>
+    alert("<?php  echo $_SERVER['REQUEST_URI'];?>
+    ");
+</script>   
+
+in http/routes.php 
+
+use this 
+
+<script>
+    alert("<?php  echo $_SERVER['REQUEST_URI'];?>
+    ");
+</script> 
+=======================
+<script>
+    alert("<?php  echo Request::url();?>
+    ");
+</script> 
+
+=======-===================
+// for segment
+<script>
+    alert("<?php  echo Request::path();?>
+    ");
+</script>
+
+
+
+
+ 

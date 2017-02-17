@@ -1,0 +1,79 @@
+
+1.
+return Album:: where( 'artista' , '=' , 'Something Corporate' )
+-> get();
+
+2.return Album:: where( 'artista' , '=' , 'Something Corporate' )
+-> get( array( 'id' , 'titulo' ));
+
+// to get id and title
+
+3. return Album:: pluck( 'artista' );
+
+//The pluck () method can be used to obtain a value of a single column. Here's an example.
+return Album:: pluck( 'artista' );
+
+4.return Album:: lists( 'artista' );
+
+5. return Album:: where( 'titulo' , 'LIKE' , '...%' )
+ -> get();
+
+6.return Album:: where( 'artista' , '=' , 'Matt Nathanson' )
+ -> first();
+7.return Album:: where( 'titulo' , 'LIKE' , '...%' )
+-> where( 'artista' , '=' , 'Say Anything' )
+-> get();
+
+8.return Album:: where( 'titulo' , 'LIKE' , '...%' )
+-> orWhere( 'artista' , '=' , 'Something Corporate' )
+-> get();
+
+9.return Album:: whereRaw( 'artist = ? and titulo LIKE ?' , array(
+ 'Say Anything' , '...%'
+))
+-> get()
+
+10.return Album:: whereBetween( 'ano' , array( '2000' , '2010' ))
+-> get();
+})
+
+11. where nested
+
+return Album:: whereNested( function( $query)
+ {
+ $query-> where( 'ano' , '>' , 2000);
+ $query-> where( 'ano' , '<' , 2005);
+ })
+-> get();
+
+12.
+
+return Album:: whereNested( function( $query)
+ {
+$query-> where( 'ano' , '>' , 2000);
+ $query-> where( 'ano' , '<' , 2005);
+ })
+ -> orWhere( function( $query)
+ {
+ $query-> where( 'ano' , '=' , 1997);
+ })
+-> get();
+
+13.$values = array( 'Something Corporate' , 'The Ataris' );
+return Album:: whereIn( 'artista' , $values) -> get();
+
+14.
+
+return Album:: where( 'artista' , '=' , 'Matt Nathanson' )
+-> orderBy( 'ano' )
+-> get();
+15.
+ // for limitation
+return Album:: take( 2)
+-> get();
+
+16.
+
+return Album:: where( 'artista' , '=' , 'Something Corporate' )
+-> get();
+

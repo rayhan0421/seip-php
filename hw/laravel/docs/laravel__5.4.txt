@@ -1,0 +1,7 @@
+1. Higher Order Collection Messages
+2. Fluent Routing
+3. Resourceful Controllers With Model Boilerplate
+4. Blade Components and Slots
+5. Markdown Mailables
+6. Real-Time Facades
+7. Map Eloquent Events to Dedicated Classes

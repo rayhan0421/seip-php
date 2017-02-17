@@ -1,0 +1,37 @@
+// app/routes.php
+
+Validator:: extend( 'awesome' , function( $field, $value, $params)
+{
+ return $value == 'awesome' ;
+});
+
+// in formrequest file 
+
+$rules = array(
+ 'username' => 'awesome' ,
+ ); 
+
+
+-----------
+There’s no default location for custom validation rules to be defined, so I have added it within
+the routes.php file to simplify the example. You could include a validators.php file and provide
+custom validations in there if you like.
+------
+
+2. // app/validators/CustomValidation.php
+class CustomValidation
+ {
+ public function awesome( $field, $value, $params)
+{
+ return $value == 'awesome' ;
+ }
+ }
+
+I chose to put my validation class within the app/validators folder, and classmap that
+folder with Composer.
+
+we need to use the Validator::extend() method again
+
+// app/routes.php
+
+Validator:: extend( 'awesome' , 'CustomValidation@awesome' );

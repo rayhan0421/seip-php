@@ -1,0 +1,339 @@
+
+html{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:18px;
+    height:100%;
+    width:100%;
+}
+
+body{
+    background: #F7F7F7; /* Old browsers */
+
+
+
+}
+
+h1 {
+    font-size: 18px;
+    color: #0088CC;
+}
+
+.container {
+    width: 70%;
+}
+
+#header{
+    margin-top:8px;
+    background-color:white;
+    border-radius: 5px 5px 5px 5px; 
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    
+}
+
+#logo{
+    margin:auto;
+    text-align:center;
+    margin:0;
+}
+
+#logo img {
+    margin: 5px;
+    max-width: 96%
+}
+
+#search{
+    text-align: center;
+    background-color: #EEEEEE;
+    padding: 8px;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 0px 0px 5px 5px;
+}
+
+#searchbox {
+    height: 26px;
+    width: 300px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+}
+
+.searchButton {
+    padding: 7px 20px;
+}
+
+
+#spacer{
+    height:10px;
+    clear: both;
+}
+
+#homeMain{
+    margin:auto;
+    text-align:center;
+    overflow: hidden;
+    padding: 30px;
+    
+    background-color:white;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+
+.demoText{
+    float:left;
+    width:100%;
+    padding:10px;
+    text-align:left;
+    font-size:20px;
+    color:#382E1C;
+}
+
+#bottomMain{
+    margin:auto;
+    text-align:center;
+}
+
+
+
+#categoryWrapper{
+    width:615px;
+    height:50px;
+    margin:auto;
+}
+
+.categoryName{
+    float:left;
+    margin:auto;
+    border: 3px solid #F9F9F9;
+    background:#e0e0e0;
+    padding:5 5 5 5;
+    color:#0f34b8;
+}
+
+.categoryName:hover{
+
+    background:#0f34b8;
+    color:#e0e0e0;
+}
+
+
+
+
+
+#alertSpacer{
+    height:10px;
+    display:none;
+}
+
+#alertWrapper{
+    margin-top:10px;
+    display:none;
+    margin:auto;
+    text-align:center;
+    width:900px;
+    background-color:white;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 5px 5px 5px 5px; 
+    border: 1px solid rgba(0, 0, 0, .1);
+}
+
+
+.createAlertButton {
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 25px;
+    padding: 10px;
+    text-decoration: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 2px 2px 3px #666666;
+    -moz-box-shadow: 2px 2px 3px #666666;
+    box-shadow: 2px 2px 3px #666666;
+    text-shadow: 1px 1px 3px #666666;
+    border: solid #ff7d7d 2px;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#ff6161), to(#fa1e1e));
+    background: -moz-linear-gradient(top, #ff6161, #fa1e1e);
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#ff6161, endColorStr=#fa1e1e);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#ff6161, endColorStr=#fa1e1e);
+    display:inline-block; /* IE is so silly */
+
+}
+.createAlertButton:hover {
+
+    background: #c70000;
+}
+.createAlertButton:active {
+    position:relative;
+    top:1px;
+}
+
+
+
+
+
+
+#externalSiteFrame{
+    border:0px;
+}
+
+#frameWrapper{
+    display:none;
+}
+
+
+#questionTitle, #SimilarQuestionTitle, #apiCodeSampleTitle, #apiRepoSampleTitle{
+    color: #0e3079;
+    font-weight: 800;
+    line-height: 40px;
+    font-size: 20px;
+}
+
+#questionBody, #similarQuestionBody, #answerTitle, #apiCodeSamples, #apiRepoSamples, #userAnswerBody{
+    font-size:16px;
+    text-align: left;
+    margin-top: 10px;
+    padding: 15px;
+    background: #FFF;
+	border:1px solid #E5E5E5;
+    -webkit-box-shadow: 0 2px 2px #E5E5E5;
+    -moz-box-shadow: 0 2px 2px #E5E5E5;
+    box-shadow: 0 2px 2px #E5E5E5;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    line-height: 160%;
+    overflow: hidden;
+}
+
+
+#Answers{
+    /*float:left;*/
+}
+
+
+#answerTitle{
+    color: #0e3079;
+    font-weight: 800;
+    line-height: 40px;
+    font-size: 20px;
+    float: none;
+}
+
+.answerWrapper{
+    text-align: left;
+    padding: 15px;
+    margin-top:10px;
+    background: #FFF;
+	border:1px solid #E5E5E5;
+    -webkit-box-shadow: 0 2px 2px #E5E5E5;
+    -moz-box-shadow: 0 2px 2px #E5E5E5;
+    box-shadow: 0 2px 2px #E5E5E5;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    line-height: 160%;
+    overflow: hidden;
+}
+
+.dateAndUser{
+    float:right;
+}
+
+pre{
+    padding: 5px;
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    margin-bottom: 10px;
+    background-color: #eeeeee;
+    overflow: auto;
+    width: auto;
+
+}
+
+#answerToSubmit, #answerError, #askAQuestion, #questionTitleToSubmit, #quesitonBodyToSubmit, #questionSubmit{
+    float:left;
+}
+
+#answerToSubmit {
+    width: 99%;
+}
+
+#answerSubmit{
+    float:left;
+    margin-top:5px;
+}
+
+#answerError, #askAQuestion {
+    margin-left: 10px;
+}
+
+#questionTitleToSubmit{
+    height:30px;
+}
+
+#askQuestionWrapper{
+    padding:10px;
+    width: 100%
+}
+
+
+#questionTitleToSubmit{
+    margin-top:5px;
+    width:96%;
+}
+
+#questionBodyToSubmit{
+    float:left;
+    margin-top:10px;
+    margin-bottom:10px;
+    width:96%;
+    height:200px;
+}
+
+
+
+#footerContainer{
+    float:left;
+    width:100%;
+    margin-top:10px;
+}
+
+#footer{
+    text-align:center;
+    margin:auto;
+    padding-top:10px;
+    padding-bottom:10px;
+    font-size:12px;
+    color: #E8E8E8;
+    background-color: #262626;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 5px 5px 5px 5px;
+    border: 1px solid rgba(0, 0, 0, .1);
+}
+#footer a:link{
+    color: #E8E8E8;
+}
+#footer a:visited{
+    color: #E8E8E8;
+}

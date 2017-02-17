@@ -1,0 +1,12 @@
+fluent validation
+
+rule is laravel 5.3 features
+
+'email' => [
+    'required',
+    Rule::unique('users')->ignore($user->id)->where(function ($query) {
+        $query->where('account_id', 1);
+    })
+],
+
+Rule::exist(............)

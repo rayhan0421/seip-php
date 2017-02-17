@@ -1,0 +1,100 @@
+All service providers extend the Illuminate\Support\ServiceProvider 
+The Artisan CLI can easily generate a new provider via the make:provider command: php artisan make:provider RiakServiceProvider
+The Register Method
+
+     <?php namespace App\Providers;
+
+use Riak\Connection;
+use Illuminate\Support\ServiceProvider;
+
+class RiakServiceProvider extends ServiceProvider {
+
+    /**
+     * Register bindings in the container.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->app->singleton('Riak\Contracts\Connection', function($app)
+        {
+            return new Connection($app['config']['riak']);
+        }); // this come from service container ,  we can bind here
+    }
+
+}
+
+(or)if you want to use event listener 
+
+   use  The Boot Method
+   <?php namespace App\Providers;
+
+use Event;
+use Illuminate\Support\ServiceProvider;
+
+class EventServiceProvider extends ServiceProvider {
+
+    /**
+     * Perform post-registration booting of services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Event::listen('SomeEvent', 'SomeEventHandler');
+    }
+
+    /**
+     * Register bindings in the container.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+}
+
+and We are able to type-hint dependencies for our boot method. The service container will automatically inject any dependencies you need:
+
+<?php namespace App\Providers;
+
+use Event;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Events\Dispatcher;
+class EventServiceProvider extends ServiceProvider {
+
+    /**
+     * Perform post-registration booting of services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Event::listen('SomeEvent', 'SomeEventHandler');
+    }
+ 
+ public function boot(Dispatcher $events)
+{
+    $events->listen('SomeEvent', 'SomeEventHandler');// use this , we have to create event library. then fire this in controller.
+}
+
+    /**
+     * Register bindings in the container.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+}
+Registering Providers
+All service providers are registered in the config/app.php
+'providers' => [
+    // Other Service Providers
+
+    'App\Providers\AppServiceProvider',
+],

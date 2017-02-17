@@ -1,0 +1,19 @@
+$this->validate($request, [
+            'name' => 'required|string',
+            'employee.*.name' => 'required|string',
+            'employee.*.title' => 'string',
+        ]);
+
+ <div class="add-employee">
+        <label>Employee Name</label>
+        <input type="text" name="employee[1][name]">
+        <label>Employee Title</label>
+        <input type="text" name="employee[1][title]">
+    </div>
+
+ <div class="add-employee">
+        <label>Employee Name</label>
+        <input type="text" name="employee[2][name]">
+        <label>Employee Title</label>
+        <input type="text" name="employee[2][title]">
+    </div>

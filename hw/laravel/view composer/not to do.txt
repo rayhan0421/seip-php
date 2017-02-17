@@ -1,0 +1,1 @@
+do n't  use view composer if you use laravel 5.1

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<!--
+			...:::::...
+		 :::::::::::::::::
+	  .:::::''::::::::::::::.
+	 :::::::   '::::::::::::::
+   :::::::::	 '::::::::::::::
+  ::::::::::		 ':::::::::::
+ :::::::::: 			::::::::::
+.::::::::				  ::::::::.
+::::::::				   ::::::::
+::::::::				   ::::::::
+::::::::				   ::::::::
+::::::::				   ::::::::
+'::::::::				  ::::::::'
+ :::::::::: 			::::::::::
+  :::::::::::.		 .:::::::::::
+   :::::::::::::::::::::::::::::
+	 :::::::::::::::::::::::::
+	  ':::::::::::::::::::::'
+		 :::::::::::::::::
+			''':::::'''
+
+	Hello there!
+-->
+<html><head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="Laravel%204%20,%20adding%20custom%20validation%20using%20extend%20-%20CoderException_files/s2.css">
+        <link rel="stylesheet" type="text/css" href="Laravel%204%20,%20adding%20custom%20validation%20using%20extend%20-%20CoderException_files/s3.css">  
+        <meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="canonical" href="http://www.coderexception.com/CNNNzbbbPQWJyJJi/laravel-4-adding-custom-validation-using-extend">
+<title>Laravel 4 , adding custom validation using extend - CoderException</title>
+<style>
+#con_all {
+    clear: both;
+    padding: 10px 0px;
+    margin: 0px;
+    overflow: hidden;
+    width: 700px;
+}
+#con_ad1 {
+    padding: 0px;
+    float: left;
+    width: 300px;
+    margin: 0px;
+    overflow: hidden;
+    text-align: left;
+}
+#con_ad2 {
+    padding: 0px;
+    float: right;
+    margin: 30px 0px 0px 0px;
+    overflow: hidden;
+    text-align: left;
+}
+</style>
+</head>
+
+    <body>  
+        <div class="container">
+            <div id="header">
+    <div id="logo"><a href="http://www.coderexception.com/"><img src="Laravel%204%20,%20adding%20custom%20validation%20using%20extend%20-%20CoderException_files/logo.png" alt="Logo"></a></div>
+    <div id="search">
+        <form style="margin:0;" method="get" action="/">
+            <input autocomplete="off" id="searchbox" placeholder="Search for questions" class="default-value" name="q" style="color: rgb(128, 128, 128); " type="text">
+            <button type="submit" class="searchButton btn btn-primary">Go!</button>
+        </form>
+
+    </div>
+</div>
+
+<div id="bottomMain">
+
+    <div style="text-align: center; margin: 0px auto; width: 170px; position: relative; float: right; background: none repeat scroll 0 0 #FFFFFF; border-radius: 3px; padding: 5px; margin: 0 0 8px 6px;">
+<script src="Laravel%204%20,%20adding%20custom%20validation%20using%20extend%20-%20CoderException_files/ca-pub-0290889595369348.js" type="text/javascript" async=""></script><script async="" src="Laravel%204%20,%20adding%20custom%20validation%20using%20extend%20-%20CoderException_files/adsbygoogle.js"></script>
+<!-- c -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-0290889595369348" data-ad-slot="2499593745"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:160px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:160px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;" frameborder="0" height="600" width="160"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br>
+        
+    </div>
+
+    <div id="questionBody">
+        <h1>Laravel 4 , adding custom validation using extend</h1>       
+		 <div style="margin: 10px 0;text-align: center;"></div>
+         
+
+        <p>I am trying to use the Extend function that the validation offer, 
+Here is what I have:</p>
+
+<p>1). HomeController.php :</p>
+
+<pre><code>  $rules = array(
+                    'first_name'=&gt;'required|regex:/^[a-z ,."-]+$/i|min:2',
+                    'last_name'=&gt;'required|regex:/^[a-z ,."-]+$/i|min:2',
+                    'gender'=&gt;'required|alpha|gendercheck',
+                    'email'=&gt;'required|email|unique:users,email,'.Input::get('id').',id',
+                    'zip'=&gt;'required|zipcheck|max:10',
+
+                    );
+</code></pre>
+
+<p>2). Then to use the extend method I add it to routes.php:</p>
+
+<pre><code>    Validator::extend('zipcheck', function($field,$value,$parameters){
+    // List of regular expressions to use, if a custom one isn't specified.
+    $countryRegs = array(
+          "US"=&gt;"/^[\d]{5}(-[\d]{4})?$/",
+          "GB"=&gt;"/^(GIR|[A-Z]\d[A-Z\d]??|[A-Z]{2}\d[A-Z\d]??)[ ]??(\d[A-Z]{2})$/",
+          "DE"=&gt;"/\b((?:0[1-46-9]\d{3})|(?:[1-357-9]\d{4})|(?:[4][0-24-9]\d{3})|(?:[6][013-9]\d{3}))\b/",
+          "CA"=&gt;"/^([ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ])\ {0,1}(\d[ABCEGHJKLMNPRSTVWXYZ]\d)$/",
+          "FR"=&gt;"/^(F-)?((2[A|B])|[0-9]{2})[0-9]{3}$/",
+          "IT"=&gt;"/^(V-|I-)?[0-9]{5}$/",
+          "AU"=&gt;"/^(0[289][0-9]{2})|([1345689][0-9]{3})|(2[0-8][0-9]{2})|(290[0-9])|(291[0-4])|(7[0-4][0-9]{2})|(7[8-9][0-9]{2})$/",
+          "NL"=&gt;"/^[1-9][0-9]{3}\s?([a-zA-Z]{2})?$/",
+          "ES"=&gt;"/^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$/",
+          "DK"=&gt;"/^([D-d][K-k])?( |-)?[1-9]{1}[0-9]{3}$/",
+          "SE"=&gt;"/^(s-|S-){0,1}[0-9]{3}\s?[0-9]{2}$/",
+          "BE"=&gt;"/^[1-9]{1}[0-9]{3}$/"
+    ); 
+
+    // get country submitted..
+    $country = Input::get('country');
+
+    // check country if in the array..
+    if (key_exists($country , $countryRegs))
+        return preg_match($countryRegs[$country], $value);  
+    else // other countries make sure no special characters in there
+        return preg_match('/^[a-z0-9- ]+$/i' , $value);
+
+    });
+</code></pre>
+
+<p>The problem is I want to keep my code organized and I dont want to add the validation extend to my routes.php </p>
+
+<p>What is the best way where I can have those in its own class and call those from my HomeController and still it will work?</p>
+
+<p>Thanks</p>
+
+    		<div id="con_all">
+        <div id="con_ad1">
+			<script async="" src="Laravel%204%20,%20adding%20custom%20validation%20using%20extend%20-%20CoderException_files/adsbygoogle.js"></script>
+			<!-- 336*280 -->
+			<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-0290889595369348" data-ad-slot="4100861745"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent"><ins id="aswift_1_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;" frameborder="0" height="280" width="336"></iframe></ins></ins></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script> 
+		</div>
+        <div id="con_ad2">
+			 	
+		</div>
+		</div>
+         On <a href="http://stackoverflow.com/questions/24087889" target="_blank" rel="nofollow">StackOverflow</a>	
+    </div>
+
+
+
+    <div id="userAnswerBody">
+        <textarea cols="100" rows="3" placeholder="Write as if you were talking to a good friend (in front of your mother). No spam, no self-promotion, and no offensive language." id="answerToSubmit"></textarea>
+        <div class="btn btn-primary btn-large" id="answerSubmit">Submit Answer!</div>
+        <div id="answerError"></div>
+        <div id="askAQuestion">None of these answers doing it for you? </div>
+        <div style="margin: 10px 0; clear: both">          
+        </div>
+    </div>
+
+            <div id="Answers">
+            <div id="answerTitle">Answers</div>
+						<div class="answerWrapper">
+
+						   
+            <p>There are lots of ways to do this. The way I like is make a file <code>/app/validators.php</code> (So it is in the same location as routes.php and <code>filters.php</code>)</p>
+
+<p>Then go to app/start/global.php and add this at the bottom after the filters require:</p>
+
+<pre><code>require app_path().'/validators.php';
+</code></pre>
+
+<p>You can now declare all your extended validators in the <code>validators.php</code> file -and Laravel will use them.</p>
+
+    						   <br><div class="dateAndUser"></div>
+						</div>
+						<div class="answerWrapper">
+
+						   
+            <p>There are several ways to do. Personally I like to extends validation by a <code>ValidationService</code> (I think it is much cleaner).</p>
+
+<p><strong>1)</strong> We assume you use PSR-4 to load you own company directory in <code>composer.json</code>:</p>
+
+<pre><code>{
+    "autoload": {
+        "psr-4": {
+            "Acme\\": "app/Acme"
+        }
+        ...
+    },
+}
+</code></pre>
+
+<p>You have to run <code>composer dumpautoload</code>.</p>
+
+<p><strong>2)</strong> Create your validation service provider:</p>
+
+<p><em>app/Acme/Extension/Validation/ValidationServiceProvider.php</em></p>
+
+<pre><code>&lt;?php
+namespace Acme\Extension\Validation;
+
+use Illuminate\Support\ServiceProvider;
+
+class ValidationServiceProvider extends ServiceProvider {
+
+    public function register() {
+    }
+
+    public function boot() {
+        $this-&gt;app-&gt;validator-&gt;resolver(function($translator, $data, $rules, $messages) {
+            return new CustomValidator($translator, $data, $rules, $messages);
+        });
+    }
+
+}
+</code></pre>
+
+<p><strong>3)</strong> Register your service provider in <code>app/config/app.php</code> for autoloading:</p>
+
+<pre><code>&lt;?php
+
+return array(
+    'providers' =&gt; array(
+        ...
+        'Acme\Extension\Validation\ValidationServiceProvider',
+    ),
+);
+</code></pre>
+
+<p><strong>4)</strong> Create your custom validation rule(s):</p>
+
+<p><em>app/Acme/Extension/Validation/CustomValidator.php</em></p>
+
+<pre><code>&lt;?php
+namespace Acme\Extension\Validation;
+
+use Illuminate\Validation\Validator as IlluminateValidator;
+
+class CustomValidator extends IlluminateValidator {
+
+    public function validateAlphaNumSpace($attribute, $value) {
+        return preg_match('/^([a-z\x20])+$/i', $value);
+    }
+
+    public function validateZip($attribute, $value, $parameters) {
+        ...
+    }
+
+}
+</code></pre>
+
+<p><strong>5)</strong> You are ready to use your custom rule(s). For example if I want to use my <code>AlphaNumSpace</code> rule (useful in many cases because original AlphaNum rule doesn't allow space!):</p>
+
+<pre><code>$rules = [
+    'name'    =&gt; 'required|alpha_num_space',
+    'zipcode' =&gt; 'required|zip',
+];
+</code></pre>
+
+    						   <br><div class="dateAndUser"></div>
+						</div>
+
+
+            </div>
+
+    <div id="similarQuestionBody">
+        <div id="SimilarQuestionTitle">Similar Questions</div>
+			<a href="http://www.coderexception.com/Cz33u3m3PPUxJxJW/adding-custom-validation-errors-to-laravel-form" target="_blank">Adding custom validation errors to Laravel form</a><br>
+
+ i have a basic form set up to allow a user to change their email 
+address and im doing the following validation on it before i change the 
+email
+
+ set up the form validation
+validator validatormake
+  inputall
+  array
+ email gt emailuniqueuse...<br>
+			<a href="http://www.coderexception.com/Cz33u3m3PPUxJxJW/adding-custom-validation-errors-to-laravel-form" target="_blank">Read more</a><br><br>     
+			<a href="http://www.coderexception.com/C6uN3BN3PXiiUJyP/custom-validation-using-wcf" target="_blank">Custom Validation Using WCF</a><br>
+
+ i have a bunch of web services which are in production phase and all of
+ them are of asmx type now i want to adopt wcf and i have implemented 
+all other things except security module
+where i have been stuck as in simple asmx i was using soap he...<br>
+			<a href="http://www.coderexception.com/C6uN3BN3PXiiUJyP/custom-validation-using-wcf" target="_blank">Read more</a><br><br>     
+			<a href="http://www.coderexception.com/CHBu16HHPXXxUJPX/unable-to-do-custom-validation-using-javascript" target="_blank">unable to do custom validation using javascript</a><br>
+
+ i am studying custom validation of forms my html code is here
+
+ltdoctype htmlgt
+  lthtmlgt
+ ltheadgt
+lttitlegtq
+  javascript 
+
+lttitlegt
+ltlink relstylesheet srcvalidatecssgt
+ ltheadgt
+
+ ltbodygt
+ltartic...<br>
+			<a href="http://www.coderexception.com/CHBu16HHPXXxUJPX/unable-to-do-custom-validation-using-javascript" target="_blank">Read more</a><br><br>     
+			<a href="http://www.coderexception.com/Cb3zbum6PUPPJXJW/custom-validation-using-wcf-service" target="_blank">Custom Validation using WCF Service</a><br>
+
+ the authentication schemes configured on the host anonymous do not 
+allow those configured on the binding basichttpbinding negotiate please 
+ensure that the securitymode is set to transport or 
+transportcredentialonly additionally this may be re...<br>
+			<a href="http://www.coderexception.com/Cb3zbum6PUPPJXJW/custom-validation-using-wcf-service" target="_blank">Read more</a><br><br>     
+			<a href="http://www.coderexception.com/C3m6Nmb1UiPiPixJ/ios7-adding-custom-keyboard-using-inputview-issue" target="_blank">iOS7 : adding custom keyboard using inputview issue</a><br>
+
+ i am using a custom keyboard and i am assigning that to inputview of the textfield
+but when the keyboard pops up the rest of the view has a blur imagelike in control center
+
+how to get rid of that effect
+i am using an xib for that custom keyb...<br>
+			<a href="http://www.coderexception.com/C3m6Nmb1UiPiPixJ/ios7-adding-custom-keyboard-using-inputview-issue" target="_blank">Read more</a><br><br>     
+			<a href="http://www.coderexception.com/CNN31H6mPXWixUQy/laravel-4-custom-validation-function-not-working" target="_blank">Laravel 4 custom validation function , not working?</a><br>
+
+ i am trying to have my own simple custom validation function 
+
+here is my code 
+
+  rules array
+ firstnamegtrequiredalphamin2
+ lastnamegtrequiredalphamin2
+ emailgtsometimes
+ passwordgtalphanumbetween612confi...<br>
+			<a href="http://www.coderexception.com/CNN31H6mPXWixUQy/laravel-4-custom-validation-function-not-working" target="_blank">Read more</a><br><br>     
+			<a href="http://www.coderexception.com/CB63uzuuUiPWiPWJ/rails-adding-custom-validation-method-to-validate-password-for-user-model-only-on-update" target="_blank">Rails: Adding custom validation method to validate password for user model only on update</a><br>
+
+ i need to add custom validation only on action update for my user model
+ users are created only with email so when they update password is set i
+ want to add validations on update for password
+
+validate customvalidation on update
+
+storing passw...<br>
+			<a href="http://www.coderexception.com/CB63uzuuUiPWiPWJ/rails-adding-custom-validation-method-to-validate-password-for-user-model-only-on-update" target="_blank">Read more</a><br><br>     
+			<a href="http://www.coderexception.com/CNzb3zNmPXxUUWUU/adding-custom-validation-jquery-plugin-validation" target="_blank">Adding custom validation jQuery Plugin Validation</a><br>
+
+ i am using jquery plugin validation i want to ignore  the default 
+values in a text box i am addng cusotm validation in jquery as follow 
+but it always return false can any one help me what may be the issues in
+ my code
+
+documentreadyfunction 
+ ...<br>
+			<a href="http://www.coderexception.com/CNzb3zNmPXxUUWUU/adding-custom-validation-jquery-plugin-validation" target="_blank">Read more</a><br><br>     
+			<a href="http://www.coderexception.com/C3mzzN3BPXPiXSiU/rsv-custom-validation-using-async-method" target="_blank">RSV Custom Validation using async method</a><br>
+
+ i have a following situation
+
+i need to validate a mobile number in my form such that it should be unique to do this i need to query the db sqlite
+
+i am using javascript rsv routine to validate my form where i can add custom fuction now i wan...<br>
+			<a href="http://www.coderexception.com/C3mzzN3BPXPiXSiU/rsv-custom-validation-using-async-method" target="_blank">Read more</a><br><br>     
+			<a href="http://www.coderexception.com/C1m31mzHUyPJXySS/custom-validation-using-helpers-method" target="_blank">Custom validation using helpers method</a><br>
+
+ i want to make custom validation for comment model unregistered users 
+shouldnt use emails of registered users when they submitting comments
+
+i put custom validator class appvalidatorsvalidatecommentemailrb
+
+class validatecommentemail lt activ...<br>
+			<a href="http://www.coderexception.com/C1m31mzHUyPJXySS/custom-validation-using-helpers-method" target="_blank">Read more</a><br><br>     
+			<a href="http://www.coderexception.com/CBzH3zm3UyUXQQXU/custom-validation-using-validation-engine" target="_blank">Custom Validation using validation engine</a><br>
+
+ i am using jquery validation engine library to validate all form fields
+ in my app on submit of every form using the id of the form we will call
+ the validation engine now i have a custom requirement like on an 
+imagebutton click event i need to...<br>
+			<a href="http://www.coderexception.com/CBzH3zm3UyUXQQXU/custom-validation-using-validation-engine" target="_blank">Read more</a><br><br>     
+			<a href="http://www.coderexception.com/CmubB131PUiJUWSQ/laravel-4-custom-validation-error-message" target="_blank">Laravel 4 custom validation error message</a><br>
+
+ so i was trying to add a custom validation rules like this
+
+public function validatedateafterfieldattribute value params
+
+ return strtotimevalue gt strtotimethisgtdataparams0
+
+
+
+it takes the value and validate with another field in array of d...<br>
+			<a href="http://www.coderexception.com/CmubB131PUiJUWSQ/laravel-4-custom-validation-error-message" target="_blank">Read more</a><br><br>     
+		
+
+        <div style="margin: 30px 0 0 60px;">
+			<script async="" src="Laravel%204%20,%20adding%20custom%20validation%20using%20extend%20-%20CoderException_files/adsbygoogle.js"></script>
+			<!-- 336*280 -->
+			<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-0290889595369348" data-ad-slot="4100861745"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent"><ins id="aswift_2_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;" frameborder="0" height="280" width="336"></iframe></ins></ins></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script> 		
+		</div>
+
+		</div>
+
+    <div id="footerContainer">
+    <div id="footer">
+        <p>
+            The content is from <a href="http://stackoverflow.com/" target="_blank">stackoverflow.com</a>. Any advice please <a href="mailto:linuxdocx@yahoo.com">contact us</a>. 
+            <br>
+            <a href="http://www.coderexception.com/">Technologies &amp; Programming Languages Questions</a> [167761]
+        </p> 
+    </div>
+</div>
+
+</div>
+<script>
+    $('#answerSubmit').click(function() {
+        answer = $("#answerToSubmit").val();
+        questionId = '167761';
+        $.ajax({
+            type: "POST",
+            url: "/api/answer",
+            async: false,
+            data: {questionId: questionId, answer: answer}
+        }).done(function(msg) {
+            $('#answerError').html(msg);
+        });
+    });
+</script>
+        </div>
+    
+<div style="display:none;"><script language="javascript" type="text/javascript" src="Laravel%204%20,%20adding%20custom%20validation%20using%20extend%20-%20CoderException_files/16772355.js"></script><a href="http://www.51.la/?16772355" target="_blank" title="51.la 专业、免费、强健的访问统计">网站统计</a>
+</div>
+</body></html>

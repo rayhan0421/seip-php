@@ -1,0 +1,4 @@
+ you may register events in one of your start files such as app/start/global.php.
+If your start files are getting too crowded, you could create a separate app/events.php
+===================================
+If you prefer a class based approach, you may register your events in a service provider.

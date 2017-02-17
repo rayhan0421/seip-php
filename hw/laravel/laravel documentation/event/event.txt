@@ -1,0 +1,112 @@
+Event classes are typically stored in the app/Events directory.
+
+eventhendler:  while their handlers are stored in app/Handlers/Events.
+
+add this in app/providers eventserviceprovider class
+
+protected $listen = [
+    'App\Events\PodcastWasPurchased' => [
+        'App\Handlers\Events\EmailPurchaseConfirmation@handle',
+    ],
+];
+
+Or,
+
+alternatively,
+app/providers
+boot method of your EventServiceProvider, you could do the following:
+
+Event::listen('App\Events\PodcastWasPurchased', function($event)
+{
+    // Handle the event...
+});
+................................
+
+To generate a handler for an event, use the handler:event Artisan CLI command:
+
+php artisan handler:event EmailPurchaseConfirmation --event=PodcastWasPurchased
+
+...........
+
+generate event: php artisan event:generate
+
+Firing An Event:
+
+Event::fire(new PodcastWasPurchased($podcast)); // we can use this any where
+
+or
+Event::listen('user.create', function($user)
+{
+  // Send welcome email
+});
+
+Event Subscribers:
+
+if we want to use class eventheander for big project
+
+we make handler class
+
+class UserEventSubscriber {
+ 
+  /**
+   * When a user is created
+   */
+  public function onCreate($event)
+  {
+    //
+  }
+ 
+  /**
+   * When a user is updated
+   */
+  public function onUpdate($event)
+  {
+    //
+  }
+ 
+  /**
+   * Register the listeners for the subscriber.
+   *
+   * @param  Illuminate\Events\Dispatcher  $events
+   * @return array
+   */
+  public function subscribe($events)
+  {
+    $events->listen('user.create', 'UserEventSubscriber@onCreate');
+ 
+    $events->listen('user.update', 'UserEventSubscriber@onUpdate');
+  }
+
+.........
+
+we can use this in same class above
+$subscriber = new UserEventSubscriber;  // alternatively see down register()
+ 
+Event::subscribe($subscriber);
+
+..............
+
+
+Registering an Event Subscriber using Service Providers:
+
+Once you have an event firing in your application, now you will want to register your subscriber using a Service Provider,
+so registrar
+
+<?php namespace Cribbb\Events;
+ 
+use Cribbb\Events\UserEventHandler;
+use Illuminate\Support\ServiceProvider;
+ 
+class EventServiceProvider extends ServiceProvider {
+ 
+  /**
+   * Register
+   */
+  public function register() // alternative see above $subscriber 
+  {
+    $this->app->events->subscribe(new UserEventSubscriber);
+  }
+
+And finally add the following line to your app/config/app.php file 
+Cribbb\Events\yourEventServiceProvider'
+ 

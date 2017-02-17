@@ -1,0 +1,24 @@
+﻿/*
+ * Helper styles
+ * 
+ * @version 0.1
+ * @author Amit Gupta (http://amitgupta.in/)
+ * @since 2012-08-05
+ * @lastModified 2012-08-05
+ */
+
+.entry .title, .page_title, #reply-title { padding: 20px 0 15px 20px; text-transform: none; }
+.meta-info, .meta-info a { font-style:normal; background-color:#ECECE4; color:#676761; }
+
+
+.post-content { padding: 7px 50px 45px; }
+.post-content small { font-size: 80%; }
+
+.entry .meta-info { padding:5px 0px 5px 10px; margin-bottom: 20px; }
+
+.widget #searchform label.screen-reader-text { display:none; }
+
+.subscribe-label { display: inline !important; }
+
+.wp-pagenavi a, .wp-pagenavi a:link, .wp-pagenavi a:visited { font-size: 20px; }
+.wp-pagenavi span.current, .wp-pagenavi span.extend, .wp-pagenavi a:active, .wp-pagenavi a:hover { font-size: 20px; }

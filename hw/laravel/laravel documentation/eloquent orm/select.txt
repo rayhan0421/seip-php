@@ -1,0 +1,4 @@
+return Album:: find();
+return Album:: find( array( 1 , 3));
+return Album:: all ();
+return Album:: first();

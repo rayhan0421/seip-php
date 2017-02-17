@@ -1,0 +1,1 @@
+(function(){stButtons.processCB({"yahoo":19,"google":4709,"clicks_total":4730,"facebook":2,"total":4730,"shares":[],"url":"http:\/\/blog.arvixe.com\/using-ajax-to-send-multipart-form\/","ourl":"http:\/\/blog.arvixe.com\/using-ajax-to-send-multipart-form\/#sthash.spMpp2rw"})})();

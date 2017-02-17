@@ -1,0 +1,46 @@
+1. run laravel event:generete cmd #php artisan event:generate1
+2. go to event service provider 
+   see ....
+    protected $listen = [
+    'App\Events\OrderShipped' => [
+        'App\Listeners\SendShipmentNotification',
+    ],
+];
+
+configure event name and listener name
+one event can have multiple listener    see below again
+
+ protected $listen = [
+    'App\Events\OrderShipped' => [
+        'App\Listeners\SendShipmentNotification',
+       'App\Listeners\SendShipmentCreatedNotification',
+    ],
+
+3. check this you have to pass class or instance in event class
+//current order object
+ public function __construct(Order $order)
+    {
+        $this->order = $order;
+    }
+or
+//current user after created or after somthing happen
+ public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
+
+
+4. in controller ......
+use App\Order;
+use App\Events\OrderShipped;
+------------------------------------------
+
+    $order = Order::findOrFail($orderId);
+
+      // Order shipment logic...
+    // event class pass
+        event(new OrderShipped($order));  
+
+
+
+ 

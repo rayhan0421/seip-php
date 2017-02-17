@@ -1,0 +1,22 @@
+
+
+Exactly as Rob explained, you will need to do the following:
+
+At the top of your file:
+------------------------------
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+-------------------------------------
+Then within your show($id) method:
+---------------------
+try
+{
+    $post = $this->post->findOrFail($id);
+
+    return View::make('posts.show', compact('post'));
+}
+catch(ModelNotFoundException $e)
+{
+    return Redirect::route('posts.index');
+}
+
+---------------------------------

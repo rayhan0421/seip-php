@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html class=" js video" lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>Introducing the Laravel 5 Command Scheduler - Easy Laravel</title>
+  <meta name="author" content="W. Jason Gilmore">
+
+  
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="msvalidate.01" content="A6DA363195523C0D4C59B65948E30DA1">
+  
+  <link rel="canonical" href="http://easylaravelbook.com/blog/2015/01/27/introducing-the-laravel-5-command-scheduler">
+  <link href="http://www.easylaravelbook.com/favicon.png" type="image/png" rel="icon">
+  <link href="http://www.easylaravelbook.com/atom.xml" rel="alternate" title="Easy Laravel" type="application/atom+xml">
+
+  <link href="Introducing%20the%20Laravel%205%20Command%20Scheduler%20-%20Easy%20Laravel_files/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="Introducing%20the%20Laravel%205%20Command%20Scheduler%20-%20Easy%20Laravel_files/bootswatch.css" rel="stylesheet" type="text/css">
+<link href="Introducing%20the%20Laravel%205%20Command%20Scheduler%20-%20Easy%20Laravel_files/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="Introducing%20the%20Laravel%205%20Command%20Scheduler%20-%20Easy%20Laravel_files/css_002.css" rel="stylesheet" type="text/css">
+<link href="Introducing%20the%20Laravel%205%20Command%20Scheduler%20-%20Easy%20Laravel_files/css.css" rel="stylesheet" type="text/css">
+
+  <script src="Introducing%20the%20Laravel%205%20Command%20Scheduler%20-%20Easy%20Laravel_files/ga.js" async="" type="text/javascript"></script><script src="Introducing%20the%20Laravel%205%20Command%20Scheduler%20-%20Easy%20Laravel_files/jquery-2.js"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-21509545-5']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+<script src="Introducing%20the%20Laravel%205%20Command%20Scheduler%20-%20Easy%20Laravel_files/embed.js" async="" type="text/javascript"></script><script src="Introducing%20the%20Laravel%205%20Command%20Scheduler%20-%20Easy%20Laravel_files/widgets.js" async="" type="text/javascript"></script></head>
+
+  <body data-twttr-rendered="true">
+    <div id="wrap">
+      <header role="banner">
+        <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.easylaravelbook.com/">Easy Laravel</a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+
+
+          <li>
+                    <a href="http://www.easylaravelbook.com/blog">Blog</a>
+                  </li>
+ <li>
+                    <a href="http://www.easylaravelbook.com/#toc">TOC</a>
+                </li>
+                 <li class="purchase_link">
+                   <a href="http://www.easylaravelbook.com/purchase"><span style="color: white; background: #4A9B9D; padding: 10px; border-radius: 5px; -moz-border-radius: 5px;">Buy the Book</span></a>
+                </li>
+                  
+                <li>
+                    <a href="http://www.easylaravelbook.com/#author">About the Author</a>
+                </li>
+                   
+                <li>
+                    <a href="http://www.easylaravelbook.com/changelog">The Changelog</a>
+                </li>
+                 
+                <li>
+                  <a href="http://twitter.com/wjgilmore">Twitter</a>
+                </li>
+                               
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="subscribe-rss" href="http://www.easylaravelbook.com/atom.xml" title="subscribe via RSS">
+                        <span class="visible-xs">RSS</span>
+                        <img class="hidden-xs" src="Introducing%20the%20Laravel%205%20Command%20Scheduler%20-%20Easy%20Laravel_files/rss.png" alt="RSS">
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+      </div>
+
+      <div class="collapse navbar-collapse" style="padding: 5px 0px 5px 0px; background-color: #2A0E1A; text-align: center; color: white; border-top: 2px solid white; border-bottom: 1px solid black;">
+
+        <!--
+<h3 style="margin: 5px 0px 5px 0px;">Announcing Laravel 5 Workshops in Milwaukee and Raleigh! <a href="/workshops/">Learn More</a></h3>
+
+<h3 style="margin: 5px 0px 5px 0px;">February 4, 2015: Easy Laravel 5 Officially Released! <a href="/purchase/">Purchase Now</a></h3>
+
+-->
+
+<h3 style="margin: 5px 0px 5px 0px;"><i>Your Easy Laravel 5 book is absolutely fantastic, well done and thank you.</i> - <a href="http://richlove.uk/" target="_blank">Rich Lovelock</a></h3>
+
+
+
+
+       </div>
+
+
+      </nav>
+
+
+      </header>
+      <div id="main" class="container">
+        <div id="content">
+          <div class="row">
+  <div class="page-content col-md-9">
+    <article class="hentry" role="article">
+      
+  <header class="page-header">
+
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2015-01-27T08:05:53-05:00" pubdate="" data-updated="true">Jan 27<span>th</span>, 2015</time>
+        
+      </p>
+    
+    
+    <h1 class="entry-title">
+        Introducing the Laravel 5 Command Scheduler
+        
+    </h1>
+    
+  </header>
+
+
+
+
+<p>
+  The following blog post is adapted from material found in my forthcoming book, <a href="http://easylaravelbook.com/">"Easy Laravel 5"</a>.
+ Among many other topics, you'll learn about creating application 
+layouts, the Blade templating engine, model generation, migrations, 
+validations, relations, scopes, forms integration, middleware, and 
+testing with PHPUnit. The book is slated for release in late November, 
+but you can purchase it now at a significant discount and receive free 
+updates for life. See <a href="http://easylaravelbook.com/">the home page</a> for purchase details. 
+</p>
+<hr>
+
+<div class="entry-content clearfix"><p>Suppose you wanted to create a 
+new TODOParrot revenue stream by adding a productivity-centric book 
+catalog to the site. Interested readers would click through to Amazon, 
+and you would earn money on any purchases via your <a href="https://affiliate-program.amazon.com/">Amazon Associates Account</a>.
+ Of course, in an effort to convert as many sales as possible you’ll 
+want to ensure your book catalog always contains the latest available 
+book covers, descriptions, and prices, something you’d rather not do 
+manually.</p>
+
+<p>Fortunately, you can automate such updates using the <a href="https://affiliate-program.amazon.com/gp/advertising/api/detail/main.html">Amazon Product Advertising API</a>. To implement such a solution you would typically write a script using a package such as <a href="https://github.com/Exeu/apai-io">ApaiIO</a>, and then schedule the script’s execution using your server’s <a href="http://en.wikipedia.org/wiki/Cron">Cron</a> service. While this approach certainly works, managing task scheduling outside of your application code is pretty inconvenient.</p>
+
+<p>Laravel 5 removes this inconvenience with the introduction of a command scheduler. <!-- more -->
+ The Laravel command scheduler allows you to manage your task execution 
+dates and times using easily understandable PHP syntax. You’ll manage 
+the task execution definitions in <code>app/Console/Kernel.php</code>, which is presented below. You’ll see that an example task has already been defined in the <code>schedule</code> method to run every hour:</p>
+
+<pre><code>&lt;?php namespace todoparrot\Console;
+
+use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+
+class Kernel extends ConsoleKernel {
+
+    protected $commands = [
+        'todoparrot\Console\Commands\Inspire',
+    ];
+
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule-&gt;command('inspire')-&gt;hourly();
+    }
+
+}
+</code></pre>
+
+<p>The protected <code>$commands</code> property registers any custom commands you’d like to include in the Artisan <code>list</code> output. An example custom command (<code>Inspire</code>) is already defined, which you’ll find in <code>app/Console/Commands/Inspire.php</code>.
+ Whether you plan on scheduling custom Artisan commands or executing 
+them directly from the terminal you’ll need to reference You’re not 
+strictly limited to scheduling Artisan commands, although as you’ll soon
+ see it is quite easy to create custom Artisan commands containing the 
+desired logic.</p>
+
+<p>The <code>inspire</code> command registered in the <code>$commands</code> array is scheduled for execution in the <code>schedule</code>
+ method. In this example you can see it has been scheduled to execute 
+every hour (at the top of the hour). I’ll talk about other scheduling 
+options in a moment. If you execute the <code>inspire</code> command manually you’ll be presented with a random quote:</p>
+
+<pre><code>$ php artisan inspire
+Simplicity is the ultimate sophistication. - Leonardo da Vinci
+</code></pre>
+
+<p>Next I’ll show you how you can create your own custom Artisan command and schedule it for execution using the command scheduler.</p>
+
+<h3>Creating a Custom Artisan Command</h3>
+
+<p>You can create your own Artisan commands which can neatly package any PHP logic you desire. To create a command use the <code>make:console</code> generator:</p>
+
+<pre><code>$ php artisan make:console UpdateCatalog --command=amazon:update
+Console command created successfully.
+</code></pre>
+
+<p>This creates a command skeleton in <code>app/Console/Commands/UpdateCatalog.php</code>. For organizational purposes I’ve define a custom command name <code>amazon:update</code>, as perhaps in the future I’d like to create other Amazon-related commands and so would like them all placed under the <code>amazon</code> namespace. Open up <code>app/Console/Commands/UpdateCatalog.php</code> and you’ll find the following class:</p>
+
+<pre><code>&lt;?php namespace todoparrot\Console\Commands;
+
+use Illuminate\Console\Command;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
+
+class UpdateCatalog extends Command {
+
+  protected $name = 'amazon:update';
+
+  protected $description = 'Command description.';
+
+  public function __construct()
+  {
+    parent::__construct();
+  }
+
+  public function fire()
+  {
+    //
+  }
+
+  protected function getArguments()
+  {
+    return [
+      ['example', InputArgument::REQUIRED, 
+        'An example argument.'],
+    ];
+  }
+
+  protected function getOptions()
+  {
+    return [
+      ['example', null, InputOption::VALUE_OPTIONAL, 
+        'An example option.', null],
+    ];
+  }
+
+}
+</code></pre>
+
+<p>The <code>$name</code> and <code>$description</code> properties define the command’s execution name and description, respectively, both of which will be included in the Artisan <code>list</code> output once we register it within the <code>app/Console/Kernel.php</code> <code>$commands</code> array. The <code>fire</code> method encapsulates the logic which will execute when the command is run. The <code>getArguments</code> and <code>getOptions</code> methods can be used to define both required and optional command arguments and options, respectively.</p>
+
+<p>You’ll see that the <code>getArguments</code> method defines a 
+required argument. For the purposes of this exercise we’re not 
+interested in arguments nor options, so comment out the <code>return</code> statement:</p>
+
+<pre><code>protected function getArguments()
+{
+return [
+  // ['example', InputArgument::REQUIRED, 'An example argument.'],
+];
+}
+</code></pre>
+
+<p>The Laravel documentation discusses Artisan command arguments, options, and other features. See <a href="http://laravel.com/docs/master/commands">this page</a> for more information.</p>
+
+<p>Next, update the <code>fire</code> method to look like this:</p>
+
+<pre><code>  public function fire()
+  {
+    $this-&gt;info("Amazon catalog updated!");
+  }
+</code></pre>
+
+<p>Save your changes and then register the command within <code>app/Console/Kernel.php</code>:</p>
+
+<pre><code>protected $commands = [
+    'todoparrot\Console\Commands\Inspire',
+    'todoparrot\Console\Commands\UpdateCatalog'
+];
+</code></pre>
+
+<p>After saving the changes you should see the custom command in the Artisan <code>list</code> output:</p>
+
+<pre><code>$ php artisan list
+...
+Available commands:
+...
+amazon
+ amazon:update        Updates the TODOParrot book catalog.
+...
+</code></pre>
+
+<p>You can now execute the <code>amazon:update</code> command from the terminal:</p>
+
+<pre><code>$ php artisan amazon:update
+Amazon catalog updated!
+</code></pre>
+
+<h3>Scheduling Your Command</h3>
+
+<p>As was perhaps made obvious by the earlier example, scheduling your command within <code>app/Console/Kernel.php</code> is easy. If you’d like <code>amazon:update</code> to run hourly, you’ll use the <code>hourly</code> method:</p>
+
+<pre><code>protected function schedule(Schedule $schedule)
+{
+    $schedule-&gt;command('amazon:update')-&gt;hourly();
+}
+</code></pre>
+
+<p>Updating Amazon product information hourly seems a bit aggressive. 
+Fortunately, you have plenty of other options. To run a command on a 
+daily basis (midnight), use <code>daily</code>:</p>
+
+<pre><code>$schedule-&gt;command('amazon:update')-&gt;daily();
+</code></pre>
+
+<p>To run it at a specific time, use the <code>dailyAt</code> method:</p>
+
+<pre><code>$schedule-&gt;command('amazon:update')-&gt;dailyAt('18:00');
+</code></pre>
+
+<p>If you need to run a command very frequently, you can use an <code>every</code> method:</p>
+
+<pre><code>$schedule-&gt;command('amazon:update')-&gt;everyFiveMinutes();
+$schedule-&gt;command('amazon:update')-&gt;everyTwentyMinutes();
+</code></pre>
+
+<p>See the <a href="http://laravel.com/docs/master/artisan#scheduling-artisan-commands">Laravel documentation</a> for other scheduling options.</p>
+
+<h3>Enabling the Scheduler</h3>
+
+<p>With your tasks created and scheduled, you’ll need to add a single entry to your server’s <code>crontab</code> file:</p>
+
+<pre><code>* * * * * php /path/to/artisan schedule:run 1&gt;&gt; /dev/null 2&gt;&amp;1
+</code></pre>
+
+<p>Once saved, your application’s <code>schedule:run</code> Artisan 
+command will run once per minute. It will in turn execute any jobs that 
+you’ve defined using the Laravel command scheduler.</p>
+
+<h3>Other Scheduling Options</h3>
+
+<p>If defining a custom Artisan command seems overkill, you can optionally define some logic for execution directly within the <code>schedule</code> method:</p>
+
+<pre><code>$schedule-&gt;call(function()
+{
+    // Send some e-mail
+
+})-&gt;daily();
+</code></pre>
+
+<p>You can also schedule terminal commands for execution like so:</p>
+
+<pre><code>$schedule-&gt;exec('/path/to/some/command')-&gt;daily();
+</code></pre>
+
+<h3>Conclusion</h3>
+
+<p>The new Laravel 5 command scheduler removes the hassle of having to 
+separately manage another moving part to your application, allowing you 
+to conveniently manage scheduling directly within your application’s 
+code base. If you’re doing something cool with this new feature tell us 
+about it in the comments!</p>
+</div>
+
+
+      <footer>
+        <p class="meta text-muted">
+          
+  
+
+<span class="glyphicon glyphicon-user"></span> <span class="byline author vcard">Posted by <span class="fn">W. Jason Gilmore</span></span>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2015-01-27T08:05:53-05:00" pubdate="" data-updated="true">Jan 27<span>th</span>, 2015</time>
+          
+
+
+        </p>
+        
+          <div class="sharing">
+  
+  <iframe style="width: 109px; height: 20px;" data-twttr-rendered="true" title="Twitter Tweet Button" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal" src="Introducing%20the%20Laravel%205%20Command%20Scheduler%20-%20Easy%20Laravel_files/tweet_button.htm" allowtransparency="true" scrolling="no" id="twitter-widget-0" frameborder="0"></iframe>
+  
+  
+  
+</div>
+
+        
+        
+          <ul class="meta text-muted pager">
+            
+            <li class="previous"><a href="http://www.easylaravelbook.com/blog/2015/01/21/creating-polymorphic-relations-in-laravel-5/" title="Previous Post: Creating Polymorphic Relations in Laravel 5">« Creating Polymorphic Relations in Laravel 5</a></li>
+            
+            
+            <li class="next"><a href="http://www.easylaravelbook.com/blog/2015/01/31/deploying-a-laravel-application-to-heroku/" title="Next Post: Deploying a Laravel Application to Heroku">Deploying a Laravel Application to Heroku »</a></li>
+            
+          </ul>
+        
+      </footer>
+    </article>
+    
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><iframe verticalscrolling="no" horizontalscrolling="no" src="Introducing%20the%20Laravel%205%20Command%20Scheduler%20-%20Easy%20Laravel_files/a.htm" style="width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 75px ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" data-disqus-uid="2" id="dsq-2" frameborder="0" width="100%"></iframe></div>
+      </section>
+    
+  </div>
+
+  
+  <aside class="sidebar col-md-3">
+ 
+  <a href="http://www.easylaravelbook.com/"><img src="Introducing%20the%20Laravel%205%20Command%20Scheduler%20-%20Easy%20Laravel_files/book-large-web.png" style="margin-bottom: 10px; float: left; border: 1px solid black;"></a>
+    <h3>Have a Question?</h3>
+  <p>
+  I love answering questions about any PHP topic! Feel free to e-mail me at wj AT wjgilmore.com.
+  </p>
+
+              <!-- Begin MailChimp Signup Form -->
+<link href="Introducing%20the%20Laravel%205%20Command%20Scheduler%20-%20Easy%20Laravel_files/slim-081711.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  #mc_embed_signup{clear:left; width: 100%;}
+  /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+     We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+   </style>
+
+            <!-- Begin MailChimp Signup Form -->
+            <div id="mc_embed_signup">
+                <form class="form-inline" role="form" action="//wjgilmore.us7.list-manage.com/subscribe/post?u=f441f1bb5368236838a069f04&amp;id=2d6c711382" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate="">
+
+                    <div class="form-group">
+                        <label for="mce-EMAIL">
+                            <strong>Subscribe to receive occasional news about the book, Laravel, and PHP. No spam, ever.&nbsp;&nbsp;</strong>
+                        </label>
+                        <input class="form-control" placeholder="Your e-mail address" name="EMAIL" id="mce-EMAIL" type="email">
+                        <input value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-success" type="submit">
+                    </div>
+
+                    <div id="mce-responses" class="clear">
+                        <div class="response" id="mce-error-response" style="display:none"></div>
+                        <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>
+                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                    <div style="position: absolute; left: -5000px;"><input name="b_f441f1bb5368236838a069f04_2d6c711382" tabindex="-1" type="text"></div>
+                </form>
+            </div>
+
+            <!--End mc_embed_signup-->
+
+
+                     <br>
+
+    
+      <section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Recent Posts</h3>
+  </div>
+  
+  <div id="recent_posts" class="list-group">
+    
+    <a class="list-group-item " href="http://www.easylaravelbook.com/blog/2015/02/18/disabling-html5-form-validation/">Disabling HTML5 Form Validation Using the Laravel Form Builder</a>
+    
+    <a class="list-group-item " href="http://www.easylaravelbook.com/blog/2015/02/12/laravel-5-sample-application-code-now-available/">Laravel 5 Sample Application Code Now Available</a>
+    
+    <a class="list-group-item " href="http://www.easylaravelbook.com/blog/2015/02/11/formatting-timestamps-in-laravel/">Formatting Timestamps in Laravel</a>
+    
+    <a class="list-group-item " href="http://www.easylaravelbook.com/blog/2015/02/09/creating-a-contact-form-in-laravel-5-using-the-form-request-feature/">Creating a Contact Form in Laravel 5 Using the Form Request Feature</a>
+    
+    <a class="list-group-item " href="http://www.easylaravelbook.com/blog/2015/01/31/deploying-a-laravel-application-to-heroku/">Deploying a Laravel Application to Heroku</a>
+    
+  </div>
+</section>
+
+
+
+
+
+
+    
+  </aside>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+    <footer role="contentinfo"><div class="container">
+    <p class="text-muted credits">
+  Copyright © 2015 -WJ Gilmore, LLC<br>
+  Laravel is a trademark of <a href="http://taylorotwell.com/">Taylor Otwell</a>.
+  <small>
+      <span class="credit">Powered by <a href="http://octopress.org/">Octopress</a></span>,
+      <span class="credit">customized with <a href="https://github.com/kAworu/octostrap3">octostrap3</a></span>.
+  </small>
+</p>
+
+</div>
+</footer>
+    <script src="Introducing%20the%20Laravel%205%20Command%20Scheduler%20-%20Easy%20Laravel_files/bootstrap.js"></script>
+<script src="Introducing%20the%20Laravel%205%20Command%20Scheduler%20-%20Easy%20Laravel_files/modernizr-2.js"></script>
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'easylaravel';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://easylaravelbook.com/blog/2015/01/27/introducing-the-laravel-5-command-scheduler/';
+        var disqus_url = 'http://easylaravelbook.com/blog/2015/01/27/introducing-the-laravel-5-command-scheduler/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  
+
+</body></html>

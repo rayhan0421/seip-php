@@ -1,0 +1,1 @@
+component and slot same like saction and yeild 

@@ -1,0 +1,15 @@
+1.The entry point for all requests to a Laravel application is the public/index.php file
+2.bootstrap/app.php
+3.app/Http/Kernel.php. 
+The HTTP kernel also defines a list of HTTP middleware 
+4.config/app.php 
+
+to understand this use js script all above file
+
+<script>
+
+    alert("Hello! I am an alert box in http/kernel!");
+
+</script>
+
+\Request::segment(1);

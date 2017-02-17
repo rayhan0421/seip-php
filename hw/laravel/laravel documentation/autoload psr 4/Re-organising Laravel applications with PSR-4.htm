@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Re-organising Laravel applications with PSR-4</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="http://codinghobo.com/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="Re-organising%20Laravel%20applications%20with%20PSR-4_files/screen.css">
+    <link rel="stylesheet" type="text/css" href="Re-organising%20Laravel%20applications%20with%20PSR-4_files/css.css">
+
+    <meta name="generator" content="Ghost 0.5">
+<link rel="alternate" type="application/rss+xml" title="CodingHobo" href="http://codinghobo.com/rss/">
+<link rel="canonical" href="http://codinghobo.com/re-organising-laravel-applications-with-psr-4/">
+
+    <script src="Re-organising%20Laravel%20applications%20with%20PSR-4_files/analytics.js" async=""></script><script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-5455139-14', 'codinghobo.com');
+      ga('send', 'pageview');
+    </script>
+<style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style></head>
+<body class="post-template tag-laravel tag-php">
+
+    
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="http://codinghobo.com/">Home</a>
+        <a class="subscribe-button icon-feed" href="http://codinghobo.com/rss/">Subscribe</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-laravel tag-php">
+
+        <header class="post-header">
+            <h1 class="post-title">Re-organising Laravel applications with PSR-4</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2014-01-16">16 January 2014</time>  on <a href="http://codinghobo.com/tag/laravel/">laravel</a>, <a href="http://codinghobo.com/tag/php/">php</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>I find the initial Laravel project structure quite approachable:</p>
+
+<ul>
+<li>app/
+<ul><li>commands/</li>
+<li>config/</li>
+<li>controllers/</li>
+<li>database/</li>
+<li>models/</li>
+<li>storage/</li>
+<li>tests/</li>
+<li>views/</li></ul></li>
+</ul>
+
+<p>However, as your application grows, you'll likely find it difficult 
+to structure without namespaces. Larger applications typically end up 
+with a structure like so:</p>
+
+<ul>
+<li>app/
+<ul><li>commands/</li>
+<li>config/</li>
+<li>controllers/</li>
+<li>database/</li>
+<li>MyApp/
+<ul><li>Models/</li>
+<li>Repositories/</li>
+<li>Services/</li></ul></li>
+<li>storage/</li>
+<li>tests/</li>
+<li>views/</li></ul></li>
+</ul>
+
+<p>A bit confusing. You might move commands and controllers into 
+namespaces as well, only to end up with much longer route configurations
+ and sadness.</p>
+
+<p>Fortunately, with <a href="http://www.php-fig.org/psr/psr-4/">PSR-4</a>
+ we can restore the situation. PSR-4's autoloader allows us to map 
+namespaces to arbitrary paths, which unlike PSR-0 don't contain any of 
+the namespace. For example, we can modify <strong>composer.json</strong> to namespace everything in the default Laravel classmap, while retaining the simple structure:</p>
+
+<pre><code>"require": {
+    "laravel/framework": "4.1.*"
+},
+"autoload": {
+    "psr-4": {
+        "Acme\\Commands\\": "app/commands",
+        "Acme\\Controllers\\": "app/controllers",
+        "Acme\\Seeders\\": "app/database/seeds",
+        "Acme\\Models": "app/models",
+        "Acme\\Repositories\\": "app/repositories",
+        "Acme\\Services\\": "app/services"
+    }
+}
+</code></pre>
+
+<p>Note that migrations can't be namespaced, as Artisan won't pick them up (hat tip <a href="http://www.reddit.com/r/PHP/comments/1ve2n4/reorganising_laravel_applications_with_psr4/ceryctd">/u/meddyiscool</a>).</p>
+
+<p>Now we can place our models in <code>app/models/User.php</code>, yet retain the namespaced structure of <code>Acme\\Models\\User</code>. With PSR-0's autoloader, this file would exist in <code>app/models/Acme/Models/User.php</code>.</p>
+
+<p>While the more common benefit of this will be to eliminate 
+superfluous directories in libraries with a vendor namespace, I'm 
+excited to restore the simple structure of my Laravel applications.</p>
+
+<p>Composer's PSR-4 autoloader is already available: run <code>composer self-update</code>, if you haven't recently.</p>
+        </section>
+
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="http://codinghobo.com/author/ross-masters/">Ross Masters</a></h4>
+
+                    <p>Read <a href="http://codinghobo.com/author/ross-masters/">more posts</a> by this author.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">England, UK</span>
+                    <span class="author-link icon-link"><a href="http://rossmasters.com/">http://rossmasters.com/</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Re-organising%20Laravel%20applications%20with%20PSR-4&amp;url=http://codinghobo.com/re-organising-laravel-applications-with-psr-4/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://codinghobo.com/re-organising-laravel-applications-with-psr-4/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://codinghobo.com/re-organising-laravel-applications-with-psr-4/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+         <section class="copyright"><a href="http://codinghobo.com/">CodingHobo</a> © 2015</section>
+         <section class="poweredby">Proudly published with <a href="https://ghost.org/">Ghost</a></section>
+    </footer>
+
+    <script src="Re-organising%20Laravel%20applications%20with%20PSR-4_files/jquery_002.js"></script>
+
+    <script type="text/javascript" src="Re-organising%20Laravel%20applications%20with%20PSR-4_files/jquery.js"></script>
+    <script type="text/javascript" src="Re-organising%20Laravel%20applications%20with%20PSR-4_files/index.js"></script>
+
+
+
+</body></html>
