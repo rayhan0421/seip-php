@@ -1,0 +1,34 @@
+1. php artisan make:command SendEmails
+   php artisan make:command anyname
+2. go to command folder open it 
+    protected $signature = 'email:send'; 
+   // configure argument if need
+   protected $signature = 'email:send {user}'; 
+ // configure option if need
+    protected $signature = 'email:send {user}'; 
+protected $signature = 'email:send {user} {--q}';
+                                    or
+                                    email:send {user} {--q=default}
+
+3. cmd execute hand function 
+     public function handle()
+    {
+        $this->drip->send(User::find($this->argument('user')));
+
+
+   // to get option
+$queueName = $this->option('q');
+}
+
+4.Registering Commands
+ #app/Console/Kernel.php
+configure in array
+protected $commands = [
+    Commands\SendEmails::class,
+Commands\anycommands::class,
+];
+
+
+
+
+  

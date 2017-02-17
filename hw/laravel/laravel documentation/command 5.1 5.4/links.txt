@@ -1,0 +1,3 @@
+http://ourcodeworld.com/articles/read/248/how-to-create-a-custom-console-command-artisan-for-laravel-5-3
+-------------
+http://vegibit.com/how-to-create-laravel-artisan-console-commands/

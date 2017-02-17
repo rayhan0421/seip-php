@@ -1,0 +1,7 @@
+You can use commmand() to call artisan commands, call to call methods or functions, or terminal() to run command line scripts:
+
+$schedule->call('YourClass@someMethod')->twiceDaily();
+$schedule->call(function() {
+    // Do stuff
+})->everyFiveMinutes();
+$schedule->terminal('cp oldThing newThing')->dailyAt('8:00');

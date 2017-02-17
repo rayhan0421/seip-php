@@ -1,0 +1,15 @@
+into shcedule method;
+
+$schedule->call('YourClass@someMethod')->twiceDaily();
+============
+
+and also callback function
+protected function schedule(Schedule $schedule)
+    {
+        $schedule->call(function () {
+            DB::table('recent_users')->delete();
+        })->daily();
+    }
+
+============and also script 
+$schedule->exec('node /home/forge/script.js')->daily();

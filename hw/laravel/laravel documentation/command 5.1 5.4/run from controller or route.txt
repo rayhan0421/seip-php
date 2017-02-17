@@ -1,0 +1,3 @@
+$exitCode = Artisan::call('quiz:start', [
+    'user' => 'Carlos', '--difficulty' => 'hard'
+]);
